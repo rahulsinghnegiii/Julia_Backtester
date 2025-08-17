@@ -1,0 +1,123 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "52ee67f941dc470caa5ce70c7046cad4",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "1e93fdedb8911a63859e0da082064853",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Inverse Volatility",
+      "properties": {
+        "isInvalid": false,
+        "period": "3"
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "af25eb7ede27d49d6011c3fef7a1c426",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Cumulative Return  AAA 2  > current price SPY )",
+            "properties": {
+              "y": {
+                "indicator": "current price",
+                "source": "SPY"
+              },
+              "x": {
+                "indicator": "Cumulative Return",
+                "source": "AAA",
+                "period": "2"
+              },
+              "isInvalid": false,
+              "comparison": ">"
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "b887f1ff4abe33d3108ceaf7ef7bcd0f",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order AAA",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "AAA"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "4f1194bca9caa26b8b121a0a2432dd0c",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SPY",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "SPY"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "42acfc969d329029976f7fde1649bda3",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "NVDA"
+            }
+          }
+        ],
+        "c": [
+          {
+            "id": "3adedc8672d46ab9016b148f0e240a51",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Max Drawdown",
+            "properties": {
+              "sortby": {
+                "function": "Max Drawdown",
+                "window": "3"
+              },
+              "select": {
+                "function": "Top",
+                "howmany": "3"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "1155af46a7341d43157f7e1e1791014f",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order QQQ",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "QQQ"
+                  }
+                },
+                {
+                  "id": "fccc88beb097988af5c25a609a6a3768",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

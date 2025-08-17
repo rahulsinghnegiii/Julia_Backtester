@@ -1,0 +1,120 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "db286373e5e85b0a7b737eed45a932a3",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "511d3bd4120406283cd628502d7a2934",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Moving Average of Price",
+      "properties": {
+        "sortby": {
+          "function": "Moving Average of Price",
+          "window": "2"
+        },
+        "select": {
+          "function": "Top",
+          "howmany": "3"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "5e0394bf0380ce0b12445464fe8db1af",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AAPL"
+            }
+          },
+          {
+            "id": "05f3872ea832eef6c1daf8305b0e7229",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "QQQ"
+            }
+          },
+          {
+            "id": "7f1964bb6b7e2cdb9946a192791a8019",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1f72ad306a0fcc2c587fbfb84e4d54ee",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Exponential Moving Average of Price  AAA 4  > current price SPY )",
+      "properties": {
+        "y": {
+          "indicator": "current price",
+          "source": "SPY"
+        },
+        "x": {
+          "indicator": "Exponential Moving Average of Price",
+          "source": "AAA",
+          "period": "4"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "43ad5bdf5b2de6e0833ee8c818ff10b4",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocation",
+            "function": "Allocation",
+            "properties": {
+              "values": {
+                "a": 100
+              }
+            },
+            "branches": {
+              "a-(100%)": [
+                {
+                  "id": "1122d0b7a87c49f9253fc228f3c73d6c",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order AAA",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "AAA"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "6458f94fd8552462567de0ee89ac55a4",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "SPY"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

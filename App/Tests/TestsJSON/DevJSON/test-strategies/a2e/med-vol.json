@@ -1,0 +1,2008 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "52fc6d6b-3b26-4443-95d6-71817bbca285",
+    "id": "52fc6d6b-3b26-4443-95d6-71817bbca285",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "58275d10b927495380fe573ab22f1291",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Medium Volatility",
+      "sequence": [
+        {
+          "id": "1d8514bc28f04292917023d39cbaea65",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Cumulative Return SMH  1 \u003c -2.00)",
+          "properties": {
+            "comparison": "\u003c",
+            "x": {
+              "indicator": "Cumulative Return",
+              "period": "1",
+              "source": "SMH"
+            },
+            "y": {
+              "indicator": "constant",
+              "period": "-2.00"
+            }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "449fdb92376742a788e94b2247ab47c7",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Cumulative Return SMH  1 \u003c -2.50)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Cumulative Return",
+                    "period": "1",
+                    "source": "SMH"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "-2.50"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "4928780e01734c2b80dec7d5ee928677",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return SMH  1 \u003c -3.75)",
+                      "properties": {
+                        "comparison": "\u003c",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "1",
+                          "source": "SMH"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "-3.75"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "e2150b36995d49c998c6a417c0652de6",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Relative Strength Index-5",
+                            "properties": {
+                              "select": {
+                                "function": "Bottom",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Relative Strength Index",
+                                "window": "5"
+                              }
+                            },
+                            "branches": {
+                              "Bottom-1": [
+                                {
+                                  "id": "8b2e52b4db7241eabb108e91634bd4e0",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SOXL",
+                                  "properties": {
+                                    "symbol": "SOXL"
+                                  }
+                                },
+                                {
+                                  "id": "8bc0879b-61f7-41ae-9fcd-0fdb4360e9b9",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "2d62103d47844d838f86d083a9fc56b4",
+                            "componentType": "switch",
+                            "type": "allocation",
+                            "function": "Allocation",
+                            "name": "Allocation",
+                            "properties": {
+                              "values": {
+                                "a": 30,
+                                "b": 70
+                              }
+                            },
+                            "branches": {
+                              "a-(30.00%)": [
+                                {
+                                  "id": "69dfc801576d402f80610cb2cf6f931a",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Garen's  Advanced Volatility Hedge V1",
+                                  "sequence": [
+                                    {
+                                      "id": "b56ab6fdd8f140878144ddffd6ca78a5",
+                                      "componentType": "switch",
+                                      "type": "condition",
+                                      "name": "if(Cumulative Return UVXY  5 \u003e -0.50)",
+                                      "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                          "indicator": "Cumulative Return",
+                                          "period": "5",
+                                          "source": "UVXY"
+                                        },
+                                        "y": {
+                                          "indicator": "constant",
+                                          "period": "-0.50"
+                                        }
+                                      },
+                                      "branches": {
+                                        "true": [
+                                          {
+                                            "id": "9af3210813944de4996ea71dad864cde",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Inverse Volatility",
+                                            "name": "Inverse Volatility",
+                                            "properties": {
+                                              "period": "5",
+                                              "values": {
+                                                "a": 100
+                                              }
+                                            },
+                                            "branches": {
+                                              "a": [
+                                                {
+                                                  "id": "83c0a7341de14aab9329a8bd5e4a3527",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order VIXM",
+                                                  "properties": {
+                                                    "symbol": "VIXM"
+                                                  }
+                                                }
+                                              ],
+                                              "b": [
+                                                {
+                                                  "id": "41e60418833b4a9fbc908fbd2e718b25",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UUP",
+                                                  "properties": {
+                                                    "symbol": "UUP"
+                                                  }
+                                                }
+                                              ],
+                                              "c": [
+                                                {
+                                                  "id": "e48253206eb346f7b10b420035304fc9",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UVXY",
+                                                  "properties": {
+                                                    "symbol": "UVXY"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "false": [
+                                          {
+                                            "id": "609de886fb7f4f678f4c8c0695a6483c",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Inverse Volatility",
+                                            "name": "Inverse Volatility",
+                                            "properties": {
+                                              "period": "5",
+                                              "values": {
+                                                "a": 100
+                                              }
+                                            },
+                                            "branches": {
+                                              "a": [
+                                                {
+                                                  "id": "bcfae609befd467bad306c5233ce9bd9",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UUP",
+                                                  "properties": {
+                                                    "symbol": "UUP"
+                                                  }
+                                                }
+                                              ],
+                                              "b": [
+                                                {
+                                                  "id": "5c28058ee3214ca792d24fcdf94b2dcb",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order SHY",
+                                                  "properties": {
+                                                    "symbol": "SHY"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "b-(70.00%)": [
+                                {
+                                  "id": "a4f48f4834204f58bc5afffb0b829edb",
+                                  "componentType": "switch",
+                                  "type": "Sort",
+                                  "name": "SortBy Relative Strength Index-5",
+                                  "properties": {
+                                    "select": {
+                                      "function": "Bottom",
+                                      "howmany": "1"
+                                    },
+                                    "sortby": {
+                                      "function": "Relative Strength Index",
+                                      "window": "5"
+                                    }
+                                  },
+                                  "branches": {
+                                    "Bottom-1": [
+                                      {
+                                        "id": "b3f5d2e9ff94481ab01823e3c2839a26",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order SOXL",
+                                        "properties": {
+                                          "symbol": "SOXL"
+                                        }
+                                      },
+                                      {
+                                        "id": "33740fc8-15e4-46d9-8d16-bcc9a60e6111",
+                                        "componentType": "icon",
+                                        "type": "icon",
+                                        "name": "Interrupting icon"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "f90e89759f1443f8b123f4a35d3b776a",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": {
+                        "values": {
+                          "a": 50,
+                          "b": 50
+                        }
+                      },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "086b2cdcd71e448697b665914cfb915c",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Garen's  Advanced Volatility Hedge V1",
+                            "sequence": [
+                              {
+                                "id": "8aae24f167b4482b91c664c71b4432c0",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Cumulative Return UVXY  5 \u003e -0.50)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Cumulative Return",
+                                    "period": "5",
+                                    "source": "UVXY"
+                                  },
+                                  "y": {
+                                    "indicator": "constant",
+                                    "period": "-0.50"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "0d2b61ba43074b74b8813091fbd57430",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Inverse Volatility",
+                                      "name": "Inverse Volatility",
+                                      "properties": {
+                                        "period": "5",
+                                        "values": {
+                                          "a": 100
+                                        }
+                                      },
+                                      "branches": {
+                                        "a": [
+                                          {
+                                            "id": "312d07750abf4cc5a06524ba779a768d",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order VIXM",
+                                            "properties": {
+                                              "symbol": "VIXM"
+                                            }
+                                          }
+                                        ],
+                                        "b": [
+                                          {
+                                            "id": "eb6844467ff349a7914c7df5f85f102f",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UUP",
+                                            "properties": {
+                                              "symbol": "UUP"
+                                            }
+                                          }
+                                        ],
+                                        "c": [
+                                          {
+                                            "id": "efc298b05ca446ec91d2f4e0d2af53f1",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UVXY",
+                                            "properties": {
+                                              "symbol": "UVXY"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "2e74638135a84a9382d65c2e2c713d01",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Inverse Volatility",
+                                      "name": "Inverse Volatility",
+                                      "properties": {
+                                        "period": "5",
+                                        "values": {
+                                          "a": 100
+                                        }
+                                      },
+                                      "branches": {
+                                        "a": [
+                                          {
+                                            "id": "4a391391f3e4464eae2bbf9d88d164f4",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UUP",
+                                            "properties": {
+                                              "symbol": "UUP"
+                                            }
+                                          }
+                                        ],
+                                        "b": [
+                                          {
+                                            "id": "30969dc6a0b640dca9f9218d70b9a943",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order SHY",
+                                            "properties": {
+                                              "symbol": "SHY"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "eaaf4a0f6a0b44a8961d6e0b67416936",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Relative Strength Index-5",
+                            "properties": {
+                              "select": {
+                                "function": "Bottom",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Relative Strength Index",
+                                "window": "5"
+                              }
+                            },
+                            "branches": {
+                              "Bottom-1": [
+                                {
+                                  "id": "5696b83c4c3c4f56af87735e0cd53ee6",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SOXL",
+                                  "properties": {
+                                    "symbol": "SOXL"
+                                  }
+                                },
+                                {
+                                  "id": "46aa5cdc-0f53-41e3-8364-c518caf0a4cb",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "376860b619f74b949fdea134d01b7346",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Cumulative Return SMH  1 \u003e 1.50)",
+                "properties": {
+                  "comparison": "\u003e",
+                  "x": {
+                    "indicator": "Cumulative Return",
+                    "period": "1",
+                    "source": "SMH"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "1.50"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "c260367ad96d4bdbb840ac9d95adda6b",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return SMH  1 \u003e 2.50)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "1",
+                          "source": "SMH"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "2.50"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "8a125e21391e4305a399ad2eb3ff6c04",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Cumulative Return SMH  1 \u003e 3.75)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Cumulative Return",
+                                "period": "1",
+                                "source": "SMH"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "3.75"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "8a7eed53de294f22b6af9da137932e7a",
+                                  "componentType": "switch",
+                                  "type": "Sort",
+                                  "name": "SortBy Relative Strength Index-5",
+                                  "properties": {
+                                    "select": {
+                                      "function": "Top",
+                                      "howmany": "1"
+                                    },
+                                    "sortby": {
+                                      "function": "Relative Strength Index",
+                                      "window": "5"
+                                    }
+                                  },
+                                  "branches": {
+                                    "Top-1": [
+                                      {
+                                        "id": "42835d915d2e46058d751270cda60038",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order SOXS",
+                                        "properties": {
+                                          "symbol": "SOXS"
+                                        }
+                                      },
+                                      {
+                                        "id": "a7a5653b-97d5-4c8e-b73a-be2cbb6cef33",
+                                        "componentType": "icon",
+                                        "type": "icon",
+                                        "name": "Interrupting icon"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "fd85c9edc3fa433fa8d7da62794cf4d1",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": {
+                                      "a": 30,
+                                      "b": 70
+                                    }
+                                  },
+                                  "branches": {
+                                    "a-(30.00%)": [
+                                      {
+                                        "id": "e2fd2bf19ae44ddb9b8bef22f273e965",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order SHY",
+                                        "properties": {
+                                          "symbol": "SHY"
+                                        }
+                                      }
+                                    ],
+                                    "b-(70.00%)": [
+                                      {
+                                        "id": "c3e2fd8af6054576b9e25c5f94df0fab",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy Relative Strength Index-5",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Top",
+                                            "howmany": "1"
+                                          },
+                                          "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "5"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Top-1": [
+                                            {
+                                              "id": "1dfae75ef5b84f7ab41b3801f5f943c2",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SOXS",
+                                              "properties": {
+                                                "symbol": "SOXS"
+                                              }
+                                            },
+                                            {
+                                              "id": "8db3ee46-13aa-4fc8-8c67-39bc47b531d4",
+                                              "componentType": "icon",
+                                              "type": "icon",
+                                              "name": "Interrupting icon"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "7b0ebbbebfa24fd486ebe3b79a8158a4",
+                            "componentType": "switch",
+                            "type": "allocation",
+                            "function": "Allocation",
+                            "name": "Allocation",
+                            "properties": {
+                              "values": {
+                                "a": 50,
+                                "b": 50
+                              }
+                            },
+                            "branches": {
+                              "a-(50.00%)": [
+                                {
+                                  "id": "ef8a04e52f054d5b860c19da77e79579",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SHY",
+                                  "properties": {
+                                    "symbol": "SHY"
+                                  }
+                                }
+                              ],
+                              "b-(50.00%)": [
+                                {
+                                  "id": "fd1a9a7edd9e4a9184e6b791268d1e9e",
+                                  "componentType": "switch",
+                                  "type": "Sort",
+                                  "name": "SortBy Relative Strength Index-5",
+                                  "properties": {
+                                    "select": {
+                                      "function": "Top",
+                                      "howmany": "1"
+                                    },
+                                    "sortby": {
+                                      "function": "Relative Strength Index",
+                                      "window": "5"
+                                    }
+                                  },
+                                  "branches": {
+                                    "Top-1": [
+                                      {
+                                        "id": "96a69fc369e04c61b9ac606d30fe920a",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order SOXS",
+                                        "properties": {
+                                          "symbol": "SOXS"
+                                        }
+                                      },
+                                      {
+                                        "id": "566dfe67-b38b-4dea-82e6-6264744579a8",
+                                        "componentType": "icon",
+                                        "type": "icon",
+                                        "name": "Interrupting icon"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "9ccbbf9649b947598382c88c1793f583",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "Semiconductor GMR V1",
+                      "sequence": [
+                        {
+                          "id": "dc541bef0e134c71ae7ecb1d24dd9042",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(Relative Strength Index SMH  5 \u003c 36.00)",
+                          "properties": {
+                            "comparison": "\u003c",
+                            "x": {
+                              "indicator": "Relative Strength Index",
+                              "period": "5",
+                              "source": "SMH"
+                            },
+                            "y": {
+                              "indicator": "constant",
+                              "period": "36.00"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "99fa842db33f4086ae0f41abdb695705",
+                                "componentType": "folder",
+                                "type": "folder",
+                                "name": "Over Sold",
+                                "sequence": [
+                                  {
+                                    "id": "321140f299c747eab2fefc77c28e9d52",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Relative Strength Index SMH  10 \u003c 36.00)",
+                                    "properties": {
+                                      "comparison": "\u003c",
+                                      "x": {
+                                        "indicator": "Relative Strength Index",
+                                        "period": "10",
+                                        "source": "SMH"
+                                      },
+                                      "y": {
+                                        "indicator": "constant",
+                                        "period": "36.00"
+                                      }
+                                    },
+                                    "branches": {
+                                      "true": [
+                                        {
+                                          "id": "6466ee3b782c4874886cc213d676d61c",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index SMH  15 \u003c 36.00)",
+                                          "properties": {
+                                            "comparison": "\u003c",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "15",
+                                              "source": "SMH"
+                                            },
+                                            "y": {
+                                              "indicator": "constant",
+                                              "period": "36.00"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "2e83dcd676064f589c76b4f4da811399",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(Relative Strength Index SMH  15 \u003c 36.00)",
+                                                "properties": {
+                                                  "comparison": "\u003c",
+                                                  "x": {
+                                                    "indicator": "Relative Strength Index",
+                                                    "period": "15",
+                                                    "source": "SMH"
+                                                  },
+                                                  "y": {
+                                                    "indicator": "constant",
+                                                    "period": "36.00"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "true": [
+                                                    {
+                                                      "id": "16d137601c6f4c96bceb99c243740866",
+                                                      "componentType": "switch",
+                                                      "type": "condition",
+                                                      "name": "if(Relative Strength Index SMH  20 \u003c 36.00)",
+                                                      "properties": {
+                                                        "comparison": "\u003c",
+                                                        "x": {
+                                                          "indicator": "Relative Strength Index",
+                                                          "period": "20",
+                                                          "source": "SMH"
+                                                        },
+                                                        "y": {
+                                                          "indicator": "constant",
+                                                          "period": "36.00"
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "true": [
+                                                          {
+                                                            "id": "f5d3d96bfb7c409bb5b38f0bdb7fde37",
+                                                            "componentType": "switch",
+                                                            "type": "condition",
+                                                            "name": "if(Relative Strength Index SMH  25 \u003c 36.00)",
+                                                            "properties": {
+                                                              "comparison": "\u003c",
+                                                              "x": {
+                                                                "indicator": "Relative Strength Index",
+                                                                "period": "25",
+                                                                "source": "SMH"
+                                                              },
+                                                              "y": {
+                                                                "indicator": "constant",
+                                                                "period": "36.00"
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "true": [
+                                                                {
+                                                                  "id": "3b4adf85523f40b192fd3ede82e7fd8e",
+                                                                  "componentType": "switch",
+                                                                  "type": "condition",
+                                                                  "name": "if(Relative Strength Index SMH  30 \u003c 36.00)",
+                                                                  "properties": {
+                                                                    "comparison": "\u003c",
+                                                                    "x": {
+                                                                      "indicator": "Relative Strength Index",
+                                                                      "period": "30",
+                                                                      "source": "SMH"
+                                                                    },
+                                                                    "y": {
+                                                                      "indicator": "constant",
+                                                                      "period": "36.00"
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "true": [
+                                                                      {
+                                                                        "id": "ec1fbfcd71094a4fb9136fb839dcc3e0",
+                                                                        "componentType": "switch",
+                                                                        "type": "condition",
+                                                                        "name": "if(Relative Strength Index SMH  35 \u003c 36.00)",
+                                                                        "properties": {
+                                                                          "comparison": "\u003c",
+                                                                          "x": {
+                                                                            "indicator": "Relative Strength Index",
+                                                                            "period": "35",
+                                                                            "source": "SMH"
+                                                                          },
+                                                                          "y": {
+                                                                            "indicator": "constant",
+                                                                            "period": "36.00"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "true": [
+                                                                            {
+                                                                              "id": "c39dd98dc50a4fd8923414a97855624b",
+                                                                              "componentType": "switch",
+                                                                              "type": "condition",
+                                                                              "name": "if(Relative Strength Index SMH  40 \u003c 36.00)",
+                                                                              "properties": {
+                                                                                "comparison": "\u003c",
+                                                                                "x": {
+                                                                                  "indicator": "Relative Strength Index",
+                                                                                  "period": "40",
+                                                                                  "source": "SMH"
+                                                                                },
+                                                                                "y": {
+                                                                                  "indicator": "constant",
+                                                                                  "period": "36.00"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "true": [
+                                                                                  {
+                                                                                    "id": "155ee66d040c4f8686bfa981e4c273e7",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "condition",
+                                                                                    "name": "if(Relative Strength Index SMH  45 \u003c 36.00)",
+                                                                                    "properties": {
+                                                                                      "comparison": "\u003c",
+                                                                                      "x": {
+                                                                                        "indicator": "Relative Strength Index",
+                                                                                        "period": "45",
+                                                                                        "source": "SMH"
+                                                                                      },
+                                                                                      "y": {
+                                                                                        "indicator": "constant",
+                                                                                        "period": "36.00"
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "true": [
+                                                                                        {
+                                                                                          "id": "ab1c2da32844428c91b949bb29c7217b",
+                                                                                          "componentType": "switch",
+                                                                                          "type": "allocation",
+                                                                                          "function": "Allocation",
+                                                                                          "name": "Allocation",
+                                                                                          "properties": {
+                                                                                            "values": {
+                                                                                              "a": 90,
+                                                                                              "b": 10
+                                                                                            }
+                                                                                          },
+                                                                                          "branches": {
+                                                                                            "a-(90.00%)": [
+                                                                                              {
+                                                                                                "id": "cd0a06b91e4a4933874a41f8a76e7aad",
+                                                                                                "componentType": "largeTask",
+                                                                                                "type": "stock",
+                                                                                                "name": "Buy Order SMH",
+                                                                                                "properties": {
+                                                                                                  "symbol": "SMH"
+                                                                                                }
+                                                                                              }
+                                                                                            ],
+                                                                                            "b-(10.00%)": [
+                                                                                              {
+                                                                                                "id": "184fdff46efa4ed5ad8ec4b51d79d073",
+                                                                                                "componentType": "largeTask",
+                                                                                                "type": "stock",
+                                                                                                "name": "Buy Order SOXL",
+                                                                                                "properties": {
+                                                                                                  "symbol": "SOXL"
+                                                                                                }
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        }
+                                                                                      ],
+                                                                                      "false": [
+                                                                                        {
+                                                                                          "id": "a87d2f05466f4aeba57cf0f97aa456f8",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SOXL",
+                                                                                          "properties": {
+                                                                                            "symbol": "SOXL"
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "false": [
+                                                                                  {
+                                                                                    "id": "00680a2ba5884ddb861c22fe5a069018",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "allocation",
+                                                                                    "function": "Allocation",
+                                                                                    "name": "Allocation",
+                                                                                    "properties": {
+                                                                                      "values": {
+                                                                                        "a": 20,
+                                                                                        "b": 80
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "a-(20.00%)": [
+                                                                                        {
+                                                                                          "id": "ec3a92796c24453e8f5626c482e14a1a",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SMH",
+                                                                                          "properties": {
+                                                                                            "symbol": "SMH"
+                                                                                          }
+                                                                                        }
+                                                                                      ],
+                                                                                      "b-(80.00%)": [
+                                                                                        {
+                                                                                          "id": "80e81c13cf9b4a1387fc1cccd0a4382c",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SOXL",
+                                                                                          "properties": {
+                                                                                            "symbol": "SOXL"
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "false": [
+                                                                            {
+                                                                              "id": "07f389b7939841799479ffe4902548ce",
+                                                                              "componentType": "switch",
+                                                                              "type": "allocation",
+                                                                              "function": "Allocation",
+                                                                              "name": "Allocation",
+                                                                              "properties": {
+                                                                                "values": {
+                                                                                  "a": 30,
+                                                                                  "b": 70
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "a-(30.00%)": [
+                                                                                  {
+                                                                                    "id": "8fc959a49b304b869319cd0ef51a639b",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SMH",
+                                                                                    "properties": {
+                                                                                      "symbol": "SMH"
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "b-(70.00%)": [
+                                                                                  {
+                                                                                    "id": "ed4f063531f545acabea0253e9fadf79",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SOXL",
+                                                                                    "properties": {
+                                                                                      "symbol": "SOXL"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "false": [
+                                                                      {
+                                                                        "id": "cd150458f0d242d9832438b077354597",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Allocation",
+                                                                        "name": "Allocation",
+                                                                        "properties": {
+                                                                          "values": {
+                                                                            "a": 40,
+                                                                            "b": 60
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a-(40.00%)": [
+                                                                            {
+                                                                              "id": "e860f4dc00034f63af415b18a39f0062",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SMH",
+                                                                              "properties": {
+                                                                                "symbol": "SMH"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b-(60.00%)": [
+                                                                            {
+                                                                              "id": "f7e62ee33aae410c9039ab4f6e6c876d",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SOXL",
+                                                                              "properties": {
+                                                                                "symbol": "SOXL"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ],
+                                                              "false": [
+                                                                {
+                                                                  "id": "7602e12179114891bfee5b6368666352",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Allocation",
+                                                                  "name": "Allocation",
+                                                                  "properties": {
+                                                                    "values": {
+                                                                      "a": 50,
+                                                                      "b": 50
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a-(50.00%)": [
+                                                                      {
+                                                                        "id": "3e24cd47dc0f4965b631b46049e52386",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SMH",
+                                                                        "properties": {
+                                                                          "symbol": "SMH"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b-(50.00%)": [
+                                                                      {
+                                                                        "id": "c3ca731585a64a62bb17bec43f818e67",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SOXL",
+                                                                        "properties": {
+                                                                          "symbol": "SOXL"
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        "false": [
+                                                          {
+                                                            "id": "be35c5e5889d49fd8c020d1cab612632",
+                                                            "componentType": "switch",
+                                                            "type": "allocation",
+                                                            "function": "Allocation",
+                                                            "name": "Allocation",
+                                                            "properties": {
+                                                              "values": {
+                                                                "a": 60,
+                                                                "b": 40
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "a-(60.00%)": [
+                                                                {
+                                                                  "id": "e69f219484ca4e6184c76a1a062d1322",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SMH",
+                                                                  "properties": {
+                                                                    "symbol": "SMH"
+                                                                  }
+                                                                }
+                                                              ],
+                                                              "b-(40.00%)": [
+                                                                {
+                                                                  "id": "d81226e9943944da93a18b0423e1d4e7",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SOXL",
+                                                                  "properties": {
+                                                                    "symbol": "SOXL"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  "false": [
+                                                    {
+                                                      "id": "53f04bab506f446a844c672c2b333c95",
+                                                      "componentType": "switch",
+                                                      "type": "allocation",
+                                                      "function": "Allocation",
+                                                      "name": "Allocation",
+                                                      "properties": {
+                                                        "values": {
+                                                          "a": 70,
+                                                          "b": 30
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "a-(70.00%)": [
+                                                          {
+                                                            "id": "042928f9dd9446f09ab1690c83a03b51",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SMH",
+                                                            "properties": {
+                                                              "symbol": "SMH"
+                                                            }
+                                                          }
+                                                        ],
+                                                        "b-(30.00%)": [
+                                                          {
+                                                            "id": "d8f2a61c06cd452fb6b734a864362410",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SOXL",
+                                                            "properties": {
+                                                              "symbol": "SOXL"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "fa3bea72540648a2ac00169a478ca019",
+                                                "componentType": "switch",
+                                                "type": "allocation",
+                                                "function": "Allocation",
+                                                "name": "Allocation",
+                                                "properties": {
+                                                  "values": {
+                                                    "a": 80,
+                                                    "b": 20
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "a-(80.00%)": [
+                                                    {
+                                                      "id": "619953a920bc4827ba46592a27f4aedc",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SMH",
+                                                      "properties": {
+                                                        "symbol": "SMH"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "b-(20.00%)": [
+                                                    {
+                                                      "id": "23d6103d40e84813bef0669f8d0e3dd1",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "b91e949de6264b4ea1c1274f73e3601b",
+                                          "componentType": "switch",
+                                          "type": "allocation",
+                                          "function": "Allocation",
+                                          "name": "Allocation",
+                                          "properties": {
+                                            "values": {
+                                              "a": 90,
+                                              "b": 10
+                                            }
+                                          },
+                                          "branches": {
+                                            "a-(90.00%)": [
+                                              {
+                                                "id": "d894bc0ea6d44ed3963a5ddb05bfb765",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order SMH",
+                                                "properties": {
+                                                  "symbol": "SMH"
+                                                }
+                                              }
+                                            ],
+                                            "b-(10.00%)": [
+                                              {
+                                                "id": "ce8bae7f1a254225aa748a32e72c7a6c",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order SOXL",
+                                                "properties": {
+                                                  "symbol": "SOXL"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "3cb3d01c8bc64070a52a3d8e8ab721cc",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index SMH  5 \u003e 70.00)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "5",
+                                    "source": "SMH"
+                                  },
+                                  "y": {
+                                    "indicator": "constant",
+                                    "period": "70.00"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "35010310c35a4ef180bee264d436218a",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "Over Bought",
+                                      "sequence": [
+                                        {
+                                          "id": "69b266fad5cb400b9d01418cadb054e1",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index SMH  10 \u003e 70.00)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "10",
+                                              "source": "SMH"
+                                            },
+                                            "y": {
+                                              "indicator": "constant",
+                                              "period": "70.00"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "8debac180b1d4870a2c7302ce14aadb9",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(Relative Strength Index SMH  15 \u003e 70.00)",
+                                                "properties": {
+                                                  "comparison": "\u003e",
+                                                  "x": {
+                                                    "indicator": "Relative Strength Index",
+                                                    "period": "15",
+                                                    "source": "SMH"
+                                                  },
+                                                  "y": {
+                                                    "indicator": "constant",
+                                                    "period": "70.00"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "true": [
+                                                    {
+                                                      "id": "9614f61e0cb14e7a9c8fa1489bc775ff",
+                                                      "componentType": "switch",
+                                                      "type": "condition",
+                                                      "name": "if(Relative Strength Index SMH  15 \u003e 70.00)",
+                                                      "properties": {
+                                                        "comparison": "\u003e",
+                                                        "x": {
+                                                          "indicator": "Relative Strength Index",
+                                                          "period": "15",
+                                                          "source": "SMH"
+                                                        },
+                                                        "y": {
+                                                          "indicator": "constant",
+                                                          "period": "70.00"
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "true": [
+                                                          {
+                                                            "id": "a1f7b4cfd5b24f5c844fffd1d363f625",
+                                                            "componentType": "switch",
+                                                            "type": "condition",
+                                                            "name": "if(Relative Strength Index SMH  20 \u003e 70.00)",
+                                                            "properties": {
+                                                              "comparison": "\u003e",
+                                                              "x": {
+                                                                "indicator": "Relative Strength Index",
+                                                                "period": "20",
+                                                                "source": "SMH"
+                                                              },
+                                                              "y": {
+                                                                "indicator": "constant",
+                                                                "period": "70.00"
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "true": [
+                                                                {
+                                                                  "id": "75c1364b23934f0191dade6f02015c34",
+                                                                  "componentType": "switch",
+                                                                  "type": "condition",
+                                                                  "name": "if(Relative Strength Index SMH  25 \u003e 70.00)",
+                                                                  "properties": {
+                                                                    "comparison": "\u003e",
+                                                                    "x": {
+                                                                      "indicator": "Relative Strength Index",
+                                                                      "period": "25",
+                                                                      "source": "SMH"
+                                                                    },
+                                                                    "y": {
+                                                                      "indicator": "constant",
+                                                                      "period": "70.00"
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "true": [
+                                                                      {
+                                                                        "id": "7e9da5844c714bb69696883848750eb8",
+                                                                        "componentType": "switch",
+                                                                        "type": "condition",
+                                                                        "name": "if(Relative Strength Index SMH  30 \u003e 70.00)",
+                                                                        "properties": {
+                                                                          "comparison": "\u003e",
+                                                                          "x": {
+                                                                            "indicator": "Relative Strength Index",
+                                                                            "period": "30",
+                                                                            "source": "SMH"
+                                                                          },
+                                                                          "y": {
+                                                                            "indicator": "constant",
+                                                                            "period": "70.00"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "true": [
+                                                                            {
+                                                                              "id": "c8ac7e54fdb14e84aec1743d0ba7f56e",
+                                                                              "componentType": "switch",
+                                                                              "type": "condition",
+                                                                              "name": "if(Relative Strength Index SMH  35 \u003e 70.00)",
+                                                                              "properties": {
+                                                                                "comparison": "\u003e",
+                                                                                "x": {
+                                                                                  "indicator": "Relative Strength Index",
+                                                                                  "period": "35",
+                                                                                  "source": "SMH"
+                                                                                },
+                                                                                "y": {
+                                                                                  "indicator": "constant",
+                                                                                  "period": "70.00"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "true": [
+                                                                                  {
+                                                                                    "id": "46dc224a98044fe89bc7b7dccf218e7d",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "condition",
+                                                                                    "name": "if(Relative Strength Index SMH  40 \u003e 70.00)",
+                                                                                    "properties": {
+                                                                                      "comparison": "\u003e",
+                                                                                      "x": {
+                                                                                        "indicator": "Relative Strength Index",
+                                                                                        "period": "40",
+                                                                                        "source": "SMH"
+                                                                                      },
+                                                                                      "y": {
+                                                                                        "indicator": "constant",
+                                                                                        "period": "70.00"
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "true": [
+                                                                                        {
+                                                                                          "id": "80fc923288934de8b401ce36bd59bd87",
+                                                                                          "componentType": "switch",
+                                                                                          "type": "condition",
+                                                                                          "name": "if(Relative Strength Index SMH  45 \u003e 70.00)",
+                                                                                          "properties": {
+                                                                                            "comparison": "\u003e",
+                                                                                            "x": {
+                                                                                              "indicator": "Relative Strength Index",
+                                                                                              "period": "45",
+                                                                                              "source": "SMH"
+                                                                                            },
+                                                                                            "y": {
+                                                                                              "indicator": "constant",
+                                                                                              "period": "70.00"
+                                                                                            }
+                                                                                          },
+                                                                                          "branches": {
+                                                                                            "true": [
+                                                                                              {
+                                                                                                "id": "8404f045af114d14bd085719e5d2de3c",
+                                                                                                "componentType": "switch",
+                                                                                                "type": "allocation",
+                                                                                                "function": "Allocation",
+                                                                                                "name": "Allocation",
+                                                                                                "properties": {
+                                                                                                  "values": {
+                                                                                                    "a": 90,
+                                                                                                    "b": 10
+                                                                                                  }
+                                                                                                },
+                                                                                                "branches": {
+                                                                                                  "a-(90.00%)": [
+                                                                                                    {
+                                                                                                      "id": "2bd675ca29a041539d24a2fe45b7b917",
+                                                                                                      "componentType": "largeTask",
+                                                                                                      "type": "stock",
+                                                                                                      "name": "Buy Order SMH",
+                                                                                                      "properties": {
+                                                                                                        "symbol": "SMH"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "b-(10.00%)": [
+                                                                                                    {
+                                                                                                      "id": "d9f61729bc7e49138a6ec62761dbb59d",
+                                                                                                      "componentType": "largeTask",
+                                                                                                      "type": "stock",
+                                                                                                      "name": "Buy Order SOXS",
+                                                                                                      "properties": {
+                                                                                                        "symbol": "SOXS"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  ]
+                                                                                                }
+                                                                                              }
+                                                                                            ],
+                                                                                            "false": [
+                                                                                              {
+                                                                                                "id": "63f3c762d97740a9b13b51cad8f94262",
+                                                                                                "componentType": "largeTask",
+                                                                                                "type": "stock",
+                                                                                                "name": "Buy Order SOXS",
+                                                                                                "properties": {
+                                                                                                  "symbol": "SOXS"
+                                                                                                }
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        }
+                                                                                      ],
+                                                                                      "false": [
+                                                                                        {
+                                                                                          "id": "a2fb726fef114f3fab383f4459f2d8a9",
+                                                                                          "componentType": "switch",
+                                                                                          "type": "allocation",
+                                                                                          "function": "Allocation",
+                                                                                          "name": "Allocation",
+                                                                                          "properties": {
+                                                                                            "values": {
+                                                                                              "a": 20,
+                                                                                              "b": 80
+                                                                                            }
+                                                                                          },
+                                                                                          "branches": {
+                                                                                            "a-(20.00%)": [
+                                                                                              {
+                                                                                                "id": "b8d1e530d00940f2b632787b4697ac3e",
+                                                                                                "componentType": "largeTask",
+                                                                                                "type": "stock",
+                                                                                                "name": "Buy Order SMH",
+                                                                                                "properties": {
+                                                                                                  "symbol": "SMH"
+                                                                                                }
+                                                                                              }
+                                                                                            ],
+                                                                                            "b-(80.00%)": [
+                                                                                              {
+                                                                                                "id": "733580ed661a445f9d5225b0479f7f16",
+                                                                                                "componentType": "largeTask",
+                                                                                                "type": "stock",
+                                                                                                "name": "Buy Order SOXS",
+                                                                                                "properties": {
+                                                                                                  "symbol": "SOXS"
+                                                                                                }
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "false": [
+                                                                                  {
+                                                                                    "id": "a93dc11ab490455cb4dc812d6bfff897",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "allocation",
+                                                                                    "function": "Allocation",
+                                                                                    "name": "Allocation",
+                                                                                    "properties": {
+                                                                                      "values": {
+                                                                                        "a": 30,
+                                                                                        "b": 70
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "a-(30.00%)": [
+                                                                                        {
+                                                                                          "id": "cfde727b0b3d4b8baccba409a7e7f38a",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SMH",
+                                                                                          "properties": {
+                                                                                            "symbol": "SMH"
+                                                                                          }
+                                                                                        }
+                                                                                      ],
+                                                                                      "b-(70.00%)": [
+                                                                                        {
+                                                                                          "id": "16099aa669f643d68b49f439a5e24f8f",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SOXS",
+                                                                                          "properties": {
+                                                                                            "symbol": "SOXS"
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "false": [
+                                                                            {
+                                                                              "id": "fb420542e020489c84ba888f753a3217",
+                                                                              "componentType": "switch",
+                                                                              "type": "allocation",
+                                                                              "function": "Allocation",
+                                                                              "name": "Allocation",
+                                                                              "properties": {
+                                                                                "values": {
+                                                                                  "a": 40,
+                                                                                  "b": 60
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "a-(40.00%)": [
+                                                                                  {
+                                                                                    "id": "220b7029348d4c55aa0c2a04e6de4e64",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SMH",
+                                                                                    "properties": {
+                                                                                      "symbol": "SMH"
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "b-(60.00%)": [
+                                                                                  {
+                                                                                    "id": "3be8414dc63644e3b96548cda097eb00",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SOXS",
+                                                                                    "properties": {
+                                                                                      "symbol": "SOXS"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "false": [
+                                                                      {
+                                                                        "id": "8978e1b9686e4844b79dcb81a54fba00",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Allocation",
+                                                                        "name": "Allocation",
+                                                                        "properties": {
+                                                                          "values": {
+                                                                            "a": 50,
+                                                                            "b": 50
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a-(50.00%)": [
+                                                                            {
+                                                                              "id": "18adafd4ce0c4b81b6fd9b5ae55bb5b4",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SMH",
+                                                                              "properties": {
+                                                                                "symbol": "SMH"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b-(50.00%)": [
+                                                                            {
+                                                                              "id": "752a57b6afb9410e9757c1ee7000ea45",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SOXS",
+                                                                              "properties": {
+                                                                                "symbol": "SOXS"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ],
+                                                              "false": [
+                                                                {
+                                                                  "id": "b15a8c2178454d26a43264cdc1709815",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Allocation",
+                                                                  "name": "Allocation",
+                                                                  "properties": {
+                                                                    "values": {
+                                                                      "a": 60,
+                                                                      "b": 40
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a-(60.00%)": [
+                                                                      {
+                                                                        "id": "5770f94e334f42dfb6f8c543e2cb4200",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SMH",
+                                                                        "properties": {
+                                                                          "symbol": "SMH"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b-(40.00%)": [
+                                                                      {
+                                                                        "id": "44253d1335684418b1b7769d0f61d087",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SOXS",
+                                                                        "properties": {
+                                                                          "symbol": "SOXS"
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        "false": [
+                                                          {
+                                                            "id": "a9eca78a91404f308a3c6e96e3edb3a9",
+                                                            "componentType": "switch",
+                                                            "type": "allocation",
+                                                            "function": "Allocation",
+                                                            "name": "Allocation",
+                                                            "properties": {
+                                                              "values": {
+                                                                "a": 70,
+                                                                "b": 30
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "a-(70.00%)": [
+                                                                {
+                                                                  "id": "712baefa06cd4fad8e0857d84a019329",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SMH",
+                                                                  "properties": {
+                                                                    "symbol": "SMH"
+                                                                  }
+                                                                }
+                                                              ],
+                                                              "b-(30.00%)": [
+                                                                {
+                                                                  "id": "84ee312d35cc45b497fea2dec900bc6e",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SOXS",
+                                                                  "properties": {
+                                                                    "symbol": "SOXS"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  "false": [
+                                                    {
+                                                      "id": "f102b99d5e1a401f8f3dfc69e9742c8e",
+                                                      "componentType": "switch",
+                                                      "type": "allocation",
+                                                      "function": "Allocation",
+                                                      "name": "Allocation",
+                                                      "properties": {
+                                                        "values": {
+                                                          "a": 80,
+                                                          "b": 20
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "a-(80.00%)": [
+                                                          {
+                                                            "id": "1a384eab4a1f47f9a0027a3426d755aa",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SMH",
+                                                            "properties": {
+                                                              "symbol": "SMH"
+                                                            }
+                                                          }
+                                                        ],
+                                                        "b-(20.00%)": [
+                                                          {
+                                                            "id": "4df5409ba81e4ff48046c5dc89f4471b",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SOXS",
+                                                            "properties": {
+                                                              "symbol": "SOXS"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "a97a983bdf3d45388c1a70ab07cb8a4b",
+                                                "componentType": "switch",
+                                                "type": "allocation",
+                                                "function": "Allocation",
+                                                "name": "Allocation",
+                                                "properties": {
+                                                  "values": {
+                                                    "a": 90,
+                                                    "b": 10
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "a-(90.00%)": [
+                                                    {
+                                                      "id": "043b9a41e37047b6a1b5535c833ecd6b",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SMH",
+                                                      "properties": {
+                                                        "symbol": "SMH"
+                                                      }
+                                                    }
+                                                  ],
+                                                  "b-(10.00%)": [
+                                                    {
+                                                      "id": "ad70b0b2badd441cb55c1cfcc33da9c6",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXS",
+                                                      "properties": {
+                                                        "symbol": "SOXS"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "230ae96d0e6b4199a4895eca455834d9",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "Momentum",
+                                      "sequence": [
+                                        {
+                                          "id": "138092fb33fc430799d5fdda2df7ace6",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(current price SMH \u003e Moving Average of Price SMH 200)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "current price",
+                                              "source": "SMH"
+                                            },
+                                            "y": {
+                                              "indicator": "Moving Average of Price",
+                                              "period": "200",
+                                              "source": "SMH"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "16c5e15e7503448193958fc5c9d5fe6e",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order SMH",
+                                                "properties": {
+                                                  "symbol": "SMH"
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "d753df27da1748df85aebb4a2e0e70c6",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(current price SMH \u003c Moving Average of Price SMH 20)",
+                                                "properties": {
+                                                  "comparison": "\u003c",
+                                                  "x": {
+                                                    "indicator": "current price",
+                                                    "source": "SMH"
+                                                  },
+                                                  "y": {
+                                                    "indicator": "Moving Average of Price",
+                                                    "period": "20",
+                                                    "source": "SMH"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "true": [
+                                                    {
+                                                      "id": "9371ee6439a44266b69038992e172f64",
+                                                      "componentType": "switch",
+                                                      "type": "Sort",
+                                                      "name": "SortBy Relative Strength Index-10",
+                                                      "properties": {
+                                                        "select": {
+                                                          "function": "Top",
+                                                          "howmany": "1"
+                                                        },
+                                                        "sortby": {
+                                                          "function": "Relative Strength Index",
+                                                          "window": "10"
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "Top-1": [
+                                                          {
+                                                            "id": "dbd5130aa4924450a216600c35972111",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SOXS",
+                                                            "properties": {
+                                                              "symbol": "SOXS"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "7a5fe141ded64584b268caf7afe2d614",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SHY",
+                                                            "properties": {
+                                                              "symbol": "SHY"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "b364e1e6-b104-40c6-838f-3091c967371d",
+                                                            "componentType": "icon",
+                                                            "type": "icon",
+                                                            "name": "Interrupting icon"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  "false": [
+                                                    {
+                                                      "id": "a8a579a0c0394a68927b01d59d0ee3a8",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SMH",
+                                                      "properties": {
+                                                        "symbol": "SMH"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

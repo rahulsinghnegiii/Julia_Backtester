@@ -1,0 +1,97 @@
+  {
+    "type": "root",
+    "properties": {
+      "uuid": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+      "id": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "threshold"
+    },
+    "sequence": [
+      {
+        "id": "20130f3824ed4880ac624a1efd67c2cb",
+        "componentType": "folder",
+        "type": "folder",
+        "name": "Commodities Macro Momentum",
+        "sequence": [
+          {
+            "id": "d58b2664c1604d6496cc5f09494b652b",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Moving Average of Price DBC 100 \u003e Moving Average of Price DBC 252)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Moving Average of Price",
+                "period": "100",
+                "source": "DBC"
+              },
+              "y": {
+                "indicator": "Moving Average of Price",
+                "period": "252",
+                "source": "DBC"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "d6c652cfac814a178c55635e97183bde",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Moving Average of Price DBC 50 \u003e Moving Average of Price DBC 100)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Moving Average of Price",
+                      "period": "50",
+                      "source": "DBC"
+                    },
+                    "y": {
+                      "indicator": "Moving Average of Price",
+                      "period": "100",
+                      "source": "DBC"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "fe2550dee61c49a9aeb1833ea465542f",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order DBC",
+                        "properties": {
+                          "symbol": "DBC"
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "8def7d75d4304c258c2eb86753c50307",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order SHV",
+                        "properties": {
+                          "symbol": "SHV"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "61d307ac5e134f5a91e2091a9e73860b",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SHV",
+                  "properties": {
+                    "symbol": "SHV"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }

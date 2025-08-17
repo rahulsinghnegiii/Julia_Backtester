@@ -1,0 +1,35 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "27994475040285f0ccc42a217a6f5072",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "eaeb01f25f98ede4f65643f39e7f91d1",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Cumulative Return  AAPL 5  > Moving Average of Price AAPL 5)",
+      "properties": {
+        "y": {
+          "indicator": "Moving Average of Price",
+          "period": "5",
+          "source": "AAPL"
+        },
+        "x": {
+          "indicator": "Cumulative Return",
+          "period": "5",
+          "source": "AAPL"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [],
+        "false": []
+      }
+    }
+  ]
+}

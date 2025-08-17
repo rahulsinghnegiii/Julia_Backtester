@@ -1,0 +1,399 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "91f0c628-b4d7-4a93-818d-127139a7eb52",
+        "id": "91f0c628-b4d7-4a93-818d-127139a7eb52",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "210da9a5b61849fa8a4177f81d6c996a",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(31d Relative Strength Index   of SOXX > 68.00%)",
+            "properties": {
+                "comparison": ">",
+                "x": {
+                    "indicator": "Relative Strength Index",
+                    "period": "31",
+                    "source": "SOXX"
+                },
+                "y": {
+                    "indicator": "Fixed-Value",
+                    "period": "68.00"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "e63d23f474c84da7bafedcf1b79f59be",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "BUY SOXS",
+                        "properties": {
+                            "symbol": "SOXS"
+                        },
+                        "hash": "67c1f5cc4c2d6a66544ce5a45a314bcd",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037"
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "6c7b813e5ea74e7da4397c7dc5fbe9e3",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Rotator",
+                        "sequence": [
+                            {
+                                "id": "4f528dd3a32444b5a6f5a273a842721d",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Allocation",
+                                "name": "Manual Allocation",
+                                "properties": {
+                                    "values": {
+                                        "a": 50,
+                                        "b": 50
+                                    }
+                                },
+                                "branches": {
+                                    "a-(50.00%)": [
+                                        {
+                                            "id": "9b73f2691f5c4134ba5809cbcf74c767",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy: 5d Standard Deviation of Return",
+                                            "properties": {
+                                                "select": {
+                                                    "function": "Top",
+                                                    "howmany": "2"
+                                                },
+                                                "sortby": {
+                                                    "function": "Standard Deviation of Return",
+                                                    "window": "5"
+                                                }
+                                            },
+                                            "branches": {
+                                                "Top-2": [
+                                                    {
+                                                        "id": "929ed0c08b964500b00d029b8441ffd6",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY SOXX",
+                                                        "properties": {
+                                                            "symbol": "SOXX"
+                                                        },
+                                                        "hash": "b5e5a6448a8caf7169172c9353a90899",
+                                                        "parentHash": "c6930569175dc484c717269ec2c099f1"
+                                                    },
+                                                    {
+                                                        "id": "7d6dcbbaf3e74ed4a02d4e91a11ac51f",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY NVDA",
+                                                        "properties": {
+                                                            "symbol": "NVDA"
+                                                        },
+                                                        "hash": "f33c5c9122becb7e81e5911f56a6cf06",
+                                                        "parentHash": "30001cf9ce2c7d8b7213d825d1fc4a60"
+                                                    },
+                                                    {
+                                                        "id": "4518d769f50147cfbd4fe1dab5705899",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY AMD",
+                                                        "properties": {
+                                                            "symbol": "AMD"
+                                                        },
+                                                        "hash": "1a059caf2c46ee324c630531705ae2df",
+                                                        "parentHash": "91fb5d23523e9167f78bad3e05bb1588"
+                                                    },
+                                                    {
+                                                        "id": "440afb72b61842e98837582bd967008d",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY XLE",
+                                                        "properties": {
+                                                            "symbol": "XLE"
+                                                        },
+                                                        "hash": "b2b605651cb19ab07eb21af959c0c110",
+                                                        "parentHash": "14bf94c6fbfc04a9247c2f4f7e4820c4"
+                                                    },
+                                                    {
+                                                        "id": "0a1ad63577504bf6802d18ac051a659c",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY AMAT",
+                                                        "properties": {
+                                                            "symbol": "AMAT"
+                                                        },
+                                                        "hash": "9b90be27fe630d03130b23ec8df6ed17",
+                                                        "parentHash": "b7fc7c3dd9315c7e07deebba48110afa"
+                                                    },
+                                                    {
+                                                        "id": "e5e580a32efd4a6680672970273080a3",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY ASML",
+                                                        "properties": {
+                                                            "symbol": "ASML"
+                                                        },
+                                                        "hash": "61958eeae5876855fd8568bee19c4f3d",
+                                                        "parentHash": "3d4d81b5ebdab73e530b3fdba4887a5d"
+                                                    },
+                                                    {
+                                                        "id": "d79a48ab9679480d829ce04185fde987",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY INTC",
+                                                        "properties": {
+                                                            "symbol": "INTC"
+                                                        },
+                                                        "hash": "9647a5a631c925a7d100ed083d79412b",
+                                                        "parentHash": "749cd18031905416270566d77b072efe"
+                                                    },
+                                                    {
+                                                        "id": "1884661d59e04553a23f73c98b0c7d40",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY TSM",
+                                                        "properties": {
+                                                            "symbol": "TSM"
+                                                        },
+                                                        "hash": "af1c96abc5977280621ffbbc7ed99279",
+                                                        "parentHash": "054559b9e87b169e575937170449674d"
+                                                    },
+                                                    {
+                                                        "id": "bf7d54d62b794172809feeeecdd04e51",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY MU",
+                                                        "properties": {
+                                                            "symbol": "MU"
+                                                        },
+                                                        "hash": "5d2dc41ffce1a720a85b08a574f304f0",
+                                                        "parentHash": "e7b6646de0a3cc775b67d925d3e99d4e"
+                                                    },
+                                                    {
+                                                        "id": "e03fa86dfe684c25942264d87fde8ca3",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY SH",
+                                                        "properties": {
+                                                            "symbol": "SH"
+                                                        },
+                                                        "hash": "a9514b45faa9af4635295cec5849047d",
+                                                        "parentHash": "d3e1b85e740d7e8343a3c7049cd94f61"
+                                                    },
+                                                    {
+                                                        "id": "69ed3d6d5ff7454ca86935dee4e511ee",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY ARM",
+                                                        "properties": {
+                                                            "symbol": "ARM"
+                                                        },
+                                                        "hash": "17d8a001e4ea6f0a2451fd5e8dbf4121",
+                                                        "parentHash": "f25fb3f31647053ba770a6dd3cd1a9d6"
+                                                    },
+                                                    {
+                                                        "id": "1e8689fdacc649178ba2f6d2941087a5",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY KLAC",
+                                                        "properties": {
+                                                            "symbol": "KLAC"
+                                                        },
+                                                        "hash": "12429ee132e3f6bd5f37b2ba7afe82f4",
+                                                        "parentHash": "f28529b1042f00c598207143348eaa36"
+                                                    },
+                                                    {
+                                                        "id": "130bb239b9da4e4cb61b8607948cde27",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY SOF",
+                                                        "properties": {
+                                                            "symbol": "SOF"
+                                                        },
+                                                        "hash": "175728309ec72780cc973c197e9ed36f",
+                                                        "parentHash": "3fceaeaeb03b6dd423f7b57a9b87be12"
+                                                    },
+                                                    {
+                                                        "id": "c81fc7cf-8539-4706-9b61-4c702a168f05",
+                                                        "componentType": "icon",
+                                                        "type": "icon",
+                                                        "name": "Interrupting icon",
+                                                        "hash": "75a97276679b6063162dcf6d06b64f92",
+                                                        "parentHash": "ef0429c400e1245025d5d3eb1bf01ab4"
+                                                    }
+                                                ]
+                                            },
+                                            "hash": "607337f40671aef3ed7e397609c6065c",
+                                            "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                                            "nodeChildrenHash": "b6a8c7b031322ee53448283732b93fb0"
+                                        }
+                                    ],
+                                    "b-(50.00%)": [
+                                        {
+                                            "id": "0d4666cdd71e454d83faa7bc92be4f8b",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy: 300d Cumulative Return",
+                                            "properties": {
+                                                "select": {
+                                                    "function": "Top",
+                                                    "howmany": "2"
+                                                },
+                                                "sortby": {
+                                                    "function": "Cumulative Return",
+                                                    "window": "300"
+                                                }
+                                            },
+                                            "branches": {
+                                                "Top-2": [
+                                                    {
+                                                        "id": "ef56a1899f0e46e78837a388de5187b4",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY MU",
+                                                        "properties": {
+                                                            "symbol": "MU"
+                                                        },
+                                                        "hash": "5d2dc41ffce1a720a85b08a574f304f0",
+                                                        "parentHash": "c6930569175dc484c717269ec2c099f1"
+                                                    },
+                                                    {
+                                                        "id": "b5c136fde7bb4c95ab24c16a78886297",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY AMAT",
+                                                        "properties": {
+                                                            "symbol": "AMAT"
+                                                        },
+                                                        "hash": "9b90be27fe630d03130b23ec8df6ed17",
+                                                        "parentHash": "30001cf9ce2c7d8b7213d825d1fc4a60"
+                                                    },
+                                                    {
+                                                        "id": "94850e24e8a84d40a07da24e0c6d3ea2",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY ASML",
+                                                        "properties": {
+                                                            "symbol": "ASML"
+                                                        },
+                                                        "hash": "61958eeae5876855fd8568bee19c4f3d",
+                                                        "parentHash": "91fb5d23523e9167f78bad3e05bb1588"
+                                                    },
+                                                    {
+                                                        "id": "2c3a64b8221f414e913ce7ecac7170ce",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY TSM",
+                                                        "properties": {
+                                                            "symbol": "TSM"
+                                                        },
+                                                        "hash": "af1c96abc5977280621ffbbc7ed99279",
+                                                        "parentHash": "14bf94c6fbfc04a9247c2f4f7e4820c4"
+                                                    },
+                                                    {
+                                                        "id": "cbe9e55ff17246b4a44fcffe1f6eeb44",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY AMD",
+                                                        "properties": {
+                                                            "symbol": "AMD"
+                                                        },
+                                                        "hash": "1a059caf2c46ee324c630531705ae2df",
+                                                        "parentHash": "b7fc7c3dd9315c7e07deebba48110afa"
+                                                    },
+                                                    {
+                                                        "id": "55679cb720294260b9071081db2c89db",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY XLE",
+                                                        "properties": {
+                                                            "symbol": "XLE"
+                                                        },
+                                                        "hash": "b2b605651cb19ab07eb21af959c0c110",
+                                                        "parentHash": "3d4d81b5ebdab73e530b3fdba4887a5d"
+                                                    },
+                                                    {
+                                                        "id": "9035f81be2ee426eb9b402cf2d5846b1",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY NVDA",
+                                                        "properties": {
+                                                            "symbol": "NVDA"
+                                                        },
+                                                        "hash": "f33c5c9122becb7e81e5911f56a6cf06",
+                                                        "parentHash": "749cd18031905416270566d77b072efe"
+                                                    },
+                                                    {
+                                                        "id": "3ac1c408659b476baeaa248f47cdd0c8",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY SOXX",
+                                                        "properties": {
+                                                            "symbol": "SOXX"
+                                                        },
+                                                        "hash": "b5e5a6448a8caf7169172c9353a90899",
+                                                        "parentHash": "054559b9e87b169e575937170449674d"
+                                                    },
+                                                    {
+                                                        "id": "2f040f4c43c4406bbfd3193eea2adc60",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY INTC",
+                                                        "properties": {
+                                                            "symbol": "INTC"
+                                                        },
+                                                        "hash": "9647a5a631c925a7d100ed083d79412b",
+                                                        "parentHash": "e7b6646de0a3cc775b67d925d3e99d4e"
+                                                    },
+                                                    {
+                                                        "id": "521e611c86ba4382bb08ee01d4a11aad",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "BUY KLAC",
+                                                        "properties": {
+                                                            "symbol": "KLAC"
+                                                        },
+                                                        "hash": "12429ee132e3f6bd5f37b2ba7afe82f4",
+                                                        "parentHash": "d3e1b85e740d7e8343a3c7049cd94f61"
+                                                    },
+                                                    {
+                                                        "id": "0284fc9c-d0ab-4865-b4a5-9b87b2587832",
+                                                        "componentType": "icon",
+                                                        "type": "icon",
+                                                        "name": "Interrupting icon",
+                                                        "hash": "75a97276679b6063162dcf6d06b64f92",
+                                                        "parentHash": "f25fb3f31647053ba770a6dd3cd1a9d6"
+                                                    }
+                                                ]
+                                            },
+                                            "hash": "059d1eba14e7d7152648f6ef0fc3000d",
+                                            "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                                            "nodeChildrenHash": "699a70ad817df99fb7ebb33b1a614e05"
+                                        }
+                                    ]
+                                },
+                                "hash": "f5222236bb18497d77910dce621162be",
+                                "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                                "nodeChildrenHash": "e33d93c64b04777a1a99ce7e07e14d0d"
+                            }
+                        ],
+                        "hash": "f13ddfe69944f9cd0bec4cda312d6b7a",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "b367f65fa93e5a9defa5ca28020808c2"
+                    }
+                ]
+            },
+            "hash": "8556d56c0bdbc1517adfc8adcf53d0ff",
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "23e9bd9c2fa0b95e55df55bdc2e4508e"
+        }
+    ],
+    "parentHash": "0"
+}

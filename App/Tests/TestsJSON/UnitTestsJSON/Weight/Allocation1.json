@@ -1,0 +1,112 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "0ea1b32694580affd4f3d2a0eb2c2da1",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "6d43939961cb08ac641cf5b479de38ed",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Allocation",
+      "properties": {
+        "values": {
+          "a": 25,
+          "b": 25,
+          "c": 25,
+          "d": 25
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "a-(25%)": [
+          {
+            "id": "c69848b8e5bf47db2b2da26ebb4c12b9",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(current price  IEF   > Relative Strength Index TLT 14)",
+            "properties": {
+              "y": {
+                "indicator": "Relative Strength Index",
+                "source": "TLT",
+                "period": "14"
+              },
+              "x": {
+                "indicator": "current price",
+                "source": "IEF"
+              },
+              "isInvalid": false,
+              "comparison": ">"
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "15255cfe6e63d0500776fae1e643b95c",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order IEF",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "IEF"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "964c0351e59580299ec2dc64ed14d802",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order TLT",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "TLT"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "b-(25%)": [
+          {
+            "id": "c40fbeec171f5af54b52181732b33050",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          }
+        ],
+        "c-(25%)": [
+          {
+            "id": "3e62e2c7331054dfe391a76b339bf079",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order GLD",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "GLD"
+            }
+          }
+        ],
+        "d-(25%)": [
+          {
+            "id": "812d6c47aea438163dcb56c3c9245589",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

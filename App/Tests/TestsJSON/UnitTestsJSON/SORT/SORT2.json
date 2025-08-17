@@ -1,0 +1,95 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "1f6dfa8917a036586bc17de09ee908aa",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "3deb3aae0a375b4f33c678a34bb1af33",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return",
+      "properties": {
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "-1"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "3"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "eac968b968600878c2d59836bf8f52c7",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AAPL"
+            }
+          },
+          {
+            "id": "495a751015438e52dc3ae1767000558b",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1318b8ae741c2ad4e4cfbd45291666f2",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Max Drawdown  FEPI 12  > Moving Average of Price BRK.B 2)",
+      "properties": {
+        "y": {
+          "indicator": "Moving Average of Price",
+          "source": "BRK.B",
+          "period": "2"
+        },
+        "x": {
+          "indicator": "Max Drawdown",
+          "source": "FEPI",
+          "period": "12"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "f4ea2d8d19039087f7ba87d0c4fc8355",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "ffb2f90b504db2fda3d4caa6c73203c4",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order BRK.B",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "BRK.B"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

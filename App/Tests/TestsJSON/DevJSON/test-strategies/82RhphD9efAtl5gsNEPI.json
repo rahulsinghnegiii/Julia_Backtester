@@ -1,0 +1,690 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "38e76c23-7bf7-4a8f-a0a0-eb18844b3e39",
+    "id": "38e76c23-7bf7-4a8f-a0a0-eb18844b3e39",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "91e1d9da77e24584bb94de61cf871511",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(current price SPY \u003e Moving Average of Price SPY 200)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "current price",
+          "source": "SPY"
+        },
+        "y": {
+          "indicator": "Moving Average of Price",
+          "period": "200",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "9aa21eb155af46e7b22ac1095164769a",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index QLD  10 \u003e 79.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "QLD"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "79.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "8a52e1b301ee46b0a8a8ab631bcfcd6f",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy Relative Strength Index-10",
+                  "properties": {
+                    "select": {
+                      "function": "Top",
+                      "howmany": "1"
+                    },
+                    "sortby": {
+                      "function": "Relative Strength Index",
+                      "window": "10"
+                    }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "be94f9ce50a14d5c9ce59c5fadcfc377",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order QID",
+                        "properties": {
+                          "symbol": "QID"
+                        }
+                      },
+                      {
+                        "id": "b49d153d8ed04614aa55112940ef9a89",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order SHY",
+                        "properties": {
+                          "symbol": "SHY"
+                        }
+                      },
+                      {
+                        "id": "8d4c62ef-591d-41bc-8c32-d7c804467def",
+                        "componentType": "icon",
+                        "type": "icon",
+                        "name": "Interrupting icon"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "303fbb7011d14203815934905540ab32",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Relative Strength Index SSO  10 \u003e 80.00)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "SSO"
+                    },
+                    "y": {
+                      "indicator": "constant",
+                      "period": "80.00"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "b052780cb5274cecb16c2006e6db18f4",
+                        "componentType": "switch",
+                        "type": "Sort",
+                        "name": "SortBy Relative Strength Index-10",
+                        "properties": {
+                          "select": {
+                            "function": "Top",
+                            "howmany": "1"
+                          },
+                          "sortby": {
+                            "function": "Relative Strength Index",
+                            "window": "10"
+                          }
+                        },
+                        "branches": {
+                          "Top-1": [
+                            {
+                              "id": "9053b17213a7474f9fabbf95c21aed99",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order QID",
+                              "properties": {
+                                "symbol": "QID"
+                              }
+                            },
+                            {
+                              "id": "f263a74797ad49c8b305819a5892da69",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order SHY",
+                              "properties": {
+                                "symbol": "SHY"
+                              }
+                            },
+                            {
+                              "id": "4ff9f4d7-b696-48a0-850c-076618ff5901",
+                              "componentType": "icon",
+                              "type": "icon",
+                              "name": "Interrupting icon"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "b6f7db1fa7c3440499f2a3eee3e05e64",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "A Better \"Buy the Dips Nasdaq\" by Garen Phillips",
+                        "sequence": [
+                          {
+                            "id": "107f9157f58644b5b004baf3a06eda0f",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Cumulative Return QQQ  5 \u003c -6.00)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Cumulative Return",
+                                "period": "5",
+                                "source": "QQQ"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "-6.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "5990a1410c204400a4725b700d2a6147",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Cumulative Return QLD  1 \u003e 3.33)",
+                                  "properties": {
+                                    "comparison": "\u003e",
+                                    "x": {
+                                      "indicator": "Cumulative Return",
+                                      "period": "1",
+                                      "source": "QLD"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "3.33"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "180fb365f74e4b7cbbe8faf0db83578c",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order QID",
+                                        "properties": {
+                                          "symbol": "QID"
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "e10966dde4144a8f83b56266d144bd5d",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Relative Strength Index QLD  10 \u003e 31.00)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "Relative Strength Index",
+                                            "period": "10",
+                                            "source": "QLD"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "31.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "5350718c7ca74309809b80867397a1ae",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QID",
+                                              "properties": {
+                                                "symbol": "QID"
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "f761114e9f0e42adb1edae36771ed98f",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QLD",
+                                              "properties": {
+                                                "symbol": "QLD"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "d99f751e294b44699fca179ee7703415",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Relative Strength Index QQQ  10 \u003e 80.00)",
+                                  "properties": {
+                                    "comparison": "\u003e",
+                                    "x": {
+                                      "indicator": "Relative Strength Index",
+                                      "period": "10",
+                                      "source": "QQQ"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "80.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "413f3d68466c4be6809c3fd69c04b9d6",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order QID",
+                                        "properties": {
+                                          "symbol": "QID"
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "b58278c5d84342b7b118621965285f45",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Relative Strength Index QQQ  10 \u003c 31.00)",
+                                        "properties": {
+                                          "comparison": "\u003c",
+                                          "x": {
+                                            "indicator": "Relative Strength Index",
+                                            "period": "10",
+                                            "source": "QQQ"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "31.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "b68ad5339eeb4648b2a2fe0b16bfe883",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QLD",
+                                              "properties": {
+                                                "symbol": "QLD"
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "cd82c2fd0eee44709fa647a13f0d040d",
+                                              "componentType": "folder",
+                                              "type": "folder",
+                                              "name": "\"A Better QQQ\" - 2006",
+                                              "sequence": [
+                                                {
+                                                  "id": "f1fcf434b5e845e1a2a29f3074fc8ebf",
+                                                  "componentType": "switch",
+                                                  "type": "Sort",
+                                                  "name": "SortBy Relative Strength Index-40",
+                                                  "properties": {
+                                                    "select": {
+                                                      "function": "Bottom",
+                                                      "howmany": "4"
+                                                    },
+                                                    "sortby": {
+                                                      "function": "Relative Strength Index",
+                                                      "window": "40"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "Bottom-4": [
+                                                      {
+                                                        "id": "e56faa8f0d3340af8ec2a7a38e7f0051",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order CHKP",
+                                                        "properties": {
+                                                          "symbol": "CHKP"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "3bd36521e859439eaee79209e388b712",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order CRUS",
+                                                        "properties": {
+                                                          "symbol": "CRUS"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "69f293ffd1e941c9bbfd3d57bc9cd16e",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order CSCO",
+                                                        "properties": {
+                                                          "symbol": "CSCO"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "7fccbb09a3394f5a96fe1945454cfd21",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order ELTK",
+                                                        "properties": {
+                                                          "symbol": "ELTK"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "08b3801f550840688596c41256628fe8",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order HCKT",
+                                                        "properties": {
+                                                          "symbol": "HCKT"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "44f608e1cbe34cef824fc8f25a95d360",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order INFY",
+                                                        "properties": {
+                                                          "symbol": "INFY"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "683e9c57f4154758bc9cd55201e47be9",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order JKHY",
+                                                        "properties": {
+                                                          "symbol": "JKHY"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "160f764be5f74adfbe19c7bd888ddcd1",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order LOGI",
+                                                        "properties": {
+                                                          "symbol": "LOGI"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "2568cfdb86af417ba85ddbbb98cfdf30",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order MNDO",
+                                                        "properties": {
+                                                          "symbol": "MNDO"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "9851a60752b24b8a82ffc1f3085b973b",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order MSFT",
+                                                        "properties": {
+                                                          "symbol": "MSFT"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "6485bdc6ca4c41b697ae4737f84c38c4",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order NSYS",
+                                                        "properties": {
+                                                          "symbol": "NSYS"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "fc14ba6f743448cf86dccceae0f7ac6b",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order SIMO",
+                                                        "properties": {
+                                                          "symbol": "SIMO"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "dfeceb844a4e4182ad4c4545af641876",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order TSM",
+                                                        "properties": {
+                                                          "symbol": "TSM"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "a17305a6a99247a494cd6bb5837dee22",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order TSRI",
+                                                        "properties": {
+                                                          "symbol": "TSRI"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "448ab04856b94fa4873c6b7d84108fc3",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order WSTG",
+                                                        "properties": {
+                                                          "symbol": "WSTG"
+                                                        }
+                                                      },
+                                                      {
+                                                        "id": "fa1f5ec7-b732-4263-b378-206bbbcabfee",
+                                                        "componentType": "icon",
+                                                        "type": "icon",
+                                                        "name": "Interrupting icon"
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "cffc418df004474e95dec2a388ffbed7",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index QLD  10 \u003c 31.00)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "QLD"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "31.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "53235544ae6c41bc8f30a9a41cb389f2",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order QLD",
+                  "properties": {
+                    "symbol": "QLD"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "ece9ed668a2147e7a472caf3add04ddd",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Relative Strength Index SPY  10 \u003c 30.00)",
+                  "properties": {
+                    "comparison": "\u003c",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "SPY"
+                    },
+                    "y": {
+                      "indicator": "constant",
+                      "period": "30.00"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "5bd4f1b83cc744f0a6af9ab838bd3c4c",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order SSO",
+                        "properties": {
+                          "symbol": "SSO"
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "429f1e3828ea40bc9bcfd825ef250197",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(current price QLD \u003e Moving Average of Price QLD 20)",
+                        "properties": {
+                          "comparison": "\u003e",
+                          "x": {
+                            "indicator": "current price",
+                            "source": "QLD"
+                          },
+                          "y": {
+                            "indicator": "Moving Average of Price",
+                            "period": "20",
+                            "source": "QLD"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "5d3a4b00419144c798f52f5908f8d219",
+                              "componentType": "switch",
+                              "type": "condition",
+                              "name": "if(Relative Strength Index QID  10 \u003c 31.00)",
+                              "properties": {
+                                "comparison": "\u003c",
+                                "x": {
+                                  "indicator": "Relative Strength Index",
+                                  "period": "10",
+                                  "source": "QID"
+                                },
+                                "y": {
+                                  "indicator": "constant",
+                                  "period": "31.00"
+                                }
+                              },
+                              "branches": {
+                                "true": [
+                                  {
+                                    "id": "72e86927286f441bb006de9ce421f04c",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order QID",
+                                    "properties": {
+                                      "symbol": "QID"
+                                    }
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "22c689220dab4c2984e0d050f9b14477",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order QLD",
+                                    "properties": {
+                                      "symbol": "QLD"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "433509cfb3294cd69a3d84715d4d40f9",
+                              "componentType": "switch",
+                              "type": "Sort",
+                              "name": "SortBy Relative Strength Index-10",
+                              "properties": {
+                                "select": {
+                                  "function": "Top",
+                                  "howmany": "1"
+                                },
+                                "sortby": {
+                                  "function": "Relative Strength Index",
+                                  "window": "10"
+                                }
+                              },
+                              "branches": {
+                                "Top-1": [
+                                  {
+                                    "id": "2cc509cce81a4bda994e09230eeb42e3",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order QID",
+                                    "properties": {
+                                      "symbol": "QID"
+                                    }
+                                  },
+                                  {
+                                    "id": "1034ea31b9a44aebadf8e5c1c2c8283c",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order SHY",
+                                    "properties": {
+                                      "symbol": "SHY"
+                                    }
+                                  },
+                                  {
+                                    "id": "775ac84e-34d9-4b8c-8e80-bc431616a6fc",
+                                    "componentType": "icon",
+                                    "type": "icon",
+                                    "name": "Interrupting icon"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

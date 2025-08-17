@@ -1,0 +1,34 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "9439f92945a84a84e8d38c057c6aceb6",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "00d0ffde97d7123acfbcedfcb40236de",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index  AAPL 5  >   5)",
+      "properties": {
+        "y": {
+          "indicator": "constant",
+          "period": "5"
+        },
+        "x": {
+          "indicator": "Relative Strength Index",
+          "source": "AAPL",
+          "period": "5"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [],
+        "false": []
+      }
+    }
+  ]
+}

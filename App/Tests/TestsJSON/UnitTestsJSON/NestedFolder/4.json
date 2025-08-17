@@ -1,0 +1,211 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "290ee2a7aedd508d138125034c803c8d",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "a98dd41424316d7561b7bf2aa4511d8a",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Moving Average of Price",
+      "properties": {
+        "sortby": {
+          "function": "Moving Average of Price",
+          "window": "7"
+        },
+        "select": {
+          "function": "Top",
+          "howmany": "-1"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "792b0cd46dffa5dcc8a0ca99fcba25cf",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder2",
+            "sequence": [
+              {
+                "id": "827995a5f3e32f6c73c605879ffa161c",
+                "componentType": "switch",
+                "type": "allocation",
+                "name": "Allocation",
+                "function": "Allocation",
+                "properties": {
+                  "values": {
+                    "a": 50,
+                    "b": 25,
+                    "c": 25
+                  },
+                  "isInvalid": false
+                },
+                "branches": {
+                  "a-(50%)": [
+                    {
+                      "id": "f18e66c52cb71f1cfc0d60092c43c934",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "folder2",
+                      "sequence": [
+                        {
+                          "id": "7a53740d374eb6a113dabc8bff25bf44",
+                          "componentType": "switch",
+                          "type": "allocation",
+                          "name": "Allocation",
+                          "function": "Allocation",
+                          "properties": {
+                            "values": {
+                              "a": 100
+                            },
+                            "isInvalid": false
+                          },
+                          "branches": {
+                            "a-(100%)": [
+                              {
+                                "id": "9d4c6846bb825c707e5b356c462f29e3",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order BRK.B",
+                                "properties": {
+                                  "isInvalid": false,
+                                  "symbol": "BRK.B"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "properties": {}
+                    }
+                  ],
+                  "b-(25%)": [
+                    {
+                      "id": "cd5a74ff6e72336c29bfc56536021b5f",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "folder2",
+                      "sequence": [
+                        {
+                          "id": "1c12d1aaefd32e04281618fbf8c11642",
+                          "componentType": "switch",
+                          "type": "Sort",
+                          "name": "SortBy Moving Average of Return",
+                          "properties": {
+                            "sortby": {
+                              "function": "Moving Average of Return",
+                              "window": "3"
+                            },
+                            "select": {
+                              "function": "Bottom",
+                              "howmany": "4"
+                            },
+                            "isInvalid": false
+                          },
+                          "branches": {
+                            "1": [
+                              {
+                                "id": "b5995a55092a3588b799d03369801dcc",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order FNGU",
+                                "properties": {
+                                  "isInvalid": false,
+                                  "symbol": "FNGU"
+                                }
+                              },
+                              {
+                                "id": "29905f81b274ef9fe4712af1df48891a",
+                                "componentType": "icon",
+                                "name": "Interrupting icon",
+                                "properties": {},
+                                "type": "icon"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "properties": {}
+                    }
+                  ],
+                  "c-(25%)": [
+                    {
+                      "id": "78f0106fbbfcfbe8979db4642b918c81",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order XOM",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "XOM"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "properties": {}
+          },
+          {
+            "id": "21fc976a705bfe121f3ea20afc685fbc",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1b2dadecf816d6afc8db034c97dfe364",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "2f81229f5e27b9376b97c3c766e7c2ff",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Cumulative Return",
+          "properties": {
+            "sortby": {
+              "function": "Cumulative Return",
+              "window": "-1"
+            },
+            "select": {
+              "function": "Top",
+              "howmany": "6"
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "1": [
+              {
+                "id": "a459e9a7a84ee6e613cd2055a9cece63",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order FEPI",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "FEPI"
+                }
+              },
+              {
+                "id": "368a11e90ee1b5fe20da140864581b60",
+                "componentType": "icon",
+                "name": "Interrupting icon",
+                "properties": {},
+                "type": "icon"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

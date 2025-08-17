@@ -1,0 +1,83 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "f5575cedaa4a16c0c192cda063fe0724",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "02eacab60b6ea6dddff673d15d9885b5",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [200d Max Drawdown    of 6bf5b6c506ab47f94149abc05adb32ac] > [40%]",
+      "properties": {
+        "comparison": ">",
+        "x": {
+          "indicator": "Max Drawdown",
+          "source": "6bf5b6c506ab47f94149abc05adb32ac",
+          "uses_synthetic_stock": true,
+          "period": "200"
+        },
+        "y": {
+          "indicator": "Fixed-Value",
+          "numerator": "",
+          "denominator": "",
+          "uses_synthetic_stock": false,
+          "source": "",
+          "period": "40"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "714628fcdeda1ca52722fd562e0f97f5",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY TSLA",
+            "properties": { "symbol": "TSLA" },
+            "hash": "68f31b557d4f873c8e1e392b6e5e3880",
+            "parentHash": "a533604873cbe4f0523af58547683c45"
+          }
+        ],
+        "false": [
+          {
+            "id": "6bf5b6c506ab47f94149abc05adb32ac",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "098d809329afee3f82ff2dca1de47ea0",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY AAPL",
+                "properties": { "symbol": "AAPL" },
+                "parentHash": "7066f2887d496c7a0797e79bc7305cdc",
+                "hash": "632ba8e6e764fcc3511823dff6380984"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "02eacab60b6ea6dddff673d15d9885b5/6bf5b6c506ab47f94149abc05adb32ac",
+            "parentHash": "a533604873cbe4f0523af58547683c45",
+            "nodeChildrenHash": "86cd9795bb2673a8e1bbe86e60744041",
+            "hash": "c469452a6354efd4691285fe7d232dae"
+          }
+        ]
+      },
+      "parentHash": "cfcd208495d565ef66e7dff9f98764da",
+      "nodeChildrenHash": "01439491d009526c6e82cf24489f7aea",
+      "hash": "174fc6994e14b306c1facb9925ce61ee",
+      "path": "02eacab60b6ea6dddff673d15d9885b5"
+    }
+  ],
+  "tickers": ["TSLA", "AAPL"],
+  "indicators": [],
+  "nodeChildrenHash": "4fa4bf705c4ef40d54ace7f7d981fb53"
+}

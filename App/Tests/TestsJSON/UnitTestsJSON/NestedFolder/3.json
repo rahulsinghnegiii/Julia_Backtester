@@ -1,0 +1,169 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "976c947eb939af19d5a88810c38656b7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "002c71da0266546184b8a1d47557c97b",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Market Cap",
+      "properties": {
+        "isInvalid": false,
+        "period": "2"
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "6c19cad4170fb59a06ca33bfd9df431a",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "ef868a897cb9c7e254174b6ebae0c62f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "95a1417014364345ad98c11e77e89771",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "fc3195a4a10c70c05a022493f2ea875f",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Moving Average of Return",
+          "properties": {
+            "sortby": {
+              "function": "Moving Average of Return",
+              "window": "2"
+            },
+            "select": {
+              "function": "Bottom",
+              "howmany": "0"
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "1": [
+              {
+                "id": "f79f1a57f1105cbd8dcc91b6efa9149f",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "10211cecf04ca1d33f0936461d9d6319",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "name": "Allocation",
+                    "function": "Allocation",
+                    "properties": {
+                      "values": {
+                        "a": 50,
+                        "b": 50
+                      },
+                      "isInvalid": false
+                    },
+                    "branches": {
+                      "a-(50%)": [
+                        {
+                          "id": "ed24c62a442e47a7eeb70a78a124b258",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order BRK.B",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "BRK.B"
+                          }
+                        }
+                      ],
+                      "b-(50%)": [
+                        {
+                          "id": "46009614697711eea542c4805499b9b2",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(Standard Deviation of Return  XOM 2  > current price FEPI )",
+                          "properties": {
+                            "y": {
+                              "indicator": "current price",
+                              "source": "FEPI"
+                            },
+                            "x": {
+                              "indicator": "Standard Deviation of Return",
+                              "source": "XOM",
+                              "period": "2"
+                            },
+                            "isInvalid": false,
+                            "comparison": ">"
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "5d8348a98c30b03259ed3854d8409c83",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order XOM",
+                                "properties": {
+                                  "isInvalid": false,
+                                  "symbol": "XOM"
+                                }
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "2d13ab031977689b961622da42a0dc7f",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order FEPI",
+                                "properties": {
+                                  "isInvalid": false,
+                                  "symbol": "FEPI"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "properties": {}
+              },
+              {
+                "id": "cbe163cbb0ac9144686a0d3c774c94ca",
+                "componentType": "icon",
+                "name": "Interrupting icon",
+                "properties": {},
+                "type": "icon"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

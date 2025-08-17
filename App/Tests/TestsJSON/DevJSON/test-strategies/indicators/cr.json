@@ -1,0 +1,51 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "4263bca3-1494-4fc2-b815-3bbf18f8e350",
+    "id": "4263bca3-1494-4fc2-b815-3bbf18f8e350",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "d151c785cc1b43b597e69975e4540bc7",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Cumulative Return AAPL 20 \u003c Cumulative Return SPY 5)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Cumulative Return",
+          "period": "20",
+          "source": "AAPL"
+        },
+        "y": {
+          "indicator": "Cumulative Return",
+          "period": "5",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "f92e0dd9d25d48198c7a0d84feb2b539",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": { "symbol": "SPY" }
+          }
+        ],
+        "false": [
+          {
+            "id": "ff20dc0a556443d5b20da3f952d03204",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": { "symbol": "NVDA" }
+          }
+        ]
+      }
+    }
+  ]
+}

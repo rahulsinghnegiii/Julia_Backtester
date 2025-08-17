@@ -1,0 +1,51 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "f4783b7f-0a0f-41d5-9e8f-ae63727ef4c5",
+    "id": "f4783b7f-0a0f-41d5-9e8f-ae63727ef4c5",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "ec9ddf2beea241709de91ad0ebc4bc55",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Moving Average of Price AAPL 20 \u003c Moving Average of Price SPY 15)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Moving Average of Price",
+          "period": "20",
+          "source": "AAPL"
+        },
+        "y": {
+          "indicator": "Moving Average of Price",
+          "period": "15",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "1e132ec6b78649929258e9767cbddce1",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": { "symbol": "QQQ" }
+          }
+        ],
+        "false": [
+          {
+            "id": "2b1409aa40e74e2cade562728a338bad",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TQQQ",
+            "properties": { "symbol": "TQQQ" }
+          }
+        ]
+      }
+    }
+  ]
+}

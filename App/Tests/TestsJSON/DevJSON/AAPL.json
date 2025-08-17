@@ -1,0 +1,27 @@
+{
+    "type": "root",
+    "properties": {
+        "id": "e8198181e9907c192f0dc82fe690fe43",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "monthly"
+    },
+    "parentHash": "0",
+    "sequence": [
+        {
+            "id": "717d6a849b7400322dc4c768072fade5",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY AAPL",
+            "properties": {
+                "isInvalid": false,
+                "symbol": "AAPL"
+            },
+            "parentHash": "b4b147bc522828731f1a016bfa72c073"
+        }
+    ],
+    "tickers": [
+        "AAPL"
+    ],
+    "indicators": []
+}

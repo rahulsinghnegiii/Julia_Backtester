@@ -1,0 +1,52 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "ffa9af7f95d2eb976e41c1408870c519",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "1831f98d003e5edc29dffc7054b415c5",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy",
+      "properties": {
+        "sortby": {},
+        "select": {}
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "3c0fa3999bf8ce2f41de52545c40f033",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order RRR",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "RRR"
+            }
+          },
+          {
+            "id": "19c585ad5bf06ced5ad1614e0d43a9c6",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2e5dcccad9978ef52a73f7a3afc31a59",
+      "componentType": "largeTask",
+      "type": "stock",
+      "name": "Buy Order QQQ",
+      "properties": {
+        "isInvalid": false,
+        "symbol": "QQQ"
+      }
+    }
+  ]
+}

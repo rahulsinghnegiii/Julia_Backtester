@@ -1,0 +1,1632 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "ae83dfc8-cc98-40a5-99b4-fe0108eb3932",
+    "id": "ae83dfc8-cc98-40a5-99b4-fe0108eb3932",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "230daccb1fc9406a83098780ef3aece0",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index VIXM  14 \u003e 70.00)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "Relative Strength Index",
+          "period": "14",
+          "source": "VIXM"
+        },
+        "y": { "indicator": "constant", "period": "70.00" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "8640069d1fbb4665ad2e0626ca350861",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "BSC",
+            "sequence": [
+              {
+                "id": "06c32fe428234defa426835b3d35c493",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Moving Average of Price SPY 200 \u003c current price SPY)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Moving Average of Price",
+                    "period": "200",
+                    "source": "SPY"
+                  },
+                  "y": { "indicator": "current price", "source": "SPY" }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "42fda8d5129140edb7c4ec7df832dabc",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Relative Strength Index TQQQ  14 \u003e 75.00)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Relative Strength Index",
+                          "period": "14",
+                          "source": "TQQQ"
+                        },
+                        "y": { "indicator": "constant", "period": "75.00" }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "270279b6247b4363bc610d9a6db04024",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order UVXY",
+                            "properties": { "symbol": "UVXY" }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "dd7e7c2ddc754662a0470b6146eed8f7",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Relative Strength Index SPXL  10 \u003e 80.00)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "SPXL"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "80.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "031d6f2cbaeb443d89da6ffac9a2d668",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order UVXY",
+                                  "properties": { "symbol": "UVXY" }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "3aba122c5e3a48e9825f2840cbad2722",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order BSV",
+                                  "properties": { "symbol": "BSV" }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "8796898c00c84993ac2df482fbe74a44",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Relative Strength Index SPY  10 \u003c 30.00)",
+                      "properties": {
+                        "comparison": "\u003c",
+                        "x": {
+                          "indicator": "Relative Strength Index",
+                          "period": "10",
+                          "source": "SPY"
+                        },
+                        "y": { "indicator": "constant", "period": "30.00" }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "4336bfa6b9ab4231b614f060fc8de487",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order BSV",
+                            "properties": { "symbol": "BSV" }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "f7261faa248f47fe87e2a028cf8cbfad",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Relative Strength Index UVXY  10 \u003e 74.00)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "UVXY"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "74.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "b7ffdd2c368a468a9bb61ff09286086c",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Relative Strength Index UVXY  10 \u003c 84.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Relative Strength Index",
+                                      "period": "10",
+                                      "source": "UVXY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "84.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "890cd94bd6394a66b5c94a5efdcd91c7",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UVXY",
+                                        "properties": { "symbol": "UVXY" }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "21f56789dffd4bdaba27cee7c4bb3e60",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order BSV",
+                                        "properties": { "symbol": "BSV" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "0cc3bff6674340f3b73c0f09a5b71008",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order BSV",
+                                  "properties": { "symbol": "BSV" }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "false": [
+          {
+            "id": "332161d8823b4ec28a9ae317ffe91f2b",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index XLK 126 \u003e Relative Strength Index XLU 126)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "126",
+                "source": "XLK"
+              },
+              "y": {
+                "indicator": "Relative Strength Index",
+                "period": "126",
+                "source": "XLU"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "b29390e549484121bd8ff1c183a9c5c9",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "HIBL vs AGG",
+                  "sequence": [
+                    {
+                      "id": "d0b6e3ba41e347b298320ec50d47171d",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Relative Strength Index HIBL 14 \u003e Relative Strength Index AGG 14)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Relative Strength Index",
+                          "period": "14",
+                          "source": "HIBL"
+                        },
+                        "y": {
+                          "indicator": "Relative Strength Index",
+                          "period": "14",
+                          "source": "AGG"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "24f982f744c54cc5a69b66a052207bc0",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "BTAL vs AGG",
+                            "sequence": [
+                              {
+                                "id": "afc18fbc699146468ae3652634984bf8",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index BTAL 14 \u003e Relative Strength Index AGG 14)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "BTAL"
+                                  },
+                                  "y": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "AGG"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "d2e1f6b74153488fa1f502765587b724",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "554af5f315794652ae472438d2c061e5",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "ce3e337bdbce4552ac370c59066cacdd",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "c051b879a0454e4f8db9afd5ba310015",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "f198250485614be699ad95b77a8ff0c6",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order ERX",
+                                                      "properties": {
+                                                        "symbol": "ERX"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "553d820e784c4757913cdc8841895968",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "db938e7193844f6fb4f436daca485f72",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order BTAL",
+                                                      "properties": {
+                                                        "symbol": "BTAL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "d8ff390a-4c54-494a-a7f1-eaa5adeb9bd8",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "c74779f0400e4356aa480cd471b92301",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "5b905681b5634081a930b225b7266d0b",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UTSL",
+                                                      "properties": {
+                                                        "symbol": "UTSL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "7cc37349659349d690972d33902d63ef",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "775d372d18dc49d8875de84e145161bb",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SVXY",
+                                                      "properties": {
+                                                        "symbol": "SVXY"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "79e7f82c-2f87-4bee-acb6-99ef6833901f",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "e28e4be29f7c43c5a7b6237fcc61a18f",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "9f953278856a416f9e60cdca453ff7ca",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "6a65892f75db4445966b5a2902da39f0",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Cumulative Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Cumulative Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "187c4129231d46f285742893416e806b",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UTSL",
+                                                      "properties": {
+                                                        "symbol": "UTSL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "b47ca85a206047efacb533d5b1e88355",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECL",
+                                                      "properties": {
+                                                        "symbol": "TECL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "99785237-76e0-442b-a59b-3d76c9ba1f28",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "21c679c1a4a943b781ad832293855bc8",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "119601ca6e934ac6ba085d5e4d34db2f",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "ffb1753e470e4dca889e26a57dbaca8e",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "53926310f3b24f239c837a745b26d4d7",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order VIXM",
+                                                      "properties": {
+                                                        "symbol": "VIXM"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "e15481e3-5199-4db9-8eeb-0e49b74199d3",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "cfe91f4761c146949ee7a2c3cc22c2de",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "BTAL vs AGG",
+                            "sequence": [
+                              {
+                                "id": "67ad1e511c67430e9c62a2d048936159",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index BTAL 14 \u003e Relative Strength Index AGG 14)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "BTAL"
+                                  },
+                                  "y": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "AGG"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "a32d1e0906ce4b89864b61e5e9bb20e3",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "6b55716ceb7c4988b29d757dcf07304e",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "eeb9a4399134411db7f392e9b41a8b51",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "a577c627fe8d4e7099970b8872d7a45d",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "350f0f187e274ea0991d4f6f626a694c",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "87d6528719cf46d08561c8d6f3b3ccd9",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMV",
+                                                      "properties": {
+                                                        "symbol": "TMV"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "1b5da6facaa54f1d9a671955fe0224b2",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "c2409e5b-9202-48a6-9461-1868ff662353",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "140b687efd144018929880e36e842c7b",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "8ace18ca11b34a498463955bae34fb19",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order CURE",
+                                                      "properties": {
+                                                        "symbol": "CURE"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "ce0c9e202f3d42cda6366b90ed65cdf1",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBS",
+                                                      "properties": {
+                                                        "symbol": "HIBS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "7a3a4dac606f416bbb3e994d86652f06",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECS",
+                                                      "properties": {
+                                                        "symbol": "TECS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "258099f69985477382a0e7399a455057",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "08a53767b2f64edeba25123c831ef823",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "9075d924-c15b-4a1c-ada5-c06ffa572146",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "a90631f808614ad386bf58c01e468228",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "416063a2417541da9f67caeed93ffb82",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "4247425dee164ce2a74919e5b164907b",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "7f14cdb24a154e688434a34e25264c9f",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECS",
+                                                      "properties": {
+                                                        "symbol": "TECS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "15026d71d2f84c179d3bb079b2f50771",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order VIXM",
+                                                      "properties": {
+                                                        "symbol": "VIXM"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "c600f01c-c241-43b3-af36-068e3a5792a5",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "f38c57d87b7146a78399e3ee4e033cc5",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "6de809b1510845cda788b3fd875d57c7",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "83f5f05832e34cc4affa08434ba63956",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "063ceeca387a4eabaf334904ce960fcc",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "6dc32c56-30c2-4d87-b7a6-1c4400b1691c",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "9304f8302e0540989ce5517e540844c7",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "HIBL vs AGG",
+                  "sequence": [
+                    {
+                      "id": "49a4c99858584640a30792fa7629d34e",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Relative Strength Index HIBL 14 \u003e Relative Strength Index AGG 14)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Relative Strength Index",
+                          "period": "14",
+                          "source": "HIBL"
+                        },
+                        "y": {
+                          "indicator": "Relative Strength Index",
+                          "period": "14",
+                          "source": "AGG"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "35e8ef5f51bd487eb225b7f7407cba24",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "BTAL vs AGG",
+                            "sequence": [
+                              {
+                                "id": "760f131b62bd440883fe06e5cc1073f5",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index BTAL 14 \u003e Relative Strength Index AGG 14)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "BTAL"
+                                  },
+                                  "y": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "AGG"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "061187b591d64d9e934ffa81a17f387b",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "f64cce07ce8d4feba64c4c52300ece7f",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "3c53e5a3c68e455484ce1b9aa0d1b68b",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Cumulative Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Top",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Cumulative Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Top-1": [
+                                                    {
+                                                      "id": "ed8364576ed64162af9e4e799e02c529",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXS",
+                                                      "properties": {
+                                                        "symbol": "SOXS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "cb8862ec682d49d899388fb04e25cfd5",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBS",
+                                                      "properties": {
+                                                        "symbol": "HIBS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "ee974f5e016e4d64b4f6d81608b7909b",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMV",
+                                                      "properties": {
+                                                        "symbol": "TMV"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "7d8a9c0b606b4389b1a309e1dd3e43eb",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "d95523367163448a81cd50372660b396",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order BTAL",
+                                                      "properties": {
+                                                        "symbol": "BTAL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "e8e6b26f-3343-423c-b910-a7bd2a0f7e94",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "7ec245d1ec394dbdaa17781fd811f79a",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Cumulative Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Cumulative Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "7b01af8897e9411e8fd5ef6b283fe22e",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXS",
+                                                      "properties": {
+                                                        "symbol": "SOXS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "4285e09b05e941e09cba038729cd7cf7",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBS",
+                                                      "properties": {
+                                                        "symbol": "HIBS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "686f1d68-963e-4e92-b085-aa4b2361c112",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "f3526ad8ca714da883a40ff145be325e",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "a54e5956ab204d449529ebd5b3c69858",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "f919d8779ac542bf9001b4b77c232aef",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Cumulative Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Cumulative Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "d1517614e2064929866c71029c2db787",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXS",
+                                                      "properties": {
+                                                        "symbol": "SOXS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "bc59aa412a1b46409115c0f4caa09dc6",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBS",
+                                                      "properties": {
+                                                        "symbol": "HIBS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "1d76396b551547b08b7908a0e54c07db",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMV",
+                                                      "properties": {
+                                                        "symbol": "TMV"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "0295eacd-ed97-4850-b842-028a6f573870",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "33d93880050c421c8ffa2668e1be1866",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "ec8ae829d985417194e1f66b5c8b364b",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "9f79f6c26d8c4cc384a407085ca27635",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "8c2f469aa816486d94e92c127b0f3532",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECL",
+                                                      "properties": {
+                                                        "symbol": "TECL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "4863e7ff0e694b42a1d497aefcc326f2",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "a8573b9e-7008-4767-ad35-0c60a618c7ae",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "a78768136edc48a7ae663cf308632d8c",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "BTAL vs AGG",
+                            "sequence": [
+                              {
+                                "id": "af24d827f12b49019825e70124d46a23",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index BTAL 14 \u003e Relative Strength Index AGG 14)",
+                                "properties": {
+                                  "comparison": "\u003e",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "BTAL"
+                                  },
+                                  "y": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "14",
+                                    "source": "AGG"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "c66764f0522e400c99265b238778e866",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "d3c40de09b3042ea9c80e011c602e0c1",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "f1d98ec8a17d49a5ada80c5f21673a39",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Top",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Top-1": [
+                                                    {
+                                                      "id": "445cba92201040b4bc1f314bda157b57",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "77266034e8414708a0dad7ecc1c67edd",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UTSL",
+                                                      "properties": {
+                                                        "symbol": "UTSL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "f98039128a3247239611b3826ae24d91",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMV",
+                                                      "properties": {
+                                                        "symbol": "TMV"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "1db4e917-3824-4acf-ac99-4ed5a531097e",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "29ab16ed8d7c453dacf7c90ccbcaff30",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "e8c39c0de3154017bb5589597fd504ef",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "c2f18ecad36144e0a616626a3713071f",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "1297138ddaa845519200037de126aa90",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECL",
+                                                      "properties": {
+                                                        "symbol": "TECL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "ca2f4b55f25446f3ae8e3ecdf3c5a7b7",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "d5f21b54-ddb6-40d7-9914-94c5f00cf028",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "02ac1634958f4041aa2e9705e7cd3a4a",
+                                      "componentType": "folder",
+                                      "type": "folder",
+                                      "name": "UTSL vs AGG",
+                                      "sequence": [
+                                        {
+                                          "id": "e22a1672b99d42f98108de681539c7b3",
+                                          "componentType": "switch",
+                                          "type": "condition",
+                                          "name": "if(Relative Strength Index UTSL 14 \u003e Relative Strength Index AGG 14)",
+                                          "properties": {
+                                            "comparison": "\u003e",
+                                            "x": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "UTSL"
+                                            },
+                                            "y": {
+                                              "indicator": "Relative Strength Index",
+                                              "period": "14",
+                                              "source": "AGG"
+                                            }
+                                          },
+                                          "branches": {
+                                            "true": [
+                                              {
+                                                "id": "02bb8ecb44ad4182b2bd4a504ef634f9",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Top",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Top-1": [
+                                                    {
+                                                      "id": "349dd1e5f8d34a428a9a98278f2c8c22",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBS",
+                                                      "properties": {
+                                                        "symbol": "HIBS"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "19bdc1735b5440ddb1968dcdf16d5f2f",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "8b89333d9726452591e4fe27addb70d4",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "704e52406eca43a78a7d37ebd9125f0e",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SVXY",
+                                                      "properties": {
+                                                        "symbol": "SVXY"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "10ed081a-d574-46bc-8d2e-46dc770ca222",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            "false": [
+                                              {
+                                                "id": "933c30de296549c7bed13d06a943c3be",
+                                                "componentType": "switch",
+                                                "type": "Sort",
+                                                "name": "SortBy Moving Average of Return-5",
+                                                "properties": {
+                                                  "select": {
+                                                    "function": "Bottom",
+                                                    "howmany": "1"
+                                                  },
+                                                  "sortby": {
+                                                    "function": "Moving Average of Return",
+                                                    "window": "5"
+                                                  }
+                                                },
+                                                "branches": {
+                                                  "Bottom-1": [
+                                                    {
+                                                      "id": "3ebcd57a3a7f4b6ca98e27d45719c2be",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order SOXL",
+                                                      "properties": {
+                                                        "symbol": "SOXL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "50330b69385144ea8c8f0a1bdffdb536",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order HIBL",
+                                                      "properties": {
+                                                        "symbol": "HIBL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "125e1f81955d433398d1246953ac93ef",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TECL",
+                                                      "properties": {
+                                                        "symbol": "TECL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "0a6a2dfcfd4e4c76bd44e97471001b0e",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order TMF",
+                                                      "properties": {
+                                                        "symbol": "TMF"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "410becaf56f5446ca2ca4dfdae002b92",
+                                                      "componentType": "largeTask",
+                                                      "type": "stock",
+                                                      "name": "Buy Order UGL",
+                                                      "properties": {
+                                                        "symbol": "UGL"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "269dc8f8-cfa5-42e3-a9d1-a2e5dc6e5fad",
+                                                      "componentType": "icon",
+                                                      "type": "icon",
+                                                      "name": "Interrupting icon"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

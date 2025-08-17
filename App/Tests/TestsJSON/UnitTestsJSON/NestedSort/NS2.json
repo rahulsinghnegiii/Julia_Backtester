@@ -1,0 +1,175 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "85261f695a1a7ee4631422f9820793c0",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "18ba524c2e134322a3c94cc0bd817cdb",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return",
+      "properties": {
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "-1"
+        },
+        "select": {
+          "function": "Top",
+          "howmany": "-4"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "aa29f9253498b123d0978b93a5d91aa3",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order BRK.B",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "BRK.B"
+            }
+          },
+          {
+            "id": "c59d7d25f2182e2e8eca5a9e496b0cbc",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "e441527c8b6cb01e7714c880ea7c048d",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index  XOM 1  > current price FNGU )",
+      "properties": {
+        "y": {
+          "indicator": "current price",
+          "source": "FNGU"
+        },
+        "x": {
+          "indicator": "Relative Strength Index",
+          "source": "XOM",
+          "period": "1"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "ec62deec66bebdff3c0f22f98a11e573",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Max Drawdown",
+            "properties": {
+              "sortby": {
+                "function": "Max Drawdown",
+                "window": "4"
+              },
+              "select": {
+                "function": "Top",
+                "howmany": "2"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "d853764d0a13dfc347d848ec3795ed14",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order XOM",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "XOM"
+                  }
+                },
+                {
+                  "id": "8e7065b48ab7cd7ea058f710fe2db436",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "d6c501f3ffc42f321c7ff720933c1d8e",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocation",
+            "function": "Inverse Volatility",
+            "properties": {
+              "isInvalid": false,
+              "period": "4"
+            },
+            "branches": {
+              "a": [
+                {
+                  "id": "b843de0f35484394280029c899d87b8b",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order FNGU",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "FNGU"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "5c6a4d4d582b322a0689b76d631f30ac",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Exponential Moving Average of Price",
+      "properties": {
+        "sortby": {
+          "function": "Exponential Moving Average of Price",
+          "window": "3"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "7"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "e5eb3c0bf75df77e41b487cf994ab4bd",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          },
+          {
+            "id": "eeddadb8f44129831ae2d496422b8eb2",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    }
+  ]
+}

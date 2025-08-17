@@ -1,0 +1,128 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "0c6c50f8-a1fa-431d-83f8-5ac6279fa095",
+        "id": "0c6c50f8-a1fa-431d-83f8-5ac6279fa095",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "99cb01303bee44a0a8296e905ffa1b73",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(current price  of AAPL > current price of MSFT)",
+            "properties": {
+                "comparison": ">",
+                "x": {
+                    "indicator": "current price",
+                    "source": "AAPL"
+                },
+                "y": {
+                    "indicator": "current price",
+                    "period": "",
+                    "source": "MSFT"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "010d722d6bf8425d9afb66145fe26809",
+                        "componentType": "switch",
+                        "type": "allocation",
+                        "function": "Allocation",
+                        "name": "Manual Allocation",
+                        "properties": {
+                            "values": {
+                                "a": 60,
+                                "b": 40
+                            }
+                        },
+                        "branches": {
+                            "a-(60.00%)": [
+                                {
+                                    "id": "6282c536d647480d84ac02401a1e3f7d",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY JEPQ",
+                                    "properties": {
+                                        "symbol": "JEPQ"
+                                    },
+                                    "hash": "7455451fa9b5e10576986c63cc9f7ad6",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ],
+                            "b-(40.00%)": [
+                                {
+                                    "id": "c2d6414ae223431986b1f4d67106e04e",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY SQQQ",
+                                    "properties": {
+                                        "symbol": "SQQQ"
+                                    },
+                                    "hash": "21547ddc072c25344fc23d1c5f35b449",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ]
+                        },
+                        "hash": "7017bc4181da3c6f7dbb972fe843135d",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "120a9117899efcee3b8df15e10784af3"
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "07430a08aa9a4d8999efd99877eea8b8",
+                        "componentType": "switch",
+                        "type": "allocation",
+                        "function": "Allocation",
+                        "name": "Manual Allocation",
+                        "properties": {
+                            "values": {
+                                "a": 60,
+                                "b": 40
+                            }
+                        },
+                        "branches": {
+                            "a-(60.00%)": [
+                                {
+                                    "id": "6780bda4c5ba464e83f7d8d60ad72a6d",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY PSQ",
+                                    "properties": {
+                                        "symbol": "PSQ"
+                                    },
+                                    "hash": "4866cb0168e419dee553834a4d9d2def",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ],
+                            "b-(40.00%)": [
+                                {
+                                    "id": "00da8749d9dd41c2be5481f1165db711",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY TQQQ",
+                                    "properties": {
+                                        "symbol": "TQQQ"
+                                    },
+                                    "hash": "52cdcb68fbcdd09d8d42a6b094c358e9",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ]
+                        },
+                        "hash": "7017bc4181da3c6f7dbb972fe843135d",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "a26f4e328ec86b5bcb1319d64389432f"
+                    }
+                ]
+            },
+            "hash": "87c02c1a4eefa975f94ee4d314eb37fd",
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "428eb05bb63fa7c800b7aceacc541bb4"
+        }
+    ],
+    "parentHash": "0"
+}

@@ -1,0 +1,338 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "id": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "8cd77f3156804deb8d55668c9e7711b8",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "TMF or TMV",
+      "sequence": [
+        {
+          "id": "292f555cb7974c9b8cdf6fc41f70908b",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Moving Average of Price TLT 350 \u003e Moving Average of Price TLT 550)",
+          "properties": {
+            "comparison": "\u003e",
+            "x": {
+              "indicator": "Moving Average of Price",
+              "period": "350",
+              "source": "TLT"
+            },
+            "y": {
+              "indicator": "Moving Average of Price",
+              "period": "550",
+              "source": "TLT"
+            }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "43e3367a79694e43a3311b7806376f6d",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Moving Average of Price TLT 50 \u003e Moving Average of Price TLT 200)",
+                "properties": {
+                  "comparison": "\u003e",
+                  "x": {
+                    "indicator": "Moving Average of Price",
+                    "period": "50",
+                    "source": "TLT"
+                  },
+                  "y": {
+                    "indicator": "Moving Average of Price",
+                    "period": "200",
+                    "source": "TLT"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "950aa9fa0b444885af895404dd8cb10b",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Moving Average of Price TLT 21 \u003e Moving Average of Price TLT 150)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Moving Average of Price",
+                          "period": "21",
+                          "source": "TLT"
+                        },
+                        "y": {
+                          "indicator": "Moving Average of Price",
+                          "period": "150",
+                          "source": "TLT"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "dbfbe85a8e5844519376eedb42190aa7",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Cumulative Return-60",
+                            "properties": {
+                              "select": {
+                                "function": "Top",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Cumulative Return",
+                                "window": "60"
+                              }
+                            },
+                            "branches": {
+                              "Top-1": [
+                                {
+                                  "id": "b7adc8853a5b4395b8d3272d57ba8581",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TMF",
+                                  "properties": {
+                                    "symbol": "TMF"
+                                  }
+                                },
+                                {
+                                  "id": "0edd9db8c9734cd095a1ccb890eac09e",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SPY",
+                                  "properties": {
+                                    "symbol": "SPY"
+                                  }
+                                },
+                                {
+                                  "id": "b4d96071-c6aa-4a2c-b9af-f78f6c868b36",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "91be017b8aa64b6cb9e40a339769c3d3",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Cumulative Return-60",
+                            "properties": {
+                              "select": {
+                                "function": "Top",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Cumulative Return",
+                                "window": "60"
+                              }
+                            },
+                            "branches": {
+                              "Top-1": [
+                                {
+                                  "id": "b9cc1631296d4e0f9e5a906e1cae5c71",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TLT",
+                                  "properties": {
+                                    "symbol": "TLT"
+                                  }
+                                },
+                                {
+                                  "id": "a1171de9fb8344a68882823b2c220477",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SPY",
+                                  "properties": {
+                                    "symbol": "SPY"
+                                  }
+                                },
+                                {
+                                  "id": "e3a971f9-ed0a-4fbe-953b-a7e60dbf72b4",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "5c012d61eb45412591da06a65317c514",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy Cumulative Return-60",
+                      "properties": {
+                        "select": {
+                          "function": "Top",
+                          "howmany": "1"
+                        },
+                        "sortby": {
+                          "function": "Cumulative Return",
+                          "window": "60"
+                        }
+                      },
+                      "branches": {
+                        "Top-1": [
+                          {
+                            "id": "0f22c1947fd84ca58430ef668544bc89",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order TLT",
+                            "properties": {
+                              "symbol": "TLT"
+                            }
+                          },
+                          {
+                            "id": "c31853370ccb42d39c7ac6174a8fd41f",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SPY",
+                            "properties": {
+                              "symbol": "SPY"
+                            }
+                          },
+                          {
+                            "id": "5ee3313f-29b1-4189-89b7-b9209f0d03a8",
+                            "componentType": "icon",
+                            "type": "icon",
+                            "name": "Interrupting icon"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "caa217919b934c7388beaeeb0c7a094e",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Moving Average of Price TLT 50 \u003c Moving Average of Price TLT 210)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Moving Average of Price",
+                    "period": "50",
+                    "source": "TLT"
+                  },
+                  "y": {
+                    "indicator": "Moving Average of Price",
+                    "period": "210",
+                    "source": "TLT"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "12fdb784e53f4ab98bdaadba0d6ed6d7",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(current price TLT \u003c Moving Average of Price TLT 21)",
+                      "properties": {
+                        "comparison": "\u003c",
+                        "x": {
+                          "indicator": "current price",
+                          "source": "TLT"
+                        },
+                        "y": {
+                          "indicator": "Moving Average of Price",
+                          "period": "21",
+                          "source": "TLT"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "6c398ac891b84503b424a5b9cc0e1f24",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Relative Strength Index-10",
+                            "properties": {
+                              "select": {
+                                "function": "Top",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Relative Strength Index",
+                                "window": "10"
+                              }
+                            },
+                            "branches": {
+                              "Top-1": [
+                                {
+                                  "id": "71f44f38ac2042749e86828cafd810e3",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TMV",
+                                  "properties": {
+                                    "symbol": "TMV"
+                                  }
+                                },
+                                {
+                                  "id": "11a3a52fe91c4ce786df5b3a2f02fcad",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order UGL",
+                                  "properties": {
+                                    "symbol": "UGL"
+                                  }
+                                },
+                                {
+                                  "id": "102b45de-1505-442d-abb3-11eb33c93181",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "e45277041c1e44e28e1f26c36591b5a8",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SHV",
+                            "properties": {
+                              "symbol": "SHV"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "4f8fd67dc3a64abaa832d5e234191230",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SHV",
+                      "properties": {
+                        "symbol": "SHV"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

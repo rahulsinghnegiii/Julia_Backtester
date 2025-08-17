@@ -1,0 +1,187 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "d574c0df-af07-4f70-9860-1bb55bc8dfb2",
+        "id": "d574c0df-af07-4f70-9860-1bb55bc8dfb2",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "4248f813d5894eef857e0a8023dde7d6",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index UCO  10 \u003c 14.00)",
+            "properties": {
+                "comparison": "\u003c",
+                "x": {
+                    "indicator": "Relative Strength Index",
+                    "period": "10",
+                    "source": "UCO"
+                },
+                "y": {
+                    "indicator": "constant",
+                    "period": "14.00"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "a01a150e9cf1422b8099e6613a88e342",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order UCO",
+                        "properties": {
+                            "symbol": "UCO"
+                        }
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "2b8cc25b18594289af3ecd0fc70b1875",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Relative Strength Index UCO  14 \u003c 18.00)",
+                        "properties": {
+                            "comparison": "\u003c",
+                            "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "14",
+                                "source": "UCO"
+                            },
+                            "y": {
+                                "indicator": "constant",
+                                "period": "18.00"
+                            }
+                        },
+                        "branches": {
+                            "true": [
+                                {
+                                    "id": "20b0cdc0c2834dc8bd8ab0ca83826553",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order UCO",
+                                    "properties": {
+                                        "symbol": "UCO"
+                                    }
+                                }
+                            ],
+                            "false": [
+                                {
+                                    "id": "3ed0ed309347453fb834e39e7023db35",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Relative Strength Index UCO  20 \u003c 22.00)",
+                                    "properties": {
+                                        "comparison": "\u003c",
+                                        "x": {
+                                            "indicator": "Relative Strength Index",
+                                            "period": "20",
+                                            "source": "UCO"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "22.00"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "6eb0fe1981914abbbe7ae19b13d62b89",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order UCO",
+                                                "properties": {
+                                                    "symbol": "UCO"
+                                                }
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "abbcf7ee031e440db4723d9962886f0c",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(current price DBO \u003e Moving Average of Price DBO 130)",
+                                                "properties": {
+                                                    "comparison": "\u003e",
+                                                    "x": {
+                                                        "indicator": "current price",
+                                                        "source": "DBO"
+                                                    },
+                                                    "y": {
+                                                        "indicator": "Moving Average of Price",
+                                                        "period": "130",
+                                                        "source": "DBO"
+                                                    }
+                                                },
+                                                "branches": {
+                                                    "true": [
+                                                        {
+                                                            "id": "97cef59b0ba848ec920f761502a936fb",
+                                                            "componentType": "switch",
+                                                            "type": "condition",
+                                                            "name": "if(Exponential Moving Average of Price DBO 8 \u003e Moving Average of Price DBO 65)",
+                                                            "properties": {
+                                                                "comparison": "\u003e",
+                                                                "x": {
+                                                                    "indicator": "Exponential Moving Average of Price",
+                                                                    "period": "8",
+                                                                    "source": "DBO"
+                                                                },
+                                                                "y": {
+                                                                    "indicator": "Moving Average of Price",
+                                                                    "period": "65",
+                                                                    "source": "DBO"
+                                                                }
+                                                            },
+                                                            "branches": {
+                                                                "true": [
+                                                                    {
+                                                                        "id": "f216f3f9ca504bd09d80c8636e14f7d7",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order DBO",
+                                                                        "properties": {
+                                                                            "symbol": "DBO"
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "false": [
+                                                                    {
+                                                                        "id": "7e437b49145a4f6e815ae53eb71d13c1",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SHV",
+                                                                        "properties": {
+                                                                            "symbol": "SHV"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "false": [
+                                                        {
+                                                            "id": "4acf7633708e461c83c74099a7eb201d",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SHV",
+                                                            "properties": {
+                                                                "symbol": "SHV"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,645 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "d5ceff12-8124-4802-b6a3-e5e892aa0d0d",
+    "id": "d5ceff12-8124-4802-b6a3-e5e892aa0d0d",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "a77028c42cc14dc88d19af40d363bef7",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Rate Momentum (pick 1)",
+      "sequence": [
+        {
+          "id": "2e86f84ac38c491f9fd1c16321158d41",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Relative Strength Index SPY  10 \u003e 71.00)",
+          "properties": {
+            "comparison": "\u003e",
+            "x": {
+              "indicator": "Relative Strength Index",
+              "period": "10",
+              "source": "SPY"
+            },
+            "y": { "indicator": "constant", "period": "71.00" }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "ed1b59dc49e146d79b349ae1f585e2d6",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "Rate Momentum (TMF Check)",
+                "sequence": [
+                  {
+                    "id": "103edbc4324f426e8ded508d3e1b7b6c",
+                    "componentType": "switch",
+                    "type": "condition",
+                    "name": "if(Relative Strength Index TMF  14 \u003e 60.00)",
+                    "properties": {
+                      "comparison": "\u003e",
+                      "x": {
+                        "indicator": "Relative Strength Index",
+                        "period": "14",
+                        "source": "TMF"
+                      },
+                      "y": { "indicator": "constant", "period": "60.00" }
+                    },
+                    "branches": {
+                      "true": [
+                        {
+                          "id": "500e44e8a78c406297ad66486a5ec16e",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(Relative Strength Index IEF 10 \u003c Relative Strength Index IWM 15)",
+                          "properties": {
+                            "comparison": "\u003c",
+                            "x": {
+                              "indicator": "Relative Strength Index",
+                              "period": "10",
+                              "source": "IEF"
+                            },
+                            "y": {
+                              "indicator": "Relative Strength Index",
+                              "period": "15",
+                              "source": "IWM"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "22f87d3350fc41a6b210a17b6bea4dae",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Return-4",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Return",
+                                    "window": "4"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "a4f6f30f9d964b42957714da188aacd0",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order LABU",
+                                      "properties": { "symbol": "LABU" }
+                                    },
+                                    {
+                                      "id": "25a528e118634ec79a219d64a495b546",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order HIBL",
+                                      "properties": { "symbol": "HIBL" }
+                                    },
+                                    {
+                                      "id": "5d1042a0313f4917ac804bd5c54d20db",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRN",
+                                      "properties": { "symbol": "DRN" }
+                                    },
+                                    {
+                                      "id": "2acc66e104494311994c0c857d087229",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order FAS",
+                                      "properties": { "symbol": "FAS" }
+                                    },
+                                    {
+                                      "id": "c2e099365090431bba3f0d86093d9445",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TNA",
+                                      "properties": { "symbol": "TNA" }
+                                    },
+                                    {
+                                      "id": "adcd62d9121c4d74a30a26769f0fb7ae",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order URTY",
+                                      "properties": { "symbol": "URTY" }
+                                    },
+                                    {
+                                      "id": "478cc91bd29040f9ab3c294a1d99a5ba",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order EDC",
+                                      "properties": { "symbol": "EDC" }
+                                    },
+                                    {
+                                      "id": "646082adc22c468f98e1e550a6343173",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order NUGT",
+                                      "properties": { "symbol": "NUGT" }
+                                    },
+                                    {
+                                      "id": "28d40081-5347-42a0-a6f4-54c21e937b2e",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "e906297ae3c74130909f2cd6a67f8b26",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Return-4",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Return",
+                                    "window": "4"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "96cfdecd718a4addbba5779c873fef88",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order LABD",
+                                      "properties": { "symbol": "LABD" }
+                                    },
+                                    {
+                                      "id": "2e518b4b3b2f48eca4f6f0e767ceb89b",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order HIBS",
+                                      "properties": { "symbol": "HIBS" }
+                                    },
+                                    {
+                                      "id": "7b889d7453294725a2d6bd8a78d3226d",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRV",
+                                      "properties": { "symbol": "DRV" }
+                                    },
+                                    {
+                                      "id": "504a41514d624148ab66a576dc0c7265",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order FAZ",
+                                      "properties": { "symbol": "FAZ" }
+                                    },
+                                    {
+                                      "id": "03c3611f9bb044eebda392c718ccfcfb",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TZA",
+                                      "properties": { "symbol": "TZA" }
+                                    },
+                                    {
+                                      "id": "92253946d09b4d4eb74688f8f5f1c57a",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SRTY",
+                                      "properties": { "symbol": "SRTY" }
+                                    },
+                                    {
+                                      "id": "70f8e584af424682b5377ad0a90829d1",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order EDZ",
+                                      "properties": { "symbol": "EDZ" }
+                                    },
+                                    {
+                                      "id": "ee42f8866f0c4d9e9c4f57d190f5e354",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DUST",
+                                      "properties": { "symbol": "DUST" }
+                                    },
+                                    {
+                                      "id": "838f39aa-55c5-4697-8b91-c3da5aa8e38a",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "false": [
+                        {
+                          "id": "163f165b174a403ea4d6dde01e9f5214",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(Relative Strength Index IEF 10 \u003e Relative Strength Index IWM 15)",
+                          "properties": {
+                            "comparison": "\u003e",
+                            "x": {
+                              "indicator": "Relative Strength Index",
+                              "period": "10",
+                              "source": "IEF"
+                            },
+                            "y": {
+                              "indicator": "Relative Strength Index",
+                              "period": "15",
+                              "source": "IWM"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "d55af50b6e3440d2a5149e1756faa09e",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Return-4",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Return",
+                                    "window": "4"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-1": [
+                                    {
+                                      "id": "c6e048fa667a42c29e9bad2e9b274e37",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order LABU",
+                                      "properties": { "symbol": "LABU" }
+                                    },
+                                    {
+                                      "id": "93a3250312df4dcaaa489571d9fa34a9",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order HIBL",
+                                      "properties": { "symbol": "HIBL" }
+                                    },
+                                    {
+                                      "id": "1ea2f361fdc1436da54f260f4b583dd9",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRN",
+                                      "properties": { "symbol": "DRN" }
+                                    },
+                                    {
+                                      "id": "94fea739aab5477999ad58fde2ff7fa2",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order FAS",
+                                      "properties": { "symbol": "FAS" }
+                                    },
+                                    {
+                                      "id": "4aa235aaf2774beabaa1bc157e7aa0a5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TNA",
+                                      "properties": { "symbol": "TNA" }
+                                    },
+                                    {
+                                      "id": "051ec8faf6b14d1aa7c434c6f02f81a5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order URTY",
+                                      "properties": { "symbol": "URTY" }
+                                    },
+                                    {
+                                      "id": "f76431c2ffcc49379d2fa1c35346c712",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order EDC",
+                                      "properties": { "symbol": "EDC" }
+                                    },
+                                    {
+                                      "id": "c055ae187ba6404ea8d70e6fd9e1fdc5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order NUGT",
+                                      "properties": { "symbol": "NUGT" }
+                                    },
+                                    {
+                                      "id": "9229e748-fe05-4d6c-955f-ec61617db54e",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "6e0eb16102f34c69bfa58d7370b65ad4",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Return-4",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Return",
+                                    "window": "4"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-1": [
+                                    {
+                                      "id": "a1550f60225947b28901e8d5d578be30",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order LABD",
+                                      "properties": { "symbol": "LABD" }
+                                    },
+                                    {
+                                      "id": "6bdaa7cb04d848fea4367c708752a096",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order HIBS",
+                                      "properties": { "symbol": "HIBS" }
+                                    },
+                                    {
+                                      "id": "f32bdd6e1e73466c81c645b60f9795ea",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRV",
+                                      "properties": { "symbol": "DRV" }
+                                    },
+                                    {
+                                      "id": "79bfb09dc7694069b946a5b7d894de27",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order FAZ",
+                                      "properties": { "symbol": "FAZ" }
+                                    },
+                                    {
+                                      "id": "ac1440c7629845d8bdbe0fd183333227",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TZA",
+                                      "properties": { "symbol": "TZA" }
+                                    },
+                                    {
+                                      "id": "692236335d9d4cadbb1bfab4d45b8511",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SRTY",
+                                      "properties": { "symbol": "SRTY" }
+                                    },
+                                    {
+                                      "id": "aed056abc3f94571a472675e5e5e1b3a",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order EDZ",
+                                      "properties": { "symbol": "EDZ" }
+                                    },
+                                    {
+                                      "id": "f82974dd728140b1a14aa05d51d7a08d",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DUST",
+                                      "properties": { "symbol": "DUST" }
+                                    },
+                                    {
+                                      "id": "d97b4ea5-cf9f-4ea5-9012-2a03026501d6",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "false": [
+              {
+                "id": "46b5acfa4ccf4b5aafe35d98f99cb44c",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "Rate Momentum (No TMF Check)",
+                "sequence": [
+                  {
+                    "id": "9307bfb4a9d847d3907d3ccb4d1b907f",
+                    "componentType": "switch",
+                    "type": "condition",
+                    "name": "if(Relative Strength Index IEF 10 \u003e Relative Strength Index IWM 15)",
+                    "properties": {
+                      "comparison": "\u003e",
+                      "x": {
+                        "indicator": "Relative Strength Index",
+                        "period": "10",
+                        "source": "IEF"
+                      },
+                      "y": {
+                        "indicator": "Relative Strength Index",
+                        "period": "15",
+                        "source": "IWM"
+                      }
+                    },
+                    "branches": {
+                      "true": [
+                        {
+                          "id": "530c46e3c9e04a6bb13c4d2bc7e10312",
+                          "componentType": "switch",
+                          "type": "Sort",
+                          "name": "SortBy Moving Average of Return-4",
+                          "properties": {
+                            "select": {
+                              "function": "Bottom",
+                              "howmany": "1"
+                            },
+                            "sortby": {
+                              "function": "Moving Average of Return",
+                              "window": "4"
+                            }
+                          },
+                          "branches": {
+                            "Bottom-1": [
+                              {
+                                "id": "0e35097b0faf48e4aa62d3122ff18538",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order LABU",
+                                "properties": { "symbol": "LABU" }
+                              },
+                              {
+                                "id": "bd04e3977e034e82a4e38f1164827b2f",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order HIBL",
+                                "properties": { "symbol": "HIBL" }
+                              },
+                              {
+                                "id": "a6599c8ac6e444fb83b3036c791786b8",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order DRN",
+                                "properties": { "symbol": "DRN" }
+                              },
+                              {
+                                "id": "4cbc52160b74498489c096b2e41a3ea6",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order FAS",
+                                "properties": { "symbol": "FAS" }
+                              },
+                              {
+                                "id": "ccc8c695def54490b422acd047612203",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order TNA",
+                                "properties": { "symbol": "TNA" }
+                              },
+                              {
+                                "id": "c98af6ffef924e8182135ba6bd189d5b",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order URTY",
+                                "properties": { "symbol": "URTY" }
+                              },
+                              {
+                                "id": "5acb02fad5724da18cd350405404ec87",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order EDC",
+                                "properties": { "symbol": "EDC" }
+                              },
+                              {
+                                "id": "58c3114a8c064d7fa6d3aab48d39cfc9",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order NUGT",
+                                "properties": { "symbol": "NUGT" }
+                              },
+                              {
+                                "id": "bb6387c5-0fb5-49e8-92a3-4fc5671a897b",
+                                "componentType": "icon",
+                                "type": "icon",
+                                "name": "Interrupting icon"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "false": [
+                        {
+                          "id": "69112c311e6b4d47afca85863af91028",
+                          "componentType": "switch",
+                          "type": "Sort",
+                          "name": "SortBy Moving Average of Return-4",
+                          "properties": {
+                            "select": {
+                              "function": "Bottom",
+                              "howmany": "1"
+                            },
+                            "sortby": {
+                              "function": "Moving Average of Return",
+                              "window": "4"
+                            }
+                          },
+                          "branches": {
+                            "Bottom-1": [
+                              {
+                                "id": "c9e866c0c93f402a8db42c76929bbf4c",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order LABD",
+                                "properties": { "symbol": "LABD" }
+                              },
+                              {
+                                "id": "389aac08c088484c9a77b856b04e567f",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order HIBS",
+                                "properties": { "symbol": "HIBS" }
+                              },
+                              {
+                                "id": "12f5e09269c0403d814a81c7933ceb4c",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order DRV",
+                                "properties": { "symbol": "DRV" }
+                              },
+                              {
+                                "id": "f1f9cfc85b9f4c59bb8317466a6bdf30",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order FAZ",
+                                "properties": { "symbol": "FAZ" }
+                              },
+                              {
+                                "id": "5b6461bd53c34ff7aa7265212d110a57",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order TZA",
+                                "properties": { "symbol": "TZA" }
+                              },
+                              {
+                                "id": "8cff582b8b28444fbcc84b84c8910af4",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SRTY",
+                                "properties": { "symbol": "SRTY" }
+                              },
+                              {
+                                "id": "c6ac364ec0c1452c8de1c028ef04ea7e",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order EDZ",
+                                "properties": { "symbol": "EDZ" }
+                              },
+                              {
+                                "id": "87814ca46c7b4e9582e34bd20007bfd1",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order DUST",
+                                "properties": { "symbol": "DUST" }
+                              },
+                              {
+                                "id": "f58ad0ae-0ad1-4ff7-9427-668a61f4a77c",
+                                "componentType": "icon",
+                                "type": "icon",
+                                "name": "Interrupting icon"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

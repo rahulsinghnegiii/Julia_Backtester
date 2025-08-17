@@ -1,0 +1,573 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "28e5c4aa-3cf8-4b57-ba83-98c52665af05",
+    "id": "28e5c4aa-3cf8-4b57-ba83-98c52665af05",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "52ac135b67b146898cf220bab7a486cd",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Exponential Moving Average of Price DBE 3 \u003e Exponential Moving Average of Price DBE 7)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "3",
+          "source": "DBE"
+        },
+        "y": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "7",
+          "source": "DBE"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "d12ab028a3f8408f92b79da5493760a4",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Exponential Moving Average of Price-2",
+            "properties": {
+              "select": {
+                "function": "Bottom",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Exponential Moving Average of Price",
+                "window": "2"
+              }
+            },
+            "branches": {
+              "Bottom-1": [
+                {
+                  "id": "5207b2525e23446a8b13b1eb0eae3068",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order BOIL",
+                  "properties": {
+                    "symbol": "BOIL"
+                  }
+                },
+                {
+                  "id": "eb807fdb292148a2b9b6c2ef1665f849",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order OILU",
+                  "properties": {
+                    "symbol": "OILU"
+                  }
+                },
+                {
+                  "id": "e51efb2ee931477caf89e5c1886a41f7",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order GUSH",
+                  "properties": {
+                    "symbol": "GUSH"
+                  }
+                },
+                {
+                  "id": "70bb04885f1f4fa1bc54a963af3b2585",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order ERX",
+                  "properties": {
+                    "symbol": "ERX"
+                  }
+                },
+                {
+                  "id": "9b8ebf62-e0a8-44c9-ba9b-e03324ad1d10",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "a12341a93c7042b1be4a8827d5d518d2",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Buy The Dip",
+            "sequence": [
+              {
+                "id": "ddfbd41afc374b51ba847d58f1dc2e3d",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Max Drawdown DBE  10 \u003e 5.00)",
+                "properties": {
+                  "comparison": "\u003e",
+                  "x": {
+                    "indicator": "Max Drawdown",
+                    "period": "10",
+                    "source": "DBE"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "5.00"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "6cd926625e2c48d5b147877e4e5e7f94",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return DBE  15 \u003e 2.00)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "15",
+                          "source": "DBE"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "2.00"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "1c1010d127e146d0b4a7f54db579cff6",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Exponential Moving Average of Price-21",
+                            "properties": {
+                              "select": {
+                                "function": "Bottom",
+                                "howmany": "1"
+                              },
+                              "sortby": {
+                                "function": "Exponential Moving Average of Price",
+                                "window": "21"
+                              }
+                            },
+                            "branches": {
+                              "Bottom-1": [
+                                {
+                                  "id": "6bf1ea37a7de4aa6b6d0d3164dde8ad7",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order BOIL",
+                                  "properties": {
+                                    "symbol": "BOIL"
+                                  }
+                                },
+                                {
+                                  "id": "172761089715494498ccbac7aac44365",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order OILU",
+                                  "properties": {
+                                    "symbol": "OILU"
+                                  }
+                                },
+                                {
+                                  "id": "ddad893efabb40c29cd4a5b5c8e9385e",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order GUSH",
+                                  "properties": {
+                                    "symbol": "GUSH"
+                                  }
+                                },
+                                {
+                                  "id": "392790a8f88d4bf99348018476dc5592",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order ERX",
+                                  "properties": {
+                                    "symbol": "ERX"
+                                  }
+                                },
+                                {
+                                  "id": "e7e9a2d0-9aa0-4a89-92af-d941e08024fc",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "0a20692ce5b34845a256d75af0b7055b",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Rotation",
+                            "sequence": [
+                              {
+                                "id": "e5fa340370ad43a8989199bc5eb72cd1",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Moving Average of Price DBC 3 \u003c= Moving Average of Price DBC 10)",
+                                "properties": {
+                                  "comparison": "\u003c=",
+                                  "x": {
+                                    "indicator": "Moving Average of Price",
+                                    "period": "3",
+                                    "source": "DBC"
+                                  },
+                                  "y": {
+                                    "indicator": "Moving Average of Price",
+                                    "period": "10",
+                                    "source": "DBC"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "3b01c620ec944e1391f75b8a942d6eef",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Exponential Moving Average of Price-13",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Bottom",
+                                          "howmany": "2"
+                                        },
+                                        "sortby": {
+                                          "function": "Exponential Moving Average of Price",
+                                          "window": "13"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Bottom-2": [
+                                          {
+                                            "id": "46d6f36375684f82aef245e44c56339d",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order DBO",
+                                            "properties": {
+                                              "symbol": "DBO"
+                                            }
+                                          },
+                                          {
+                                            "id": "a7b4a1cd52084f9388ac757c74097c9b",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UNG",
+                                            "properties": {
+                                              "symbol": "UNG"
+                                            }
+                                          },
+                                          {
+                                            "id": "a43e82dc538c4a2593c326f77138494f",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order URA",
+                                            "properties": {
+                                              "symbol": "URA"
+                                            }
+                                          },
+                                          {
+                                            "id": "3d5beafc496f4153b86ad63306db0168",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order DBA",
+                                            "properties": {
+                                              "symbol": "DBA"
+                                            }
+                                          },
+                                          {
+                                            "id": "4af6d9a7b9724a21aef638fc143c6ca0",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order DBB",
+                                            "properties": {
+                                              "symbol": "DBB"
+                                            }
+                                          },
+                                          {
+                                            "id": "72660f1581774ce0a486292187e1cc61",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order DBC",
+                                            "properties": {
+                                              "symbol": "DBC"
+                                            }
+                                          },
+                                          {
+                                            "id": "2f7437f6ee0941abb4065a0664349250",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order DBE",
+                                            "properties": {
+                                              "symbol": "DBE"
+                                            }
+                                          },
+                                          {
+                                            "id": "cce14328-14b3-4643-9427-b2b5802d5f5c",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "16482652c44f40d69e46c578dbd57bb5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BIL",
+                                      "properties": {
+                                        "symbol": "BIL"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "076c521724ce4352be0fd4998a07ff7a",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "Short",
+                      "sequence": [
+                        {
+                          "id": "0b5adb68b6204e46ae6bc1d199140942",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(current price DBE \u003c Moving Average of Price DBE 7)",
+                          "properties": {
+                            "comparison": "\u003c",
+                            "x": {
+                              "indicator": "current price",
+                              "source": "DBE"
+                            },
+                            "y": {
+                              "indicator": "Moving Average of Price",
+                              "period": "7",
+                              "source": "DBE"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "46155fc4f7ab4f6b9191827e293c466f",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Exponential Moving Average of Price-21",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "3"
+                                  },
+                                  "sortby": {
+                                    "function": "Exponential Moving Average of Price",
+                                    "window": "21"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-3": [
+                                    {
+                                      "id": "46b6a7ec6a7243eba18c20ee045f3e9d",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order KOLD",
+                                      "properties": {
+                                        "symbol": "KOLD"
+                                      }
+                                    },
+                                    {
+                                      "id": "72ce5b8a964745a9bde05117612db81e",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order OILD",
+                                      "properties": {
+                                        "symbol": "OILD"
+                                      }
+                                    },
+                                    {
+                                      "id": "ac7a06a4e7844868b2336596206ce8bd",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRIP",
+                                      "properties": {
+                                        "symbol": "DRIP"
+                                      }
+                                    },
+                                    {
+                                      "id": "9f0a83f980b24c1192847e1ddae1f98f",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order ERY",
+                                      "properties": {
+                                        "symbol": "ERY"
+                                      }
+                                    },
+                                    {
+                                      "id": "2757d63d-469b-4098-b3b7-225e11723020",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "05d0a4d34f0844ba8f987d5a6c896f20",
+                                "componentType": "folder",
+                                "type": "folder",
+                                "name": "Rotation",
+                                "sequence": [
+                                  {
+                                    "id": "a5f781a45d984c0cbb9a5b4499cb5d85",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Moving Average of Price DBC 3 \u003c= Moving Average of Price DBC 10)",
+                                    "properties": {
+                                      "comparison": "\u003c=",
+                                      "x": {
+                                        "indicator": "Moving Average of Price",
+                                        "period": "3",
+                                        "source": "DBC"
+                                      },
+                                      "y": {
+                                        "indicator": "Moving Average of Price",
+                                        "period": "10",
+                                        "source": "DBC"
+                                      }
+                                    },
+                                    "branches": {
+                                      "true": [
+                                        {
+                                          "id": "75a36ec8d7eb4a3ea29aebb14001fd6b",
+                                          "componentType": "switch",
+                                          "type": "Sort",
+                                          "name": "SortBy Exponential Moving Average of Price-13",
+                                          "properties": {
+                                            "select": {
+                                              "function": "Bottom",
+                                              "howmany": "4"
+                                            },
+                                            "sortby": {
+                                              "function": "Exponential Moving Average of Price",
+                                              "window": "13"
+                                            }
+                                          },
+                                          "branches": {
+                                            "Bottom-4": [
+                                              {
+                                                "id": "e7aa362ea8d14c02b1e92005729ba4b3",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order DBO",
+                                                "properties": {
+                                                  "symbol": "DBO"
+                                                }
+                                              },
+                                              {
+                                                "id": "98c7417475bd42b485bfdf4eba086750",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order UNG",
+                                                "properties": {
+                                                  "symbol": "UNG"
+                                                }
+                                              },
+                                              {
+                                                "id": "ea1a57cfd2fa482ea83ea4284f282b55",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order URA",
+                                                "properties": {
+                                                  "symbol": "URA"
+                                                }
+                                              },
+                                              {
+                                                "id": "b3ac116f19e94db8b801c6e322816c06",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order DBA",
+                                                "properties": {
+                                                  "symbol": "DBA"
+                                                }
+                                              },
+                                              {
+                                                "id": "4fec02641b5541fc9c3da35ee93ec7c7",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order DBB",
+                                                "properties": {
+                                                  "symbol": "DBB"
+                                                }
+                                              },
+                                              {
+                                                "id": "bc7809d2f8b34cc5893c45512aba160c",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order DBC",
+                                                "properties": {
+                                                  "symbol": "DBC"
+                                                }
+                                              },
+                                              {
+                                                "id": "883d24e591724c6d982ec7a565709af8",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order DBE",
+                                                "properties": {
+                                                  "symbol": "DBE"
+                                                }
+                                              },
+                                              {
+                                                "id": "acf5e7d3-d67c-4a78-b1e7-60d842f06a53",
+                                                "componentType": "icon",
+                                                "type": "icon",
+                                                "name": "Interrupting icon"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "240d49b9f33740d88d6cf34d97ae5c6e",
+                                          "componentType": "largeTask",
+                                          "type": "stock",
+                                          "name": "Buy Order BIL",
+                                          "properties": {
+                                            "symbol": "BIL"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

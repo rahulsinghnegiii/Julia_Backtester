@@ -1,0 +1,161 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "5bc45832-21ce-4916-aeb3-46f4b6ab1391",
+    "id": "5bc45832-21ce-4916-aeb3-46f4b6ab1391",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "4dea0bd542624b31bbb8ffab1d59ec3c",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Relative Strength Index",
+          "period": "10",
+          "source": "TQQQ"
+        },
+        "y": { "indicator": "constant", "period": "31.00" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "d493f012dbbb4af9b91d0b710a81cfcd",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TQQQ",
+            "properties": { "symbol": "TQQQ" }
+          }
+        ],
+        "false": [
+          {
+            "id": "efd755fdf78842d1bd52c8ba2d96012f",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index SPY  10 \u003c 30.00)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "SPY"
+              },
+              "y": { "indicator": "constant", "period": "30.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "64962b2fbfab4e7e820e3e3c75fe0f7d",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order UPRO",
+                  "properties": { "symbol": "UPRO" }
+                }
+              ],
+              "false": [
+                {
+                  "id": "06c47e87787b43d3a95cb00ecbb8c0d8",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(current price TQQQ \u003e Moving Average of Price TQQQ 20)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": { "indicator": "current price", "source": "TQQQ" },
+                    "y": {
+                      "indicator": "Moving Average of Price",
+                      "period": "20",
+                      "source": "TQQQ"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "5107cee6d1614c6ca2041b5530c2d724",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Relative Strength Index SQQQ  10 \u003c 30.00)",
+                        "properties": {
+                          "comparison": "\u003c",
+                          "x": {
+                            "indicator": "Relative Strength Index",
+                            "period": "10",
+                            "source": "SQQQ"
+                          },
+                          "y": { "indicator": "constant", "period": "30.00" }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "5b80514e7e0e4339b051f0519e500d85",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order SQQQ",
+                              "properties": { "symbol": "SQQQ" }
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "f2954b6a25714541a1a8f12fff39f4e9",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order TQQQ",
+                              "properties": { "symbol": "TQQQ" }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "63e3b4e4ae644f899c4acecd50d0bc6b",
+                        "componentType": "switch",
+                        "type": "Sort",
+                        "name": "SortBy Relative Strength Index-10",
+                        "properties": {
+                          "select": { "function": "Top", "howmany": "1" },
+                          "sortby": {
+                            "function": "Relative Strength Index",
+                            "window": "10"
+                          }
+                        },
+                        "branches": {
+                          "Top-1": [
+                            {
+                              "id": "b737bf2c81874df4bb8b6743bfbb59cd",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order BSV",
+                              "properties": { "symbol": "BSV" }
+                            },
+                            {
+                              "id": "f7b5dea3239d45408f1f7adafd9db3c5",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order SQQQ",
+                              "properties": { "symbol": "SQQQ" }
+                            },
+                            {
+                              "id": "a633f83a-1a7f-46de-946d-d46e48afec8d",
+                              "componentType": "icon",
+                              "type": "icon",
+                              "name": "Interrupting icon"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

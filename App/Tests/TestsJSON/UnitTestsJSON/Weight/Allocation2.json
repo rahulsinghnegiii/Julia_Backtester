@@ -1,0 +1,90 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "988e31403a5b8a3cd035f05a2c16ccc3",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "2d039db61c64eb26a0ae39be4fdd325b",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Allocation",
+      "properties": {
+        "values": {
+          "a": 20,
+          "b": 20,
+          "c": 20,
+          "d": 20,
+          "e": 20
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "a-(20%)": [
+          {
+            "id": "db1e73929043594a77249af5059d2423",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          }
+        ],
+        "b-(20%)": [
+          {
+            "id": "f00058a25eb150747cf1a3dd48c26353",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order BRK.B",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "BRK.B"
+            }
+          }
+        ],
+        "c-(20%)": [
+          {
+            "id": "850b7a474d214c93f2998c9c8d998611",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          }
+        ],
+        "d-(20%)": [
+          {
+            "id": "b93a442e7b3de98b8c09dfda69920096",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ],
+        "e-(20%)": [
+          {
+            "id": "60a031deea8ebbfd253eeef7ec5e116f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order PSQ",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "PSQ"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

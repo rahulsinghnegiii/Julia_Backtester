@@ -1,0 +1,65 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "efe9468c-49fe-499a-8d3b-b6af059ee9f3",
+    "id": "efe9468c-49fe-499a-8d3b-b6af059ee9f3",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "9ae5c6f04ed049119943f83bb148a37c",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return-14",
+      "properties": {
+        "select": {
+          "function": "Bottom",
+          "howmany": "1"
+        },
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "14"
+        }
+      },
+      "branches": {
+        "Bottom-1": [
+          {
+            "id": "711638034c844573a13576369080a361",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order MSFT",
+            "properties": {
+              "symbol": "MSFT"
+            }
+          },
+          {
+            "id": "9fa9874e93cc42d0a23bc0c6be9f83e1",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "symbol": "AAPL"
+            }
+          },
+          {
+            "id": "2da63de6f84a44ffbe42d1688a693887",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "symbol": "NVDA"
+            }
+          },
+          {
+            "id": "ac42c636-531d-4651-a627-c1c794487f1d",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

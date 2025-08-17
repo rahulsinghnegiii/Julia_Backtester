@@ -1,0 +1,170 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "new_root_id",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "new_parent_hash",
+  "sequence": [
+    {
+      "id": "new_id_1",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [SPY] > [ 5d Simple Moving Average of Price of SPY]",
+      "properties": {
+        "y": {
+          "uses_synthetic_stock": false,
+          "source": "SPY",
+          "indicator": "Simple Moving Average of Price",
+          "period": "5"
+        },
+        "x": {
+          "uses_synthetic_stock": false,
+          "source": "SPY",
+          "indicator": "current price"
+        },
+        "comparison": ">"
+      },
+      "branches": {
+        "false": [
+          {
+            "id": "new_id_2",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy: [Cumulative Return - 4d]",
+            "properties": {
+              "sortby": { "function": "Cumulative Return", "window": "4" },
+              "select": { "function": "Top", "howmany": "1" }
+            },
+            "branches": {
+              "Top-1": [
+                {
+                  "id": "new_id_3",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY SPY",
+                  "properties": { "symbol": "SPY" },
+                  "parentHash": "new_parent_hash_1",
+                  "hash": "new_hash_1"
+                },
+                {
+                  "id": "new_id_4",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder1",
+                  "sequence": [
+                    {
+                      "id": "new_id_5",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY QQQ",
+                      "properties": { "symbol": "QQQ" },
+                      "parentHash": "new_parent_hash_2",
+                      "hash": "new_hash_2"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "new_id_1/new_id_2/new_id_4",
+                  "parentHash": "new_parent_hash_3",
+                  "nodeChildrenHash": "new_nodeChildrenHash_1",
+                  "hash": "new_hash_3"
+                },
+                {
+                  "id": "new_id_6",
+                  "componentType": "task",
+                  "name": "END OF SORT",
+                  "properties": {},
+                  "type": "icon",
+                  "hash": "new_hash_4",
+                  "parentHash": "new_parent_hash_4"
+                }
+              ]
+            },
+            "path": "new_id_1/new_id_2",
+            "parentHash": "new_parent_hash_5",
+            "nodeChildrenHash": "sort-2",
+            "hash": "new_hash_5"
+          }
+        ],
+        "true": [
+          {
+            "id": "new_id_7",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocate by 4d Inverse Volatility",
+            "function": "Inverse Volatility",
+            "properties": { "period": "4" },
+            "branches": {
+              "a": [
+                {
+                  "id": "new_id_8",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY BIL",
+                  "properties": { "symbol": "BIL" },
+                  "parentHash": "new_parent_hash_6",
+                  "hash": "new_hash_6"
+                }
+              ],
+              "b": [
+                {
+                  "id": "new_id_9",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder1",
+                  "sequence": [
+                    {
+                      "id": "new_id_10",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY MGX",
+                      "properties": { "symbol": "MGX" },
+                      "parentHash": "new_parent_hash_7",
+                      "hash": "new_hash_7"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "new_id_1/new_id_7/new_id_9",
+                  "parentHash": "new_parent_hash_8",
+                  "nodeChildrenHash": "new_nodeChildrenHash_3",
+                  "hash": "new_hash_8"
+                }
+              ]
+            },
+            "path": "new_id_1/new_id_7",
+            "parentHash": "new_parent_hash_9",
+            "nodeChildrenHash": "inv-2",
+            "hash": "new_hash_9"
+          }
+        ]
+      },
+      "path": "new_id_1",
+      "parentHash": "new_parent_hash_10",
+      "nodeChildrenHash": "new_nodeChildrenHash_5",
+      "hash": "new_hash_10"
+    }
+  ],
+  "tickers": ["BIL", "MGX", "SPY", "QQQ"],
+  "indicators": [
+    { "source": "SPY", "indicator": "current price" },
+    {
+      "source": "SPY",
+      "indicator": "Simple Moving Average of Price",
+      "period": "5"
+    },
+    { "indicator": "Cumulative Return", "period": "4", "source": "BIL" }
+  ],
+  "nodeChildrenHash": "new_root_nodeChildrenHash"
+}

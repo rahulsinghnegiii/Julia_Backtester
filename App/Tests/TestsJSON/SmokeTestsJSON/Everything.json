@@ -1,0 +1,350 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "1dcf71d993b4d9acff5e4eb5ee00b2a4",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "0",
+  "sequence": [
+    {
+      "id": "65ae9139a664fa5aa28ffdb46fabf4c0",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [$50] > [TQQQ]",
+      "properties": {
+        "y": {
+          "uses_synthetic_stock": false,
+          "source": "TQQQ",
+          "indicator": "current price"
+        },
+        "x": {
+          "uses_synthetic_stock": false,
+          "indicator": "Fixed-Value",
+          "numerator": "",
+          "denominator": "",
+          "source": "",
+          "period": "50"
+        },
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "fb75e098cf279feb02e51158f957444e",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "54f92b26b4c085458ff90446d8d29059",
+                "componentType": "switch",
+                "type": "allocation",
+                "name": "Manual Allocation",
+                "function": "Allocation",
+                "properties": { "values": { "a": 50, "b": 50 } },
+                "branches": {
+                  "a-(50%)": [
+                    {
+                      "id": "3ec6149b4d121587a5b849539e35ccd7",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy: [S.D.R. - 25d]",
+                      "properties": {
+                        "sortby": {
+                          "function": "Standard Deviation of Return",
+                          "window": "25"
+                        },
+                        "select": { "function": "Top", "howmany": "2" }
+                      },
+                      "branches": {
+                        "Top-2": [
+                          {
+                            "id": "3e2524143c798221920116c9d6e284a3",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "folder2",
+                            "sequence": [
+                              {
+                                "id": "ec1a6b17aaf2d770e0306f94bd0bd7a0",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if: [5d S.D.P.  of NVDA] > [$70]",
+                                "properties": {
+                                  "y": {
+                                    "numerator": "",
+                                    "denominator": "",
+                                    "uses_synthetic_stock": false,
+                                    "source": "",
+                                    "indicator": "Fixed-Value",
+                                    "period": "70"
+                                  },
+                                  "x": {
+                                    "uses_synthetic_stock": false,
+                                    "source": "NVDA",
+                                    "indicator": "Standard Deviation of Price",
+                                    "period": "5"
+                                  },
+                                  "comparison": ">"
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "abee4d3a48c5a6975a76b0a084f4d00b",
+                                      "componentType": "task",
+                                      "type": "stock",
+                                      "name": "BUY SPY",
+                                      "properties": { "symbol": "SPY" },
+                                      "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                      "hash": "c332883d7b7b6fd203427469fe273748"
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "c265b326304ed0e6b27f493e1aa57f06",
+                                      "componentType": "task",
+                                      "type": "stock",
+                                      "name": "BUY TQQQ",
+                                      "properties": { "symbol": "TQQQ" },
+                                      "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                      "hash": "32be6aabd979d12ff2fd3c0ae50d1f03"
+                                    }
+                                  ]
+                                },
+                                "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e/54f92b26b4c085458ff90446d8d29059/3ec6149b4d121587a5b849539e35ccd7/3e2524143c798221920116c9d6e284a3/ec1a6b17aaf2d770e0306f94bd0bd7a0",
+                                "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                "nodeChildrenHash": "dc51b78e27c81a42a7226802314204c9",
+                                "hash": "f1ceea100c868aeccc0208f3fb3fc753"
+                              }
+                            ],
+                            "properties": {
+                              "isCloudFolder": false,
+                              "folder_id": "",
+                              "author_id": "",
+                              "author_history": {}
+                            },
+                            "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e/54f92b26b4c085458ff90446d8d29059/3ec6149b4d121587a5b849539e35ccd7/3e2524143c798221920116c9d6e284a3",
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "nodeChildrenHash": "e51467727c1ab9bd43ce6f74e1337b00",
+                            "hash": "d83963e0508d614077f9dd091b93677f"
+                          },
+                          {
+                            "id": "2328fb3e132569666a72b99c6f3e412e",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY SOXS",
+                            "properties": { "symbol": "SOXS" },
+                            "parentHash": "30001cf9ce2c7d8b7213d825d1fc4a60",
+                            "hash": "b2dba342780e68686f17a2fc4038d422"
+                          },
+                          {
+                            "id": "20114dcf8e5379979d63f646834056ae",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY SQQQ",
+                            "properties": { "symbol": "SQQQ" },
+                            "parentHash": "91fb5d23523e9167f78bad3e05bb1588",
+                            "hash": "ace4daba03d74641acea506d668beafc"
+                          },
+                          {
+                            "id": "14c8ba57bb47802de38124cb94954b8c",
+                            "componentType": "task",
+                            "name": "END OF SORT",
+                            "properties": {},
+                            "type": "icon",
+                            "hash": "0a13f26aff23d35ff988c43ea8658728",
+                            "parentHash": "14bf94c6fbfc04a9247c2f4f7e4820c4"
+                          }
+                        ]
+                      },
+                      "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e/54f92b26b4c085458ff90446d8d29059/3ec6149b4d121587a5b849539e35ccd7",
+                      "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                      "nodeChildrenHash": "c187ae4e67c0345dc504877fdc5df092",
+                      "hash": "b72524418d08c0fa5223f56a93ce304b"
+                    }
+                  ],
+                  "b-(50%)": [
+                    {
+                      "id": "d8536f86a0306fb6235a898a875795a2",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "name": "Allocate by 20d Inverse Volatility",
+                      "function": "Inverse Volatility",
+                      "properties": { "period": "20" },
+                      "branches": {
+                        "a": [
+                          {
+                            "id": "7a7e0464106df93ab73ec8a0e6923c9f",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY PSQ",
+                            "properties": { "symbol": "PSQ" },
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "hash": "54c7a410b7dfd810c36630be56640c51"
+                          }
+                        ],
+                        "b": [
+                          {
+                            "id": "88e14058a0eb74699953389f8632f236",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY AAPL",
+                            "properties": { "symbol": "AAPL" },
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "hash": "b3d9a4fe46aa3fc4102431fa1f82ae58"
+                          }
+                        ]
+                      },
+                      "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e/54f92b26b4c085458ff90446d8d29059/d8536f86a0306fb6235a898a875795a2",
+                      "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                      "nodeChildrenHash": "a8014e575bc06fc393ff4a7f8d70889a",
+                      "hash": "af9eb54debf74d48e82e5cbad3aff51e"
+                    }
+                  ]
+                },
+                "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e/54f92b26b4c085458ff90446d8d29059",
+                "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                "nodeChildrenHash": "87a1c07efa6a04e64677311c92dc28a4",
+                "hash": "afc21b2b0a982af77748e047befd85ff"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "65ae9139a664fa5aa28ffdb46fabf4c0/fb75e098cf279feb02e51158f957444e",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "59631ad22b035acb8c7f3e714cf3d8a4",
+            "hash": "69d1ac055286ff118170ae142b268729"
+          }
+        ],
+        "false": [
+          {
+            "id": "4737e78e8c16c292b5b23ff2077b4f6c",
+            "componentType": "switch",
+            "type": "LockOnTrigger",
+            "name": "Switch",
+            "properties": {
+              "conditions": {
+                "b= if: [5d Max Drawdown of TSLA] < [ 20d R.S.I. of SPY]": {
+                  "entry_condition": {
+                    "name": "if: [5d Max Drawdown of TSLA] < [ 20d R.S.I. of SPY]",
+                    "type": "condition",
+                    "x": {
+                      "indicator": "Max Drawdown",
+                      "source": "TSLA",
+                      "uses_synthetic_stock": false,
+                      "period": "5"
+                    },
+                    "y": {
+                      "indicator": "Relative Strength Index",
+                      "source": "SPY",
+                      "uses_synthetic_stock": false,
+                      "period": "20"
+                    },
+                    "comparison": "<"
+                  }
+                },
+                "a= if: [35d Max Drawdown of SPY] > [ 22d E.M.A. of PSQ]": {
+                  "entry_condition": {
+                    "name": "if: [35d Max Drawdown of SPY] > [ 22d E.M.A. of PSQ]",
+                    "type": "condition",
+                    "x": {
+                      "indicator": "Max Drawdown",
+                      "source": "SPY",
+                      "uses_synthetic_stock": false,
+                      "period": "35"
+                    },
+                    "y": {
+                      "indicator": "Exponential Moving Average of Price",
+                      "source": "PSQ",
+                      "uses_synthetic_stock": false,
+                      "period": "22"
+                    },
+                    "comparison": ">"
+                  }
+                }
+              }
+            },
+            "branches": {
+              "a= if: [35d Max Drawdown of SPY] > [ 22d E.M.A. of PSQ]": [
+                {
+                  "id": "c55849770d3ff487f24ef7986b95cbc4",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY QQQ",
+                  "properties": { "symbol": "QQQ" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "3527599c5f24cd639d208ef220c8ac8f"
+                }
+              ],
+              "b= if: [5d Max Drawdown of TSLA] < [ 20d R.S.I. of SPY]": [
+                {
+                  "id": "a0b2b88b3d53fdfa1ffa3d773f6d6c74",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY NVDA",
+                  "properties": { "symbol": "NVDA" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "122623c726d7139654c5c5bb4565fe8f"
+                }
+              ],
+              "default": [
+                {
+                  "id": "c5c0e28a8122241fc878fb000e6c1bef",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY TSLA",
+                  "properties": { "symbol": "TSLA" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "53288669a15ee071e7a060a45272d2ad"
+                }
+              ]
+            },
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "264957c1c45bf704256c48a485ce10c0",
+            "hash": "3c9418801f5746a9fde9f9c8a3a3b32f",
+            "path": "65ae9139a664fa5aa28ffdb46fabf4c0/4737e78e8c16c292b5b23ff2077b4f6c"
+          }
+        ]
+      },
+      "path": "65ae9139a664fa5aa28ffdb46fabf4c0",
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "914173fb331cbbe2fea9cb463b3f370d",
+      "hash": "09d18ddc8ad8a31c792b9814395e417d"
+    }
+  ],
+  "tickers": [
+    "SPY",
+    "TQQQ",
+    "SOXS",
+    "SQQQ",
+    "PSQ",
+    "AAPL",
+    "QQQ",
+    "NVDA",
+    "TSLA"
+  ],
+  "indicators": [
+    { "source": "TQQQ", "indicator": "current price" },
+    {
+      "indicator": "Standard Deviation of Return",
+      "period": "25",
+      "source": "SOXS"
+    },
+    {
+      "indicator": "Standard Deviation of Return",
+      "period": "25",
+      "source": "SQQQ"
+    },
+    {
+      "source": "NVDA",
+      "indicator": "Standard Deviation of Price",
+      "period": "5"
+    }
+  ],
+  "nodeChildrenHash": "9d2e1e83d2c57dfb740164499c4c25f9"
+}

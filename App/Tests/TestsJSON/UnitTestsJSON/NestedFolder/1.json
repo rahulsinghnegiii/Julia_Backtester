@@ -1,0 +1,84 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "c93194001d9e6f9b76e7b8921bc3fd54",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "02fdbb7b6952be7774511b1e591b17f3",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "a9e407cac73d065d99476ba8fc31739f",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Cumulative Return  XOM 2  > Moving Average of Return FNGU 2)",
+          "properties": {
+            "y": {
+              "indicator": "Moving Average of Return",
+              "source": "FNGU",
+              "period": "2"
+            },
+            "x": {
+              "indicator": "Cumulative Return",
+              "source": "XOM",
+              "period": "2"
+            },
+            "isInvalid": false,
+            "comparison": ">"
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "59b03dd72a46fc3eb5adb56cc71527d4",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "ab7def1cfcd7db71bc79da8cd8502912",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order XOM",
+                    "properties": {
+                      "isInvalid": false,
+                      "symbol": "XOM"
+                    }
+                  }
+                ],
+                "properties": {}
+              }
+            ],
+            "false": [
+              {
+                "id": "ad3edaea3864e26068485941a893d0ae",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "965c78ccf7dcd779be0667f875081f8f",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order FNGU",
+                    "properties": {
+                      "isInvalid": false,
+                      "symbol": "FNGU"
+                    }
+                  }
+                ],
+                "properties": {}
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

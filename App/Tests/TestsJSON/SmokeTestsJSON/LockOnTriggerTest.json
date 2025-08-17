@@ -1,0 +1,86 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "f5575cedaa4a16c0c192cda063fe0724",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "e765563241feba4b241444c88f7907e4",
+      "componentType": "switch",
+      "type": "LockOnTrigger",
+      "name": "Lock On Trigger",
+      "path": "e765563241feba4b241444c88f7907e4",
+      "properties": {
+        "conditions": {
+          "a": {
+            "entry_condition": {
+              "name": "if: [AAPL] < [$200]",
+              "type": "condition",
+              "x": { "indicator": "current price", "source": "AAPL" },
+              "y": { "indicator": "Fixed-Value", "period": "200" },
+              "comparison": "<"
+            },
+            "exit_condition": {
+              "name": "if: [AAPL] > [$300]",
+              "type": "condition",
+              "x": { "indicator": "current price", "source": "AAPL" },
+              "y": {
+                "indicator": "Fixed-Value",
+                "period": "300",
+                "numerator": "",
+                "denominator": ""
+              },
+              "comparison": ">"
+            }
+          },
+          "b": {
+            "entry_condition": {
+              "name": "if: [SPY] > [QQQ]",
+              "type": "condition",
+              "x": { "indicator": "current price", "source": "SPY" },
+              "y": { "indicator": "current price", "source": "QQQ" },
+              "comparison": ">"
+            }
+          }
+        }
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "542b3459634006a3e73ac15e32ac7c5e",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY AAPL",
+            "properties": { "symbol": "AAPL" },
+            "parentHash": "fbe81c5fc853243537a4aabf571a7553"
+          }
+        ],
+        "b": [
+          {
+            "id": "c65729cbc6ea5cd7132d452e48874e96",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY SPY",
+            "properties": { "symbol": "SPY" },
+            "parentHash": "26478db11a74b3c8675f463fee30cba7"
+          }
+        ],
+        "default": [
+          {
+            "id": "4694bd261f4e1c7b42ce8d09ccb969c9",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY QQQ",
+            "properties": { "symbol": "QQQ" },
+            "parentHash": "cfe201de5943405c840233fec4378a45"
+          }
+        ]
+      },
+      "parentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "nodeChildrenHash": "adfa7599d5cc53fca84b998a2077499f"
+    }
+  ]
+}

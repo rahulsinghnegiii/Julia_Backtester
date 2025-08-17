@@ -1,0 +1,2218 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "fb0969af-0272-4092-82d8-31f7b30d8bef",
+    "id": "fb0969af-0272-4092-82d8-31f7b30d8bef",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "b2389c55b8404ba0905ad5d9ac4cedd5",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": { "values": { "a": 40, "b": 20, "c": 20, "d": 20 } },
+      "branches": {
+        "a-(40.00%)": [
+          {
+            "id": "2c065aed9fc744439a17362b6466dded",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index VIXM  40 \u003e 69.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "40",
+                "source": "VIXM"
+              },
+              "y": { "indicator": "constant", "period": "69.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "cb129291655f4302bf66626dbcbe74b0",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Risk OFF - Market Crash",
+                  "sequence": [
+                    {
+                      "id": "5e4862a2ae8b4f69aa1c82d5264f8c97",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SHY",
+                      "properties": { "symbol": "SHY" }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "4260c79171044173bdad22c3527c116b",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Cumulative Return BND 60 \u003e Cumulative Return BIL 60)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BND"
+                    },
+                    "y": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BIL"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "c96584517ba8467c8b6fc36c8dd1b9ee",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Risk ON - Normal Market Conditions",
+                        "sequence": [
+                          {
+                            "id": "95dfd491df7149f5b686bdc541da2f02",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Standard Deviation of Return SPY  21 \u003c 1.50)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Standard Deviation of Return",
+                                "period": "21",
+                                "source": "SPY"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "1.50"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "cf93a76984d4400ab6cb40fe2b0093aa",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": {
+                                      "a": 25,
+                                      "b": 25,
+                                      "c": 25,
+                                      "d": 25
+                                    }
+                                  },
+                                  "branches": {
+                                    "a-(25.00%)": [
+                                      {
+                                        "id": "c3dc16f56c0d4f2a879bd0f02dd0dd70",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TQQQ",
+                                        "properties": { "symbol": "TQQQ" }
+                                      }
+                                    ],
+                                    "b-(25.00%)": [
+                                      {
+                                        "id": "96ddeb0762674af384ff1cc3f8c73325",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UPRO",
+                                        "properties": { "symbol": "UPRO" }
+                                      }
+                                    ],
+                                    "c-(25.00%)": [
+                                      {
+                                        "id": "ba332bf45c204cb79dce6834d914bdb4",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TMF",
+                                        "properties": { "symbol": "TMF" }
+                                      }
+                                    ],
+                                    "d-(25.00%)": [
+                                      {
+                                        "id": "0f2cb7e0d7c14b2e83a7bad52d388260",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TECL",
+                                        "properties": { "symbol": "TECL" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "8cd0aeec5a5b4754b4ee05c3503e9be7",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Standard Deviation of Return TLT  21 \u003c 1.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Standard Deviation of Return",
+                                      "period": "21",
+                                      "source": "TLT"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "1.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "811f4f19f44c46fdbbb0a6c9b20bbbe0",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "f626ad69a5414c65ad8add4af0ac4669",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "8b6ccd5bfec24a029c18cebc4fee7386",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TMF",
+                                              "properties": {
+                                                "symbol": "TMF"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "dc764781cb89424f9547b5fafc600c1f",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "4387494a6257424884398bbf44ddb47e",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "879a3c38e0bc4c9e9425a88d94566ef5",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "16f70c513b9945f1873b920c18ff8eed",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "0286446ada1a45688660e594b26b2bb7",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TLT",
+                                              "properties": {
+                                                "symbol": "TLT"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "54f35af5c6944828bb5acb73cb61d31d",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Cumulative Return TLT 20 \u003c Cumulative Return SHV 20)",
+                        "properties": {
+                          "comparison": "\u003c",
+                          "x": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "TLT"
+                          },
+                          "y": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "SHV"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "67b4c59602e7473b9f8e0fd7663dd275",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk OFF - Rising Rates",
+                              "sequence": [
+                                {
+                                  "id": "2dfec1821d334cca8715872bf18ab76a",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": { "a": 50, "b": 50 }
+                                  },
+                                  "branches": {
+                                    "a-(50.00%)": [
+                                      {
+                                        "id": "027e55c998bc424da66d83046319c096",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order USDU",
+                                        "properties": { "symbol": "USDU" }
+                                      }
+                                    ],
+                                    "b-(50.00%)": [
+                                      {
+                                        "id": "e057b97978894550a1ecf6e9cc6644fb",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Standard Deviation of Return TLT  21 \u003e 1.00)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "Standard Deviation of Return",
+                                            "period": "21",
+                                            "source": "TLT"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "1.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "3ea1843caf67457182a2e6b4ba6e9f26",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Relative Strength Index-20",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Bottom",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Bottom-1": [
+                                                  {
+                                                    "id": "9a8d4c26c10341cab96f43ffd04b7e51",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "fe474e27cc944d22928fc45a8d45353a",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order TMV",
+                                                    "properties": {
+                                                      "symbol": "TMV"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "0817ad14-bfb6-4dc5-af0a-d8642f7b0f62",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "093ccef4cb2641adb58a7266bc4128d7",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order UUP",
+                                              "properties": {
+                                                "symbol": "UUP"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "665ed1cf50ae456f984a7d1ba735ac13",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk ON - Falling Rates (HFEA Refined)",
+                              "sequence": [
+                                {
+                                  "id": "110f098cabc044029f1a4bca05d0e680",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Max Drawdown SPY  10 \u003c 5.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Max Drawdown",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "5.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "f20d6a4a7d6b4712808248beafa46c94",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk ON",
+                                        "sequence": [
+                                          {
+                                            "id": "c4c1d2124e91424b84c11ec8aa7e09f1",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 55.00000000000001,
+                                                "b": 45
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(55.00%)": [
+                                                {
+                                                  "id": "bfa12afbe9e74b508c84a6772f463949",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UPRO",
+                                                  "properties": {
+                                                    "symbol": "UPRO"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(45.00%)": [
+                                                {
+                                                  "id": "a35732e3caeb4edaba9daa26b5a45ae1",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMF",
+                                                  "properties": {
+                                                    "symbol": "TMF"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "85bbd43a669f43d5b4fdee26bfbc544c",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk OFF",
+                                        "sequence": [
+                                          {
+                                            "id": "ed956c58d3d64a17b5e26c85c058205c",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 25,
+                                                "b": 25,
+                                                "c": 25,
+                                                "d": 25
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(25.00%)": [
+                                                {
+                                                  "id": "6fc65875afd24122b976e5b6f693f191",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order IEI",
+                                                  "properties": {
+                                                    "symbol": "IEI"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(25.00%)": [
+                                                {
+                                                  "id": "bb063fff5b9b4e76ae76dc82d527d5e0",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ],
+                                              "c-(25.00%)": [
+                                                {
+                                                  "id": "23c80fd02af14b1cb11ca0896e69467c",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TIP",
+                                                  "properties": {
+                                                    "symbol": "TIP"
+                                                  }
+                                                }
+                                              ],
+                                              "d-(25.00%)": [
+                                                {
+                                                  "id": "eeac3dd98bd04165931447d022752dd9",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order BSV",
+                                                  "properties": {
+                                                    "symbol": "BSV"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "b-(20.00%)": [
+          {
+            "id": "3283304bc0be4e30b0bdd7de9e30ddd6",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index VIXY  20 \u003e 65.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "20",
+                "source": "VIXY"
+              },
+              "y": { "indicator": "constant", "period": "65.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "64adde5b7c0844c88ce2a03d720c31bf",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Risk OFF - Market Crash",
+                  "sequence": [
+                    {
+                      "id": "36e791285956490f818d9085c9311330",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SHY",
+                      "properties": { "symbol": "SHY" }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "16cebde6fda54c9fbc5618c0ffb7780c",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Cumulative Return BND 60 \u003e Cumulative Return BIL 60)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BND"
+                    },
+                    "y": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BIL"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "db7993bd72f6489e8fd65a848f0fa29c",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Risk ON - Normal Market Conditions",
+                        "sequence": [
+                          {
+                            "id": "97daf6371a2d4f3d958d5403dd9cb1a5",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Standard Deviation of Return SPY  21 \u003c 1.50)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Standard Deviation of Return",
+                                "period": "21",
+                                "source": "SPY"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "1.50"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "9e6144c1ea064d73ae282b6207021b82",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": {
+                                      "a": 25,
+                                      "b": 25,
+                                      "c": 25,
+                                      "d": 25
+                                    }
+                                  },
+                                  "branches": {
+                                    "a-(25.00%)": [
+                                      {
+                                        "id": "03210fe712164b39bbc6fcc246174d73",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TQQQ",
+                                        "properties": { "symbol": "TQQQ" }
+                                      }
+                                    ],
+                                    "b-(25.00%)": [
+                                      {
+                                        "id": "5da36179ebcb42489d74f1299cc6cc8a",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UPRO",
+                                        "properties": { "symbol": "UPRO" }
+                                      }
+                                    ],
+                                    "c-(25.00%)": [
+                                      {
+                                        "id": "ce0700875310440fbc1a48cc4d417e38",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TMF",
+                                        "properties": { "symbol": "TMF" }
+                                      }
+                                    ],
+                                    "d-(25.00%)": [
+                                      {
+                                        "id": "69a43357ce9f475183c42fb900ee0014",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TECL",
+                                        "properties": { "symbol": "TECL" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "bf8fd2db7baf4cd6b1801f899a891acb",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Standard Deviation of Return TLT  21 \u003c 1.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Standard Deviation of Return",
+                                      "period": "21",
+                                      "source": "TLT"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "1.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "9061efc0ee6b43869ded6edf120fbeff",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "3f7abafb568b46368b403d5d56cfd977",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "57bd143c6a3e491a988e98d184e2b200",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TMF",
+                                              "properties": {
+                                                "symbol": "TMF"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "d0e39cea8e7e458099e6a754e3d1be53",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "f2d8b967f733449aa55c6d3faa9f3b42",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "829f369bd25c46d49577f4e08a7d99c4",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "c5c94ee5621a4bad94ccba9c0031c69d",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "1a6ad5c814104715ab744ccdc6d70bac",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TLT",
+                                              "properties": {
+                                                "symbol": "TLT"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "4966cd6ca0f1419da6e7a7baec15d090",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Cumulative Return TLT 20 \u003c Cumulative Return SHV 20)",
+                        "properties": {
+                          "comparison": "\u003c",
+                          "x": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "TLT"
+                          },
+                          "y": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "SHV"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "014ca32125cd400d9c5e520cd918e39e",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk OFF - Rising Rates",
+                              "sequence": [
+                                {
+                                  "id": "a714efda38bb408b9f23f47ed73fafe2",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": { "a": 50, "b": 50 }
+                                  },
+                                  "branches": {
+                                    "a-(50.00%)": [
+                                      {
+                                        "id": "1af6b77473d3403cbc07c23912501072",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order USDU",
+                                        "properties": { "symbol": "USDU" }
+                                      }
+                                    ],
+                                    "b-(50.00%)": [
+                                      {
+                                        "id": "8dc6aaf1ac3043da8747bac0cdec9ae1",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Standard Deviation of Return TLT  21 \u003e 1.00)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "Standard Deviation of Return",
+                                            "period": "21",
+                                            "source": "TLT"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "1.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "e1d7da398aee4514bdc7608eb82db2dd",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Relative Strength Index-20",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Bottom",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Bottom-1": [
+                                                  {
+                                                    "id": "e4af8bb1e83641efb43563e007ed7fb1",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "c66714b16e85490cb74efde9cb5f9921",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order TMV",
+                                                    "properties": {
+                                                      "symbol": "TMV"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "3ac3fe98-8a92-4a57-9d89-ad5dc400c20d",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "724cf6c20443460ea90f8edf8c929ef0",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order UUP",
+                                              "properties": {
+                                                "symbol": "UUP"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "1db6f94076204548966362723eef86fd",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk ON - Falling Rates (HFEA Refined)",
+                              "sequence": [
+                                {
+                                  "id": "76abb6eb6a134f59b8789a6c8943b734",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Max Drawdown SPY  10 \u003c 5.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Max Drawdown",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "5.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "faaa5d81ae58453f8de07bbca483bd72",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk ON",
+                                        "sequence": [
+                                          {
+                                            "id": "f0494da1e3a04ecd801d41d1ad3568eb",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 55.00000000000001,
+                                                "b": 45
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(55.00%)": [
+                                                {
+                                                  "id": "997dd2bfe0864c3ca2dfa7b7ea62eabb",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UPRO",
+                                                  "properties": {
+                                                    "symbol": "UPRO"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(45.00%)": [
+                                                {
+                                                  "id": "538a3a95243c42a48a178de8dd09f72b",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMF",
+                                                  "properties": {
+                                                    "symbol": "TMF"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "f41ee6b0e8434213b78dd6114212c3db",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk OFF",
+                                        "sequence": [
+                                          {
+                                            "id": "00b0860bb2e142baaff59db528a8968f",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 25,
+                                                "b": 25,
+                                                "c": 25,
+                                                "d": 25
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(25.00%)": [
+                                                {
+                                                  "id": "9c6fede7b98b4c4cac69e62831c4c9f8",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order IEI",
+                                                  "properties": {
+                                                    "symbol": "IEI"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(25.00%)": [
+                                                {
+                                                  "id": "dc407a97f33c422aa1350efd627f3e12",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ],
+                                              "c-(25.00%)": [
+                                                {
+                                                  "id": "53b27540463c4b16b2b43f4c0ab5e85a",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TIP",
+                                                  "properties": {
+                                                    "symbol": "TIP"
+                                                  }
+                                                }
+                                              ],
+                                              "d-(25.00%)": [
+                                                {
+                                                  "id": "cfb5e3e6e1ba49ed9cf2ec7dbf6715b9",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order BSV",
+                                                  "properties": {
+                                                    "symbol": "BSV"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "c-(20.00%)": [
+          {
+            "id": "9385c618e97d476aa7607dac32bd42ca",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index VIXY  40 \u003e 60.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "40",
+                "source": "VIXY"
+              },
+              "y": { "indicator": "constant", "period": "60.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "a9c9921e1da94ed7b9d2295da54c7770",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Risk OFF - Market Crash",
+                  "sequence": [
+                    {
+                      "id": "5c864eb366da4956a144b7ecb8cca165",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SHY",
+                      "properties": { "symbol": "SHY" }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "3df6dbfe1e8945b4a0347e62dca5f210",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Cumulative Return BND 60 \u003e Cumulative Return BIL 60)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BND"
+                    },
+                    "y": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BIL"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "a1c13ed5d5dc4fd8b38e4521bdef1509",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Risk ON - Normal Market Conditions",
+                        "sequence": [
+                          {
+                            "id": "a5cec2adf3614dd6a265a0cc2bfc05ab",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Standard Deviation of Return SPY  21 \u003c 1.50)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Standard Deviation of Return",
+                                "period": "21",
+                                "source": "SPY"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "1.50"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "96fa2c29cacf4da3b705c28c4d6f1eb7",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": {
+                                      "a": 25,
+                                      "b": 25,
+                                      "c": 25,
+                                      "d": 25
+                                    }
+                                  },
+                                  "branches": {
+                                    "a-(25.00%)": [
+                                      {
+                                        "id": "a28b012a1a8f44b985c51e11ae953606",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TQQQ",
+                                        "properties": { "symbol": "TQQQ" }
+                                      }
+                                    ],
+                                    "b-(25.00%)": [
+                                      {
+                                        "id": "4182e5f4f0c447f28cda83e208e73054",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UPRO",
+                                        "properties": { "symbol": "UPRO" }
+                                      }
+                                    ],
+                                    "c-(25.00%)": [
+                                      {
+                                        "id": "993228390b3948b4b69d5fb3a72c90be",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TMF",
+                                        "properties": { "symbol": "TMF" }
+                                      }
+                                    ],
+                                    "d-(25.00%)": [
+                                      {
+                                        "id": "350b82f79e5c41c695e9b99fd41fba25",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TECL",
+                                        "properties": { "symbol": "TECL" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "c757ae4c420f4ad3818feafe728c5a0a",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Standard Deviation of Return TLT  21 \u003c 1.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Standard Deviation of Return",
+                                      "period": "21",
+                                      "source": "TLT"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "1.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "de7927145c0f4a8f87e333047d2ddba2",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "8ba83edcb8b1407492bd12e0bab1fcd5",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "3d8b62cd2c7e4d1dbbabcb752548640a",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TMF",
+                                              "properties": {
+                                                "symbol": "TMF"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "c45fb3f928ae4f61b153a578fa23381e",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "7246624afd8d4c03874686bbd384bacc",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "3e3f6803301245efa814bfbc2986411d",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "d1fafc42f82f40be9010483ec7f6c64c",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "045e0d6cce9743ad9309a939be52d507",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TLT",
+                                              "properties": {
+                                                "symbol": "TLT"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "4e5c32861a87463aa87715a8afb4a764",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Cumulative Return TLT 20 \u003c Cumulative Return SHV 20)",
+                        "properties": {
+                          "comparison": "\u003c",
+                          "x": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "TLT"
+                          },
+                          "y": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "SHV"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "92fd19d6709a45589eb592be5c348eb7",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk OFF - Rising Rates",
+                              "sequence": [
+                                {
+                                  "id": "332e22e8e7f94033a6fb91a781c4dcda",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": { "a": 50, "b": 50 }
+                                  },
+                                  "branches": {
+                                    "a-(50.00%)": [
+                                      {
+                                        "id": "d7c75bffb03b4459b16b915a8c8be709",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order USDU",
+                                        "properties": { "symbol": "USDU" }
+                                      }
+                                    ],
+                                    "b-(50.00%)": [
+                                      {
+                                        "id": "4ca6cefca7a442f8a9d7ba075ffdd8ee",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Standard Deviation of Return TLT  21 \u003e 1.00)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "Standard Deviation of Return",
+                                            "period": "21",
+                                            "source": "TLT"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "1.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "738aad4425fd47afb3cf44726eedc648",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Relative Strength Index-20",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Bottom",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Bottom-1": [
+                                                  {
+                                                    "id": "99e2c9b87aed4a08a6572d4484dc23d5",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "9eb2d3e2e2794348ada68c234b8d0958",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order TMV",
+                                                    "properties": {
+                                                      "symbol": "TMV"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "34d00c20-25eb-4a86-b35c-b418e90c3d5a",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "ecf1154a4fac4b539fbb170467ea8b8d",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order UUP",
+                                              "properties": {
+                                                "symbol": "UUP"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "392d53584b7c45228b02c2502bf5079e",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk ON - Falling Rates (HFEA Refined)",
+                              "sequence": [
+                                {
+                                  "id": "5d3215b51d944d7082395b32cfb6698d",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Max Drawdown SPY  10 \u003c 5.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Max Drawdown",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "5.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "93cf672e893c4a4992ec9f7a846f1f50",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk ON",
+                                        "sequence": [
+                                          {
+                                            "id": "3a6979c5d4834a14ad0de9d37bc34847",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 55.00000000000001,
+                                                "b": 45
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(55.00%)": [
+                                                {
+                                                  "id": "b82401b1e2d8465ba338fb06b64f5dd7",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UPRO",
+                                                  "properties": {
+                                                    "symbol": "UPRO"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(45.00%)": [
+                                                {
+                                                  "id": "5443fb00830d404c834c0010f75644fd",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMF",
+                                                  "properties": {
+                                                    "symbol": "TMF"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "3a6bb035fb4147ac901c37c6f556b390",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk OFF",
+                                        "sequence": [
+                                          {
+                                            "id": "80b26eacbca6419e94379b74b0ec865c",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 25,
+                                                "b": 25,
+                                                "c": 25,
+                                                "d": 25
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(25.00%)": [
+                                                {
+                                                  "id": "9f6539c8791e4b4faae54c85871fb339",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order IEI",
+                                                  "properties": {
+                                                    "symbol": "IEI"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(25.00%)": [
+                                                {
+                                                  "id": "1779aac68aee45b595fc100fa792ab99",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ],
+                                              "c-(25.00%)": [
+                                                {
+                                                  "id": "95c3842b16794372bb0a23510fed7704",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TIP",
+                                                  "properties": {
+                                                    "symbol": "TIP"
+                                                  }
+                                                }
+                                              ],
+                                              "d-(25.00%)": [
+                                                {
+                                                  "id": "b28945b8d25c417582eecf5fda8dace7",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order BSV",
+                                                  "properties": {
+                                                    "symbol": "BSV"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "d-(20.00%)": [
+          {
+            "id": "c742e83a30f046d09dc4a3a241b45f11",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index VIXY  60 \u003e 60.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "60",
+                "source": "VIXY"
+              },
+              "y": { "indicator": "constant", "period": "60.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "90c52997424547ae9744e78c022b8aa3",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Risk OFF - Market Crash",
+                  "sequence": [
+                    {
+                      "id": "ea6c83111d6b4668b4bf798c15d2112f",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SHY",
+                      "properties": { "symbol": "SHY" }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "effd5f005da74ef28065cb96d2c5747a",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Cumulative Return BND 60 \u003e Cumulative Return BIL 60)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BND"
+                    },
+                    "y": {
+                      "indicator": "Cumulative Return",
+                      "period": "60",
+                      "source": "BIL"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "9253fae9618f448594b3dd27ae6493fb",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Risk ON - Normal Market Conditions",
+                        "sequence": [
+                          {
+                            "id": "ec60bef7d5de4edd8e094ec0037e9dda",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Standard Deviation of Return SPY  21 \u003c 1.50)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Standard Deviation of Return",
+                                "period": "21",
+                                "source": "SPY"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "1.50"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "47d099f67ad441efa2eed9ec0e74237a",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": {
+                                      "a": 25,
+                                      "b": 25,
+                                      "c": 25,
+                                      "d": 25
+                                    }
+                                  },
+                                  "branches": {
+                                    "a-(25.00%)": [
+                                      {
+                                        "id": "4990827e0da240b4aa8bdb8a1cb101dc",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TQQQ",
+                                        "properties": { "symbol": "TQQQ" }
+                                      }
+                                    ],
+                                    "b-(25.00%)": [
+                                      {
+                                        "id": "8e156211da30444fb309cb13359f4783",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UPRO",
+                                        "properties": { "symbol": "UPRO" }
+                                      }
+                                    ],
+                                    "c-(25.00%)": [
+                                      {
+                                        "id": "4742964872fe497da1d27d4a19930858",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TMF",
+                                        "properties": { "symbol": "TMF" }
+                                      }
+                                    ],
+                                    "d-(25.00%)": [
+                                      {
+                                        "id": "9b411cd2b6b14011a72a931e1905fa16",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order TECL",
+                                        "properties": { "symbol": "TECL" }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "20c5e8444e8847309168c9779dd0449b",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Standard Deviation of Return TLT  21 \u003c 1.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Standard Deviation of Return",
+                                      "period": "21",
+                                      "source": "TLT"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "1.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "c215e35b6a994ea590f4651955192d88",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "3166ebf448944faa8090caae79c2b335",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "da1969b9e8c14a6cae90ae61b0474252",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TMF",
+                                              "properties": {
+                                                "symbol": "TMF"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "5aafff09c1c04c2292b8b5f2d2af9791",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "81cdb0e907c0415dbf943a61264b33c6",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Allocation",
+                                        "properties": {
+                                          "values": {
+                                            "a": 33.34,
+                                            "b": 33.33,
+                                            "c": 33.33
+                                          }
+                                        },
+                                        "branches": {
+                                          "a-(33.34%)": [
+                                            {
+                                              "id": "7bfac868c666480c939e7933e209d844",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order SPY",
+                                              "properties": {
+                                                "symbol": "SPY"
+                                              }
+                                            }
+                                          ],
+                                          "b-(33.33%)": [
+                                            {
+                                              "id": "c54ecf3a14694eae820315a6307cddd2",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order QQQ",
+                                              "properties": {
+                                                "symbol": "QQQ"
+                                              }
+                                            }
+                                          ],
+                                          "c-(33.33%)": [
+                                            {
+                                              "id": "dcf24a67cdea4db7a71e6d816ce0b086",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order TLT",
+                                              "properties": {
+                                                "symbol": "TLT"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "6112ced99a524172a3f02c9853b9d62c",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Cumulative Return TLT 20 \u003c Cumulative Return SHV 20)",
+                        "properties": {
+                          "comparison": "\u003c",
+                          "x": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "TLT"
+                          },
+                          "y": {
+                            "indicator": "Cumulative Return",
+                            "period": "20",
+                            "source": "SHV"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "7441eb039a1944edb2c39277eb9508a2",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk OFF - Rising Rates",
+                              "sequence": [
+                                {
+                                  "id": "c382ad04a63b4924b5f54c5827ca2e00",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Allocation",
+                                  "name": "Allocation",
+                                  "properties": {
+                                    "values": { "a": 50, "b": 50 }
+                                  },
+                                  "branches": {
+                                    "a-(50.00%)": [
+                                      {
+                                        "id": "eb9d602505284cec8561075b03dae635",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order USDU",
+                                        "properties": { "symbol": "USDU" }
+                                      }
+                                    ],
+                                    "b-(50.00%)": [
+                                      {
+                                        "id": "e32c2e5c3e2d449c9f554e1984b1a230",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Standard Deviation of Return TLT  21 \u003e 1.00)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "Standard Deviation of Return",
+                                            "period": "21",
+                                            "source": "TLT"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "1.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "4ac733b84acb452390013f1ee8155896",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Relative Strength Index-20",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Bottom",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Bottom-1": [
+                                                  {
+                                                    "id": "36cf93c525a24542854e1ad202949ae5",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "8f9dc0c74dd84469b863d43810879b07",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order TMV",
+                                                    "properties": {
+                                                      "symbol": "TMV"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "96366b7f-67c9-4967-92b1-a00254eff6a5",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "edc4e19dde0b4fb2a6da4fd7ad273849",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order UUP",
+                                              "properties": {
+                                                "symbol": "UUP"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "f834245e5f5949769615fb4c8ddf34c6",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Risk ON - Falling Rates (HFEA Refined)",
+                              "sequence": [
+                                {
+                                  "id": "52b16cf4e19a4ba8ba3878e62bd71e7a",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Max Drawdown SPY  10 \u003c 5.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Max Drawdown",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "5.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "bca63cfc37104260889569f63b6899c2",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk ON",
+                                        "sequence": [
+                                          {
+                                            "id": "d550eee1e53e4e9382fd051b1e22f8a5",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 55.00000000000001,
+                                                "b": 45
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(55.00%)": [
+                                                {
+                                                  "id": "86f24ec09b0245b5a71e9823ec6fbcd9",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UPRO",
+                                                  "properties": {
+                                                    "symbol": "UPRO"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(45.00%)": [
+                                                {
+                                                  "id": "6bbb5b7fe2774cda832f49d261d7e68b",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMF",
+                                                  "properties": {
+                                                    "symbol": "TMF"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "6e8c8ebf54d34bcda20f21d293d832f8",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "HFEA Refined Risk OFF",
+                                        "sequence": [
+                                          {
+                                            "id": "065b169432754fe595cb434f9496cbde",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": {
+                                                "a": 25,
+                                                "b": 25,
+                                                "c": 25,
+                                                "d": 25
+                                              }
+                                            },
+                                            "branches": {
+                                              "a-(25.00%)": [
+                                                {
+                                                  "id": "ecaf4c89b65744f6a85e8082ebd25134",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order IEI",
+                                                  "properties": {
+                                                    "symbol": "IEI"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(25.00%)": [
+                                                {
+                                                  "id": "a8989a29388d494ab6a836a3887454c3",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ],
+                                              "c-(25.00%)": [
+                                                {
+                                                  "id": "a443b58943df420e845b517a87540a86",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TIP",
+                                                  "properties": {
+                                                    "symbol": "TIP"
+                                                  }
+                                                }
+                                              ],
+                                              "d-(25.00%)": [
+                                                {
+                                                  "id": "036176f881334c8ca1e90af85376fbfa",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order BSV",
+                                                  "properties": {
+                                                    "symbol": "BSV"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

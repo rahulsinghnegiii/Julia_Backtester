@@ -1,0 +1,88 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "411b5e0d-aa7b-4ea7-98be-83bedb1d9dd5",
+    "id": "411b5e0d-aa7b-4ea7-98be-83bedb1d9dd5",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "38dfe012d297490a848d413102a28ba4",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Inverse Volatility",
+      "name": "Allocation",
+      "properties": {
+        "period": "3",
+        "values": {
+          "a": 100
+        }
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "47dfc8944b43464b9a1658554dca0284",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Allocation",
+            "name": "Allocation",
+            "properties": {
+              "values": {
+                "a": 50,
+                "b": 50
+              }
+            },
+            "branches": {
+              "a-(50.0%)": [
+                {
+                  "id": "7294e69f496943e0bf20362c11f9d5e3",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order PSQ",
+                  "properties": {
+                    "symbol": "PSQ"
+                  }
+                }
+              ],
+              "b-(50.0%)": [
+                {
+                  "id": "5a7bfe91ac4f490b99e552c502171493",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SPY",
+                  "properties": {
+                    "symbol": "SPY"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "19709a7b4a914e5fa1ae2c6d9b4f8861",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "symbol": "QQQ"
+            }
+          }
+        ],
+        "c": [
+          {
+            "id": "a3820c79addf43eda32b658a9599d7ef",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SHY",
+            "properties": {
+              "symbol": "SHY"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "3251ff4db6c23a2cf9d9fe79d871dba0",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "0",
+  "sequence": [
+    {
+      "id": "44221db31c8cb0915928d7b7f4deffc7",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [SPY] > [ 5d Simple Moving Average of Price of SPY]",
+      "properties": {
+        "y": {
+          "uses_synthetic_stock": false,
+          "source": "SPY",
+          "indicator": "Simple Moving Average of Price",
+          "period": "5"
+        },
+        "x": {
+          "uses_synthetic_stock": false,
+          "source": "SPY",
+          "indicator": "current price"
+        },
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "011a114fb41879d399b92cab5f6a82d3",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy: [Cumulative Return - 4d]",
+            "properties": {
+              "sortby": { "function": "Cumulative Return", "window": "4" },
+              "select": { "function": "Top", "howmany": "1" }
+            },
+            "branches": {
+              "Top-1": [
+                {
+                  "id": "77202200ce7128bc61e2ba7cb224915e",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY SPY",
+                  "properties": { "symbol": "SPY" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "4b8aa465ed664e98029a730df259909f"
+                },
+                {
+                  "id": "a13359e27d41b2d02a1f792e5166c2cf",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder1",
+                  "sequence": [
+                    {
+                      "id": "b0be9830996c503f95bbda0d2889900e",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY QQQ",
+                      "properties": { "symbol": "QQQ" },
+                      "parentHash": "5f61f36bf4ea0e329ebc2d8e10af3cbd",
+                      "hash": "39ffd3c953a0ebae1c5057b4a29458f0"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "44221db31c8cb0915928d7b7f4deffc7/011a114fb41879d399b92cab5f6a82d3/a13359e27d41b2d02a1f792e5166c2cf",
+                  "parentHash": "3f15874ada37410722a344b21d1e3708",
+                  "nodeChildrenHash": "qqq-folder",
+                  "hash": "a8e4110627983c91d44920daac20e7cb"
+                },
+                {
+                  "id": "1d8453ed227b0c20413100adb237d44b",
+                  "componentType": "task",
+                  "name": "END OF SORT",
+                  "properties": {},
+                  "type": "icon",
+                  "hash": "ad1c2982361f634ed677805151605e54",
+                  "parentHash": "0d4a23fb30a61660eb66303624c5027b"
+                }
+              ]
+            },
+            "path": "44221db31c8cb0915928d7b7f4deffc7/011a114fb41879d399b92cab5f6a82d3",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "sort",
+            "hash": "b587800246c7de0df8fb96b0df567c81"
+          }
+        ],
+        "false": [
+          {
+            "id": "385b1846a1db6f129f80bd2c2e98df28",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocate by 4d Inverse Volatility",
+            "function": "Inverse Volatility",
+            "properties": { "period": "4" },
+            "branches": {
+              "a": [
+                {
+                  "id": "5ede1869df88bf3c1338bb8dcb13ff44",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY BIL",
+                  "properties": { "symbol": "BIL" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "4b8aa465ed664e98029a730df259909f"
+                }
+              ],
+              "b": [
+                {
+                  "id": "30c08ec06abae8e09e7eec7134529d4b",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder1",
+                  "sequence": [
+                    {
+                      "id": "b0be9830996c503f95bbda0d2889900e",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY MGX",
+                      "properties": { "symbol": "MGX" },
+                      "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                      "hash": "ea94435e93dd74c2b50d98c35c009ab7"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "44221db31c8cb0915928d7b7f4deffc7/385b1846a1db6f129f80bd2c2e98df28/30c08ec06abae8e09e7eec7134529d4b",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "mgx-folder",
+                  "hash": "a8e4110627983c91d44920daac20e7cb"
+                }
+              ]
+            },
+            "path": "44221db31c8cb0915928d7b7f4deffc7/385b1846a1db6f129f80bd2c2e98df28",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "inv",
+            "hash": "05d3de9f8e3b185a8bcf21ef0930e9b1"
+          }
+        ]
+      },
+      "path": "44221db31c8cb0915928d7b7f4deffc7",
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "if",
+      "hash": "8c5a1e9a47d5b74d0412916065935862"
+    }
+  ],
+  "tickers": ["BIL", "MGX", "SPY", "QQQ"],
+  "indicators": [
+    { "source": "SPY", "indicator": "current price" },
+    {
+      "source": "SPY",
+      "indicator": "Simple Moving Average of Price",
+      "period": "5"
+    },
+    { "indicator": "Cumulative Return", "period": "4", "source": "BIL" }
+  ],
+  "nodeChildrenHash": "root"
+}

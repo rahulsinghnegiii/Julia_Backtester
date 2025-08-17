@@ -1,0 +1,671 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "b4c381e169aabb71de60919eff35538f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "50be21c0f056f42a1c7d32d9edebcb61",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Max Drawdown",
+      "properties": {
+        "sortby": {
+          "function": "Max Drawdown",
+          "window": "2"
+        },
+        "select": {
+          "function": "Top",
+          "howmany": "1"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "05957d3e63496311aed28f9ac891b9cc",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "227afe4075a8da85de7e9a453ededfb5",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order AAPL",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "AAPL"
+                }
+              }
+            ],
+            "properties": {}
+          },
+          {
+            "id": "3239a54f51f03a3eaf1980d0264eb6b7",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "e118bd83d7ee68ed1666655eb4dc9eb1",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order QQQ",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "QQQ"
+                }
+              }
+            ],
+            "properties": {}
+          },
+          {
+            "id": "d9f3a1a576fd9e27e94f3737645125b5",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "f22fc3e11d2afa05336abae443cc499c",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order XOM",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "XOM"
+                }
+              }
+            ],
+            "properties": {}
+          },
+          {
+            "id": "f156117b7b16227710ae74c160071715",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5aefb426cb3ba919819d142ee02a58fd",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Allocation",
+      "properties": {
+        "values": {
+          "a": 50,
+          "b": 50
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "a-(50%)": [
+          {
+            "id": "4a8a4d1d6ead19720a2954b9e217ed8c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ],
+        "b-(50%)": [
+          {
+            "id": "eae8d61b98322b295e47244f90d91ea2",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index  AAPL 2  > Max Drawdown QQQ 10)",
+            "properties": {
+              "y": {
+                "indicator": "Max Drawdown",
+                "source": "QQQ",
+                "period": "10"
+              },
+              "x": {
+                "indicator": "Relative Strength Index",
+                "source": "AAPL",
+                "period": "2"
+              },
+              "isInvalid": false,
+              "comparison": ">"
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "f848f8a44912c457543982ae97317180",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order AAPL",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "AAPL"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "e60740d56d25f4410a785f5199dfe2b4",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order QQQ",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "QQQ"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "3323d1f9e3f634510137e9aa7a5cecf3",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "17f6bd062f1fdfe24f910dc17ad8c8f3",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Moving Average of Return",
+          "properties": {
+            "sortby": {
+              "function": "Moving Average of Return",
+              "window": "2"
+            },
+            "select": {
+              "function": "Bottom",
+              "howmany": "2"
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "1": [
+              {
+                "id": "33b0376702c45de51db0fbe0ea597a7a",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "69e1adca16dd927459efaa0a2749a47f",
+                    "componentType": "switch",
+                    "type": "condition",
+                    "name": "if(Relative Strength Index  FEPI 2  > current price AAA )",
+                    "properties": {
+                      "y": {
+                        "indicator": "current price",
+                        "source": "AAA"
+                      },
+                      "x": {
+                        "indicator": "Relative Strength Index",
+                        "source": "FEPI",
+                        "period": "2"
+                      },
+                      "isInvalid": false,
+                      "comparison": ">"
+                    },
+                    "branches": {
+                      "true": [
+                        {
+                          "id": "fae07a1fc73eb4af7e7223b9da9217d4",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order FEPI",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "FEPI"
+                          }
+                        }
+                      ],
+                      "false": [
+                        {
+                          "id": "053ba647a9a61e5ca44a96478ce32190",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order AAA",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "AAA"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "properties": {}
+              },
+              {
+                "id": "3bcef283f0ee0f21b95702693e9f983b",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order QQQ",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "QQQ"
+                }
+              },
+              {
+                "id": "326f43f2d8c8bdc94de48a47aa1113b7",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "e9b4b9d1279191261bb79e8e80fdb9aa",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "name": "Allocation",
+                    "function": "Inverse Volatility",
+                    "properties": {
+                      "isInvalid": false,
+                      "period": "3"
+                    },
+                    "branches": {
+                      "a": [
+                        {
+                          "id": "954900a6c78f088cbc46f41b2d9af3e6",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order XOM",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "XOM"
+                          }
+                        }
+                      ],
+                      "b": [
+                        {
+                          "id": "76352322607392f961635b4beea0fbdc",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order META",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "META"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "6de276bdeb835a3e80841d1a28a7a6c7",
+                    "componentType": "switch",
+                    "type": "Sort",
+                    "name": "SortBy Exponential Moving Average of Price",
+                    "properties": {
+                      "sortby": {
+                        "function": "Exponential Moving Average of Price",
+                        "window": "3"
+                      },
+                      "select": {
+                        "function": "Top",
+                        "howmany": "3"
+                      },
+                      "isInvalid": false
+                    },
+                    "branches": {
+                      "1": [
+                        {
+                          "id": "83b9e57b409009f2dfeb9766ec0c463f",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order FNGU",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "FNGU"
+                          }
+                        },
+                        {
+                          "id": "e3eeb6843e850efdaba1a31472705454",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order FEPI",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "FEPI"
+                          }
+                        },
+                        {
+                          "id": "959e237ff0e8f25b4b393a3b7fe837f7",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order BRK.B",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "BRK.B"
+                          }
+                        },
+                        {
+                          "id": "4c6518675a6501c96c7785bb5fa1c09a",
+                          "componentType": "icon",
+                          "name": "Interrupting icon",
+                          "properties": {},
+                          "type": "icon"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "properties": {}
+              },
+              {
+                "id": "efa02bd34130b2a45ae354d2cb8a7379",
+                "componentType": "icon",
+                "name": "Interrupting icon",
+                "properties": {},
+                "type": "icon"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    },
+    {
+      "id": "2872d12a5a281b58d0c91a6c0a9a31b1",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Market Cap",
+      "properties": {
+        "isInvalid": false,
+        "period": "3"
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "11883c81f75ac8c3d25fadaf18d5b9e7",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "be3e6154fdfaa556ab73186d07615c04",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order GLD",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "GLD"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ec62c0b9e9a4e904892d0bd976549372",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return",
+      "properties": {
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "3"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "1"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "51c3fffc7da8e20c5ad5a0c204a86556",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder2",
+            "sequence": [
+              {
+                "id": "321cc9b27aeb27d624428f891075a6f3",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Moving Average of Price",
+                "properties": {
+                  "sortby": {
+                    "function": "Moving Average of Price",
+                    "window": "3"
+                  },
+                  "select": {
+                    "function": "Top",
+                    "howmany": "3"
+                  },
+                  "isInvalid": false
+                },
+                "branches": {
+                  "1": [
+                    {
+                      "id": "b3fa5a3e5129d542f37e156ff26655cc",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FNGU",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FNGU"
+                      }
+                    },
+                    {
+                      "id": "8e16099ea240954566dedf669e1d3e61",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FEPI",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FEPI"
+                      }
+                    },
+                    {
+                      "id": "8f385fb4123cb16bb3b00bd9ff1db1b1",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order BRK.B",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "BRK.B"
+                      }
+                    },
+                    {
+                      "id": "b5a79cad63971c134e27d15656ba022f",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "folder2",
+                      "sequence": [
+                        {
+                          "id": "afc558335aae1d7ae5e2ffbfed08f847",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order TLT",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "TLT"
+                          }
+                        },
+                        {
+                          "id": "9a65118a04f0514b1ee78c886373b6ef",
+                          "componentType": "switch",
+                          "type": "allocation",
+                          "name": "Allocation",
+                          "function": "Allocation",
+                          "properties": {
+                            "values": {
+                              "a": 50,
+                              "b": 25,
+                              "c": 25
+                            },
+                            "isInvalid": false
+                          },
+                          "branches": {
+                            "a-(50%)": [
+                              {
+                                "id": "a4c519abe17d9857ac93943d89ffab3c",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Moving Average of Price  AAPL 5  < current price GLD )",
+                                "properties": {
+                                  "y": {
+                                    "indicator": "current price",
+                                    "source": "GLD"
+                                  },
+                                  "x": {
+                                    "indicator": "Moving Average of Price",
+                                    "source": "AAPL",
+                                    "period": "5"
+                                  },
+                                  "isInvalid": false,
+                                  "comparison": "<"
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "d705289bead78fc2b926e25cc98dfae5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order AAPL",
+                                      "properties": {
+                                        "isInvalid": false,
+                                        "symbol": "AAPL"
+                                      }
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "ab1ba193ccc9754491885676ed9749bf",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order GLD",
+                                      "properties": {
+                                        "isInvalid": false,
+                                        "symbol": "GLD"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "b-(25%)": [
+                              {
+                                "id": "88d941044723c6c8a97df01f2237f35d",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Price",
+                                "properties": {
+                                  "sortby": {
+                                    "function": "Moving Average of Price",
+                                    "window": "5"
+                                  },
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "1"
+                                  },
+                                  "isInvalid": false
+                                },
+                                "branches": {
+                                  "1": [
+                                    {
+                                      "id": "e6ad91303b39369d12503f46db25f905",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order IEF",
+                                      "properties": {
+                                        "isInvalid": false,
+                                        "symbol": "IEF"
+                                      }
+                                    },
+                                    {
+                                      "id": "fe9e7f2f5172c7f0ae7e85f73c5d31b6",
+                                      "componentType": "icon",
+                                      "name": "Interrupting icon",
+                                      "properties": {},
+                                      "type": "icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "c-(25%)": [
+                              {
+                                "id": "756dc8236f0f42286bfedf03edf6b839",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "name": "Allocation",
+                                "function": "Inverse Volatility",
+                                "properties": {
+                                  "isInvalid": false,
+                                  "period": "4"
+                                },
+                                "branches": {
+                                  "a": [
+                                    {
+                                      "id": "e27957c6f177526f00ebe1b366ca5401",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order COKE",
+                                      "properties": {
+                                        "isInvalid": false,
+                                        "symbol": "COKE"
+                                      }
+                                    }
+                                  ],
+                                  "b": [
+                                    {
+                                      "id": "447906aad830e611d92e934039806756",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order NVDA",
+                                      "properties": {
+                                        "isInvalid": false,
+                                        "symbol": "NVDA"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "properties": {}
+                    },
+                    {
+                      "id": "b1d539668972bf8bd2053030663d7a9e",
+                      "componentType": "icon",
+                      "name": "Interrupting icon",
+                      "properties": {},
+                      "type": "icon"
+                    }
+                  ]
+                }
+              }
+            ],
+            "properties": {}
+          },
+          {
+            "id": "b3400498da747926cc8e544a6e9f080d",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+    "type": "root",
+    "properties": {
+      "uuid": "f321b65a-3021-4556-823d-f07862d196a2",
+      "id": "f321b65a-3021-4556-823d-f07862d196a2",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "daily"
+    },
+    "sequence": [
+      {
+        "id": "fc8f9f4fa36e4502b77a654bd90a44ec",
+        "componentType": "switch",
+        "type": "allocation",
+        "function": "Market Cap",
+        "name": "Allocation",
+        "properties": {
+          "values": {}
+        },
+        "branches": {
+          "a": [
+            {
+              "id": "96fc5090d909442db5869b3f2f06dcf2",
+              "componentType": "largeTask",
+              "type": "stock",
+              "name": "Buy Order BIRD",
+              "properties": {
+                "symbol": "BIRD"
+              }
+            }
+          ],
+          "b": [
+            {
+              "id": "7970d08dd6864dee970d33d64471e655",
+              "componentType": "largeTask",
+              "type": "stock",
+              "name": "Buy Order MSFT",
+              "properties": {
+                "symbol": "MSFT"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }

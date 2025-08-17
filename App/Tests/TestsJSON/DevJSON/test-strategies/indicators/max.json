@@ -1,0 +1,47 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "eda27d9f-78dc-4291-9d02-9cfde34918f2",
+    "id": "eda27d9f-78dc-4291-9d02-9cfde34918f2",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "4642601079684c64831b28bc1327a381",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Max Drawdown AAPL 20 \u003c Max Drawdown SPY 15)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Max Drawdown",
+          "period": "20",
+          "source": "AAPL"
+        },
+        "y": { "indicator": "Max Drawdown", "period": "15", "source": "SPY" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "5732c5ca15244d3cb8dda15299d46faf",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": { "symbol": "SPY" }
+          }
+        ],
+        "false": [
+          {
+            "id": "dad63467051d43bf88bfa485bc15a0cb",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": { "symbol": "NVDA" }
+          }
+        ]
+      }
+    }
+  ]
+}

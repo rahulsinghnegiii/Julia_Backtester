@@ -1,0 +1,1535 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "4a81bcfd-4d3f-4f93-91ff-078b82f5deee",
+        "id": "4a81bcfd-4d3f-4f93-91ff-078b82f5deee",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "e66a66bb68e348cf943a5a27c168b090",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(current price  of SPY > 200d Simple Moving Average of Price of SPY)",
+            "properties": {
+                "comparison": ">",
+                "x": {
+                    "indicator": "current price",
+                    "source": "SPY"
+                },
+                "y": {
+                    "indicator": "Simple Moving Average of Price",
+                    "period": "200",
+                    "source": "SPY"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "02758f34a0b445c29007f85d8e311ade",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(10d Relative Strength Index   of TQQQ > 79.00%)",
+                        "properties": {
+                            "comparison": ">",
+                            "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "TQQQ"
+                            },
+                            "y": {
+                                "indicator": "Fixed-Value",
+                                "period": "79.00"
+                            }
+                        },
+                        "branches": {
+                            "true": [
+                                {
+                                    "id": "d855530c899a421e994269bc55fddf72",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY UVXY",
+                                    "properties": {
+                                        "symbol": "UVXY"
+                                    },
+                                    "hash": "d1f57efa5ef6c39f805399e4f4ab18ba",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ],
+                            "false": [
+                                {
+                                    "id": "029383dd7cf741e995f34547eedfcf72",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(10d Relative Strength Index   of SPXL > 80.00%)",
+                                    "properties": {
+                                        "comparison": ">",
+                                        "x": {
+                                            "indicator": "Relative Strength Index",
+                                            "period": "10",
+                                            "source": "SPXL"
+                                        },
+                                        "y": {
+                                            "indicator": "Fixed-Value",
+                                            "period": "80.00"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "1fa24155359b4e25833bb48a6b08bfc5",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "BUY UVXY",
+                                                "properties": {
+                                                    "symbol": "UVXY"
+                                                },
+                                                "hash": "b7ce191e65d781739f44944a0fcdeb22",
+                                                "parentHash": "b9ec77159db6f61ca00737cc18d28a13"
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "8a3a1bfed189404aa0fa81af69f01c89",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(5d Cumulative Return   of TQQQ > 20.00%)",
+                                                "properties": {
+                                                    "comparison": ">",
+                                                    "x": {
+                                                        "indicator": "Cumulative Return",
+                                                        "period": "5",
+                                                        "source": "TQQQ"
+                                                    },
+                                                    "y": {
+                                                        "indicator": "Fixed-Value",
+                                                        "period": "20.00"
+                                                    }
+                                                },
+                                                "branches": {
+                                                    "true": [
+                                                        {
+                                                            "id": "8afd8214d6da433abd793efc97b727c0",
+                                                            "componentType": "switch",
+                                                            "type": "condition",
+                                                            "name": "if(10d Relative Strength Index   of TQQQ < 31.00%)",
+                                                            "properties": {
+                                                                "comparison": "<",
+                                                                "x": {
+                                                                    "indicator": "Relative Strength Index",
+                                                                    "period": "10",
+                                                                    "source": "TQQQ"
+                                                                },
+                                                                "y": {
+                                                                    "indicator": "Fixed-Value",
+                                                                    "period": "31.00"
+                                                                }
+                                                            },
+                                                            "branches": {
+                                                                "true": [
+                                                                    {
+                                                                        "id": "bb2aaa23f15a4668aa770943cf653dfa",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "BUY SPYU",
+                                                                        "properties": {
+                                                                            "symbol": "SPYU"
+                                                                        },
+                                                                        "hash": "90bade2b847b20c13ed2250b57591ae2",
+                                                                        "parentHash": "32417b49db06021f7ffc28f384752ffd"
+                                                                    }
+                                                                ],
+                                                                "false": [
+                                                                    {
+                                                                        "id": "377844466bfd4c4091148bc148fe7d20",
+                                                                        "componentType": "switch",
+                                                                        "type": "Sort",
+                                                                        "name": "SortBy: 10d Relative Strength Index",
+                                                                        "properties": {
+                                                                            "select": {
+                                                                                "function": "Top",
+                                                                                "howmany": "1"
+                                                                            },
+                                                                            "sortby": {
+                                                                                "function": "Relative Strength Index",
+                                                                                "window": "10"
+                                                                            }
+                                                                        },
+                                                                        "branches": {
+                                                                            "Top-1": [
+                                                                                {
+                                                                                    "id": "a644f80cddb549238406f93724a2de4d",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "BUY UVXY",
+                                                                                    "properties": {
+                                                                                        "symbol": "UVXY"
+                                                                                    },
+                                                                                    "hash": "25461d14b5375ce2ba3aaf87278fe491",
+                                                                                    "parentHash": "e014e17d34b08a7451b398cea0d2f963"
+                                                                                },
+                                                                                {
+                                                                                    "id": "9b1c3a33eb5f4d2faa80b618bb9d87d2",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "BUY SQQQ",
+                                                                                    "properties": {
+                                                                                        "symbol": "SQQQ"
+                                                                                    },
+                                                                                    "hash": "f346e8cb43dc9cbc6dd3912e41d23a3d",
+                                                                                    "parentHash": "02b91ad56cdf674bb2bc3bca95526fa1"
+                                                                                },
+                                                                                {
+                                                                                    "id": "93b3a25c-fbcc-42fa-8d52-bf834809fe64",
+                                                                                    "componentType": "icon",
+                                                                                    "type": "icon",
+                                                                                    "name": "Interrupting icon",
+                                                                                    "hash": "546854a6be79d1d7dfdf7862403a65d6",
+                                                                                    "parentHash": "3af2516c265442096da1d89756906bf3"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "hash": "33dd0dc73d057252804d6558d519d8e3",
+                                                                        "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                                                        "nodeChildrenHash": "865bb00de89b873df194b0ed6ed37b7a"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "hash": "454c4af1be37161f4e2bb0d5f6f56c19",
+                                                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                                                            "nodeChildrenHash": "38df3c5b8b3f6bbab9e93b42e5466f8d"
+                                                        }
+                                                    ],
+                                                    "false": [
+                                                        {
+                                                            "id": "8c6a84f149764d66b1c86dd0bb79824e",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "BUY SPYU",
+                                                            "properties": {
+                                                                "symbol": "SPYU"
+                                                            },
+                                                            "hash": "55fb7c62764a86acdf297f28d0a40682",
+                                                            "parentHash": "c6930569175dc484c717269ec2c099f1"
+                                                        }
+                                                    ]
+                                                },
+                                                "hash": "ebdca2fa4484b7213398837acbae01d0",
+                                                "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                                                "nodeChildrenHash": "46555eb3b41834e24359af54f2fbb954"
+                                            }
+                                        ]
+                                    },
+                                    "hash": "f472514748fe1d72bb6f0c7fa4b698f5",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                                    "nodeChildrenHash": "5c1fdbb92567e522339f4a3571e7bbe2"
+                                }
+                            ]
+                        },
+                        "hash": "75b260e729a82ac7b5aa42c51c77f74d",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "12f32d4606379c408f207952a48fc7b9"
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "38c83dbd6ca44f5b9b39d057706576c5",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(10d Relative Strength Index   of TQQQ < 31.00%)",
+                        "properties": {
+                            "comparison": "<",
+                            "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "TQQQ"
+                            },
+                            "y": {
+                                "indicator": "Fixed-Value",
+                                "period": "31.00"
+                            }
+                        },
+                        "branches": {
+                            "true": [
+                                {
+                                    "id": "34bd4246ca534eb9b98bf3e3bd981613",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY TECL",
+                                    "properties": {
+                                        "symbol": "TECL"
+                                    },
+                                    "hash": "f0b34653063e103b3a06111990eb004b",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ],
+                            "false": [
+                                {
+                                    "id": "f12b3204a6064495a0539b09fbd28bdb",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(10d Relative Strength Index   of SMH < 30.00%)",
+                                    "properties": {
+                                        "comparison": "<",
+                                        "x": {
+                                            "indicator": "Relative Strength Index",
+                                            "period": "10",
+                                            "source": "SMH"
+                                        },
+                                        "y": {
+                                            "indicator": "Fixed-Value",
+                                            "period": "30.00"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "34386b2af19e4ee8ac9a3ad1831ac077",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "BUY SOXL",
+                                                "properties": {
+                                                    "symbol": "SOXL"
+                                                },
+                                                "hash": "1c952f17b488195cb147d7725c103ed6",
+                                                "parentHash": "b9ec77159db6f61ca00737cc18d28a13"
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "1c75d290adf349d8ba2b8049254907d9",
+                                                "componentType": "switch",
+                                                "type": "condition",
+                                                "name": "if(10d Relative Strength Index   of DIA < 27.00%)",
+                                                "properties": {
+                                                    "comparison": "<",
+                                                    "x": {
+                                                        "indicator": "Relative Strength Index",
+                                                        "period": "10",
+                                                        "source": "DIA"
+                                                    },
+                                                    "y": {
+                                                        "indicator": "Fixed-Value",
+                                                        "period": "27.00"
+                                                    }
+                                                },
+                                                "branches": {
+                                                    "true": [
+                                                        {
+                                                            "id": "7be9962480354c0aa676f9c60eb3e00a",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "BUY UDOW",
+                                                            "properties": {
+                                                                "symbol": "UDOW"
+                                                            },
+                                                            "hash": "9f140010b01743ad4d634a98e57f5df8",
+                                                            "parentHash": "c6930569175dc484c717269ec2c099f1"
+                                                        }
+                                                    ],
+                                                    "false": [
+                                                        {
+                                                            "id": "cf690a6869ba4854b144130306948e03",
+                                                            "componentType": "switch",
+                                                            "type": "condition",
+                                                            "name": "if(14d Relative Strength Index   of SPY < 28.00%)",
+                                                            "properties": {
+                                                                "comparison": "<",
+                                                                "x": {
+                                                                    "indicator": "Relative Strength Index",
+                                                                    "period": "14",
+                                                                    "source": "SPY"
+                                                                },
+                                                                "y": {
+                                                                    "indicator": "Fixed-Value",
+                                                                    "period": "28.00"
+                                                                }
+                                                            },
+                                                            "branches": {
+                                                                "true": [
+                                                                    {
+                                                                        "id": "708af772bf3a46a9b461f0834b4bd955",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "BUY SPYU",
+                                                                        "properties": {
+                                                                            "symbol": "SPYU"
+                                                                        },
+                                                                        "hash": "90bade2b847b20c13ed2250b57591ae2",
+                                                                        "parentHash": "32417b49db06021f7ffc28f384752ffd"
+                                                                    }
+                                                                ],
+                                                                "false": [
+                                                                    {
+                                                                        "id": "a39af88bac944e59a89ecb3c179a774d",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Allocation",
+                                                                        "name": "Manual Allocation",
+                                                                        "properties": {
+                                                                            "values": {
+                                                                                "a": 50,
+                                                                                "b": 50
+                                                                            }
+                                                                        },
+                                                                        "branches": {
+                                                                            "a-(50.00%)": [
+                                                                                {
+                                                                                    "id": "c9c46d679cdc4a45bea5d98b203a2891",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "condition",
+                                                                                    "name": "if(200d Cumulative Return   of QQQ < -20.00%)",
+                                                                                    "properties": {
+                                                                                        "comparison": "<",
+                                                                                        "x": {
+                                                                                            "indicator": "Cumulative Return",
+                                                                                            "period": "200",
+                                                                                            "source": "QQQ"
+                                                                                        },
+                                                                                        "y": {
+                                                                                            "indicator": "Fixed-Value",
+                                                                                            "period": "-20.00"
+                                                                                        }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                        "true": [
+                                                                                            {
+                                                                                                "id": "4cb695c8db2142d58c6d58b02f0f83cf",
+                                                                                                "componentType": "folder",
+                                                                                                "type": "folder",
+                                                                                                "name": "Nasdaq In Crash Territory, Time to Deleverage",
+                                                                                                "sequence": [
+                                                                                                    {
+                                                                                                        "id": "f154bf0c28744d2498931cbbc86cdaf6",
+                                                                                                        "componentType": "switch",
+                                                                                                        "type": "condition",
+                                                                                                        "name": "if(current price  of QQQ < 20d Simple Moving Average of Price of QQQ)",
+                                                                                                        "properties": {
+                                                                                                            "comparison": "<",
+                                                                                                            "x": {
+                                                                                                                "indicator": "current price",
+                                                                                                                "source": "QQQ"
+                                                                                                            },
+                                                                                                            "y": {
+                                                                                                                "indicator": "Simple Moving Average of Price",
+                                                                                                                "period": "20",
+                                                                                                                "source": "QQQ"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "branches": {
+                                                                                                            "true": [
+                                                                                                                {
+                                                                                                                    "id": "9967001b82bd449087e4cdf0d4f9bae1",
+                                                                                                                    "componentType": "switch",
+                                                                                                                    "type": "condition",
+                                                                                                                    "name": "if(60d Cumulative Return   of QQQ <= -12.00%)",
+                                                                                                                    "properties": {
+                                                                                                                        "comparison": "<=",
+                                                                                                                        "x": {
+                                                                                                                            "indicator": "Cumulative Return",
+                                                                                                                            "period": "60",
+                                                                                                                            "source": "QQQ"
+                                                                                                                        },
+                                                                                                                        "y": {
+                                                                                                                            "indicator": "Fixed-Value",
+                                                                                                                            "period": "-12.00"
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "branches": {
+                                                                                                                        "true": [
+                                                                                                                            {
+                                                                                                                                "id": "1cb483dd77db4ac5bbd891d2bb6acb79",
+                                                                                                                                "componentType": "folder",
+                                                                                                                                "type": "folder",
+                                                                                                                                "name": "Sideways Market Deleverage",
+                                                                                                                                "sequence": [
+                                                                                                                                    {
+                                                                                                                                        "id": "f4223256927a4dcf8a57547c21608b62",
+                                                                                                                                        "componentType": "switch",
+                                                                                                                                        "type": "allocation",
+                                                                                                                                        "function": "Allocation",
+                                                                                                                                        "name": "Manual Allocation",
+                                                                                                                                        "properties": {
+                                                                                                                                            "values": {
+                                                                                                                                                "a": 50,
+                                                                                                                                                "b": 50
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                        "branches": {
+                                                                                                                                            "a-(50.00%)": [
+                                                                                                                                                {
+                                                                                                                                                    "id": "e27037af542e4fc6be360d5b7f8dcd18",
+                                                                                                                                                    "componentType": "switch",
+                                                                                                                                                    "type": "condition",
+                                                                                                                                                    "name": "if(current price  of SPY > 20d Simple Moving Average of Price of SPY)",
+                                                                                                                                                    "properties": {
+                                                                                                                                                        "comparison": ">",
+                                                                                                                                                        "x": {
+                                                                                                                                                            "indicator": "current price",
+                                                                                                                                                            "source": "SPY"
+                                                                                                                                                        },
+                                                                                                                                                        "y": {
+                                                                                                                                                            "indicator": "Simple Moving Average of Price",
+                                                                                                                                                            "period": "20",
+                                                                                                                                                            "source": "SPY"
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "branches": {
+                                                                                                                                                        "true": [
+                                                                                                                                                            {
+                                                                                                                                                                "id": "2328ffb123b64cf78466be2d6de967b9",
+                                                                                                                                                                "componentType": "largeTask",
+                                                                                                                                                                "type": "stock",
+                                                                                                                                                                "name": "BUY SPY",
+                                                                                                                                                                "properties": {
+                                                                                                                                                                    "symbol": "SPY"
+                                                                                                                                                                },
+                                                                                                                                                                "hash": "3b76eefd071ae2a02fda419784cd1aa5",
+                                                                                                                                                                "parentHash": "3a931c559861ac819d3ebd403f1d3ccd"
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "false": [
+                                                                                                                                                            {
+                                                                                                                                                                "id": "3de7034c86ae482da2784996f8722714",
+                                                                                                                                                                "componentType": "switch",
+                                                                                                                                                                "type": "condition",
+                                                                                                                                                                "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                                                                                "properties": {
+                                                                                                                                                                    "comparison": ">",
+                                                                                                                                                                    "x": {
+                                                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                                                        "period": "10",
+                                                                                                                                                                        "source": "TLT"
+                                                                                                                                                                    },
+                                                                                                                                                                    "y": {
+                                                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                                                        "period": "10",
+                                                                                                                                                                        "source": "SQQQ"
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                                "branches": {
+                                                                                                                                                                    "true": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": "4ba916f9dc574ab3922d63ccacaf456f",
+                                                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                                                            "type": "stock",
+                                                                                                                                                                            "name": "BUY QQQ",
+                                                                                                                                                                            "properties": {
+                                                                                                                                                                                "symbol": "QQQ"
+                                                                                                                                                                            },
+                                                                                                                                                                            "hash": "11fec7ab29f19f9b9a6506efe5bb0d0c",
+                                                                                                                                                                            "parentHash": "25aee480365df77de975b42975c41c64"
+                                                                                                                                                                        }
+                                                                                                                                                                    ],
+                                                                                                                                                                    "false": [
+                                                                                                                                                                        {
+                                                                                                                                                                            "id": "a63ceada75e54c38b97f54000f132fc2",
+                                                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                                                            "type": "stock",
+                                                                                                                                                                            "name": "BUY PSQ",
+                                                                                                                                                                            "properties": {
+                                                                                                                                                                                "symbol": "PSQ"
+                                                                                                                                                                            },
+                                                                                                                                                                            "hash": "e1c7382e9d1bb1a216f934fd0ee54b63",
+                                                                                                                                                                            "parentHash": "25aee480365df77de975b42975c41c64"
+                                                                                                                                                                        }
+                                                                                                                                                                    ]
+                                                                                                                                                                },
+                                                                                                                                                                "hash": "ac4fb64b93a328f902862b8a07ee6586",
+                                                                                                                                                                "parentHash": "3a931c559861ac819d3ebd403f1d3ccd",
+                                                                                                                                                                "nodeChildrenHash": "9c15398264b8e5c9f0f8bc56821c205e"
+                                                                                                                                                            }
+                                                                                                                                                        ]
+                                                                                                                                                    },
+                                                                                                                                                    "hash": "b037d9c9737c1c8397229f5e762709a9",
+                                                                                                                                                    "parentHash": "83db94693a2dd2ee7756651facad05c6",
+                                                                                                                                                    "nodeChildrenHash": "a75e480e2577bacb9980e531a793e111"
+                                                                                                                                                }
+                                                                                                                                            ],
+                                                                                                                                            "b-(50.00%)": [
+                                                                                                                                                {
+                                                                                                                                                    "id": "bb45ae31373644b4b8e9c8f0cbf3415f",
+                                                                                                                                                    "componentType": "switch",
+                                                                                                                                                    "type": "condition",
+                                                                                                                                                    "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                                                                    "properties": {
+                                                                                                                                                        "comparison": ">",
+                                                                                                                                                        "x": {
+                                                                                                                                                            "indicator": "Relative Strength Index",
+                                                                                                                                                            "period": "10",
+                                                                                                                                                            "source": "TLT"
+                                                                                                                                                        },
+                                                                                                                                                        "y": {
+                                                                                                                                                            "indicator": "Relative Strength Index",
+                                                                                                                                                            "period": "10",
+                                                                                                                                                            "source": "SQQQ"
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    "branches": {
+                                                                                                                                                        "true": [
+                                                                                                                                                            {
+                                                                                                                                                                "id": "a508175cb2034417a6b4cdb009fc1a9f",
+                                                                                                                                                                "componentType": "largeTask",
+                                                                                                                                                                "type": "stock",
+                                                                                                                                                                "name": "BUY QQQ",
+                                                                                                                                                                "properties": {
+                                                                                                                                                                    "symbol": "QQQ"
+                                                                                                                                                                },
+                                                                                                                                                                "hash": "2362bc79638b876ac6225f111291beb1",
+                                                                                                                                                                "parentHash": "3a931c559861ac819d3ebd403f1d3ccd"
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "false": [
+                                                                                                                                                            {
+                                                                                                                                                                "id": "f8d288ad017845f18bcf3d0d64eeeedd",
+                                                                                                                                                                "componentType": "largeTask",
+                                                                                                                                                                "type": "stock",
+                                                                                                                                                                "name": "BUY PSQ",
+                                                                                                                                                                "properties": {
+                                                                                                                                                                    "symbol": "PSQ"
+                                                                                                                                                                },
+                                                                                                                                                                "hash": "dd1d1b66919c08d81bbbdbf1202e079f",
+                                                                                                                                                                "parentHash": "3a931c559861ac819d3ebd403f1d3ccd"
+                                                                                                                                                            }
+                                                                                                                                                        ]
+                                                                                                                                                    },
+                                                                                                                                                    "hash": "6a79b810fe29330140612a048b527661",
+                                                                                                                                                    "parentHash": "83db94693a2dd2ee7756651facad05c6",
+                                                                                                                                                    "nodeChildrenHash": "9c15398264b8e5c9f0f8bc56821c205e"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        },
+                                                                                                                                        "hash": "eafd76ddd9a8dff64e6dae4d2a0bcd05",
+                                                                                                                                        "parentHash": "1e13670cae15cc7e0cd919a0d061f625",
+                                                                                                                                        "nodeChildrenHash": "672eb199bf61744bdaef19c4829a6392"
+                                                                                                                                    }
+                                                                                                                                ],
+                                                                                                                                "hash": "117d7bbad131572c7c81fcc537291394",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                "nodeChildrenHash": "b367f65fa93e5a9defa5ca28020808c2"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "false": [
+                                                                                                                            {
+                                                                                                                                "id": "8c9ad1bbe10a4109ad5038f25593f851",
+                                                                                                                                "componentType": "switch",
+                                                                                                                                "type": "condition",
+                                                                                                                                "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                                                "properties": {
+                                                                                                                                    "comparison": ">",
+                                                                                                                                    "x": {
+                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                        "period": "10",
+                                                                                                                                        "source": "TLT"
+                                                                                                                                    },
+                                                                                                                                    "y": {
+                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                        "period": "10",
+                                                                                                                                        "source": "SQQQ"
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "branches": {
+                                                                                                                                    "true": [
+                                                                                                                                        {
+                                                                                                                                            "id": "978316a083714e1590b4b245cb7e5eaa",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY SPYU",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "SPYU"
+                                                                                                                                            },
+                                                                                                                                            "hash": "ea693c8728713a55ad7e6e7b730a739c",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "false": [
+                                                                                                                                        {
+                                                                                                                                            "id": "99760098b19b43eca34b7dc660ca466d",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY SQQQ",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "SQQQ"
+                                                                                                                                            },
+                                                                                                                                            "hash": "e71215d88fe7f06d37a7e219762c9f1f",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                "hash": "694813588e0f4f249d6ab3dc25f6ce5a",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                "nodeChildrenHash": "533a00cbf652e724a537fdbbfb13e286"
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    },
+                                                                                                                    "hash": "7917afef56314785c072ea45a3e47474",
+                                                                                                                    "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                    "nodeChildrenHash": "1ece7517255ce8d3863bde99ce000500"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "false": [
+                                                                                                                {
+                                                                                                                    "id": "16714d03d3b5431fb358434532a538b1",
+                                                                                                                    "componentType": "switch",
+                                                                                                                    "type": "condition",
+                                                                                                                    "name": "if(10d Relative Strength Index   of SQQQ < 31.00%)",
+                                                                                                                    "properties": {
+                                                                                                                        "comparison": "<",
+                                                                                                                        "x": {
+                                                                                                                            "indicator": "Relative Strength Index",
+                                                                                                                            "period": "10",
+                                                                                                                            "source": "SQQQ"
+                                                                                                                        },
+                                                                                                                        "y": {
+                                                                                                                            "indicator": "Fixed-Value",
+                                                                                                                            "period": "31.00"
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "branches": {
+                                                                                                                        "true": [
+                                                                                                                            {
+                                                                                                                                "id": "8654727ecdd646d58d7686267016c13c",
+                                                                                                                                "componentType": "largeTask",
+                                                                                                                                "type": "stock",
+                                                                                                                                "name": "BUY PSQ",
+                                                                                                                                "properties": {
+                                                                                                                                    "symbol": "PSQ"
+                                                                                                                                },
+                                                                                                                                "hash": "523c0e72881701e5377d957fed081a39",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "false": [
+                                                                                                                            {
+                                                                                                                                "id": "61b0a0957f99474b92a1276fe0d17363",
+                                                                                                                                "componentType": "switch",
+                                                                                                                                "type": "condition",
+                                                                                                                                "name": "if(10d Cumulative Return   of QQQ > 5.50%)",
+                                                                                                                                "properties": {
+                                                                                                                                    "comparison": ">",
+                                                                                                                                    "x": {
+                                                                                                                                        "indicator": "Cumulative Return",
+                                                                                                                                        "period": "10",
+                                                                                                                                        "source": "QQQ"
+                                                                                                                                    },
+                                                                                                                                    "y": {
+                                                                                                                                        "indicator": "Fixed-Value",
+                                                                                                                                        "period": "5.50"
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "branches": {
+                                                                                                                                    "true": [
+                                                                                                                                        {
+                                                                                                                                            "id": "497fdb3d8b0a42779a568ae9242fd9a0",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY PSQ",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "PSQ"
+                                                                                                                                            },
+                                                                                                                                            "hash": "990898ef282e475f6c879d0efd958243",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "false": [
+                                                                                                                                        {
+                                                                                                                                            "id": "3e834dfbbcc94b7995aeb13665a12c9f",
+                                                                                                                                            "componentType": "switch",
+                                                                                                                                            "type": "Sort",
+                                                                                                                                            "name": "SortBy: 10d Relative Strength Index",
+                                                                                                                                            "properties": {
+                                                                                                                                                "select": {
+                                                                                                                                                    "function": "Top",
+                                                                                                                                                    "howmany": "1"
+                                                                                                                                                },
+                                                                                                                                                "sortby": {
+                                                                                                                                                    "function": "Relative Strength Index",
+                                                                                                                                                    "window": "10"
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                            "branches": {
+                                                                                                                                                "Top-1": [
+                                                                                                                                                    {
+                                                                                                                                                        "id": "0bad50dc8679406aac615cf9e1b8185d",
+                                                                                                                                                        "componentType": "largeTask",
+                                                                                                                                                        "type": "stock",
+                                                                                                                                                        "name": "BUY QQQ",
+                                                                                                                                                        "properties": {
+                                                                                                                                                            "symbol": "QQQ"
+                                                                                                                                                        },
+                                                                                                                                                        "hash": "555512a6a3c19f0733f0a53e48bcbc45",
+                                                                                                                                                        "parentHash": "83db94693a2dd2ee7756651facad05c6"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "id": "e0fa5f8d81e7479bb651c35b80e039e8",
+                                                                                                                                                        "componentType": "largeTask",
+                                                                                                                                                        "type": "stock",
+                                                                                                                                                        "name": "BUY SMH",
+                                                                                                                                                        "properties": {
+                                                                                                                                                            "symbol": "SMH"
+                                                                                                                                                        },
+                                                                                                                                                        "hash": "1f0c9a20cffe5ebd056e23f3cf7d564a",
+                                                                                                                                                        "parentHash": "a89f27b963041b095311b4bde72d8b40"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "id": "4bdb136a-8dc9-402e-9794-dffdfc4e5140",
+                                                                                                                                                        "componentType": "icon",
+                                                                                                                                                        "type": "icon",
+                                                                                                                                                        "name": "Interrupting icon",
+                                                                                                                                                        "hash": "31b7330e756ccaab5771222e8738fa52",
+                                                                                                                                                        "parentHash": "78909bd56ae2d99f83b10a91c8f437eb"
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                            },
+                                                                                                                                            "hash": "61dc4432e949a3a54495e035fa49c278",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625",
+                                                                                                                                            "nodeChildrenHash": "394cab014df1b71f73a057d16a92fdab"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                "hash": "12930141fbf3471301ad2280900ccf71",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                "nodeChildrenHash": "620b84925f14a686dc19dbda5ff312f2"
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    },
+                                                                                                                    "hash": "172fe37802d857d48245792df1d44f2b",
+                                                                                                                    "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                    "nodeChildrenHash": "f12cb7e4ddd1ab457f08b4f37580e01c"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        "hash": "76a113f5595ed380ade926f3b4e8ef04",
+                                                                                                        "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                        "nodeChildrenHash": "91a335ba96b37e36ba6ef8f21cb1218f"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "hash": "b458732181330391219ab4f78e4e4bc2",
+                                                                                                "parentHash": "c59ceb093d0b1126c81d47d253f72c3d",
+                                                                                                "nodeChildrenHash": "0e193278b97afce99079f2a31cfd34e6"
+                                                                                            }
+                                                                                        ],
+                                                                                        "false": [
+                                                                                            {
+                                                                                                "id": "94856dadefef4c0fa3490f4eb5d40662",
+                                                                                                "componentType": "switch",
+                                                                                                "type": "condition",
+                                                                                                "name": "if(current price  of QQQ < 20d Simple Moving Average of Price of QQQ)",
+                                                                                                "properties": {
+                                                                                                    "comparison": "<",
+                                                                                                    "x": {
+                                                                                                        "indicator": "current price",
+                                                                                                        "source": "QQQ"
+                                                                                                    },
+                                                                                                    "y": {
+                                                                                                        "indicator": "Simple Moving Average of Price",
+                                                                                                        "period": "20",
+                                                                                                        "source": "QQQ"
+                                                                                                    }
+                                                                                                },
+                                                                                                "branches": {
+                                                                                                    "true": [
+                                                                                                        {
+                                                                                                            "id": "5d3161f2b8e347a1816a0458720fff1d",
+                                                                                                            "componentType": "switch",
+                                                                                                            "type": "condition",
+                                                                                                            "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                            "properties": {
+                                                                                                                "comparison": ">",
+                                                                                                                "x": {
+                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                    "period": "10",
+                                                                                                                    "source": "TLT"
+                                                                                                                },
+                                                                                                                "y": {
+                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                    "period": "10",
+                                                                                                                    "source": "SQQQ"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "branches": {
+                                                                                                                "true": [
+                                                                                                                    {
+                                                                                                                        "id": "1c5d5f6d88ae42b89fdc2ee04b7b23a8",
+                                                                                                                        "componentType": "largeTask",
+                                                                                                                        "type": "stock",
+                                                                                                                        "name": "BUY SPYU",
+                                                                                                                        "properties": {
+                                                                                                                            "symbol": "SPYU"
+                                                                                                                        },
+                                                                                                                        "hash": "fb2683cc898fa6df85a3a87ce1cd4bd2",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "false": [
+                                                                                                                    {
+                                                                                                                        "id": "aa6bccd3b8074e71bcc17f534b1c49a0",
+                                                                                                                        "componentType": "largeTask",
+                                                                                                                        "type": "stock",
+                                                                                                                        "name": "BUY SQQQ",
+                                                                                                                        "properties": {
+                                                                                                                            "symbol": "SQQQ"
+                                                                                                                        },
+                                                                                                                        "hash": "51bdad903a96783a03a4aa0346217fdf",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028"
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            },
+                                                                                                            "hash": "3dcdb3d6d9e3c040074440d3303767a3",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                            "nodeChildrenHash": "533a00cbf652e724a537fdbbfb13e286"
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "false": [
+                                                                                                        {
+                                                                                                            "id": "d05bf778a9ce46809271eb565f07c4e4",
+                                                                                                            "componentType": "switch",
+                                                                                                            "type": "condition",
+                                                                                                            "name": "if(10d Relative Strength Index   of SQQQ < 31.00%)",
+                                                                                                            "properties": {
+                                                                                                                "comparison": "<",
+                                                                                                                "x": {
+                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                    "period": "10",
+                                                                                                                    "source": "SQQQ"
+                                                                                                                },
+                                                                                                                "y": {
+                                                                                                                    "indicator": "Fixed-Value",
+                                                                                                                    "period": "31.00"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "branches": {
+                                                                                                                "true": [
+                                                                                                                    {
+                                                                                                                        "id": "9a0bd9a9d9244fe8bf70dfeeecab54a3",
+                                                                                                                        "componentType": "largeTask",
+                                                                                                                        "type": "stock",
+                                                                                                                        "name": "BUY SQQQ",
+                                                                                                                        "properties": {
+                                                                                                                            "symbol": "SQQQ"
+                                                                                                                        },
+                                                                                                                        "hash": "51bdad903a96783a03a4aa0346217fdf",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "false": [
+                                                                                                                    {
+                                                                                                                        "id": "907f47e2fdae4591b5e393993d79f7ca",
+                                                                                                                        "componentType": "switch",
+                                                                                                                        "type": "condition",
+                                                                                                                        "name": "if(10d Cumulative Return   of QQQ > 5.50%)",
+                                                                                                                        "properties": {
+                                                                                                                            "comparison": ">",
+                                                                                                                            "x": {
+                                                                                                                                "indicator": "Cumulative Return",
+                                                                                                                                "period": "10",
+                                                                                                                                "source": "QQQ"
+                                                                                                                            },
+                                                                                                                            "y": {
+                                                                                                                                "indicator": "Fixed-Value",
+                                                                                                                                "period": "5.50"
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "branches": {
+                                                                                                                            "true": [
+                                                                                                                                {
+                                                                                                                                    "id": "f729df31d05a4d36a416595b6aa7f615",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY SQQQ",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "SQQQ"
+                                                                                                                                    },
+                                                                                                                                    "hash": "6a07147fd3e133623d728c097a6f8919",
+                                                                                                                                    "parentHash": "e9251989fbbf9e026f7e67217ee61417"
+                                                                                                                                }
+                                                                                                                            ],
+                                                                                                                            "false": [
+                                                                                                                                {
+                                                                                                                                    "id": "32dfe6c8c92247aba8c3f41957be9d0c",
+                                                                                                                                    "componentType": "switch",
+                                                                                                                                    "type": "Sort",
+                                                                                                                                    "name": "SortBy: 10d Relative Strength Index",
+                                                                                                                                    "properties": {
+                                                                                                                                        "select": {
+                                                                                                                                            "function": "Top",
+                                                                                                                                            "howmany": "1"
+                                                                                                                                        },
+                                                                                                                                        "sortby": {
+                                                                                                                                            "function": "Relative Strength Index",
+                                                                                                                                            "window": "10"
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    "branches": {
+                                                                                                                                        "Top-1": [
+                                                                                                                                            {
+                                                                                                                                                "id": "7cfa8a70c0de44c397be086be6735d6a",
+                                                                                                                                                "componentType": "largeTask",
+                                                                                                                                                "type": "stock",
+                                                                                                                                                "name": "BUY SPYU",
+                                                                                                                                                "properties": {
+                                                                                                                                                    "symbol": "SPYU"
+                                                                                                                                                },
+                                                                                                                                                "hash": "ea693c8728713a55ad7e6e7b730a739c",
+                                                                                                                                                "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                            },
+                                                                                                                                            {
+                                                                                                                                                "id": "db73050d412d45e8917c94c2889557bd",
+                                                                                                                                                "componentType": "largeTask",
+                                                                                                                                                "type": "stock",
+                                                                                                                                                "name": "BUY SOXL",
+                                                                                                                                                "properties": {
+                                                                                                                                                    "symbol": "SOXL"
+                                                                                                                                                },
+                                                                                                                                                "hash": "6c4adf863e0c471e93081bedfef2474d",
+                                                                                                                                                "parentHash": "2d11b3587cef0579551298b947ad15ad"
+                                                                                                                                            },
+                                                                                                                                            {
+                                                                                                                                                "id": "5af0a0a9-0b82-4e04-b20b-9b5fe2a9f057",
+                                                                                                                                                "componentType": "icon",
+                                                                                                                                                "type": "icon",
+                                                                                                                                                "name": "Interrupting icon",
+                                                                                                                                                "hash": "a59f26d8de97cb3331ddff0a69d1a45b",
+                                                                                                                                                "parentHash": "e59a30516a8823a946c12f40f165c3ef"
+                                                                                                                                            }
+                                                                                                                                        ]
+                                                                                                                                    },
+                                                                                                                                    "hash": "97f2cf319086ad7013207802a667fc22",
+                                                                                                                                    "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                    "nodeChildrenHash": "f31e8b0ce347d78c742ae2b1c1711fc8"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        "hash": "3143a1f451d124890aa7547730dbfd5a",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                        "nodeChildrenHash": "732f52c9c789642703aa46174f97d355"
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            },
+                                                                                                            "hash": "8e49312c1a059069c68f3c2ca90066fc",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                            "nodeChildrenHash": "66b7d2f81fbeb8b985e2c3d342c86c8d"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                "hash": "cc0a60d1ac9be80cc500602542fb19a1",
+                                                                                                "parentHash": "c59ceb093d0b1126c81d47d253f72c3d",
+                                                                                                "nodeChildrenHash": "9c44d5e5952351005db4a67c894d878d"
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "hash": "54f18f9fdd80b67ba6347bec31436037",
+                                                                                    "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                                                                    "nodeChildrenHash": "970c21cb19a8a48a6285cfaf344e2833"
+                                                                                }
+                                                                            ],
+                                                                            "b-(50.00%)": [
+                                                                                {
+                                                                                    "id": "2bfc106efffa4eb5a6aed50eb6282d78",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "condition",
+                                                                                    "name": "if(current price  of QQQ < 20d Simple Moving Average of Price of QQQ)",
+                                                                                    "properties": {
+                                                                                        "comparison": "<",
+                                                                                        "x": {
+                                                                                            "indicator": "current price",
+                                                                                            "source": "QQQ"
+                                                                                        },
+                                                                                        "y": {
+                                                                                            "indicator": "Simple Moving Average of Price",
+                                                                                            "period": "20",
+                                                                                            "source": "QQQ"
+                                                                                        }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                        "true": [
+                                                                                            {
+                                                                                                "id": "f50c3d198a424d829471c0eeb213fc81",
+                                                                                                "componentType": "switch",
+                                                                                                "type": "condition",
+                                                                                                "name": "if(60d Cumulative Return   of QQQ <= -12.00%)",
+                                                                                                "properties": {
+                                                                                                    "comparison": "<=",
+                                                                                                    "x": {
+                                                                                                        "indicator": "Cumulative Return",
+                                                                                                        "period": "60",
+                                                                                                        "source": "QQQ"
+                                                                                                    },
+                                                                                                    "y": {
+                                                                                                        "indicator": "Fixed-Value",
+                                                                                                        "period": "-12.00"
+                                                                                                    }
+                                                                                                },
+                                                                                                "branches": {
+                                                                                                    "true": [
+                                                                                                        {
+                                                                                                            "id": "7fcb9e005ddd455da0596eed39e0436b",
+                                                                                                            "componentType": "folder",
+                                                                                                            "type": "folder",
+                                                                                                            "name": "Sideways Market Deleverage",
+                                                                                                            "sequence": [
+                                                                                                                {
+                                                                                                                    "id": "fb38107f8a40410db1b4af632151c24d",
+                                                                                                                    "componentType": "switch",
+                                                                                                                    "type": "allocation",
+                                                                                                                    "function": "Allocation",
+                                                                                                                    "name": "Manual Allocation",
+                                                                                                                    "properties": {
+                                                                                                                        "values": {
+                                                                                                                            "a": 50,
+                                                                                                                            "b": 50
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "branches": {
+                                                                                                                        "a-(50.00%)": [
+                                                                                                                            {
+                                                                                                                                "id": "3bb07e32751941768f5dec9305fde30c",
+                                                                                                                                "componentType": "switch",
+                                                                                                                                "type": "condition",
+                                                                                                                                "name": "if(current price  of SPY > 20d Simple Moving Average of Price of SPY)",
+                                                                                                                                "properties": {
+                                                                                                                                    "comparison": ">",
+                                                                                                                                    "x": {
+                                                                                                                                        "indicator": "current price",
+                                                                                                                                        "source": "SPY"
+                                                                                                                                    },
+                                                                                                                                    "y": {
+                                                                                                                                        "indicator": "Simple Moving Average of Price",
+                                                                                                                                        "period": "20",
+                                                                                                                                        "source": "SPY"
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "branches": {
+                                                                                                                                    "true": [
+                                                                                                                                        {
+                                                                                                                                            "id": "4c4913b15b1c4fcaae4796d71981ceca",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY SPY",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "SPY"
+                                                                                                                                            },
+                                                                                                                                            "hash": "10a4e5d5d080e4283788111a106cdc4e",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "false": [
+                                                                                                                                        {
+                                                                                                                                            "id": "ba6abe5f85eb43cdaf03624afbb772a4",
+                                                                                                                                            "componentType": "switch",
+                                                                                                                                            "type": "condition",
+                                                                                                                                            "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                                                            "properties": {
+                                                                                                                                                "comparison": ">",
+                                                                                                                                                "x": {
+                                                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                                                    "period": "10",
+                                                                                                                                                    "source": "TLT"
+                                                                                                                                                },
+                                                                                                                                                "y": {
+                                                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                                                    "period": "10",
+                                                                                                                                                    "source": "SQQQ"
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                            "branches": {
+                                                                                                                                                "true": [
+                                                                                                                                                    {
+                                                                                                                                                        "id": "9b1415cd26e24971af50bea074b7704b",
+                                                                                                                                                        "componentType": "largeTask",
+                                                                                                                                                        "type": "stock",
+                                                                                                                                                        "name": "BUY QQQ",
+                                                                                                                                                        "properties": {
+                                                                                                                                                            "symbol": "QQQ"
+                                                                                                                                                        },
+                                                                                                                                                        "hash": "555512a6a3c19f0733f0a53e48bcbc45",
+                                                                                                                                                        "parentHash": "83db94693a2dd2ee7756651facad05c6"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                                "false": [
+                                                                                                                                                    {
+                                                                                                                                                        "id": "dac96b550e30496ab6f027f73bd8345c",
+                                                                                                                                                        "componentType": "largeTask",
+                                                                                                                                                        "type": "stock",
+                                                                                                                                                        "name": "BUY PSQ",
+                                                                                                                                                        "properties": {
+                                                                                                                                                            "symbol": "PSQ"
+                                                                                                                                                        },
+                                                                                                                                                        "hash": "bfe9213e780d43cdb6b1a8268c102475",
+                                                                                                                                                        "parentHash": "83db94693a2dd2ee7756651facad05c6"
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                            },
+                                                                                                                                            "hash": "ff34fb8b6cba5b71f66ca41364f4c60c",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625",
+                                                                                                                                            "nodeChildrenHash": "9c15398264b8e5c9f0f8bc56821c205e"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                "hash": "525b8349f737413b916607ee9c4cb1a8",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                "nodeChildrenHash": "a75e480e2577bacb9980e531a793e111"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "b-(50.00%)": [
+                                                                                                                            {
+                                                                                                                                "id": "bf4c454e41754bb59f0b47055fb487c0",
+                                                                                                                                "componentType": "switch",
+                                                                                                                                "type": "condition",
+                                                                                                                                "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                                                "properties": {
+                                                                                                                                    "comparison": ">",
+                                                                                                                                    "x": {
+                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                        "period": "10",
+                                                                                                                                        "source": "TLT"
+                                                                                                                                    },
+                                                                                                                                    "y": {
+                                                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                                                        "period": "10",
+                                                                                                                                        "source": "SQQQ"
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "branches": {
+                                                                                                                                    "true": [
+                                                                                                                                        {
+                                                                                                                                            "id": "86fcff8c789440e58172faf1248998ac",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY QQQ",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "QQQ"
+                                                                                                                                            },
+                                                                                                                                            "hash": "8d31fadb348d4a96a18f5ca168ad0eec",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ],
+                                                                                                                                    "false": [
+                                                                                                                                        {
+                                                                                                                                            "id": "b9bbfe74d37148eba76ab53b2d39298b",
+                                                                                                                                            "componentType": "largeTask",
+                                                                                                                                            "type": "stock",
+                                                                                                                                            "name": "BUY PSQ",
+                                                                                                                                            "properties": {
+                                                                                                                                                "symbol": "PSQ"
+                                                                                                                                            },
+                                                                                                                                            "hash": "990898ef282e475f6c879d0efd958243",
+                                                                                                                                            "parentHash": "1e13670cae15cc7e0cd919a0d061f625"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                "hash": "694813588e0f4f249d6ab3dc25f6ce5a",
+                                                                                                                                "parentHash": "e9251989fbbf9e026f7e67217ee61417",
+                                                                                                                                "nodeChildrenHash": "9c15398264b8e5c9f0f8bc56821c205e"
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    },
+                                                                                                                    "hash": "3e18bdc0ef0d61505978418acaa72822",
+                                                                                                                    "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                    "nodeChildrenHash": "672eb199bf61744bdaef19c4829a6392"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "hash": "a37d3f97150e3bd23ae0cf053191def7",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                            "nodeChildrenHash": "b367f65fa93e5a9defa5ca28020808c2"
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "false": [
+                                                                                                        {
+                                                                                                            "id": "4ae750bbb80443f58108c703cf13a8ae",
+                                                                                                            "componentType": "switch",
+                                                                                                            "type": "condition",
+                                                                                                            "name": "if(10d Relative Strength Index  of TLT > 10d Relative Strength Index of SQQQ)",
+                                                                                                            "properties": {
+                                                                                                                "comparison": ">",
+                                                                                                                "x": {
+                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                    "period": "10",
+                                                                                                                    "source": "TLT"
+                                                                                                                },
+                                                                                                                "y": {
+                                                                                                                    "indicator": "Relative Strength Index",
+                                                                                                                    "period": "10",
+                                                                                                                    "source": "SQQQ"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "branches": {
+                                                                                                                "true": [
+                                                                                                                    {
+                                                                                                                        "id": "48aeeae65d714e1a80a07bd3e62dd5e6",
+                                                                                                                        "componentType": "largeTask",
+                                                                                                                        "type": "stock",
+                                                                                                                        "name": "BUY SPYU",
+                                                                                                                        "properties": {
+                                                                                                                            "symbol": "SPYU"
+                                                                                                                        },
+                                                                                                                        "hash": "fb2683cc898fa6df85a3a87ce1cd4bd2",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "false": [
+                                                                                                                    {
+                                                                                                                        "id": "c56f42e4973848158e86b64f80fa2865",
+                                                                                                                        "componentType": "largeTask",
+                                                                                                                        "type": "stock",
+                                                                                                                        "name": "BUY SQQQ",
+                                                                                                                        "properties": {
+                                                                                                                            "symbol": "SQQQ"
+                                                                                                                        },
+                                                                                                                        "hash": "51bdad903a96783a03a4aa0346217fdf",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028"
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            },
+                                                                                                            "hash": "3dcdb3d6d9e3c040074440d3303767a3",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                            "nodeChildrenHash": "533a00cbf652e724a537fdbbfb13e286"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                "hash": "f2f3392a3573e372ced4e90fef41d3e1",
+                                                                                                "parentHash": "c59ceb093d0b1126c81d47d253f72c3d",
+                                                                                                "nodeChildrenHash": "1ece7517255ce8d3863bde99ce000500"
+                                                                                            }
+                                                                                        ],
+                                                                                        "false": [
+                                                                                            {
+                                                                                                "id": "038646a5b93e4169a5f8a575b19521ac",
+                                                                                                "componentType": "switch",
+                                                                                                "type": "condition",
+                                                                                                "name": "if(10d Relative Strength Index   of SQQQ < 31.00%)",
+                                                                                                "properties": {
+                                                                                                    "comparison": "<",
+                                                                                                    "x": {
+                                                                                                        "indicator": "Relative Strength Index",
+                                                                                                        "period": "10",
+                                                                                                        "source": "SQQQ"
+                                                                                                    },
+                                                                                                    "y": {
+                                                                                                        "indicator": "Fixed-Value",
+                                                                                                        "period": "31.00"
+                                                                                                    }
+                                                                                                },
+                                                                                                "branches": {
+                                                                                                    "true": [
+                                                                                                        {
+                                                                                                            "id": "efb1cecffd12444bb487fcb3d6c37b87",
+                                                                                                            "componentType": "largeTask",
+                                                                                                            "type": "stock",
+                                                                                                            "name": "BUY SQQQ",
+                                                                                                            "properties": {
+                                                                                                                "symbol": "SQQQ"
+                                                                                                            },
+                                                                                                            "hash": "55427d10551badb4a5d0631bc5846d48",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3"
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "false": [
+                                                                                                        {
+                                                                                                            "id": "04fdf1f39c1845c7b31baefdeab2759d",
+                                                                                                            "componentType": "switch",
+                                                                                                            "type": "condition",
+                                                                                                            "name": "if(70d Cumulative Return   of QQQ < -15.00%)",
+                                                                                                            "properties": {
+                                                                                                                "comparison": "<",
+                                                                                                                "x": {
+                                                                                                                    "indicator": "Cumulative Return",
+                                                                                                                    "period": "70",
+                                                                                                                    "source": "QQQ"
+                                                                                                                },
+                                                                                                                "y": {
+                                                                                                                    "indicator": "Fixed-Value",
+                                                                                                                    "period": "-15.00"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "branches": {
+                                                                                                                "true": [
+                                                                                                                    {
+                                                                                                                        "id": "8e72668732de4bd688d470d6d2ca1f50",
+                                                                                                                        "componentType": "switch",
+                                                                                                                        "type": "Sort",
+                                                                                                                        "name": "SortBy: 10d Relative Strength Index",
+                                                                                                                        "properties": {
+                                                                                                                            "select": {
+                                                                                                                                "function": "Top",
+                                                                                                                                "howmany": "1"
+                                                                                                                            },
+                                                                                                                            "sortby": {
+                                                                                                                                "function": "Relative Strength Index",
+                                                                                                                                "window": "10"
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "branches": {
+                                                                                                                            "Top-1": [
+                                                                                                                                {
+                                                                                                                                    "id": "5a93e438e50647d594ba91459903cdea",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY SPYU",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "SPYU"
+                                                                                                                                    },
+                                                                                                                                    "hash": "6116436ffd7b77c42ff03e8e05e99ad8",
+                                                                                                                                    "parentHash": "e9251989fbbf9e026f7e67217ee61417"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "e7de6e81436440b09c24ad723bd45d7e",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY SOXL",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "SOXL"
+                                                                                                                                    },
+                                                                                                                                    "hash": "7d0941e7bfb06eb7c13018a58a81e205",
+                                                                                                                                    "parentHash": "0a98a1564f3d7d56bcb3cacc03812e7e"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "41fc46c2-7231-443f-9252-d209d88e1189",
+                                                                                                                                    "componentType": "icon",
+                                                                                                                                    "type": "icon",
+                                                                                                                                    "name": "Interrupting icon",
+                                                                                                                                    "hash": "14ae4b762671770d55eb6ab4642e722b",
+                                                                                                                                    "parentHash": "79e2243309caae0a471d759003162360"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        "hash": "e7bdb1f312a372448761e41d4fc649fe",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                        "nodeChildrenHash": "f31e8b0ce347d78c742ae2b1c1711fc8"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "false": [
+                                                                                                                    {
+                                                                                                                        "id": "29cb79cdca074bc6aa25b6c9a2847bde",
+                                                                                                                        "componentType": "switch",
+                                                                                                                        "type": "Sort",
+                                                                                                                        "name": "SortBy: 15d Cumulative Return",
+                                                                                                                        "properties": {
+                                                                                                                            "select": {
+                                                                                                                                "function": "Top",
+                                                                                                                                "howmany": "2"
+                                                                                                                            },
+                                                                                                                            "sortby": {
+                                                                                                                                "function": "Cumulative Return",
+                                                                                                                                "window": "15"
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "branches": {
+                                                                                                                            "Top-2": [
+                                                                                                                                {
+                                                                                                                                    "id": "ef8c587bcf6c4f02b6e202869473baa2",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY SPY",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "SPY"
+                                                                                                                                    },
+                                                                                                                                    "hash": "443b31e0b6563c90c0313c5f83a6e87e",
+                                                                                                                                    "parentHash": "e9251989fbbf9e026f7e67217ee61417"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "e5a53737a18c441e97882f54bad9e7c7",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY QQQ",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "QQQ"
+                                                                                                                                    },
+                                                                                                                                    "hash": "e1a8bf77ec85d20a8506394f2a7ffdae",
+                                                                                                                                    "parentHash": "0a98a1564f3d7d56bcb3cacc03812e7e"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "e8c0bc4cf8fb49659b34ac2f965da345",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY DIA",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "DIA"
+                                                                                                                                    },
+                                                                                                                                    "hash": "a1c8eeaaa6c586ffe3b12b33191ff28f",
+                                                                                                                                    "parentHash": "79e2243309caae0a471d759003162360"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "f0a7a67f9d98442e93ce8bb520942ab4",
+                                                                                                                                    "componentType": "largeTask",
+                                                                                                                                    "type": "stock",
+                                                                                                                                    "name": "BUY XLP",
+                                                                                                                                    "properties": {
+                                                                                                                                        "symbol": "XLP"
+                                                                                                                                    },
+                                                                                                                                    "hash": "335f09837b404cdd17487c3034d9eb31",
+                                                                                                                                    "parentHash": "ec3f7e0362653139dba83f8ee25fe41f"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "id": "57a47dd4-91a8-4664-83be-0a05eb0fd0fb",
+                                                                                                                                    "componentType": "icon",
+                                                                                                                                    "type": "icon",
+                                                                                                                                    "name": "Interrupting icon",
+                                                                                                                                    "hash": "14ae4b762671770d55eb6ab4642e722b",
+                                                                                                                                    "parentHash": "09cad197fd86a98b38c4a7d446a486b9"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        "hash": "497c82594cc3c0425dea178150a3ad39",
+                                                                                                                        "parentHash": "d3f09c1ee274d776b05d9b08562b4028",
+                                                                                                                        "nodeChildrenHash": "64b5e40d877893f825e1093eaa2b4e67"
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            },
+                                                                                                            "hash": "ec759b66bef21bda4f3135e266dd62dc",
+                                                                                                            "parentHash": "b2d9b5c6efeaa2920777621159d9bdf3",
+                                                                                                            "nodeChildrenHash": "1335155e09a18e23fd23214f0e43426c"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                "hash": "bc493180188656d8b7b8064f34e6a4ed",
+                                                                                                "parentHash": "c59ceb093d0b1126c81d47d253f72c3d",
+                                                                                                "nodeChildrenHash": "2514c8ca46973b361a0ee71ea1047ac3"
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "hash": "c1eea86d059221153125d60473ee7076",
+                                                                                    "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                                                                    "nodeChildrenHash": "91a335ba96b37e36ba6ef8f21cb1218f"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "hash": "43cf14a01cee636dbf0286c20c477b12",
+                                                                        "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                                                        "nodeChildrenHash": "0abe4b2edf41902f0bad0a171f4c09c0"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "hash": "b50d734313491a3716fe44cee7d4bf70",
+                                                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                                                            "nodeChildrenHash": "a33a1f56dbce42cf599f669153cdd6b0"
+                                                        }
+                                                    ]
+                                                },
+                                                "hash": "ff3ed9ad8996215edd9fa1d68aad38e6",
+                                                "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                                                "nodeChildrenHash": "e000732979980090ab053b47f6dbc8e5"
+                                            }
+                                        ]
+                                    },
+                                    "hash": "14b7cd8707e529bb4044f2f0e5ac72db",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                                    "nodeChildrenHash": "a400cd04e5fe9ccee1d05f280ce8e55f"
+                                }
+                            ]
+                        },
+                        "hash": "db9a12a29e1284e45a65a5a110cfb964",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "31194352cc0522febe247f14a5dd044d"
+                    }
+                ]
+            },
+            "hash": "6ec33f7a1228cc06b463522e3753af66",
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "23de94ccbfb2f13d0074cd0d2b2bc779"
+        }
+    ],
+    "parentHash": "0"
+}

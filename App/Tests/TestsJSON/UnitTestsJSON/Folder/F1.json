@@ -1,0 +1,30 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "ee6ce635e9b5a32218a5ce37f899da2f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "a02b9347b716c66e95ba455fda7852b7",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "95919ab7f181bb287bed3edd5fa0b3fa",
+          "componentType": "largeTask",
+          "type": "stock",
+          "name": "Buy Order AAPL",
+          "properties": {
+            "isInvalid": false,
+            "symbol": "AAPL"
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

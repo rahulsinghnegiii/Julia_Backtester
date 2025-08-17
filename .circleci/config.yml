@@ -1,0 +1,86 @@
+version: 2.1
+
+orbs:
+  discord: antonioned/discord@0.1.0
+  docker: circleci/docker@2.1.1
+
+
+parameters:
+  is_pull_request:
+    type: boolean
+    default: false
+
+jobs:
+  setup_and_check:
+    docker:
+      - image: julia:1.10.2
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            julia --project=./App -e 'using Pkg; Pkg.add("JET")'
+            julia --project=./App -e 'using Pkg; Pkg.precompile()'
+      - run:
+          name: Verify JET installation
+          command: julia --project=./App -e 'using JET'
+      - run:
+          name: Pre-Push Check
+          command: |
+            julia --project=./App -e 'using Pkg; Pkg.activate("./App"); Pkg.instantiate();'
+            julia --project=./App --color=yes ../Scripts/Types&ErrorCheck/CheckFilesTypes&ErrorWorkflow.jl
+      - discord/status:
+          success_message: "${CIRCLE_PROJECT_REPONAME} - types_error_check - success"
+          failure_message: "${CIRCLE_PROJECT_REPONAME} - types_error_check - failure"
+          webhook: ${SUCCESS_WEBHOOK}
+          fail_only: false
+
+  format:
+    docker:
+      - image: julia:1.10.2
+    steps:
+      - checkout
+      - run:
+          name: Install JuliaFormatter
+          command: julia -e 'using Pkg; Pkg.add("JuliaFormatter")'
+      - run:
+          name: Format code
+          command: julia -e 'using JuliaFormatter; format(".", BlueStyle(); verbose=true)'
+      - run:
+          name: Check for formatting changes
+          command: |
+            if [[ `git status --porcelain` ]]; then
+              echo "Code formatting changes detected. Please run JuliaFormatter locally and commit the changes."
+              exit 1
+            fi
+      - discord/status:
+          success_message: "${CIRCLE_PROJECT_REPONAME} - format - success"
+          failure_message: "${CIRCLE_PROJECT_REPONAME} - format - failure"
+          webhook: ${SUCCESS_WEBHOOK}
+          fail_only: false
+
+workflows:
+  version: 2
+  pull_request:
+    when:
+      equal: [true, << pipeline.parameters.is_pull_request >>]
+    jobs:
+      - setup_and_check
+      - format
+
+  # Add a default workflow that always runs
+
+  always_run:
+    jobs:
+      - setup_and_check:
+          filters:
+            branches:
+              ignore: master
+      - format:
+          filters:
+            branches:
+              ignore: master
+
+
+
+

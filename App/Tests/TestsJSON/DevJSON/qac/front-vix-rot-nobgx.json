@@ -1,0 +1,56 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "33f8e1f9-0102-4cb1-a2f7-5456e09a0aa4",
+    "id": "33f8e1f9-0102-4cb1-a2f7-5456e09a0aa4",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "b6da325894704d8882d5c49b3d697513",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return-5",
+      "properties": {
+        "select": { "function": "Bottom", "howmany": "2" },
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "5"
+        }
+      },
+      "branches": {
+        "Bottom-2": [
+          {
+            "id": "85298941b3fe481ca5f27019982abb5d",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TMV",
+            "properties": { "symbol": "TMV" }
+          },
+          {
+            "id": "3f38938b4af34017bec763616b861210",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SVXY",
+            "properties": { "symbol": "SVXY" }
+          },
+          {
+            "id": "5c889c7440b74e83a42b7724bcd4597c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order VIXM",
+            "properties": { "symbol": "VIXM" }
+          },
+          {
+            "id": "81162805-0a9d-4be6-a92c-98906a331a34",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

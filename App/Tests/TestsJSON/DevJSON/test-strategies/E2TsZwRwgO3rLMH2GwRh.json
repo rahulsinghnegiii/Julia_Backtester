@@ -1,0 +1,2551 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "afd582c5-adfe-4443-8720-307d223f1cf7",
+    "id": "afd582c5-adfe-4443-8720-307d223f1cf7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "9eac7fbef0514ff6b2430086b80b05e9",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(current price SPY \u003e Moving Average of Price SPY 200)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "current price",
+          "source": "SPY"
+        },
+        "y": {
+          "indicator": "Moving Average of Price",
+          "period": "200",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "30a65d64d7dc4ed7bd22ffbb448f455d",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index TQQQ  10 \u003e 79.00)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "TQQQ"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "79.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "7404cef8b143429ba6eb789828b91156",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order UVXY",
+                  "properties": {
+                    "symbol": "UVXY"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "fefceb1c787848f6a050d644daf7c962",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Relative Strength Index SPXL  10 \u003e 79.00)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "SPXL"
+                    },
+                    "y": {
+                      "indicator": "constant",
+                      "period": "79.00"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "534225e0c87a4266b37050136b411fe9",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order UVXY",
+                        "properties": {
+                          "symbol": "UVXY"
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "7942fd108a584a38ac6a96e803506887",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Layer 2: Hedged Bull (v 1.1)",
+                        "sequence": [
+                          {
+                            "id": "4f913e66e46d4d8599744964111048cc",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Max Drawdown QQQ  10 \u003e 6.00)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Max Drawdown",
+                                "period": "10",
+                                "source": "QQQ"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "6.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "50adc8e0241042449e651e0364a8a044",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                  "sequence": [
+                                    {
+                                      "id": "129735f7fced442095d171c7a427ee4c",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Inverse Volatility",
+                                      "name": "Inverse Volatility",
+                                      "properties": {
+                                        "period": "30",
+                                        "values": {
+                                          "a": 100
+                                        }
+                                      },
+                                      "branches": {
+                                        "a": [
+                                          {
+                                            "id": "d8408e2dff2840b381a131d24c000a27",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UUP",
+                                            "properties": {
+                                              "symbol": "UUP"
+                                            }
+                                          }
+                                        ],
+                                        "b": [
+                                          {
+                                            "id": "0eb8ffdd99df4985908225aa01bf68a5",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order GLD",
+                                            "properties": {
+                                              "symbol": "GLD"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "79111aa37d8145538981394d9c45f7ba",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Max Drawdown TMF  10 \u003e 7.00)",
+                                  "properties": {
+                                    "comparison": "\u003e",
+                                    "x": {
+                                      "indicator": "Max Drawdown",
+                                      "period": "10",
+                                      "source": "TMF"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "7.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "64904b07f7cf46c8abebbf2a220a6986",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                        "sequence": [
+                                          {
+                                            "id": "246d5b4eb0334afc8ddb6fd8e0304ba8",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Inverse Volatility",
+                                            "name": "Inverse Volatility",
+                                            "properties": {
+                                              "period": "30",
+                                              "values": {
+                                                "a": 100
+                                              }
+                                            },
+                                            "branches": {
+                                              "a": [
+                                                {
+                                                  "id": "fd313fae7802407a96e63c6da40a71ee",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UUP",
+                                                  "properties": {
+                                                    "symbol": "UUP"
+                                                  }
+                                                }
+                                              ],
+                                              "b": [
+                                                {
+                                                  "id": "4bb99d4470f141c79d4dabb4d3b6ee57",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "71f90704f3e34189a560037c0e0f97ba",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "Layer 3: Bull Market (v 1.1) ",
+                                        "sequence": [
+                                          {
+                                            "id": "5789c1b33c92497ba9377a94d2375f5b",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(current price SPY \u003e Exponential Moving Average of Price SPY 200)",
+                                            "properties": {
+                                              "comparison": "\u003e",
+                                              "x": {
+                                                "indicator": "current price",
+                                                "source": "SPY"
+                                              },
+                                              "y": {
+                                                "indicator": "Exponential Moving Average of Price",
+                                                "period": "200",
+                                                "source": "SPY"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "0bb8f906ee0c4f6aae10db6007360203",
+                                                  "componentType": "switch",
+                                                  "type": "condition",
+                                                  "name": "if(Relative Strength Index TQQQ  10 \u003e 79.00)",
+                                                  "properties": {
+                                                    "comparison": "\u003e",
+                                                    "x": {
+                                                      "indicator": "Relative Strength Index",
+                                                      "period": "10",
+                                                      "source": "TQQQ"
+                                                    },
+                                                    "y": {
+                                                      "indicator": "constant",
+                                                      "period": "79.00"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "true": [
+                                                      {
+                                                        "id": "e8944374c3aa430a8764198de665b5fc",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order UVXY",
+                                                        "properties": {
+                                                          "symbol": "UVXY"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "false": [
+                                                      {
+                                                        "id": "7fc9ffd1e56447abb9f6e91476ab8e8e",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index SPXL  10 \u003e 79.00)",
+                                                        "properties": {
+                                                          "comparison": "\u003e",
+                                                          "x": {
+                                                            "indicator": "Relative Strength Index",
+                                                            "period": "10",
+                                                            "source": "SPXL"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "79.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "5f632461eef745a7b42134418401ee85",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order UVXY",
+                                                              "properties": {
+                                                                "symbol": "UVXY"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "9bf4c0aa932e48aba7b928ebdd0ff9bb",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(Cumulative Return QQQ  5 \u003c -6.00)",
+                                                              "properties": {
+                                                                "comparison": "\u003c",
+                                                                "x": {
+                                                                  "indicator": "Cumulative Return",
+                                                                  "period": "5",
+                                                                  "source": "QQQ"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "constant",
+                                                                  "period": "-6.00"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "b83ad2f680344e6f8333c88a2c4574dc",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(Cumulative Return TQQQ  1 \u003e 5.00)",
+                                                                    "properties": {
+                                                                      "comparison": "\u003e",
+                                                                      "x": {
+                                                                        "indicator": "Cumulative Return",
+                                                                        "period": "1",
+                                                                        "source": "TQQQ"
+                                                                      },
+                                                                      "y": {
+                                                                        "indicator": "constant",
+                                                                        "period": "5.00"
+                                                                      }
+                                                                    },
+                                                                    "branches": {
+                                                                      "true": [
+                                                                        {
+                                                                          "id": "e12b361fb5714468949f7be1ec799307",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "67ff83efd52944b5a467b56cb18717c5",
+                                                                              "componentType": "switch",
+                                                                              "type": "allocation",
+                                                                              "function": "Inverse Volatility",
+                                                                              "name": "Inverse Volatility",
+                                                                              "properties": {
+                                                                                "period": "30",
+                                                                                "values": {
+                                                                                  "a": 100
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "a": [
+                                                                                  {
+                                                                                    "id": "eb86b515915d474da0f813b1b2f4019b",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order UUP",
+                                                                                    "properties": {
+                                                                                      "symbol": "UUP"
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "b": [
+                                                                                  {
+                                                                                    "id": "edf278b5845c4e45a05eae0b72b147a4",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order GLD",
+                                                                                    "properties": {
+                                                                                      "symbol": "GLD"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ],
+                                                                      "false": [
+                                                                        {
+                                                                          "id": "7b909212c1214a8c9f399d0853e61688",
+                                                                          "componentType": "switch",
+                                                                          "type": "condition",
+                                                                          "name": "if(Relative Strength Index TQQQ  10 \u003e 31.00)",
+                                                                          "properties": {
+                                                                            "comparison": "\u003e",
+                                                                            "x": {
+                                                                              "indicator": "Relative Strength Index",
+                                                                              "period": "10",
+                                                                              "source": "TQQQ"
+                                                                            },
+                                                                            "y": {
+                                                                              "indicator": "constant",
+                                                                              "period": "31.00"
+                                                                            }
+                                                                          },
+                                                                          "branches": {
+                                                                            "true": [
+                                                                              {
+                                                                                "id": "c2a8877f47bb4c11a000fd81b04d646e",
+                                                                                "componentType": "folder",
+                                                                                "type": "folder",
+                                                                                "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                                "sequence": [
+                                                                                  {
+                                                                                    "id": "9276aea529a64dd58aa43d07630f8eba",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "allocation",
+                                                                                    "function": "Inverse Volatility",
+                                                                                    "name": "Inverse Volatility",
+                                                                                    "properties": {
+                                                                                      "period": "30",
+                                                                                      "values": {
+                                                                                        "a": 100
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "a": [
+                                                                                        {
+                                                                                          "id": "ba9a6238ac584f52b1d61fb3a7db4dd1",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order UUP",
+                                                                                          "properties": {
+                                                                                            "symbol": "UUP"
+                                                                                          }
+                                                                                        }
+                                                                                      ],
+                                                                                      "b": [
+                                                                                        {
+                                                                                          "id": "0747f9db3cd844aa805821f33cd6ed5d",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order GLD",
+                                                                                          "properties": {
+                                                                                            "symbol": "GLD"
+                                                                                          }
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ],
+                                                                            "false": [
+                                                                              {
+                                                                                "id": "4519e3b61eda4c559b2b243f79fd6653",
+                                                                                "componentType": "folder",
+                                                                                "type": "folder",
+                                                                                "name": "Fund Surf",
+                                                                                "sequence": [
+                                                                                  {
+                                                                                    "id": "a196950217a54703a7cc99a574c906ea",
+                                                                                    "componentType": "switch",
+                                                                                    "type": "Sort",
+                                                                                    "name": "SortBy Relative Strength Index-20",
+                                                                                    "properties": {
+                                                                                      "select": {
+                                                                                        "function": "Bottom",
+                                                                                        "howmany": "1"
+                                                                                      },
+                                                                                      "sortby": {
+                                                                                        "function": "Relative Strength Index",
+                                                                                        "window": "20"
+                                                                                      }
+                                                                                    },
+                                                                                    "branches": {
+                                                                                      "Bottom-1": [
+                                                                                        {
+                                                                                          "id": "25ba9fd681344e9ebb7ffe119d79bab7",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SHY",
+                                                                                          "properties": {
+                                                                                            "symbol": "SHY"
+                                                                                          }
+                                                                                        },
+                                                                                        {
+                                                                                          "id": "93378f40df9549b784e3234b95ac7b6b",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order TQQQ",
+                                                                                          "properties": {
+                                                                                            "symbol": "TQQQ"
+                                                                                          }
+                                                                                        },
+                                                                                        {
+                                                                                          "id": "a8064a26c0d3421a93d57382de520210",
+                                                                                          "componentType": "largeTask",
+                                                                                          "type": "stock",
+                                                                                          "name": "Buy Order SPXL",
+                                                                                          "properties": {
+                                                                                            "symbol": "SPXL"
+                                                                                          }
+                                                                                        },
+                                                                                        {
+                                                                                          "id": "37fb924e-7014-468e-b010-3f87e827995d",
+                                                                                          "componentType": "icon",
+                                                                                          "type": "icon",
+                                                                                          "name": "Interrupting icon"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "f30413a58c2741e58bf40bb1b627b55e",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(Relative Strength Index QQQ  10 \u003c 31.00)",
+                                                                    "properties": {
+                                                                      "comparison": "\u003c",
+                                                                      "x": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "10",
+                                                                        "source": "QQQ"
+                                                                      },
+                                                                      "y": {
+                                                                        "indicator": "constant",
+                                                                        "period": "31.00"
+                                                                      }
+                                                                    },
+                                                                    "branches": {
+                                                                      "true": [
+                                                                        {
+                                                                          "id": "ba60bd9839c64f22813609d318a81d46",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Fund Surf",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "fbf729d216fd495da7038e6712e90e52",
+                                                                              "componentType": "switch",
+                                                                              "type": "Sort",
+                                                                              "name": "SortBy Relative Strength Index-20",
+                                                                              "properties": {
+                                                                                "select": {
+                                                                                  "function": "Bottom",
+                                                                                  "howmany": "1"
+                                                                                },
+                                                                                "sortby": {
+                                                                                  "function": "Relative Strength Index",
+                                                                                  "window": "20"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "Bottom-1": [
+                                                                                  {
+                                                                                    "id": "d8ddd7d329ae4ec1b29056561079396a",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SHY",
+                                                                                    "properties": {
+                                                                                      "symbol": "SHY"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "84ae8ca373b0453490f6e349523cd731",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order TQQQ",
+                                                                                    "properties": {
+                                                                                      "symbol": "TQQQ"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "5f6fb915af6e469c9284e81917dace99",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SPXL",
+                                                                                    "properties": {
+                                                                                      "symbol": "SPXL"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "98a6e147-48c5-48b5-89df-c846d482e16e",
+                                                                                    "componentType": "icon",
+                                                                                    "type": "icon",
+                                                                                    "name": "Interrupting icon"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ],
+                                                                      "false": [
+                                                                        {
+                                                                          "id": "e81bad02dea14afaab1fb84c04d0330a",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Fund Surf (Non-Levered)",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "83e1e430d712408a8380d1f2d2f7d7c9",
+                                                                              "componentType": "switch",
+                                                                              "type": "Sort",
+                                                                              "name": "SortBy Relative Strength Index-20",
+                                                                              "properties": {
+                                                                                "select": {
+                                                                                  "function": "Bottom",
+                                                                                  "howmany": "1"
+                                                                                },
+                                                                                "sortby": {
+                                                                                  "function": "Relative Strength Index",
+                                                                                  "window": "20"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "Bottom-1": [
+                                                                                  {
+                                                                                    "id": "d2d76235a9e34650ad33efd304238ba9",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order QQQ",
+                                                                                    "properties": {
+                                                                                      "symbol": "QQQ"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "d754136830a74952ab23202be66f248c",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SPY",
+                                                                                    "properties": {
+                                                                                      "symbol": "SPY"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "b9b3c727-fa01-4350-aae0-9ca682aa7a79",
+                                                                                    "componentType": "icon",
+                                                                                    "type": "icon",
+                                                                                    "name": "Interrupting icon"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "ccd5d9a7dd694e96865336089dede647",
+                                                  "componentType": "switch",
+                                                  "type": "condition",
+                                                  "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+                                                  "properties": {
+                                                    "comparison": "\u003c",
+                                                    "x": {
+                                                      "indicator": "Relative Strength Index",
+                                                      "period": "10",
+                                                      "source": "TQQQ"
+                                                    },
+                                                    "y": {
+                                                      "indicator": "constant",
+                                                      "period": "31.00"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "true": [
+                                                      {
+                                                        "id": "7706a61794eb4cf0830cb059b4bac154",
+                                                        "componentType": "folder",
+                                                        "type": "folder",
+                                                        "name": "Fund Surf",
+                                                        "sequence": [
+                                                          {
+                                                            "id": "298efe72b9ff4d86978af178945ac771",
+                                                            "componentType": "switch",
+                                                            "type": "Sort",
+                                                            "name": "SortBy Relative Strength Index-20",
+                                                            "properties": {
+                                                              "select": {
+                                                                "function": "Bottom",
+                                                                "howmany": "1"
+                                                              },
+                                                              "sortby": {
+                                                                "function": "Relative Strength Index",
+                                                                "window": "20"
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "Bottom-1": [
+                                                                {
+                                                                  "id": "52e7845fcfdf466aa1f67426309c2669",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SHY",
+                                                                  "properties": {
+                                                                    "symbol": "SHY"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "df920143ec654618b6d0cbccc00957c5",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order TQQQ",
+                                                                  "properties": {
+                                                                    "symbol": "TQQQ"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "1c59364520e94e61951869d8a6f4c5a4",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SPXL",
+                                                                  "properties": {
+                                                                    "symbol": "SPXL"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "7411885b-12db-4ac3-a6e0-83979c47d755",
+                                                                  "componentType": "icon",
+                                                                  "type": "icon",
+                                                                  "name": "Interrupting icon"
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "false": [
+                                                      {
+                                                        "id": "80e529623a514a08b77e30170b764b7f",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index UVXY  10 \u003e 74.00)",
+                                                        "properties": {
+                                                          "comparison": "\u003e",
+                                                          "x": {
+                                                            "indicator": "Relative Strength Index",
+                                                            "period": "10",
+                                                            "source": "UVXY"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "74.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "b3a42e3537214ecb8154303da1f98d4f",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(Relative Strength Index UVXY  10 \u003e 84.00)",
+                                                              "properties": {
+                                                                "comparison": "\u003e",
+                                                                "x": {
+                                                                  "indicator": "Relative Strength Index",
+                                                                  "period": "10",
+                                                                  "source": "UVXY"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "constant",
+                                                                  "period": "84.00"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "b74a3b7786714c1f9038d60afdd403e4",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "5506fa051f114aa4a915bcb9e2587862",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Inverse Volatility",
+                                                                        "name": "Inverse Volatility",
+                                                                        "properties": {
+                                                                          "period": "30",
+                                                                          "values": {
+                                                                            "a": 100
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a": [
+                                                                            {
+                                                                              "id": "4971ff029ff64cf782b88aa8b287465e",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order UUP",
+                                                                              "properties": {
+                                                                                "symbol": "UUP"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b": [
+                                                                            {
+                                                                              "id": "65d50e88b36a48ceb490df0128459bc4",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order GLD",
+                                                                              "properties": {
+                                                                                "symbol": "GLD"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "0946e9748f0a40f49cb2a4512152bd46",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order UVXY",
+                                                                    "properties": {
+                                                                      "symbol": "UVXY"
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "6110da83c0ec46f18c40cd1447153c2c",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(current price TQQQ \u003e Moving Average of Price TQQQ 20)",
+                                                              "properties": {
+                                                                "comparison": "\u003e",
+                                                                "x": {
+                                                                  "indicator": "current price",
+                                                                  "source": "TQQQ"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "Moving Average of Price",
+                                                                  "period": "20",
+                                                                  "source": "TQQQ"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "878f376551074ba199c9cd00de84434c",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(Relative Strength Index SQQQ  10 \u003c 31.00)",
+                                                                    "properties": {
+                                                                      "comparison": "\u003c",
+                                                                      "x": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "10",
+                                                                        "source": "SQQQ"
+                                                                      },
+                                                                      "y": {
+                                                                        "indicator": "constant",
+                                                                        "period": "31.00"
+                                                                      }
+                                                                    },
+                                                                    "branches": {
+                                                                      "true": [
+                                                                        {
+                                                                          "id": "1f95895b0b9e4e729857d4b238a60b26",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "57bef98afc074d73873bdb76f1cc68b8",
+                                                                              "componentType": "switch",
+                                                                              "type": "allocation",
+                                                                              "function": "Inverse Volatility",
+                                                                              "name": "Inverse Volatility",
+                                                                              "properties": {
+                                                                                "period": "30",
+                                                                                "values": {
+                                                                                  "a": 100
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "a": [
+                                                                                  {
+                                                                                    "id": "c2fcc95a9f9040788f9ece61dc48954a",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order UUP",
+                                                                                    "properties": {
+                                                                                      "symbol": "UUP"
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "b": [
+                                                                                  {
+                                                                                    "id": "0de9cf8f963d4b01a4ee58df992a41a8",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order GLD",
+                                                                                    "properties": {
+                                                                                      "symbol": "GLD"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ],
+                                                                      "false": [
+                                                                        {
+                                                                          "id": "48562f95d656429eac893386cc61f952",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Fund Surf",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "48454ebc3035472da97ead7679fdb832",
+                                                                              "componentType": "switch",
+                                                                              "type": "Sort",
+                                                                              "name": "SortBy Relative Strength Index-20",
+                                                                              "properties": {
+                                                                                "select": {
+                                                                                  "function": "Bottom",
+                                                                                  "howmany": "1"
+                                                                                },
+                                                                                "sortby": {
+                                                                                  "function": "Relative Strength Index",
+                                                                                  "window": "20"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "Bottom-1": [
+                                                                                  {
+                                                                                    "id": "c229786e2c954581a48aa913c30b9f3c",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SHY",
+                                                                                    "properties": {
+                                                                                      "symbol": "SHY"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "fefdc0bd546947c586d6e613769eb16c",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order TQQQ",
+                                                                                    "properties": {
+                                                                                      "symbol": "TQQQ"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "ce56a0fcf4b14ebba3be709013da8a39",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SPXL",
+                                                                                    "properties": {
+                                                                                      "symbol": "SPXL"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "cf65ebbf-b411-4c21-8b63-a26f170b17a4",
+                                                                                    "componentType": "icon",
+                                                                                    "type": "icon",
+                                                                                    "name": "Interrupting icon"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "88aa471a376341459913123c404b82e9",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "393d302820694714ae6d148ee808c06d",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Inverse Volatility",
+                                                                        "name": "Inverse Volatility",
+                                                                        "properties": {
+                                                                          "period": "30",
+                                                                          "values": {
+                                                                            "a": 100
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a": [
+                                                                            {
+                                                                              "id": "6d72a377078349d0bf1439759a02e45b",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order UUP",
+                                                                              "properties": {
+                                                                                "symbol": "UUP"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b": [
+                                                                            {
+                                                                              "id": "127bad974c02446cbee197b11674564a",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order GLD",
+                                                                              "properties": {
+                                                                                "symbol": "GLD"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "f00f55b86f714c9098b2e734501d8a5d",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "TQQQ"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "31.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "e0fccd852d694cfb85e18c6bcf7f2cb7",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Layer 2: Hedged Bull (v 1.1)",
+                  "sequence": [
+                    {
+                      "id": "f1deeee458774a54b4c176cf32ca6ac6",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Max Drawdown QQQ  10 \u003e 6.00)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Max Drawdown",
+                          "period": "10",
+                          "source": "QQQ"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "6.00"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "b6dc934aa58641898ac2031ca0c2821f",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                            "sequence": [
+                              {
+                                "id": "0e58b34eb874436890a8d828325feda2",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Inverse Volatility",
+                                "name": "Inverse Volatility",
+                                "properties": {
+                                  "period": "30",
+                                  "values": {
+                                    "a": 100
+                                  }
+                                },
+                                "branches": {
+                                  "a": [
+                                    {
+                                      "id": "929aff5a1bf54b13bbe5585d4b1f9484",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order UUP",
+                                      "properties": {
+                                        "symbol": "UUP"
+                                      }
+                                    }
+                                  ],
+                                  "b": [
+                                    {
+                                      "id": "111b46769b574fa0a39590122ae59e8e",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order GLD",
+                                      "properties": {
+                                        "symbol": "GLD"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "34dc50cb8856463d8b3f73b81cf32e93",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Max Drawdown TMF  10 \u003e 7.00)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Max Drawdown",
+                                "period": "10",
+                                "source": "TMF"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "7.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "93e7f33ef7414941bfc8e98f67190b0b",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                  "sequence": [
+                                    {
+                                      "id": "dcd20f749be3426ba4cf808b2d93205f",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Inverse Volatility",
+                                      "name": "Inverse Volatility",
+                                      "properties": {
+                                        "period": "30",
+                                        "values": {
+                                          "a": 100
+                                        }
+                                      },
+                                      "branches": {
+                                        "a": [
+                                          {
+                                            "id": "2e6ba713c4a6423eb0375f4f11a1053c",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UUP",
+                                            "properties": {
+                                              "symbol": "UUP"
+                                            }
+                                          }
+                                        ],
+                                        "b": [
+                                          {
+                                            "id": "3b0dea375a54456097289221ce301618",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order GLD",
+                                            "properties": {
+                                              "symbol": "GLD"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "030aed17d3a64ac08c3a118724c9eb7f",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Layer 3: Bull Market (v 1.1) ",
+                                  "sequence": [
+                                    {
+                                      "id": "68467b220936458c832314843dc2404b",
+                                      "componentType": "switch",
+                                      "type": "condition",
+                                      "name": "if(current price SPY \u003e Exponential Moving Average of Price SPY 200)",
+                                      "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                          "indicator": "current price",
+                                          "source": "SPY"
+                                        },
+                                        "y": {
+                                          "indicator": "Exponential Moving Average of Price",
+                                          "period": "200",
+                                          "source": "SPY"
+                                        }
+                                      },
+                                      "branches": {
+                                        "true": [
+                                          {
+                                            "id": "d5e01bef89a24349bbf251d36c086c36",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index TQQQ  10 \u003e 79.00)",
+                                            "properties": {
+                                              "comparison": "\u003e",
+                                              "x": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "10",
+                                                "source": "TQQQ"
+                                              },
+                                              "y": {
+                                                "indicator": "constant",
+                                                "period": "79.00"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "67c698746cdb4453a97f2c221883626b",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UVXY",
+                                                  "properties": {
+                                                    "symbol": "UVXY"
+                                                  }
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "aff795ebae7d45ce8955667e913db9d8",
+                                                  "componentType": "switch",
+                                                  "type": "condition",
+                                                  "name": "if(Relative Strength Index SPXL  10 \u003e 79.00)",
+                                                  "properties": {
+                                                    "comparison": "\u003e",
+                                                    "x": {
+                                                      "indicator": "Relative Strength Index",
+                                                      "period": "10",
+                                                      "source": "SPXL"
+                                                    },
+                                                    "y": {
+                                                      "indicator": "constant",
+                                                      "period": "79.00"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "true": [
+                                                      {
+                                                        "id": "8544458bfb2049d2becca09c2805ef4a",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order UVXY",
+                                                        "properties": {
+                                                          "symbol": "UVXY"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "false": [
+                                                      {
+                                                        "id": "37acddc8e44c4b6ca13331f52445ff27",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Cumulative Return QQQ  5 \u003c -6.00)",
+                                                        "properties": {
+                                                          "comparison": "\u003c",
+                                                          "x": {
+                                                            "indicator": "Cumulative Return",
+                                                            "period": "5",
+                                                            "source": "QQQ"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "-6.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "e8ec6f8ebb1f4bb790d79a706bd04d03",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(Cumulative Return TQQQ  1 \u003e 5.00)",
+                                                              "properties": {
+                                                                "comparison": "\u003e",
+                                                                "x": {
+                                                                  "indicator": "Cumulative Return",
+                                                                  "period": "1",
+                                                                  "source": "TQQQ"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "constant",
+                                                                  "period": "5.00"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "8f4efed29f0c47baacbe2e67f10f1715",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "b4f7f1c46e444f508fb46d3877a8a9a2",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Inverse Volatility",
+                                                                        "name": "Inverse Volatility",
+                                                                        "properties": {
+                                                                          "period": "30",
+                                                                          "values": {
+                                                                            "a": 100
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a": [
+                                                                            {
+                                                                              "id": "7002874fad904d95a2ee881c343edb96",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order UUP",
+                                                                              "properties": {
+                                                                                "symbol": "UUP"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b": [
+                                                                            {
+                                                                              "id": "914dc19c6a214680a8f7c5c2447d7dfc",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order GLD",
+                                                                              "properties": {
+                                                                                "symbol": "GLD"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "cc9728fc32704771801d3e82722734e3",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(Relative Strength Index TQQQ  10 \u003e 31.00)",
+                                                                    "properties": {
+                                                                      "comparison": "\u003e",
+                                                                      "x": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "10",
+                                                                        "source": "TQQQ"
+                                                                      },
+                                                                      "y": {
+                                                                        "indicator": "constant",
+                                                                        "period": "31.00"
+                                                                      }
+                                                                    },
+                                                                    "branches": {
+                                                                      "true": [
+                                                                        {
+                                                                          "id": "ef1f5c08605841b1bda3cf00382d430d",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "5f8f2a5b4c2a4533a7aa9b7d5f148f80",
+                                                                              "componentType": "switch",
+                                                                              "type": "allocation",
+                                                                              "function": "Inverse Volatility",
+                                                                              "name": "Inverse Volatility",
+                                                                              "properties": {
+                                                                                "period": "30",
+                                                                                "values": {
+                                                                                  "a": 100
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "a": [
+                                                                                  {
+                                                                                    "id": "efca36bdd3e64527a92857e77ec0ebb2",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order UUP",
+                                                                                    "properties": {
+                                                                                      "symbol": "UUP"
+                                                                                    }
+                                                                                  }
+                                                                                ],
+                                                                                "b": [
+                                                                                  {
+                                                                                    "id": "21b4d05a8e0a4600941ca9002aea6130",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order GLD",
+                                                                                    "properties": {
+                                                                                      "symbol": "GLD"
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ],
+                                                                      "false": [
+                                                                        {
+                                                                          "id": "422075f0847749d7afd8ba4e5fc26a19",
+                                                                          "componentType": "folder",
+                                                                          "type": "folder",
+                                                                          "name": "Fund Surf",
+                                                                          "sequence": [
+                                                                            {
+                                                                              "id": "2334fb548ca14a52a2e58df3d00c357f",
+                                                                              "componentType": "switch",
+                                                                              "type": "Sort",
+                                                                              "name": "SortBy Relative Strength Index-20",
+                                                                              "properties": {
+                                                                                "select": {
+                                                                                  "function": "Bottom",
+                                                                                  "howmany": "1"
+                                                                                },
+                                                                                "sortby": {
+                                                                                  "function": "Relative Strength Index",
+                                                                                  "window": "20"
+                                                                                }
+                                                                              },
+                                                                              "branches": {
+                                                                                "Bottom-1": [
+                                                                                  {
+                                                                                    "id": "4ec9b5bf5ca4404b9383458c7a6c3d49",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SHY",
+                                                                                    "properties": {
+                                                                                      "symbol": "SHY"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "d17bf2bd97ee47a38f6acc4fbb3ae200",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order TQQQ",
+                                                                                    "properties": {
+                                                                                      "symbol": "TQQQ"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "41fb1360a315477b8524db153af5f2a3",
+                                                                                    "componentType": "largeTask",
+                                                                                    "type": "stock",
+                                                                                    "name": "Buy Order SPXL",
+                                                                                    "properties": {
+                                                                                      "symbol": "SPXL"
+                                                                                    }
+                                                                                  },
+                                                                                  {
+                                                                                    "id": "54911271-0d4f-4a82-b586-c89bf19a0379",
+                                                                                    "componentType": "icon",
+                                                                                    "type": "icon",
+                                                                                    "name": "Interrupting icon"
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "43be50cf897f45288e03919ff8bd6cef",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(Relative Strength Index QQQ  10 \u003c 31.00)",
+                                                              "properties": {
+                                                                "comparison": "\u003c",
+                                                                "x": {
+                                                                  "indicator": "Relative Strength Index",
+                                                                  "period": "10",
+                                                                  "source": "QQQ"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "constant",
+                                                                  "period": "31.00"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "7e181afa8db346f38dd1c82f86219d7f",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Fund Surf",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "789b5e13ac134277b83468b649742c21",
+                                                                        "componentType": "switch",
+                                                                        "type": "Sort",
+                                                                        "name": "SortBy Relative Strength Index-20",
+                                                                        "properties": {
+                                                                          "select": {
+                                                                            "function": "Bottom",
+                                                                            "howmany": "1"
+                                                                          },
+                                                                          "sortby": {
+                                                                            "function": "Relative Strength Index",
+                                                                            "window": "20"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "Bottom-1": [
+                                                                            {
+                                                                              "id": "16277a1b6ecc433a9c5ac3405ea97620",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SHY",
+                                                                              "properties": {
+                                                                                "symbol": "SHY"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "637d15fff3744b049782073c76fd045d",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order TQQQ",
+                                                                              "properties": {
+                                                                                "symbol": "TQQQ"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "865184fc5828471c91c6a1b4019bd3e3",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SPXL",
+                                                                              "properties": {
+                                                                                "symbol": "SPXL"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "8ca242b6-c10a-4d26-9c7c-aa05ce16b825",
+                                                                              "componentType": "icon",
+                                                                              "type": "icon",
+                                                                              "name": "Interrupting icon"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "ac2f910415774e4791e321441749c3c2",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Fund Surf (Non-Levered)",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "28c0840bf7a9432790987187f58948b0",
+                                                                        "componentType": "switch",
+                                                                        "type": "Sort",
+                                                                        "name": "SortBy Relative Strength Index-20",
+                                                                        "properties": {
+                                                                          "select": {
+                                                                            "function": "Bottom",
+                                                                            "howmany": "1"
+                                                                          },
+                                                                          "sortby": {
+                                                                            "function": "Relative Strength Index",
+                                                                            "window": "20"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "Bottom-1": [
+                                                                            {
+                                                                              "id": "250c88dd375d426d8a07273f3af83d93",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order QQQ",
+                                                                              "properties": {
+                                                                                "symbol": "QQQ"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "88462047a8d3443cbec8bbe38c58be61",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SPY",
+                                                                              "properties": {
+                                                                                "symbol": "SPY"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "fbd2a564-6b7e-4889-a661-480ccf882f57",
+                                                                              "componentType": "icon",
+                                                                              "type": "icon",
+                                                                              "name": "Interrupting icon"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "false": [
+                                          {
+                                            "id": "7094438adaa04d9fb6fd8446d659e3d8",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+                                            "properties": {
+                                              "comparison": "\u003c",
+                                              "x": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "10",
+                                                "source": "TQQQ"
+                                              },
+                                              "y": {
+                                                "indicator": "constant",
+                                                "period": "31.00"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "4a4229a5053c4fe29786bdb7217f8dd5",
+                                                  "componentType": "folder",
+                                                  "type": "folder",
+                                                  "name": "Fund Surf",
+                                                  "sequence": [
+                                                    {
+                                                      "id": "77d6fffc534a4a71adea07596199c5e4",
+                                                      "componentType": "switch",
+                                                      "type": "Sort",
+                                                      "name": "SortBy Relative Strength Index-20",
+                                                      "properties": {
+                                                        "select": {
+                                                          "function": "Bottom",
+                                                          "howmany": "1"
+                                                        },
+                                                        "sortby": {
+                                                          "function": "Relative Strength Index",
+                                                          "window": "20"
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "Bottom-1": [
+                                                          {
+                                                            "id": "5355ce79898145859f0e507430cfbd80",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SHY",
+                                                            "properties": {
+                                                              "symbol": "SHY"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "08e87456dc674884981d3e2cadb161c0",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order TQQQ",
+                                                            "properties": {
+                                                              "symbol": "TQQQ"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "39bae03309214c5399f6f49caae1b7e2",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SPXL",
+                                                            "properties": {
+                                                              "symbol": "SPXL"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "b6916338-d2d7-47e7-9f3e-4ef75f446ee4",
+                                                            "componentType": "icon",
+                                                            "type": "icon",
+                                                            "name": "Interrupting icon"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "b1d7dac9a0da43a8b7449de164aff04b",
+                                                  "componentType": "switch",
+                                                  "type": "condition",
+                                                  "name": "if(Relative Strength Index UVXY  10 \u003e 74.00)",
+                                                  "properties": {
+                                                    "comparison": "\u003e",
+                                                    "x": {
+                                                      "indicator": "Relative Strength Index",
+                                                      "period": "10",
+                                                      "source": "UVXY"
+                                                    },
+                                                    "y": {
+                                                      "indicator": "constant",
+                                                      "period": "74.00"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "true": [
+                                                      {
+                                                        "id": "c980e3dea2c541c18da8adf046d737ff",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index UVXY  10 \u003e 84.00)",
+                                                        "properties": {
+                                                          "comparison": "\u003e",
+                                                          "x": {
+                                                            "indicator": "Relative Strength Index",
+                                                            "period": "10",
+                                                            "source": "UVXY"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "84.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "89be77601b514095a9c5b61bf7b75b2f",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "af003dca402f4f0f897fc5dc9cc020b1",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Inverse Volatility",
+                                                                  "name": "Inverse Volatility",
+                                                                  "properties": {
+                                                                    "period": "30",
+                                                                    "values": {
+                                                                      "a": 100
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a": [
+                                                                      {
+                                                                        "id": "8eed225ac93c43af848323c4baa2d3fa",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order UUP",
+                                                                        "properties": {
+                                                                          "symbol": "UUP"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b": [
+                                                                      {
+                                                                        "id": "17586fb927fc459ebb6374bbd98bfbe0",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order GLD",
+                                                                        "properties": {
+                                                                          "symbol": "GLD"
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "bba2d76b12a64e829c969f56771f9665",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order UVXY",
+                                                              "properties": {
+                                                                "symbol": "UVXY"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ],
+                                                    "false": [
+                                                      {
+                                                        "id": "f97349359d2d4e25b70021297eae50fa",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(current price TQQQ \u003e Moving Average of Price TQQQ 20)",
+                                                        "properties": {
+                                                          "comparison": "\u003e",
+                                                          "x": {
+                                                            "indicator": "current price",
+                                                            "source": "TQQQ"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "Moving Average of Price",
+                                                            "period": "20",
+                                                            "source": "TQQQ"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "9bd75631352f4a3c933c241d7ef35bd9",
+                                                              "componentType": "switch",
+                                                              "type": "condition",
+                                                              "name": "if(Relative Strength Index SQQQ  10 \u003c 31.00)",
+                                                              "properties": {
+                                                                "comparison": "\u003c",
+                                                                "x": {
+                                                                  "indicator": "Relative Strength Index",
+                                                                  "period": "10",
+                                                                  "source": "SQQQ"
+                                                                },
+                                                                "y": {
+                                                                  "indicator": "constant",
+                                                                  "period": "31.00"
+                                                                }
+                                                              },
+                                                              "branches": {
+                                                                "true": [
+                                                                  {
+                                                                    "id": "1c01573e3f10482fa52ab9af8211d10d",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "11da79725efb4bb6b185d84e7f226128",
+                                                                        "componentType": "switch",
+                                                                        "type": "allocation",
+                                                                        "function": "Inverse Volatility",
+                                                                        "name": "Inverse Volatility",
+                                                                        "properties": {
+                                                                          "period": "30",
+                                                                          "values": {
+                                                                            "a": 100
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "a": [
+                                                                            {
+                                                                              "id": "8ab95ba4160b4b2fa6b9c7d782e89333",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order UUP",
+                                                                              "properties": {
+                                                                                "symbol": "UUP"
+                                                                              }
+                                                                            }
+                                                                          ],
+                                                                          "b": [
+                                                                            {
+                                                                              "id": "b45f300028154fd8a39bdf4d406f2fe0",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order GLD",
+                                                                              "properties": {
+                                                                                "symbol": "GLD"
+                                                                              }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ],
+                                                                "false": [
+                                                                  {
+                                                                    "id": "26ad55f1062042728f77dca82d09d6b8",
+                                                                    "componentType": "folder",
+                                                                    "type": "folder",
+                                                                    "name": "Fund Surf",
+                                                                    "sequence": [
+                                                                      {
+                                                                        "id": "f10ff6398a1b40cd850c1625444e09d6",
+                                                                        "componentType": "switch",
+                                                                        "type": "Sort",
+                                                                        "name": "SortBy Relative Strength Index-20",
+                                                                        "properties": {
+                                                                          "select": {
+                                                                            "function": "Bottom",
+                                                                            "howmany": "1"
+                                                                          },
+                                                                          "sortby": {
+                                                                            "function": "Relative Strength Index",
+                                                                            "window": "20"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "Bottom-1": [
+                                                                            {
+                                                                              "id": "2f09910e945a465295499963ccfb338f",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SHY",
+                                                                              "properties": {
+                                                                                "symbol": "SHY"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "bc623315c3964fdaba5c3272ae922c85",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order TQQQ",
+                                                                              "properties": {
+                                                                                "symbol": "TQQQ"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "142b5aa3512147da95bb7b703e187312",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SPXL",
+                                                                              "properties": {
+                                                                                "symbol": "SPXL"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "05e97624-3754-4bcb-9c88-cb1b57cb5230",
+                                                                              "componentType": "icon",
+                                                                              "type": "icon",
+                                                                              "name": "Interrupting icon"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "4a07eca85c2b4332bb8780b459cf914e",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "5a31e005dfce467aa395b4d82c8f83fc",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Inverse Volatility",
+                                                                  "name": "Inverse Volatility",
+                                                                  "properties": {
+                                                                    "period": "30",
+                                                                    "values": {
+                                                                      "a": 100
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a": [
+                                                                      {
+                                                                        "id": "393be40bd2c84cc4b0610a70a08ef243",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order UUP",
+                                                                        "properties": {
+                                                                          "symbol": "UUP"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b": [
+                                                                      {
+                                                                        "id": "7500fa22b87e42509aead61c6f8bd006",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order GLD",
+                                                                        "properties": {
+                                                                          "symbol": "GLD"
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "51b9ce6882ff4fea9f2edf8e55e58e66",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Layer 2: Hedged Bear Market (v 1.1)",
+                  "sequence": [
+                    {
+                      "id": "1a81ade7dd1d4de3beb38747562043d6",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(current price SPY \u003e Moving Average of Price SPY 200)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "current price",
+                          "source": "SPY"
+                        },
+                        "y": {
+                          "indicator": "Moving Average of Price",
+                          "period": "200",
+                          "source": "SPY"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "36f82d5f35f04d278263b178f599fa84",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                            "sequence": [
+                              {
+                                "id": "c069cb410d3949e59b653a6a76a28ef3",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Inverse Volatility",
+                                "name": "Inverse Volatility",
+                                "properties": {
+                                  "period": "30",
+                                  "values": {
+                                    "a": 100
+                                  }
+                                },
+                                "branches": {
+                                  "a": [
+                                    {
+                                      "id": "2b47e53ef20a4803abccc4f3bb831169",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order UUP",
+                                      "properties": {
+                                        "symbol": "UUP"
+                                      }
+                                    }
+                                  ],
+                                  "b": [
+                                    {
+                                      "id": "e7dd32d6d90f43178241c5cae78f07a9",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order GLD",
+                                      "properties": {
+                                        "symbol": "GLD"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "bf361eb171924163bf36184b69674b36",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Relative Strength Index QQQ  10 \u003c 30.00)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "QQQ"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "30.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "5a1a9ecd212a44b7b3ae52a8a35b68df",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                  "sequence": [
+                                    {
+                                      "id": "4de5ade8285746b4bae78bb8429d4e14",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Inverse Volatility",
+                                      "name": "Inverse Volatility",
+                                      "properties": {
+                                        "period": "30",
+                                        "values": {
+                                          "a": 100
+                                        }
+                                      },
+                                      "branches": {
+                                        "a": [
+                                          {
+                                            "id": "98d3ce3eb15445208563ec15822f4ff0",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order UUP",
+                                            "properties": {
+                                              "symbol": "UUP"
+                                            }
+                                          }
+                                        ],
+                                        "b": [
+                                          {
+                                            "id": "ca25c8b340614603911c4cc7e4a40066",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order GLD",
+                                            "properties": {
+                                              "symbol": "GLD"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "52b00c0d58d34b99a693404878edfbf7",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Relative Strength Index SPY  10 \u003c 30.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Relative Strength Index",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "30.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "09882afca256453d9fdacae967d6808e",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                        "sequence": [
+                                          {
+                                            "id": "af824674cdb94fa0976133ea26a8d59a",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Inverse Volatility",
+                                            "name": "Inverse Volatility",
+                                            "properties": {
+                                              "period": "30",
+                                              "values": {
+                                                "a": 100
+                                              }
+                                            },
+                                            "branches": {
+                                              "a": [
+                                                {
+                                                  "id": "56031af99c9a4448a7943580c229fa07",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UUP",
+                                                  "properties": {
+                                                    "symbol": "UUP"
+                                                  }
+                                                }
+                                              ],
+                                              "b": [
+                                                {
+                                                  "id": "c32567ff5dd147be8aee1741aba4d53c",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GLD",
+                                                  "properties": {
+                                                    "symbol": "GLD"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "51938532c99644ecadc150cb7bd8acd0",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "Layer 3: Bear Market (v1.1)",
+                                        "sequence": [
+                                          {
+                                            "id": "fc7e6d5624d14bd0a09b8f63b7db8c14",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(current price QQQ \u003e Moving Average of Price QQQ 20)",
+                                            "properties": {
+                                              "comparison": "\u003e",
+                                              "x": {
+                                                "indicator": "current price",
+                                                "source": "QQQ"
+                                              },
+                                              "y": {
+                                                "indicator": "Moving Average of Price",
+                                                "period": "20",
+                                                "source": "QQQ"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "4dc4d3fb35db474daeedd35a3d252f59",
+                                                  "componentType": "switch",
+                                                  "type": "condition",
+                                                  "name": "if(Relative Strength Index PSQ  10 \u003c 30.00)",
+                                                  "properties": {
+                                                    "comparison": "\u003c",
+                                                    "x": {
+                                                      "indicator": "Relative Strength Index",
+                                                      "period": "10",
+                                                      "source": "PSQ"
+                                                    },
+                                                    "y": {
+                                                      "indicator": "constant",
+                                                      "period": "30.00"
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "true": [
+                                                      {
+                                                        "id": "df8da00e308d443497817b0a0ef2102f",
+                                                        "componentType": "folder",
+                                                        "type": "folder",
+                                                        "name": "Short Fund Surf (Directional)",
+                                                        "sequence": [
+                                                          {
+                                                            "id": "10e07ebc30ce47928053aeb61efb3f5c",
+                                                            "componentType": "switch",
+                                                            "type": "Sort",
+                                                            "name": "SortBy Relative Strength Index-10",
+                                                            "properties": {
+                                                              "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                              },
+                                                              "sortby": {
+                                                                "function": "Relative Strength Index",
+                                                                "window": "10"
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "Top-1": [
+                                                                {
+                                                                  "id": "85f1f1a5dfb84bcda26291c7aadfd37c",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SQQQ",
+                                                                  "properties": {
+                                                                    "symbol": "SQQQ"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "7f0b4c81c1444fbab93409c6927e6c92",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SPXS",
+                                                                  "properties": {
+                                                                    "symbol": "SPXS"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "13cec1bd-cf8e-4fc9-949a-a6ccc63de15c",
+                                                                  "componentType": "icon",
+                                                                  "type": "icon",
+                                                                  "name": "Interrupting icon"
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "false": [
+                                                      {
+                                                        "id": "94ef2563869b4117866ca9e72b462ef7",
+                                                        "componentType": "folder",
+                                                        "type": "folder",
+                                                        "name": "This block can be refined. It is the current bear market. If it is \"Layer 4 hedge\", the DD is better. If it is 3x leveraged Bull ETFs the returns are greater",
+                                                        "sequence": [
+                                                          {
+                                                            "id": "1dab8e74207a456596bb45e323bd4798",
+                                                            "componentType": "switch",
+                                                            "type": "Sort",
+                                                            "name": "SortBy Relative Strength Index-20",
+                                                            "properties": {
+                                                              "select": {
+                                                                "function": "Bottom",
+                                                                "howmany": "1"
+                                                              },
+                                                              "sortby": {
+                                                                "function": "Relative Strength Index",
+                                                                "window": "20"
+                                                              }
+                                                            },
+                                                            "branches": {
+                                                              "Bottom-1": [
+                                                                {
+                                                                  "id": "ca16533e29034443a3b214ed31b50b2d",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SHY",
+                                                                  "properties": {
+                                                                    "symbol": "SHY"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "6effb928679c45db9601c7cdb9c39f6f",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order QQQ",
+                                                                  "properties": {
+                                                                    "symbol": "QQQ"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "26d7943c9cca480e8851d24074c62ca0",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order SPY",
+                                                                  "properties": {
+                                                                    "symbol": "SPY"
+                                                                  }
+                                                                },
+                                                                {
+                                                                  "id": "d99284a9-b12d-4719-b910-0690be6f4131",
+                                                                  "componentType": "icon",
+                                                                  "type": "icon",
+                                                                  "name": "Interrupting icon"
+                                                                }
+                                                              ]
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "4e629a90d04e4cb2afb2a59b2851d8ad",
+                                                  "componentType": "folder",
+                                                  "type": "folder",
+                                                  "name": "Short Fund Surf (Hedged)",
+                                                  "sequence": [
+                                                    {
+                                                      "id": "ea892976264e445e9b8acd27e8d43bf6",
+                                                      "componentType": "switch",
+                                                      "type": "Sort",
+                                                      "name": "SortBy Relative Strength Index-10",
+                                                      "properties": {
+                                                        "select": {
+                                                          "function": "Top",
+                                                          "howmany": "1"
+                                                        },
+                                                        "sortby": {
+                                                          "function": "Relative Strength Index",
+                                                          "window": "10"
+                                                        }
+                                                      },
+                                                      "branches": {
+                                                        "Top-1": [
+                                                          {
+                                                            "id": "bbf529cc2d2c4f48896ee1160d94517b",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SQQQ",
+                                                            "properties": {
+                                                              "symbol": "SQQQ"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "a3fe2569d80b47fa83b9431bb5b81980",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order SPXS",
+                                                            "properties": {
+                                                              "symbol": "SPXS"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "726cc4d99af445b092c136076fcf95f7",
+                                                            "componentType": "largeTask",
+                                                            "type": "stock",
+                                                            "name": "Buy Order BSV",
+                                                            "properties": {
+                                                              "symbol": "BSV"
+                                                            }
+                                                          },
+                                                          {
+                                                            "id": "de6ccf09-e5e5-44fe-84e7-b3ab57f0d6e3",
+                                                            "componentType": "icon",
+                                                            "type": "icon",
+                                                            "name": "Interrupting icon"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

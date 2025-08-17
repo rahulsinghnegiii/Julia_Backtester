@@ -1,0 +1,465 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "7eee69ef-fd8b-40e8-bf2a-785baf185b52",
+    "id": "7eee69ef-fd8b-40e8-bf2a-785baf185b52",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "b015d91dcb3c4ab48cd9bfaab7fb688e",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": {
+        "values": {
+          "a": 50,
+          "b": 50
+        }
+      },
+      "branches": {
+        "a-(50.00%)": [
+          {
+            "id": "1477f24ffc004fe1958a9a083130c886",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "A Really Worse Bad Idea using SVXY AR 58.7% DD 18.0% Beta 0.11",
+            "sequence": [
+              {
+                "id": "06fb5ef2bf584f6eaefe70c459090299",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Cumulative Return TQQQ  6 \u003c -11.00)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Cumulative Return",
+                    "period": "6",
+                    "source": "TQQQ"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "-11.00"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "88f661d2d449450ab1160539d276e07e",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return TQQQ  1 \u003e 5.50)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "1",
+                          "source": "TQQQ"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "5.50"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "cf13c572fd89488aaed5c4c710ffe3fd",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SPXS",
+                            "properties": {
+                              "symbol": "SPXS"
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "06b8d53c1e7f423eba1871d6bb92e517",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SVXY",
+                            "properties": {
+                              "symbol": "SVXY"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "33337fbd3652471eb3c6abd336ea4c91",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": {
+                        "values": {
+                          "a": 57.99999999999999,
+                          "b": 33,
+                          "c": 9
+                        }
+                      },
+                      "branches": {
+                        "a-(58.00%)": [
+                          {
+                            "id": "aef2401b9ad54a389581ae085bf26b1a",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SVXY",
+                            "properties": {
+                              "symbol": "SVXY"
+                            }
+                          }
+                        ],
+                        "b-(33.00%)": [
+                          {
+                            "id": "be41bb51469c45db8570db45adeb8be5",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order VIXM",
+                            "properties": {
+                              "symbol": "VIXM"
+                            }
+                          }
+                        ],
+                        "c-(9.00%)": [
+                          {
+                            "id": "e055e0cb21cd44aebf67aa6b8c0e8f30",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SPXS",
+                            "properties": {
+                              "symbol": "SPXS"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "b-(50.00%)": [
+          {
+            "id": "a850cc583ebe4dca906fb54e7ddee5c4",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "A Really Worse Bad Idea using 3x AR 116.0% DD 25.9% Beta 1.10",
+            "sequence": [
+              {
+                "id": "78737037b88a44ebac4120b1991ba481",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Cumulative Return TQQQ  6 \u003c -11.00)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Cumulative Return",
+                    "period": "6",
+                    "source": "TQQQ"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "-11.00"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "cc6048eec4f04904bde6655ff553d08f",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return TQQQ  1 \u003e 5.50)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "1",
+                          "source": "TQQQ"
+                        },
+                        "y": {
+                          "indicator": "constant",
+                          "period": "5.50"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "af40113f7bfb4461b493b47c6919472f",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "SHORT (Negative Beta -1 to -3)",
+                            "sequence": [
+                              {
+                                "id": "945b7468a6764b44a9c8e3ce5a385bbf",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Allocation",
+                                "name": "Allocation",
+                                "properties": {
+                                  "values": {
+                                    "a": 20,
+                                    "b": 20,
+                                    "c": 20,
+                                    "d": 20,
+                                    "e": 20
+                                  }
+                                },
+                                "branches": {
+                                  "a-(20.00%)": [
+                                    {
+                                      "id": "640ac6cf651b4916868a7db11cccbc35",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SOXS",
+                                      "properties": {
+                                        "symbol": "SOXS"
+                                      }
+                                    }
+                                  ],
+                                  "b-(20.00%)": [
+                                    {
+                                      "id": "c34e8a272e294cfaad8eb0c184c9f79d",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SPXS",
+                                      "properties": {
+                                        "symbol": "SPXS"
+                                      }
+                                    }
+                                  ],
+                                  "c-(20.00%)": [
+                                    {
+                                      "id": "9a10f6b627874383ae75b72c83a38dae",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SQQQ",
+                                      "properties": {
+                                        "symbol": "SQQQ"
+                                      }
+                                    }
+                                  ],
+                                  "d-(20.00%)": [
+                                    {
+                                      "id": "344b4d1278e2495d9ee59db50988275b",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TECS",
+                                      "properties": {
+                                        "symbol": "TECS"
+                                      }
+                                    }
+                                  ],
+                                  "e-(20.00%)": [
+                                    {
+                                      "id": "fc357baad2d444028a5a7da17f58c609",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order VIXY",
+                                      "properties": {
+                                        "symbol": "VIXY"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "ac4023fafcaa4926aa7fdea6a551dacb",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "LONG (HIGH BETA 2-3)",
+                            "sequence": [
+                              {
+                                "id": "0c4563dcc7c14309b2fe59f51e1316d6",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Allocation",
+                                "name": "Allocation",
+                                "properties": {
+                                  "values": {
+                                    "a": 20,
+                                    "b": 20,
+                                    "c": 20,
+                                    "d": 20,
+                                    "e": 20
+                                  }
+                                },
+                                "branches": {
+                                  "a-(20.00%)": [
+                                    {
+                                      "id": "ffdf2f39c8c4436cac4508fa1ac09eb1",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SOXL",
+                                      "properties": {
+                                        "symbol": "SOXL"
+                                      }
+                                    }
+                                  ],
+                                  "b-(20.00%)": [
+                                    {
+                                      "id": "fb9de35fa9f042cfbdce7e32185ea8d9",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order UPRO",
+                                      "properties": {
+                                        "symbol": "UPRO"
+                                      }
+                                    }
+                                  ],
+                                  "c-(20.00%)": [
+                                    {
+                                      "id": "3f93b389d6ff4c538e302b579b16ca4e",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TQQQ",
+                                      "properties": {
+                                        "symbol": "TQQQ"
+                                      }
+                                    }
+                                  ],
+                                  "d-(20.00%)": [
+                                    {
+                                      "id": "bab8d8c85ada47e88d32120bf70e958d",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SVXY",
+                                      "properties": {
+                                        "symbol": "SVXY"
+                                      }
+                                    }
+                                  ],
+                                  "e-(20.00%)": [
+                                    {
+                                      "id": "ad64cb35269e444a98fcab4023e382a5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TECL",
+                                      "properties": {
+                                        "symbol": "TECL"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "7c1e9f65ad844b1cbbe15c20208e2bd0",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "BASE (0-1.5 Beta)",
+                      "sequence": [
+                        {
+                          "id": "d7994563d48d464ebf3e8fb49ce00623",
+                          "componentType": "switch",
+                          "type": "allocation",
+                          "function": "Allocation",
+                          "name": "Allocation",
+                          "properties": {
+                            "values": {
+                              "a": 16.67,
+                              "b": 16.67,
+                              "c": 16.67,
+                              "d": 16.67,
+                              "e": 16.66,
+                              "f": 16.66
+                            }
+                          },
+                          "branches": {
+                            "a-(16.67%)": [
+                              {
+                                "id": "b2c1de32f1074969beeb4cb21071cc1b",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SMH",
+                                "properties": {
+                                  "symbol": "SMH"
+                                }
+                              }
+                            ],
+                            "b-(16.67%)": [
+                              {
+                                "id": "b08be13bba76497f8ae4488e240bd2eb",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order VIXM",
+                                "properties": {
+                                  "symbol": "VIXM"
+                                }
+                              }
+                            ],
+                            "c-(16.67%)": [
+                              {
+                                "id": "d81465c48b8a4c89a05db5b4a6feb49e",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SVXY",
+                                "properties": {
+                                  "symbol": "SVXY"
+                                }
+                              }
+                            ],
+                            "d-(16.67%)": [
+                              {
+                                "id": "98bbdff9f1f84c49b5ae1067a3d9eff0",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order XLK",
+                                "properties": {
+                                  "symbol": "XLK"
+                                }
+                              }
+                            ],
+                            "e-(16.66%)": [
+                              {
+                                "id": "ba16f5396cc2481b82e4981e64b47046",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SPY",
+                                "properties": {
+                                  "symbol": "SPY"
+                                }
+                              }
+                            ],
+                            "f-(16.66%)": [
+                              {
+                                "id": "d89017cf9d124b6d8d81c6d92b6a9441",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order QQQ",
+                                "properties": {
+                                  "symbol": "QQQ"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

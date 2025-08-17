@@ -1,0 +1,162 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "35ca7f79d6bc41d76c6aad575e66c153",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "20e0abc67d4030b5d32cbb582a2c70b9",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "f54d8c93030f8012426dd3d2b2652fe8",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Moving Average of Price",
+          "properties": {
+            "sortby": {
+              "function": "Moving Average of Price",
+              "window": "4"
+            },
+            "select": {
+              "function": "Bottom",
+              "howmany": "5"
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "1": [
+              {
+                "id": "b1c1bd980a8b548154805d00425c3141",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order FEPI",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "FEPI"
+                }
+              },
+              {
+                "id": "b0c2380eddbdca08a8ba5d0a8f346c82",
+                "componentType": "icon",
+                "name": "Interrupting icon",
+                "properties": {},
+                "type": "icon"
+              }
+            ]
+          }
+        },
+        {
+          "id": "27c54a7976b2add47d5d9c6a09a5e1c6",
+          "componentType": "switch",
+          "type": "allocation",
+          "name": "Allocation",
+          "function": "Allocation",
+          "properties": {
+            "values": {
+              "a": 50,
+              "b": 50
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "a-(50%)": [
+              {
+                "id": "8d059e1e7c15720d9c1c40bf8e68a6a1",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Max Drawdown  FNGU 4  > Exponential Moving Average of Price BRK.B 2)",
+                "properties": {
+                  "y": {
+                    "indicator": "Exponential Moving Average of Price",
+                    "source": "BRK.B",
+                    "period": "2"
+                  },
+                  "x": {
+                    "indicator": "Max Drawdown",
+                    "source": "FNGU",
+                    "period": "4"
+                  },
+                  "isInvalid": false,
+                  "comparison": ">"
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "96eb9c12ac2166ae40a8b52f160d4c96",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FNGU",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FNGU"
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "da6a1faf4f0869516b686b9427f8ddf7",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order BRK.B",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "BRK.B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "b-(50%)": [
+              {
+                "id": "1e8a924e84e3e6daa7087cd6983134e6",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Relative Strength Index",
+                "properties": {
+                  "sortby": {
+                    "function": "Relative Strength Index",
+                    "window": "-1"
+                  },
+                  "select": {
+                    "function": "Top",
+                    "howmany": "2"
+                  },
+                  "isInvalid": false
+                },
+                "branches": {
+                  "1": [
+                    {
+                      "id": "3b3ef931bcf1fbd5f103ce0c2d64a6cc",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order XOM",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "XOM"
+                      }
+                    },
+                    {
+                      "id": "ff687f8bf93bb8538cc2cbe8d0427e00",
+                      "componentType": "icon",
+                      "name": "Interrupting icon",
+                      "properties": {},
+                      "type": "icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

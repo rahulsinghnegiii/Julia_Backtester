@@ -1,0 +1,275 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "d4c3030d-48f7-426e-89ce-cee9046cc97c",
+    "id": "d4c3030d-48f7-426e-89ce-cee9046cc97c",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "351f156d9fad40bba39d6783dec603f3",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(current price AAPL   \u003e 150.00)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": { "indicator": "current price", "period": "", "source": "AAPL" },
+        "y": { "indicator": "constant", "period": "150.00" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "df48b75b28e841e8a360750a7bfa43fa",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Allocation",
+            "name": "Allocation",
+            "properties": { "values": { "a": 50, "b": 50 } },
+            "branches": {
+              "a-(50.00%)": [
+                {
+                  "id": "5057d125df3247ad9c08fab3d969f01d",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy current price-0",
+                  "properties": {
+                    "select": { "function": "Top", "howmany": "1" },
+                    "sortby": { "function": "current price", "window": "0" }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "89101d9501b84293817266e8ff105a04",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order AAPL",
+                        "properties": { "symbol": "AAPL" }
+                      },
+                      {
+                        "id": "e7c9bab60ce74179a60623741b95dc6a",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order XYF",
+                        "properties": { "symbol": "XYF" }
+                      },
+                      {
+                        "id": "281d80e7-d486-4727-8f6e-1fac16cad65b",
+                        "componentType": "icon",
+                        "type": "icon",
+                        "name": "Interrupting icon"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "b-(50.00%)": [
+                {
+                  "id": "1e3d47a10f014ca983ddcf8a7ec71f32",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy current price-0",
+                  "properties": {
+                    "select": { "function": "Top", "howmany": "1" },
+                    "sortby": { "function": "current price", "window": "0" }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "4086b308a38a4832b1e7541afca8bc9c",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order NVDA",
+                        "properties": { "symbol": "NVDA" }
+                      },
+                      {
+                        "id": "d14f852284134ec3b291a04056d0157f",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order TSLA",
+                        "properties": { "symbol": "TSLA" }
+                      },
+                      {
+                        "id": "94c85d0d-78eb-41cb-843e-4a9a5c736dd8",
+                        "componentType": "icon",
+                        "type": "icon",
+                        "name": "Interrupting icon"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "e2b2eb693eda4334a7f06e42667c6851",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Allocation",
+            "name": "Allocation",
+            "properties": {
+              "values": { "a": 25, "b": 25, "c": 25, "d": 25 }
+            },
+            "branches": {
+              "a-(25.00%)": [
+                {
+                  "id": "85c6469ed4d64137894959e2ff758a2b",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "GOOGL-MSFT",
+                  "sequence": [
+                    {
+                      "id": "77cfb28c0b7d4d688058b867182d17f0",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "b7f09c4185694060ba9a4c234252d216",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order GOOGL",
+                            "properties": { "symbol": "GOOGL" }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "c5f80def7d03490db97d73a790e454e2",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order MSFT",
+                            "properties": { "symbol": "MSFT" }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "b-(25.00%)": [
+                {
+                  "id": "9389525a599c406cbc686daa5f9f39b0",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "AMZN-META",
+                  "sequence": [
+                    {
+                      "id": "db2a7d853c17455e8df7351227df5b2c",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "4b4f18862db3479183666f5bc5f7f85d",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order AMZN",
+                            "properties": { "symbol": "AMZN" }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "4de0d72bb84446e8a188eb13bb8719a9",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order META",
+                            "properties": { "symbol": "META" }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "c-(25.00%)": [
+                {
+                  "id": "fef7165e1a7e4309a919e4af687aeeb2",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "NFLX-ADBE",
+                  "sequence": [
+                    {
+                      "id": "86c413f27d5e4c269dc81aa34af1ff75",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "dfeb44005b4040e798fb4b0688991fc5",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order NFLX",
+                            "properties": { "symbol": "NFLX" }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "309b9d0b131d43a9b3010f98e1dd642d",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order ADBE",
+                            "properties": { "symbol": "ADBE" }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "d-(25.00%)": [
+                {
+                  "id": "e59edf5baf28455b8ec348abd30a5e89",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "INTC-AMD",
+                  "sequence": [
+                    {
+                      "id": "91ea1f3d06a14e77920b4e719a00e4c9",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "a1170969b3e2488aa757211252bac804",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order INTC",
+                            "properties": { "symbol": "INTC" }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "985af9f1777947f9929f6d3651c7fce8",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order AMD",
+                            "properties": { "symbol": "AMD" }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

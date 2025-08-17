@@ -1,0 +1,70 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "82c3af9f-91bc-4d54-a478-e2e63763908b",
+    "id": "82c3af9f-91bc-4d54-a478-e2e63763908b",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "08a3ca4a8cbd4af1b001355dd0afc33e",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return-5",
+      "properties": {
+        "select": { "function": "Bottom", "howmany": "3" },
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "5"
+        }
+      },
+      "branches": {
+        "Bottom-3": [
+          {
+            "id": "a763b4d263af42feb02d0f8e734f5bff",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TMV",
+            "properties": { "symbol": "TMV" }
+          },
+          {
+            "id": "f10ee96b12b44c1bb329ae89247bfe5e",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TMF",
+            "properties": { "symbol": "TMF" }
+          },
+          {
+            "id": "d615985fde1f45cabe0ab466acae5e86",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SVOL",
+            "properties": { "symbol": "SVOL" }
+          },
+          {
+            "id": "b0eb3882726b4948b4c1bf59db717548",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order VXX",
+            "properties": { "symbol": "VXX" }
+          },
+          {
+            "id": "a101573f530340a28d428ea3a46b51ad",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SVOL",
+            "properties": { "symbol": "SVOL" }
+          },
+          {
+            "id": "d5b1332e-efea-43ac-b856-2f8ca84b2c19",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

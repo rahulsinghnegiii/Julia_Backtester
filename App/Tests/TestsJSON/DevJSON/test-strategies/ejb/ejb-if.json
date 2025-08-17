@@ -1,0 +1,108 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "28e5c4aa-3cf8-4b57-ba83-98c52665af05",
+    "id": "28e5c4aa-3cf8-4b57-ba83-98c52665af05",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "52ac135b67b146898cf220bab7a486cd",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Exponential Moving Average of Price DBE 3 \u003e Exponential Moving Average of Price DBE 7)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "3",
+          "source": "DBE"
+        },
+        "y": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "7",
+          "source": "DBE"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "d12ab028a3f8408f92b79da5493760a4",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Exponential Moving Average of Price-2",
+            "properties": {
+              "select": {
+                "function": "Bottom",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Exponential Moving Average of Price",
+                "window": "2"
+              }
+            },
+            "branches": {
+              "Bottom-1": [
+                {
+                  "id": "5207b2525e23446a8b13b1eb0eae3068",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order BOIL",
+                  "properties": {
+                    "symbol": "BOIL"
+                  }
+                },
+                {
+                  "id": "eb807fdb292148a2b9b6c2ef1665f849",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order OILU",
+                  "properties": {
+                    "symbol": "OILU"
+                  }
+                },
+                {
+                  "id": "e51efb2ee931477caf89e5c1886a41f7",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order GUSH",
+                  "properties": {
+                    "symbol": "GUSH"
+                  }
+                },
+                {
+                  "id": "70bb04885f1f4fa1bc54a963af3b2585",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order ERX",
+                  "properties": {
+                    "symbol": "ERX"
+                  }
+                },
+                {
+                  "id": "9b8ebf62-e0a8-44c9-ba9b-e03324ad1d10",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "6bf1ea37a7de4aa6b6d0d3164dde8ad7",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "symbol": "NVDA"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

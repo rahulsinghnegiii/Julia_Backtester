@@ -1,0 +1,140 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "1c691c4b-a444-431a-af79-e7313fe7b8ad",
+    "id": "1c691c4b-a444-431a-af79-e7313fe7b8ad",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "60114eb251d64be5a184d80ba4d27dcc",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(current price SPY > Moving Average of Price SPY 12)",
+      "properties": {
+        "comparison": ">",
+        "x": {
+          "indicator": "current price",
+          "source": "SPY"
+        },
+        "y": {
+          "indicator": "Moving Average of Price",
+          "period": "12",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "46d20311eb3c406283ac85b4f7feb129",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "symbol": "QQQ"
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "17e6e734749343659128b4dc8da282cb",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Relative Strength Index-10",
+            "properties": {
+              "select": {
+                "function": "Top",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Relative Strength Index",
+                "window": "10"
+              }
+            },
+            "branches": {
+              "Top-1": [
+                {
+                  "id": "7e481b98c0a445469687d3ec09db07a7",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order PSQ",
+                  "properties": {
+                    "symbol": "PSQ"
+                  }
+                },
+                {
+                  "id": "2b876415754447189810c5136ebf7afa",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SHY",
+                  "properties": {
+                    "symbol": "SHY"
+                  }
+                },
+                {
+                  "id": "1ab4ec42-bba6-48cf-9a4f-5170f29a227d",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Folder1",
+                  "sequence": [
+                    {
+                      "id": "5ae4815e84134c109b11bc31fa654bb9",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Cumulative Return CONL 1 \u003e Cumulative Return CONL 5)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Cumulative Return",
+                          "period": "1",
+                          "source": "CONL"
+                        },
+                        "y": {
+                          "indicator": "Cumulative Return",
+                          "period": "5",
+                          "source": "CONL"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "7431ebf2f79c4b46b0169ec6c7c39c6d",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order BIL",
+                            "properties": {
+                              "symbol": "BIL"
+                            }
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "f46aaaba78fa41f0ac006bb0b72f6d95",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order CONL",
+                            "properties": {
+                              "symbol": "CONL"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "aa9eba8a-d5ef-4c0d-aa26-fca3822d25a7",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

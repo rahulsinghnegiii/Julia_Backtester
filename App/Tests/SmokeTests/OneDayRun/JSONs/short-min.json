@@ -1,0 +1,279 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "9055d126-b569-4a50-8b8f-e3561660589f",
+    "id": "9055d126-b569-4a50-8b8f-e3561660589f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "253daf5a01e74ce690b9a32d5a2731c5",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Vixation Rotator",
+      "sequence": [
+        {
+          "id": "1ad571be95364de2809239023ce178c0",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy: [S.D.R. - 5d]",
+          "properties": {
+            "select": {
+              "function": "Bottom",
+              "howmany": "2"
+            },
+            "sortby": {
+              "function": "Standard Deviation of Return",
+              "window": "5"
+            }
+          },
+          "branches": {
+            "Bottom-2": [
+              {
+                "id": "afc72b82b02c4a2fb4f88c693ff8cc04",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY TMV",
+                "properties": {
+                  "symbol": "TMV"
+                },
+                "hash": "610b8ae67dc324a1dd5b7164692426fc",
+                "parentHash": "2813c9902e38534c93b89e5600cbac80"
+              },
+              {
+                "id": "5134dd5922214c4db7b10fb7a287e0e2",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY SVXY",
+                "properties": {
+                  "symbol": "SVXY"
+                },
+                "hash": "19b527fc44f3e10e25e1ea5976165def",
+                "parentHash": "effa4a44fa5d0ec4cf09acbb776af25b"
+              },
+              {
+                "id": "929162ac74a342258dfcb6b6214d537e",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY VIXM",
+                "properties": {
+                  "symbol": "VIXM"
+                },
+                "hash": "e7cedf1a89ab7b53ea23265dac02915e",
+                "parentHash": "6df839768d29300df5c3b1290970a0bf"
+              },
+              {
+                "id": "81f8a24e28e240d4baa360114679cd31",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "Vixation - BGX",
+                "sequence": [
+                  {
+                    "id": "101d4d250a0248c19edc2c88a756434b",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "function": "Inverse Volatility",
+                    "name": "Allocate by 10d Inverse Volatility",
+                    "properties": {
+                      "period": "10",
+                      "values": {
+                        "a": 100
+                      }
+                    },
+                    "branches": {
+                      "a": [
+                        {
+                          "id": "87dd5c7f19774f93a4b02915f73bfd11",
+                          "componentType": "task",
+                          "type": "stock",
+                          "name": "BUY BGX",
+                          "properties": {
+                            "symbol": "BGX"
+                          },
+                          "hash": "e6ded6a5b82352e556dcdb1a4a7eeb34",
+                          "parentHash": "4a11ff7f71c008847e63be6d49081ffd"
+                        }
+                      ],
+                      "b": [
+                        {
+                          "id": "a0d8cd1cf6fa429aaac8925362e671e0",
+                          "componentType": "folder",
+                          "type": "folder",
+                          "name": "Short",
+                          "sequence": [
+                            {
+                              "id": "d0d848bd55a74b8f967ba0e9e141c3c3",
+                              "componentType": "switch",
+                              "type": "allocation",
+                              "function": "Inverse Volatility",
+                              "name": "Allocate by 10d Inverse Volatility",
+                              "properties": {
+                                "period": "10",
+                                "values": {
+                                  "a": 100
+                                }
+                              },
+                              "branches": {
+                                "a": [
+                                  {
+                                    "id": "0d53bb57e91a43d3b8b8c7f2b84862d6",
+                                    "componentType": "task",
+                                    "type": "stock",
+                                    "name": "BUY SPXU",
+                                    "properties": {
+                                      "symbol": "SPXU"
+                                    },
+                                    "hash": "9bb81f6bbf3c86fa1c01a8c4febf336e",
+                                    "parentHash": "c80dde8e03cb89cb0b12d1cedf621d19"
+                                  }
+                                ],
+                                "b": [
+                                  {
+                                    "id": "90cf9edabef84be3ab16d0ac65b1911b",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Voltator",
+                                    "sequence": [
+                                      {
+                                        "id": "d7ffa346b79a4dafb3b824ddd01932b1",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy: [S.D.R. - 5d]",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Bottom",
+                                            "howmany": "3"
+                                          },
+                                          "sortby": {
+                                            "function": "Standard Deviation of Return",
+                                            "window": "5"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Bottom-3": [
+                                            {
+                                              "id": "87a5be9486c14dc9bc7d5811b3515b4d",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SVXY",
+                                              "properties": {
+                                                "symbol": "SVXY"
+                                              },
+                                              "hash": "07ba6b515eb1c939e137c69bfad613e3",
+                                              "parentHash": "ce2a3b4a97e5d8a15cee746262bcce20"
+                                            },
+                                            {
+                                              "id": "23782bd425684aac87cf9451698ea631",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY VIXM",
+                                              "properties": {
+                                                "symbol": "VIXM"
+                                              },
+                                              "hash": "1c1e24d7bc99f780986c2f6eaff4e8bb",
+                                              "parentHash": "160e822eb9b1757a75174bffb90eaef0"
+                                            },
+                                            {
+                                              "id": "ec42f4245bc84537bf290438323e2f11",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY BGX",
+                                              "properties": {
+                                                "symbol": "BGX"
+                                              },
+                                              "hash": "5a690125cbfa9e15189793d8be0a7628",
+                                              "parentHash": "984c4d860e1192ed3d923862c1baa852"
+                                            },
+                                            {
+                                              "id": "cc682639d7994062920cdbd448b00b5b",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY BGX",
+                                              "properties": {
+                                                "symbol": "BGX"
+                                              },
+                                              "hash": "5a690125cbfa9e15189793d8be0a7628",
+                                              "parentHash": "976f5da882805d01f611d9e4a327bdc7"
+                                            },
+                                            {
+                                              "id": "aa25a05d-88c0-4ce8-8ba4-82f7df1ebe83",
+                                              "componentType": "task",
+                                              "type": "icon",
+                                              "name": "END OF SORT",
+                                              "hash": "b01a5a31de4efae4f94fc630711dd228",
+                                              "parentHash": "fd0d598282d4b1c45cb9d9371073ac6c"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "ce8f80755b5760f4e85c1e6e915f317c",
+                                        "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31/101d4d250a0248c19edc2c88a756434b/a0d8cd1cf6fa429aaac8925362e671e0/d0d848bd55a74b8f967ba0e9e141c3c3/90cf9edabef84be3ab16d0ac65b1911b/d7ffa346b79a4dafb3b824ddd01932b1",
+                                        "parentHash": "12c717de0a2ce83abbaa9d03ed9e85a8",
+                                        "nodeChildrenHash": "f0011e45b6f172242ee9460d0c45883f"
+                                      }
+                                    ],
+                                    "hash": "492d00c732656a27103b0bef53576f60",
+                                    "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31/101d4d250a0248c19edc2c88a756434b/a0d8cd1cf6fa429aaac8925362e671e0/d0d848bd55a74b8f967ba0e9e141c3c3/90cf9edabef84be3ab16d0ac65b1911b",
+                                    "parentHash": "c80dde8e03cb89cb0b12d1cedf621d19",
+                                    "nodeChildrenHash": "239b1e9d269197f7be3218cec5105254"
+                                  }
+                                ]
+                              },
+                              "hash": "f75f2c733f7cdb89b2947364641f4261",
+                              "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31/101d4d250a0248c19edc2c88a756434b/a0d8cd1cf6fa429aaac8925362e671e0/d0d848bd55a74b8f967ba0e9e141c3c3",
+                              "parentHash": "62e283151c0796282c185b0c364677a7",
+                              "nodeChildrenHash": "154686364795ae0faca64dc5eda13493"
+                            }
+                          ],
+                          "hash": "7f7fc1aad3f03f8c73244fcbdceec3f6",
+                          "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31/101d4d250a0248c19edc2c88a756434b/a0d8cd1cf6fa429aaac8925362e671e0",
+                          "parentHash": "4a11ff7f71c008847e63be6d49081ffd",
+                          "nodeChildrenHash": "53b7e1462a23c38861884c4588069358"
+                        }
+                      ]
+                    },
+                    "hash": "caf8085d39d8498e40f71c252264b526",
+                    "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31/101d4d250a0248c19edc2c88a756434b",
+                    "parentHash": "848ea92b96f2ef350dbe425db2fd8401",
+                    "nodeChildrenHash": "46211cb8a96fdf2f5a3c0b5567bf1be7"
+                  }
+                ],
+                "hash": "efcf5178b55a9ae348d3320193512016",
+                "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0/81f8a24e28e240d4baa360114679cd31",
+                "parentHash": "6e7b608fac1e169e03c7a526b62cc094",
+                "nodeChildrenHash": "a7f71b3a1a1d3b8bd15ed070657dd6ae"
+              },
+              {
+                "id": "94697454-dd15-435f-832d-ceace6d95ef7",
+                "componentType": "task",
+                "type": "icon",
+                "name": "END OF SORT",
+                "hash": "bfd1ee79f96e02a5b1a302416dbdac8b",
+                "parentHash": "d5a5e72398ed3c79e0d67224634507b7"
+              }
+            ]
+          },
+          "hash": "94ea3f2091557707271e4d743f23a49f",
+          "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5/1ad571be95364de2809239023ce178c0",
+          "parentHash": "4f11234cb5862faee8f18d7d26d94004",
+          "nodeChildrenHash": "a43590e12d611d2dd239d40d71cd12e3"
+        }
+      ],
+      "hash": "d487af9d77bcc0d533c84417a1297d2b",
+      "path": "71eeb6c2e75542cdb57a46732ddca6fb/5b8931821a5f4152bcec349832c69d9e/c73468f1543c4608b38889938806be57/87cf18125a204be98eecb7362eefa06d/fcc4451f2c854e37989ef8377bbf974a/fde9cf4fd6834f10a944da0113197585/1f314b97ccbe429bbf7d4f24bb1e5fc1/48a4bacaead64929a83b67620b5453d2/e9dde16fb9214b328af04560dd1f270f/253daf5a01e74ce690b9a32d5a2731c5",
+      "parentHash": "6a27c22734ed139a7b3ae1adf088f6f6",
+      "nodeChildrenHash": "3049f9d43041de6b131fe6c0b0b8434f"
+    }
+  ],
+  "parentHash": "0",
+  "tickers": ["SOXS"],
+  "indicators": [
+    {
+      "indicator": "Relative Strength Index",
+      "period": "5",
+      "source": "SOXS"
+    }
+  ],
+  "nodeChildrenHash": "f063409c9370e7ab710529b131d7a67e"
+}

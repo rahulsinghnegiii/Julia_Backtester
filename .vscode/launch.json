@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "julia",
+            "request": "launch",
+            "name": "Main.jl",
+            "program": "${workspaceFolder}/App/Main.jl",
+            "stopOnEntry": true,
+            "cwd": "${workspaceFolder}/App",
+            "juliaEnv": "${command:activeJuliaEnvironment}"
+        }
+    ]
+}

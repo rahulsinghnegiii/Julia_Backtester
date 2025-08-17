@@ -1,0 +1,177 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "41e40c23-4fb9-4960-b8fb-0420f8a18d01",
+        "id": "41e40c23-4fb9-4960-b8fb-0420f8a18d01",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "4d7266e7af534c44bedd898f6a08495c",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(current price  of SPY > 200d Simple Moving Average of Price of SPY)",
+            "properties": {
+                "comparison": ">",
+                "x": {
+                    "indicator": "current price",
+                    "source": "SPY"
+                },
+                "y": {
+                    "indicator": "Simple Moving Average of Price",
+                    "period": "200",
+                    "source": "SPY"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "71bdd90327b744688a8ab21f57d98dcc",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "BUY QQQ",
+                        "properties": {
+                            "symbol": "QQQ"
+                        },
+                        "hash": "cce6a391d78ad5551d2b42322603772d",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037"
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "64821cb8a1bc4fd99fb17a0532f537ff",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(current price  of QQQ < 20d Simple Moving Average of Price of QQQ)",
+                        "properties": {
+                            "comparison": "<",
+                            "x": {
+                                "indicator": "current price",
+                                "source": "QQQ"
+                            },
+                            "y": {
+                                "indicator": "Simple Moving Average of Price",
+                                "period": "20",
+                                "source": "QQQ"
+                            }
+                        },
+                        "branches": {
+                            "true": [
+                                {
+                                    "id": "6ab52507e37646fc987d1f2f433e171d",
+                                    "componentType": "switch",
+                                    "type": "Sort",
+                                    "name": "SortBy: 10d Relative Strength Index",
+                                    "properties": {
+                                        "select": {
+                                            "function": "Top",
+                                            "howmany": "1"
+                                        },
+                                        "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "Top-1": [
+                                            {
+                                                "id": "cece8b11e25a415c9cd338c388a6ed01",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "BUY PSQ",
+                                                "properties": {
+                                                    "symbol": "PSQ"
+                                                },
+                                                "hash": "d0e6570e97654a7572483c5008462903",
+                                                "parentHash": "b9ec77159db6f61ca00737cc18d28a13"
+                                            },
+                                            {
+                                                "id": "a996e0a4ae154ba89dd31699eb0cd10f",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "BUY SHY",
+                                                "properties": {
+                                                    "symbol": "SHY"
+                                                },
+                                                "hash": "6408b19c172c55b0b658aefcbeeb5466",
+                                                "parentHash": "64d6a2fb5f8d31213defb622fc6b252b"
+                                            },
+                                            {
+                                                "id": "e2debb1a-e6f7-4489-8f28-e5bd1093c46f",
+                                                "componentType": "icon",
+                                                "type": "icon",
+                                                "name": "Interrupting icon",
+                                                "hash": "e5c6b4c6c2baf7295d375e4b43c2ba6e",
+                                                "parentHash": "ef626da601b6f7f0e150555471280039"
+                                            }
+                                        ]
+                                    },
+                                    "hash": "6c7468ba81180ec307fdb1ba44ad7a45",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                                    "nodeChildrenHash": "231a7da187a352e4dfcad1c32ac7d530"
+                                }
+                            ],
+                            "false": [
+                                {
+                                    "id": "a289e6fa258542f99c3ef85d3031df28",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "BUY QQQ",
+                                    "properties": {
+                                        "symbol": "QQQ"
+                                    },
+                                    "hash": "e4780fb1df1b28a41277d3e4134e8772",
+                                    "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                                }
+                            ]
+                        },
+                        "hash": "73e009709b67dfa82a021e13438b2e80",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "ea2df9d9e70c9a2e833f5c44c30958cd"
+                    }
+                ]
+            },
+            "hash": "6ec33f7a1228cc06b463522e3753af66",
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "1f5f18f03857fbdaa2e08efcf09db5bb"
+        }
+    ],
+    "parentHash": "0",
+    "tickers": [
+        "QQQ",
+        "PSQ",
+        "SHY"
+    ],
+    "indicators": [
+        {
+            "indicator": "current price",
+            "source": "SPY"
+        },
+        {
+            "indicator": "Simple Moving Average of Price",
+            "period": "200",
+            "source": "SPY"
+        },
+        {
+            "indicator": "current price",
+            "source": "QQQ"
+        },
+        {
+            "indicator": "Simple Moving Average of Price",
+            "period": "20",
+            "source": "QQQ"
+        },
+        {
+            "indicator": "Relative Strength Index",
+            "period": "10",
+            "source": "PSQ"
+        },
+        {
+            "indicator": "Relative Strength Index",
+            "period": "10",
+            "source": "SHY"
+        }
+    ]
+}

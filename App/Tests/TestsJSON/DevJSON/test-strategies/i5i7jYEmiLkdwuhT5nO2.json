@@ -1,0 +1,60 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "bc4f0fb9-99aa-4c51-9750-f5abced5042b",
+        "id": "bc4f0fb9-99aa-4c51-9750-f5abced5042b",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "threshold"
+    },
+    "sequence": [
+        {
+            "id": "f363078513f94fb692ebf53cb3420eb1",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Inverse Volatility",
+            "name": "Inverse Volatility",
+            "properties": {
+                "period": "10",
+                "values": {
+                    "a": 100
+                }
+            },
+            "branches": {
+                "a": [
+                    {
+                        "id": "e3c2b0ae4b9a4d9faa1dc25a5d945d48",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order MSFT",
+                        "properties": {
+                            "symbol": "MSFT"
+                        }
+                    }
+                ],
+                "b": [
+                    {
+                        "id": "c751a3f1b4eb492c98801e16bde801db",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order NVDA",
+                        "properties": {
+                            "symbol": "NVDA"
+                        }
+                    }
+                ],
+                "c": [
+                    {
+                        "id": "77d2b17873854fd28cde802b0319255b",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order AAPL",
+                        "properties": {
+                            "symbol": "AAPL"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

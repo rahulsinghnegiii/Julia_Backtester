@@ -1,0 +1,1065 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "6cbd6a6e-c411-45b5-995b-e17a0106db67",
+        "id": "6cbd6a6e-c411-45b5-995b-e17a0106db67",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "threshold"
+    },
+    "sequence": [
+        {
+            "id": "1399642c5217407585ba7aaa66140712",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Max Drawdown TBF  7 \u003e 0.10)",
+            "properties": {
+                "comparison": "\u003e",
+                "x": {
+                    "indicator": "Max Drawdown",
+                    "period": "7",
+                    "source": "TBF"
+                },
+                "y": {
+                    "indicator": "constant",
+                    "period": "0.10"
+                }
+            },
+            "branches": {
+                "true": [
+                    {
+                        "id": "d2cf648fd41444699ed391446fdce342",
+                        "componentType": "switch",
+                        "type": "allocation",
+                        "function": "Allocation",
+                        "name": "Allocation",
+                        "properties": {
+                            "values": {
+                                "a": 20,
+                                "b": 20,
+                                "c": 20,
+                                "d": 20,
+                                "e": 20
+                            }
+                        },
+                        "branches": {
+                            "a-(20.00%)": [
+                                {
+                                    "id": "a1d6c63226f0464496b11370b93ee71b",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Max Drawdown TLT  5 \u003e 0.10)",
+                                    "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                            "indicator": "Max Drawdown",
+                                            "period": "5",
+                                            "source": "TLT"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "0.10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "b5e8795795b2424ab511f13d871c48e7",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator -Treasury Short",
+                                                "sequence": [
+                                                    {
+                                                        "id": "bb9441cc640a433eb499b221d0c3da20",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-10",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "10"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-1": [
+                                                                {
+                                                                    "id": "924d938c3e7840fd9135fb485e93b31b",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "ad96de3b80ff48ad8ffcb56d332eca34",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TYO",
+                                                                    "properties": {
+                                                                        "symbol": "TYO"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "bed186456cd84e58ae53677cb6448371",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TMV",
+                                                                    "properties": {
+                                                                        "symbol": "TMV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "038be274-dfd6-47ef-8dee-47b0c8b65f9f",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "b01dbf188c6740b1adebc8f031dc1b3f",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator",
+                                                "sequence": [
+                                                    {
+                                                        "id": "502c12c5e14b4caca2f9d12dc6ca001f",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-5",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "3"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "5"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-3": [
+                                                                {
+                                                                    "id": "0822e8f85a6041f2a8fb8aa6b2fd6a82",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "f960d2de116440d3bfde3902dbc6cdc2",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order SHV",
+                                                                    "properties": {
+                                                                        "symbol": "SHV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "6d74823757fe4d99a68ac4144acb5a75",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BND",
+                                                                    "properties": {
+                                                                        "symbol": "BND"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "a7da5cda2bdc4a718ddb2c676eaba527",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order QQQ",
+                                                                    "properties": {
+                                                                        "symbol": "QQQ"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "8a37e39f1c254d76a313910b64d89369",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GLD",
+                                                                    "properties": {
+                                                                        "symbol": "GLD"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "5393f11b-e819-4f64-a803-b11155c6335e",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "b-(20.00%)": [
+                                {
+                                    "id": "12b944a2cc9a41ccb6d745b3ead4a8b8",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Max Drawdown TLT  6 \u003e 0.10)",
+                                    "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                            "indicator": "Max Drawdown",
+                                            "period": "6",
+                                            "source": "TLT"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "0.10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "b823538535d14c8da6eadef0d1b66d1f",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator -Treasury Short",
+                                                "sequence": [
+                                                    {
+                                                        "id": "5f2c97ce15d54f8887abf49573de6e88",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-10",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "10"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-1": [
+                                                                {
+                                                                    "id": "b7ce40fbf4024ac4a21b1a0c44185620",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "d13958af967d42d3937290010624ad63",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TYO",
+                                                                    "properties": {
+                                                                        "symbol": "TYO"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "08119022cac34652af1db8390f3b9632",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TMV",
+                                                                    "properties": {
+                                                                        "symbol": "TMV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "9679a4b9-6353-437a-a61c-f208e96ab8e9",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "88802a5978c4498fbb4e5cb019f74976",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator",
+                                                "sequence": [
+                                                    {
+                                                        "id": "6a7e94b859674454ab23428352f1f49f",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-5",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "3"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "5"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-3": [
+                                                                {
+                                                                    "id": "6332c13bf8694c3c85ee69df68376f2f",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "9467a06c429344df9035865e15a44c40",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order SHV",
+                                                                    "properties": {
+                                                                        "symbol": "SHV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "0d79313361da4adab3ac40cab360d8dc",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BND",
+                                                                    "properties": {
+                                                                        "symbol": "BND"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "169a17ed8bee49db8ae525a0a543bd44",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order QQQ",
+                                                                    "properties": {
+                                                                        "symbol": "QQQ"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "320986703b41415d86fe7945682cc14f",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GLD",
+                                                                    "properties": {
+                                                                        "symbol": "GLD"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "35684874-48c1-458d-90ca-e5b461d26bdf",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "c-(20.00%)": [
+                                {
+                                    "id": "20ef4c550f2c43afb17146e58cfa4cd2",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Max Drawdown TLT  7 \u003e 0.10)",
+                                    "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                            "indicator": "Max Drawdown",
+                                            "period": "7",
+                                            "source": "TLT"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "0.10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "a6d3d2a682654376865c4cb85be0ecff",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator -Treasury Short",
+                                                "sequence": [
+                                                    {
+                                                        "id": "2e1716f909dd478990692d272a15b5d4",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-10",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "10"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-1": [
+                                                                {
+                                                                    "id": "cc28565be2114dcb941e6244003de52f",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "744df937c715477cb4dbe32cc1fc6c21",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TYO",
+                                                                    "properties": {
+                                                                        "symbol": "TYO"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "1ffbbeec831e4848bf4028c703324df8",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TMV",
+                                                                    "properties": {
+                                                                        "symbol": "TMV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "934ee540-7e97-407b-bd02-ede5194063bf",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "97ab8967c3834cd8ba0a0d05cc875afe",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator",
+                                                "sequence": [
+                                                    {
+                                                        "id": "1fad6a49aa324f3ca12c7e99f52b87bf",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-5",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "3"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "5"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-3": [
+                                                                {
+                                                                    "id": "ebc671c76a3145ac9165bf683e2f5ce0",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "0c3da423562544459341366bc24e34a2",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order SHV",
+                                                                    "properties": {
+                                                                        "symbol": "SHV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "43b5d75e786c4ba9a9e23d88e261198e",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BND",
+                                                                    "properties": {
+                                                                        "symbol": "BND"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "b6e7f448f8894fc6ae7f0476f0faf0ee",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order QQQ",
+                                                                    "properties": {
+                                                                        "symbol": "QQQ"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "39a75a12242c43a088d5eb7086dcf29a",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GLD",
+                                                                    "properties": {
+                                                                        "symbol": "GLD"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "8cf87ca1-ed67-4066-beba-26492db43cc6",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "d-(20.00%)": [
+                                {
+                                    "id": "715a95bfbcea49aa81d5d7782a76a7eb",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Max Drawdown TLT  8 \u003e 0.10)",
+                                    "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                            "indicator": "Max Drawdown",
+                                            "period": "8",
+                                            "source": "TLT"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "0.10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "3fa07d01eff7421e85e0de635bedb3ee",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator -Treasury Short",
+                                                "sequence": [
+                                                    {
+                                                        "id": "171567d3865f458e9298e86dee6736c6",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-10",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "10"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-1": [
+                                                                {
+                                                                    "id": "7e42d443bd2c493ebbec53aa298c59d0",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "44457f385e494a728e646f385542a147",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TYO",
+                                                                    "properties": {
+                                                                        "symbol": "TYO"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "0294e6222fc242d5b6d3aca0b7b78a11",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TMV",
+                                                                    "properties": {
+                                                                        "symbol": "TMV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "870e3935-634a-4692-869d-c266124fbf5f",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "e827f273705e4b909ad52f5ffba10972",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator",
+                                                "sequence": [
+                                                    {
+                                                        "id": "9f8e0ffee834445ba32e6db83f642bcc",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-5",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "3"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "5"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-3": [
+                                                                {
+                                                                    "id": "5d27ff1877a04916aabc147d85c77694",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "d1bdfbe401904b2a8d78658d272a5899",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order SHV",
+                                                                    "properties": {
+                                                                        "symbol": "SHV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "ddd0aa7b8df6448baa086ace35d087bd",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BND",
+                                                                    "properties": {
+                                                                        "symbol": "BND"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "c133b04f80924f8e8571ff33f8764523",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order QQQ",
+                                                                    "properties": {
+                                                                        "symbol": "QQQ"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "914ba52857bf4465bb6ec93e38060a7c",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GLD",
+                                                                    "properties": {
+                                                                        "symbol": "GLD"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "e2ec9507-a4fe-457a-a5f2-bf41857b90c8",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "e-(20.00%)": [
+                                {
+                                    "id": "c87744ab09b94416b67104145ec9ee02",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Max Drawdown TLT  9 \u003e 0.10)",
+                                    "properties": {
+                                        "comparison": "\u003e",
+                                        "x": {
+                                            "indicator": "Max Drawdown",
+                                            "period": "9",
+                                            "source": "TLT"
+                                        },
+                                        "y": {
+                                            "indicator": "constant",
+                                            "period": "0.10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "true": [
+                                            {
+                                                "id": "0cc9b891b78f491c857610f80da9290d",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator -Treasury Short",
+                                                "sequence": [
+                                                    {
+                                                        "id": "97f9fb747fdb42189629fc38074a835f",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-10",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "1"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "10"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-1": [
+                                                                {
+                                                                    "id": "82678a9524e34ef69fbb482c6f0c2c51",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "1a61b3b4968a4bb08c30c25cb3c6c2c3",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TYO",
+                                                                    "properties": {
+                                                                        "symbol": "TYO"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "b33cb47a43f6411184192e06144b85b2",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order TMV",
+                                                                    "properties": {
+                                                                        "symbol": "TMV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "4f611733-8a03-49bb-94e0-e21c366ef9fe",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "false": [
+                                            {
+                                                "id": "0c8826c57ab34c99b2b272601ec98c56",
+                                                "componentType": "folder",
+                                                "type": "folder",
+                                                "name": "Rotator",
+                                                "sequence": [
+                                                    {
+                                                        "id": "a43c1043af514758891adb84f171cbb1",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Standard Deviation of Return-5",
+                                                        "properties": {
+                                                            "select": {
+                                                                "function": "Top",
+                                                                "howmany": "3"
+                                                            },
+                                                            "sortby": {
+                                                                "function": "Standard Deviation of Return",
+                                                                "window": "5"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "Top-3": [
+                                                                {
+                                                                    "id": "757308f84b7f437493f2676e6acd92ca",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BTAL",
+                                                                    "properties": {
+                                                                        "symbol": "BTAL"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "f4f039616a32411cbe3e88667f74e369",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order SHV",
+                                                                    "properties": {
+                                                                        "symbol": "SHV"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "b8e4bca5e8784ad29cbb5f3871f561c7",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order BND",
+                                                                    "properties": {
+                                                                        "symbol": "BND"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "0e6b383d68de4cbc99dca1b2462fc33c",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order QQQ",
+                                                                    "properties": {
+                                                                        "symbol": "QQQ"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "14dd7f5a4bb3474e9e910ffa5b36b902",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GLD",
+                                                                    "properties": {
+                                                                        "symbol": "GLD"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "6509ae21-fab4-4f4d-971b-0c215edbce81",
+                                                                    "componentType": "icon",
+                                                                    "type": "icon",
+                                                                    "name": "Interrupting icon"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "false": [
+                    {
+                        "id": "32bebe47a7b1490da560b34d42a9e69e",
+                        "componentType": "switch",
+                        "type": "allocation",
+                        "function": "Allocation",
+                        "name": "Allocation",
+                        "properties": {
+                            "values": {
+                                "a": 33.34,
+                                "b": 33.33,
+                                "c": 33.33
+                            }
+                        },
+                        "branches": {
+                            "a-(33.34%)": [
+                                {
+                                    "id": "5a56c013c9fa40fa8dfbe5e43cafab01",
+                                    "componentType": "switch",
+                                    "type": "Sort",
+                                    "name": "SortBy Moving Average of Return-10",
+                                    "properties": {
+                                        "select": {
+                                            "function": "Top",
+                                            "howmany": "1"
+                                        },
+                                        "sortby": {
+                                            "function": "Moving Average of Return",
+                                            "window": "10"
+                                        }
+                                    },
+                                    "branches": {
+                                        "Top-1": [
+                                            {
+                                                "id": "5ae86775aa494178afe342485b0be116",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TMF",
+                                                "properties": {
+                                                    "symbol": "TMF"
+                                                }
+                                            },
+                                            {
+                                                "id": "3fec00f3ba9f4d058a4831b5e0871905",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TYD",
+                                                "properties": {
+                                                    "symbol": "TYD"
+                                                }
+                                            },
+                                            {
+                                                "id": "88ca742963694239a763e0c4a5cded55",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order BIL",
+                                                "properties": {
+                                                    "symbol": "BIL"
+                                                }
+                                            },
+                                            {
+                                                "id": "59817ef0-b08e-4400-84ff-8288444fdc98",
+                                                "componentType": "icon",
+                                                "type": "icon",
+                                                "name": "Interrupting icon"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "b-(33.33%)": [
+                                {
+                                    "id": "5b569a11162a49799cb2e955e547588d",
+                                    "componentType": "switch",
+                                    "type": "Sort",
+                                    "name": "SortBy Relative Strength Index-5",
+                                    "properties": {
+                                        "select": {
+                                            "function": "Bottom",
+                                            "howmany": "1"
+                                        },
+                                        "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "5"
+                                        }
+                                    },
+                                    "branches": {
+                                        "Bottom-1": [
+                                            {
+                                                "id": "fc937c2572a740c8a151b39f1df3576a",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TMF",
+                                                "properties": {
+                                                    "symbol": "TMF"
+                                                }
+                                            },
+                                            {
+                                                "id": "9e76d58d3e9940d79ec6499314390346",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TYD",
+                                                "properties": {
+                                                    "symbol": "TYD"
+                                                }
+                                            },
+                                            {
+                                                "id": "91503e3a9538481e8e8ab8c7bec5603f",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order BIL",
+                                                "properties": {
+                                                    "symbol": "BIL"
+                                                }
+                                            },
+                                            {
+                                                "id": "725ec215-a305-44e5-b373-044fef528ea0",
+                                                "componentType": "icon",
+                                                "type": "icon",
+                                                "name": "Interrupting icon"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "c-(33.33%)": [
+                                {
+                                    "id": "71d05204cf7b4b04b9f248cdb8864072",
+                                    "componentType": "switch",
+                                    "type": "Sort",
+                                    "name": "SortBy Standard Deviation of Return-5",
+                                    "properties": {
+                                        "select": {
+                                            "function": "Top",
+                                            "howmany": "1"
+                                        },
+                                        "sortby": {
+                                            "function": "Standard Deviation of Return",
+                                            "window": "5"
+                                        }
+                                    },
+                                    "branches": {
+                                        "Top-1": [
+                                            {
+                                                "id": "4b0c6934b9514f87848d1969190d9db2",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TMF",
+                                                "properties": {
+                                                    "symbol": "TMF"
+                                                }
+                                            },
+                                            {
+                                                "id": "1735865b513b4406be4b11836613bfe7",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order TYD",
+                                                "properties": {
+                                                    "symbol": "TYD"
+                                                }
+                                            },
+                                            {
+                                                "id": "00ff885f96ac478fa586a6e3456f0500",
+                                                "componentType": "largeTask",
+                                                "type": "stock",
+                                                "name": "Buy Order BIL",
+                                                "properties": {
+                                                    "symbol": "BIL"
+                                                }
+                                            },
+                                            {
+                                                "id": "9f91b8d1-e4a2-498e-8345-f24d0ea9fa2b",
+                                                "componentType": "icon",
+                                                "type": "icon",
+                                                "name": "Interrupting icon"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "9f43fa14-f6fe-4cb3-b689-78689b0cdd83",
+    "id": "9f43fa14-f6fe-4cb3-b689-78689b0cdd83",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "023109e79bab4834be23948bba2618a4",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": {
+        "values": {
+          "a": 50,
+          "b": 50
+        }
+      },
+      "branches": {
+        "a-(50.00%)": [
+          {
+            "id": "e3e675a887bd4226ba9ff5835a08e47e",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Group",
+            "sequence": [
+              {
+                "id": "e74e734ac863432f84c6675c0eecff9b",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order NVDA",
+                "properties": {
+                  "symbol": "NVDA"
+                }
+              }
+            ]
+          }
+        ],
+        "b-(50.00%)": [
+          {
+            "id": "858919c4d6534e6eb95a2eb67599403a",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Group",
+            "sequence": [
+              {
+                "id": "11b884c7f3544e618ab5b9c32af10d61",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order TSLA",
+                "properties": {
+                  "symbol": "TSLA"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

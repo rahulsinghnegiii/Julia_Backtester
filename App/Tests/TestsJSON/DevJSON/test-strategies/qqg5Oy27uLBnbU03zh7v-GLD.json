@@ -1,0 +1,97 @@
+  {
+    "type": "root",
+    "properties": {
+      "uuid": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+      "id": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "threshold"
+    },
+    "sequence": [
+      {
+        "id": "73b69ef815a64679bf010aadce3e0398",
+        "componentType": "folder",
+        "type": "folder",
+        "name": "GLD Macro Momentum",
+        "sequence": [
+          {
+            "id": "fba70ad5fdae48628fd2965caacf1e70",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Moving Average of Price GLD 200 \u003e Moving Average of Price GLD 350)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Moving Average of Price",
+                "period": "200",
+                "source": "GLD"
+              },
+              "y": {
+                "indicator": "Moving Average of Price",
+                "period": "350",
+                "source": "GLD"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "c094fa8d645f471b94ba428fd081c60a",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Moving Average of Price GLD 60 \u003e Moving Average of Price GLD 150)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": {
+                      "indicator": "Moving Average of Price",
+                      "period": "60",
+                      "source": "GLD"
+                    },
+                    "y": {
+                      "indicator": "Moving Average of Price",
+                      "period": "150",
+                      "source": "GLD"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "c87b93754a634026b4f888a84120ec13",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order UGL",
+                        "properties": {
+                          "symbol": "UGL"
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "32e0a59146f54fd69cac55fa03f91370",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order SHV",
+                        "properties": {
+                          "symbol": "SHV"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "527dc2674a2a43fc9589f4ea9c02de59",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SHV",
+                  "properties": {
+                    "symbol": "SHV"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }

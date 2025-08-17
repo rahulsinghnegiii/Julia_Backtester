@@ -1,0 +1,52 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "1c691c4b-a444-431a-af79-e7313fe7b8ad",
+    "id": "1c691c4b-a444-431a-af79-e7313fe7b8ad",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "27c54a7976b2add47d5d9c6a09a5e1c6",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Allocation",
+      "properties": {
+        "values": {
+          "a": 50,
+          "b": 50
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "a-(50%)": [
+          {
+            "id": "96eb9c12ac2166ae40a8b52f160d4c96",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ],
+        "b-(50%)": [
+          {
+            "id": "3b3ef931bcf1fbd5f103ce0c2d64a6cc",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

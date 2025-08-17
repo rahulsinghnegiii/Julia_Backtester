@@ -1,0 +1,152 @@
+  {
+    "type": "root",
+    "properties": {
+      "uuid": "5862afeb-24e0-4629-9044-846a2cf17f85",
+      "id": "5862afeb-24e0-4629-9044-846a2cf17f85",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "threshold"
+    },
+    "sequence": [
+      {
+        "id": "6429233a7ddd4ca98c393a1f384d3f93",
+        "componentType": "switch",
+        "type": "condition",
+        "name": "if(Relative Strength Index BND 15 \u003e Relative Strength Index QQQ 15)",
+        "properties": {
+          "comparison": "\u003e",
+          "x": {
+            "indicator": "Relative Strength Index",
+            "period": "15",
+            "source": "BND"
+          },
+          "y": {
+            "indicator": "Relative Strength Index",
+            "period": "15",
+            "source": "QQQ"
+          }
+        },
+        "branches": {
+          "true": [
+            {
+              "id": "73509fce7f1f43138454cecf463742d6",
+              "componentType": "switch",
+              "type": "Sort",
+              "name": "SortBy Moving Average of Return-4",
+              "properties": {
+                "select": {
+                  "function": "Bottom",
+                  "howmany": "1"
+                },
+                "sortby": {
+                  "function": "Moving Average of Return",
+                  "window": "4"
+                }
+              },
+              "branches": {
+                "Bottom-1": [
+                  {
+                    "id": "959783037b5d40fa9f5b70b6bea4d586",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order NVDA",
+                    "properties": {
+                      "symbol": "NVDA"
+                    }
+                  },
+                  {
+                    "id": "9974db9201da44d19b022a2e4ba24481",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order SPY",
+                    "properties": {
+                      "symbol": "SPY"
+                    }
+                  },
+                  {
+                    "id": "dc56bbfd14514260911a735713b9ff1f",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order QQQ",
+                    "properties": {
+                      "symbol": "QQQ"
+                    }
+                  },
+                  {
+                    "id": "a89fe95b-fe48-4757-b331-84f5dd79a63e",
+                    "componentType": "icon",
+                    "type": "icon",
+                    "name": "Interrupting icon"
+                  }
+                ]
+              }
+            }
+          ],
+          "false": [
+            {
+              "id": "ed6789bd012e40f8a1d44dff98970935",
+              "componentType": "switch",
+              "type": "Sort",
+              "name": "SortBy Moving Average of Return-4",
+              "properties": {
+                "select": {
+                  "function": "Bottom",
+                  "howmany": "2"
+                },
+                "sortby": {
+                  "function": "Moving Average of Return",
+                  "window": "4"
+                }
+              },
+              "branches": {
+                "Bottom-2": [
+                  {
+                    "id": "bcd63d5d68c8476ebe6b4dbba59e5031",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order TSLA",
+                    "properties": {
+                      "symbol": "TSLA"
+                    }
+                  },
+                  {
+                    "id": "af1f9be2caad41d2b22aead9b2571cba",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order TLT",
+                    "properties": {
+                      "symbol": "TLT"
+                    }
+                  },
+                  {
+                    "id": "b6945db7b924455484c3c2fb26c4e67d",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order AMZN",
+                    "properties": {
+                      "symbol": "AMZN"
+                    }
+                  },
+                  {
+                    "id": "1ee670b140bf4c75a391341500fcbbf1",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order SNOW",
+                    "properties": {
+                      "symbol": "SNOW"
+                    } 
+                  },
+                  {
+                    "id": "4dc4a3b3-ffc4-4196-a7d5-9221843bc881",
+                    "componentType": "icon",
+                    "type": "icon",
+                    "name": "Interrupting icon"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }

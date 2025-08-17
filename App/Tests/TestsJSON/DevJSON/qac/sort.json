@@ -1,0 +1,133 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "fde056e8-e4e1-4f10-a554-1458042efa1a",
+    "id": "fde056e8-e4e1-4f10-a554-1458042efa1a",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "c01157463ba34a6f8edae9bc02a7114f",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Moving Average of Return-4",
+      "properties": {
+        "select": {
+          "function": "Top",
+          "howmany": "1"
+        },
+        "sortby": {
+          "function": "Moving Average of Return",
+          "window": "4"
+        }
+      },
+      "branches": {
+        "Top-1": [
+          {
+            "id": "992ece0db5424d38ad474ceeb0791381",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order PSQ",
+            "properties": {
+              "symbol": "PSQ"
+            }
+          },
+          {
+            "id": "b7e581f3e6934a8287716c0937608874",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TYO",
+            "properties": {
+              "symbol": "TYO"
+            }
+          },
+          {
+            "id": "a16d74b7b270434c8a9a64c07241a788",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order DRV",
+            "properties": {
+              "symbol": "DRV"
+            }
+          },
+          {
+            "id": "82ce5ef96af64838af64df51baa40dd1",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TMV",
+            "properties": {
+              "symbol": "TMV"
+            }
+          },
+          {
+            "id": "bf9f7ff6333c4137bcff772ec7ebd73b",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SH",
+            "properties": {
+              "symbol": "SH"
+            }
+          },
+          {
+            "id": "c43c250306004acabf97cbc943aa750d",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "LAB Check Bear",
+            "sequence": [
+              {
+                "id": "e6ffbc93a9574582aa1970e6db9e15c9",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Moving Average of Return XBI  575 \u003c 0.00)",
+                "properties": {
+                  "comparison": "\u003c",
+                  "x": {
+                    "indicator": "Moving Average of Return",
+                    "period": "575",
+                    "source": "XBI"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "0.00"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "f159672a49f34d80a111548f17b065de",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order LABD",
+                      "properties": {
+                        "symbol": "LABD"
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "920b13562357428a880ffa4dea523d12",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SPXS",
+                      "properties": {
+                        "symbol": "SPXS"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "c500e2da-881d-4058-a43f-90b8efdf5584",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

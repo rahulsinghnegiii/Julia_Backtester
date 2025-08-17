@@ -1,0 +1,968 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "id": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "fcd3e37c81cd4bd8a0c4770175218fd2",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Steel with hedge+sideways trade",
+      "sequence": [
+        {
+          "id": "dee4e5407d0a43eeba1e71693777ca52",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Standard Deviation of Return SLX 31 \u003e Standard Deviation of Return SLX 90)",
+          "properties": {
+            "comparison": "\u003e",
+            "x": {
+              "indicator": "Standard Deviation of Return",
+              "period": "31",
+              "source": "SLX"
+            },
+            "y": {
+              "indicator": "Standard Deviation of Return",
+              "period": "90",
+              "source": "SLX"
+            }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "534b3ca8b8aa4f4ba0513ee324983a37",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Moving Average of Price SLX 5 \u003e Moving Average of Price SLX 21)",
+                "properties": {
+                  "comparison": "\u003e",
+                  "x": {
+                    "indicator": "Moving Average of Price",
+                    "period": "5",
+                    "source": "SLX"
+                  },
+                  "y": {
+                    "indicator": "Moving Average of Price",
+                    "period": "21",
+                    "source": "SLX"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "ff7559aaab4b4b6181d0ce5838e219f9",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": {
+                        "values": {
+                          "a": 85,
+                          "b": 15
+                        }
+                      },
+                      "branches": {
+                        "a-(85.00%)": [
+                          {
+                            "id": "26b57c3f2cce47759658ac0b5632aa72",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Steel Core",
+                            "sequence": [
+                              {
+                                "id": "58d46ea16ec04919a56b66c5c15823af",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Allocation",
+                                "name": "Allocation",
+                                "properties": {
+                                  "values": {
+                                    "a": 25,
+                                    "b": 25,
+                                    "c": 25,
+                                    "d": 25
+                                  }
+                                },
+                                "branches": {
+                                  "a-(25.00%)": [
+                                    {
+                                      "id": "d504c709778643faba2e233bf587da80",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Max Drawdown-121",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Top",
+                                          "howmany": "4"
+                                        },
+                                        "sortby": {
+                                          "function": "Max Drawdown",
+                                          "window": "121"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Top-4": [
+                                          {
+                                            "id": "0aafe877c3f245bd915856638d4f4ac9",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order CLF",
+                                            "properties": {
+                                              "symbol": "CLF"
+                                            }
+                                          },
+                                          {
+                                            "id": "d7ffa3adf29e458dbc52fb345ee8d1ed",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order X",
+                                            "properties": {
+                                              "symbol": "X"
+                                            }
+                                          },
+                                          {
+                                            "id": "79158127e0fd4fbc965e001318bc0b85",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order STLD",
+                                            "properties": {
+                                              "symbol": "STLD"
+                                            }
+                                          },
+                                          {
+                                            "id": "0ef463c77c7e4d608e545ac9e6c30e55",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order NUE",
+                                            "properties": {
+                                              "symbol": "NUE"
+                                            }
+                                          },
+                                          {
+                                            "id": "161566898ffe465aab7feb7381142b6e",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order MT",
+                                            "properties": {
+                                              "symbol": "MT"
+                                            }
+                                          },
+                                          {
+                                            "id": "ec04317f076b4d38b0b524d915ad6385",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order TS",
+                                            "properties": {
+                                              "symbol": "TS"
+                                            }
+                                          },
+                                          {
+                                            "id": "94880e8298874122833a8518e2d81d9b",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order RS",
+                                            "properties": {
+                                              "symbol": "RS"
+                                            }
+                                          },
+                                          {
+                                            "id": "65dac067-f7a4-4697-8607-76a9fcbe5655",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "b-(25.00%)": [
+                                    {
+                                      "id": "8f978fe2d59c40bab0e91488fe95a8e6",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Moving Average of Return-14",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Top",
+                                          "howmany": "4"
+                                        },
+                                        "sortby": {
+                                          "function": "Moving Average of Return",
+                                          "window": "14"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Top-4": [
+                                          {
+                                            "id": "6093b484158c4511bf1eac354c222a67",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order CLF",
+                                            "properties": {
+                                              "symbol": "CLF"
+                                            }
+                                          },
+                                          {
+                                            "id": "3cdb26db7cb14b9c9426c8abf4f896af",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order X",
+                                            "properties": {
+                                              "symbol": "X"
+                                            }
+                                          },
+                                          {
+                                            "id": "a6b4a6eba9654f3f9efb53e4d865a6dc",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order STLD",
+                                            "properties": {
+                                              "symbol": "STLD"
+                                            }
+                                          },
+                                          {
+                                            "id": "b679532843cb41dcb192e999e8546575",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order NUE",
+                                            "properties": {
+                                              "symbol": "NUE"
+                                            }
+                                          },
+                                          {
+                                            "id": "d510e8591f3a47f68413f12dd1865509",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order MT",
+                                            "properties": {
+                                              "symbol": "MT"
+                                            }
+                                          },
+                                          {
+                                            "id": "efefe4c9667040af97be8c8d8b6ceb22",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order RS",
+                                            "properties": {
+                                              "symbol": "RS"
+                                            }
+                                          },
+                                          {
+                                            "id": "84839e9633cc465991d307131b5662ce",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order TS",
+                                            "properties": {
+                                              "symbol": "TS"
+                                            }
+                                          },
+                                          {
+                                            "id": "558ce7f8-60f2-4d1f-b76e-1a62c12fbb4e",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "c-(25.00%)": [
+                                    {
+                                      "id": "bb6adca3a83a40368db455eacf691326",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Relative Strength Index-121",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Bottom",
+                                          "howmany": "4"
+                                        },
+                                        "sortby": {
+                                          "function": "Relative Strength Index",
+                                          "window": "121"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Bottom-4": [
+                                          {
+                                            "id": "f78afdedf32d492883e6590ba0225930",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order CLF",
+                                            "properties": {
+                                              "symbol": "CLF"
+                                            }
+                                          },
+                                          {
+                                            "id": "8f0b728f688f41628536b6420851acd6",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order X",
+                                            "properties": {
+                                              "symbol": "X"
+                                            }
+                                          },
+                                          {
+                                            "id": "f647d5dbd59541f3993b9caaed398add",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order STLD",
+                                            "properties": {
+                                              "symbol": "STLD"
+                                            }
+                                          },
+                                          {
+                                            "id": "256b618bc2764732b8506a639af71f9b",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order NUE",
+                                            "properties": {
+                                              "symbol": "NUE"
+                                            }
+                                          },
+                                          {
+                                            "id": "4943d7d26c7f4e4da30b9c356bcdb915",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order MT",
+                                            "properties": {
+                                              "symbol": "MT"
+                                            }
+                                          },
+                                          {
+                                            "id": "9b5fc25e912a4fe787e4b518b93ff171",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order TS",
+                                            "properties": {
+                                              "symbol": "TS"
+                                            }
+                                          },
+                                          {
+                                            "id": "31ac183fe91e4b19a9e0ed95ca1b5a63",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order WOR",
+                                            "properties": {
+                                              "symbol": "WOR"
+                                            }
+                                          },
+                                          {
+                                            "id": "2bb612c99b334b0084b60d4f9d034206",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order RS",
+                                            "properties": {
+                                              "symbol": "RS"
+                                            }
+                                          },
+                                          {
+                                            "id": "d54d2208e0be4375a452ec0da57ded37",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order XME",
+                                            "properties": {
+                                              "symbol": "XME"
+                                            }
+                                          },
+                                          {
+                                            "id": "ecc2e76e-5c57-44e0-b816-864833ca5c3e",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "d-(25.00%)": [
+                                    {
+                                      "id": "a1c1923494a744e4a4ee6ddd4eafae37",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Standard Deviation of Return-21",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Bottom",
+                                          "howmany": "3"
+                                        },
+                                        "sortby": {
+                                          "function": "Standard Deviation of Return",
+                                          "window": "21"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Bottom-3": [
+                                          {
+                                            "id": "52f0e06831394b43b6f94274bd75404d",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order CLF",
+                                            "properties": {
+                                              "symbol": "CLF"
+                                            }
+                                          },
+                                          {
+                                            "id": "8d9823602bdc4a65b9772e2c1fd9778e",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order X",
+                                            "properties": {
+                                              "symbol": "X"
+                                            }
+                                          },
+                                          {
+                                            "id": "17f9ad26f5cc44a5b7b9270c8af8d7fc",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order STLD",
+                                            "properties": {
+                                              "symbol": "STLD"
+                                            }
+                                          },
+                                          {
+                                            "id": "6333dbc467394b4e94cb8998bfbd73b5",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order RS",
+                                            "properties": {
+                                              "symbol": "RS"
+                                            }
+                                          },
+                                          {
+                                            "id": "4854b29866e7424cbbad47e1732dd281",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order NUE",
+                                            "properties": {
+                                              "symbol": "NUE"
+                                            }
+                                          },
+                                          {
+                                            "id": "b4f1cb6f14674baa9e3aa8878ecdd0e7",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order MT",
+                                            "properties": {
+                                              "symbol": "MT"
+                                            }
+                                          },
+                                          {
+                                            "id": "9160ccd588044ae1ace941b42462df67",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order XME",
+                                            "properties": {
+                                              "symbol": "XME"
+                                            }
+                                          },
+                                          {
+                                            "id": "0a14716e-5025-433a-9a54-d916a3a389db",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "b-(15.00%)": [
+                          {
+                            "id": "848fec30e4434990a5ec0270deb905ee",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Counterbalance",
+                            "sequence": [
+                              {
+                                "id": "fb439fc979b348c7a539f91fe7f0df55",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Relative Strength Index-14",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "2"
+                                  },
+                                  "sortby": {
+                                    "function": "Relative Strength Index",
+                                    "window": "14"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-2": [
+                                    {
+                                      "id": "2a0d6f999a3b40a29b9c4c2bcf9c2d47",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TQQQ",
+                                      "properties": {
+                                        "symbol": "TQQQ"
+                                      }
+                                    },
+                                    {
+                                      "id": "f445618a93a6488b8777d0e5aaede504",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SQQQ",
+                                      "properties": {
+                                        "symbol": "SQQQ"
+                                      }
+                                    },
+                                    {
+                                      "id": "3ae340143b0c418287884776df142786",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order CURE",
+                                      "properties": {
+                                        "symbol": "CURE"
+                                      }
+                                    },
+                                    {
+                                      "id": "bc2da129d00e42e4b2e40f8f37044208",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SMN",
+                                      "properties": {
+                                        "symbol": "SMN"
+                                      }
+                                    },
+                                    {
+                                      "id": "7ba79fc3708f481c8c0648fadf796567",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DRV",
+                                      "properties": {
+                                        "symbol": "DRV"
+                                      }
+                                    },
+                                    {
+                                      "id": "5f061f12-89e1-4d73-8c64-43d032532a6d",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "5aaec8f356d9418dbd1fc29228f4a669",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": {
+                        "values": {
+                          "a": 50,
+                          "b": 50
+                        }
+                      },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "fd4931b8b9b74f4bbeb8b0e7db9357cd",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy Relative Strength Index-21",
+                            "properties": {
+                              "select": {
+                                "function": "Bottom",
+                                "howmany": "3"
+                              },
+                              "sortby": {
+                                "function": "Relative Strength Index",
+                                "window": "21"
+                              }
+                            },
+                            "branches": {
+                              "Bottom-3": [
+                                {
+                                  "id": "f0d82d3472614ca89724575024894284",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order SMN",
+                                  "properties": {
+                                    "symbol": "SMN"
+                                  }
+                                },
+                                {
+                                  "id": "e8ec2ff8228e41b9a2589ac65b0f977c",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order BTAL",
+                                  "properties": {
+                                    "symbol": "BTAL"
+                                  }
+                                },
+                                {
+                                  "id": "cecc5767c0e34637ba9336374607ee55",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order VIXM",
+                                  "properties": {
+                                    "symbol": "VIXM"
+                                  }
+                                },
+                                {
+                                  "id": "5be1e13011344c09baad4f5a3ff51d0e",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TMF",
+                                  "properties": {
+                                    "symbol": "TMF"
+                                  }
+                                },
+                                {
+                                  "id": "4748084e622644a693571709492dab80",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order GLD",
+                                  "properties": {
+                                    "symbol": "GLD"
+                                  }
+                                },
+                                {
+                                  "id": "dc273786-d824-4f1e-a090-f223a0458477",
+                                  "componentType": "icon",
+                                  "type": "icon",
+                                  "name": "Interrupting icon"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "c05b2e34ab2b4d51b79f315ca22d044e",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Sideways trade fix",
+                            "sequence": [
+                              {
+                                "id": "949eab0f275b404595c0b5cc4aab80ce",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Allocation",
+                                "name": "Allocation",
+                                "properties": {
+                                  "values": {
+                                    "a": 50,
+                                    "b": 50
+                                  }
+                                },
+                                "branches": {
+                                  "a-(50.00%)": [
+                                    {
+                                      "id": "6621b459ceb14a83a18d6a92140c0616",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Relative Strength Index-33",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Bottom",
+                                          "howmany": "1"
+                                        },
+                                        "sortby": {
+                                          "function": "Relative Strength Index",
+                                          "window": "33"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Bottom-1": [
+                                          {
+                                            "id": "dc15723549cc4cdfa22ebac48a3a7fc2",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order FXR",
+                                            "properties": {
+                                              "symbol": "FXR"
+                                            }
+                                          },
+                                          {
+                                            "id": "796e601d52254682b3b981488b265451",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order XLK",
+                                            "properties": {
+                                              "symbol": "XLK"
+                                            }
+                                          },
+                                          {
+                                            "id": "2224cd55b604453dbe1455bf7df92ad6",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order VGT",
+                                            "properties": {
+                                              "symbol": "VGT"
+                                            }
+                                          },
+                                          {
+                                            "id": "b347ab9bd6b7471197dd5e4a7eb50dc1",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order IGV",
+                                            "properties": {
+                                              "symbol": "IGV"
+                                            }
+                                          },
+                                          {
+                                            "id": "f7327844752f4dc78bd7bc43b89fd446",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order TYD",
+                                            "properties": {
+                                              "symbol": "TYD"
+                                            }
+                                          },
+                                          {
+                                            "id": "05f72282-9138-4331-8f93-a944c8452762",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "b-(50.00%)": [
+                                    {
+                                      "id": "337f2ed6c8ce4a2caa7393e6dd945ddb",
+                                      "componentType": "switch",
+                                      "type": "Sort",
+                                      "name": "SortBy Max Drawdown-14",
+                                      "properties": {
+                                        "select": {
+                                          "function": "Top",
+                                          "howmany": "2"
+                                        },
+                                        "sortby": {
+                                          "function": "Max Drawdown",
+                                          "window": "14"
+                                        }
+                                      },
+                                      "branches": {
+                                        "Top-2": [
+                                          {
+                                            "id": "0ac648b15c914a8b8b854e1f31882be5",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order FXR",
+                                            "properties": {
+                                              "symbol": "FXR"
+                                            }
+                                          },
+                                          {
+                                            "id": "a3185ba5df02419f92fb7e3a1dd31dfa",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order XAR",
+                                            "properties": {
+                                              "symbol": "XAR"
+                                            }
+                                          },
+                                          {
+                                            "id": "5ffcc11e6e3547d19522ec1b96525cbc",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order VGT",
+                                            "properties": {
+                                              "symbol": "VGT"
+                                            }
+                                          },
+                                          {
+                                            "id": "5f9e00fab9af4bcabff519fa0b763f90",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order IGV",
+                                            "properties": {
+                                              "symbol": "IGV"
+                                            }
+                                          },
+                                          {
+                                            "id": "a4a94a4623dd4a2aa4687d800c49eebc",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "Buy Order TYD",
+                                            "properties": {
+                                              "symbol": "TYD"
+                                            }
+                                          },
+                                          {
+                                            "id": "99d5eddc-025f-4787-af1f-c6e108db66b8",
+                                            "componentType": "icon",
+                                            "type": "icon",
+                                            "name": "Interrupting icon"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "4edc804d555548449067dea391fc49e7",
+                "componentType": "switch",
+                "type": "allocation",
+                "function": "Allocation",
+                "name": "Allocation",
+                "properties": {
+                  "values": {
+                    "a": 50,
+                    "b": 50
+                  }
+                },
+                "branches": {
+                  "a-(50.00%)": [
+                    {
+                      "id": "53b502c646d74b28968b4dbb0495ec0e",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy Relative Strength Index-21",
+                      "properties": {
+                        "select": {
+                          "function": "Bottom",
+                          "howmany": "2"
+                        },
+                        "sortby": {
+                          "function": "Relative Strength Index",
+                          "window": "21"
+                        }
+                      },
+                      "branches": {
+                        "Bottom-2": [
+                          {
+                            "id": "00190f7b25124eaa86097f3d7d56cb0a",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order UUP",
+                            "properties": {
+                              "symbol": "UUP"
+                            }
+                          },
+                          {
+                            "id": "4b27a0d1f87646f893af6d653442cefa",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order TMV",
+                            "properties": {
+                              "symbol": "TMV"
+                            }
+                          },
+                          {
+                            "id": "fb05070d2e814e11b1293a12cad09950",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order BTAL",
+                            "properties": {
+                              "symbol": "BTAL"
+                            }
+                          },
+                          {
+                            "id": "12face517eca4cfab029d2d0cf6aab9e",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SMN",
+                            "properties": {
+                              "symbol": "SMN"
+                            }
+                          },
+                          {
+                            "id": "acb95aac-f67a-489c-8574-9077deb21a9e",
+                            "componentType": "icon",
+                            "type": "icon",
+                            "name": "Interrupting icon"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "b-(50.00%)": [
+                    {
+                      "id": "9c121da0f8574fe0872dd1f1f33a53db",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy Moving Average of Return-21",
+                      "properties": {
+                        "select": {
+                          "function": "Top",
+                          "howmany": "1"
+                        },
+                        "sortby": {
+                          "function": "Moving Average of Return",
+                          "window": "21"
+                        }
+                      },
+                      "branches": {
+                        "Top-1": [
+                          {
+                            "id": "4751bb0ed2c84f5d97e338b6d075e360",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order XLK",
+                            "properties": {
+                              "symbol": "XLK"
+                            }
+                          },
+                          {
+                            "id": "f36b305c349e4515a8b1911147d11d36",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order XLP",
+                            "properties": {
+                              "symbol": "XLP"
+                            }
+                          },
+                          {
+                            "id": "cf7ce8a12ed54923844f2242fab38681",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order KIE",
+                            "properties": {
+                              "symbol": "KIE"
+                            }
+                          },
+                          {
+                            "id": "c8de15b3-3771-4640-aee1-13284b8880a4",
+                            "componentType": "icon",
+                            "type": "icon",
+                            "name": "Interrupting icon"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

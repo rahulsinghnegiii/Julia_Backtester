@@ -1,0 +1,68 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "f5575cedaa4a16c0c192cda063fe0724",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "4b7346b468402dc3327db9a255b6f415",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocate by 10d Inverse Volatility",
+      "function": "Inverse Volatility",
+      "properties": { "period": "10" },
+      "branches": {
+        "a": [
+          {
+            "id": "576c3e417c0260c71b62c6ab48b3418e",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY BIL",
+            "properties": { "symbol": "BIL" },
+            "parentHash": "a533604873cbe4f0523af58547683c45",
+            "hash": "a78917819f19a5c12151fceee06d084a"
+          }
+        ],
+        "b": [
+          {
+            "id": "7518a561b797af4c6d9c2d39501ffbc2",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "MGX",
+            "sequence": [
+              {
+                "id": "aa760d02e3664c69e59523db96fbb4e2",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY MGX",
+                "properties": { "symbol": "MGX" },
+                "parentHash": "7066f2887d496c7a0797e79bc7305cdc",
+                "hash": "462301f94a17168a15f7d37b2b070b45"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "4b7346b468402dc3327db9a255b6f415/7518a561b797af4c6d9c2d39501ffbc2",
+            "parentHash": "a533604873cbe4f0523af58547683c45",
+            "nodeChildrenHash": "e3342ccad6f5a7f53fe42261828e2974",
+            "hash": "39dd9c1068887b546b309a1c5cb3fbca"
+          }
+        ]
+      },
+      "path": "4b7346b468402dc3327db9a255b6f415",
+      "parentHash": "cfcd208495d565ef66e7dff9f98764da",
+      "nodeChildrenHash": "3c7bf6d755233fd3a4b852d09b9532b6",
+      "hash": "d830e8d7d1546238d623c0f47aed24d4"
+    }
+  ],
+  "tickers": ["MGX", "BIL"],
+  "indicators": [],
+  "nodeChildrenHash": "7498b2556ee8fe8dfbe26435f36c7037"
+}

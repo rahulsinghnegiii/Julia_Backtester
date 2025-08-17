@@ -1,0 +1,57 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "27994475040285f0ccc42a217a6f5072",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "eaeb01f25f98ede4f65643f39e7f91d1",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(   10  < current price AAPL )",
+      "properties": {
+        "y": {
+          "indicator": "current price",
+          "source": "AAPL"
+        },
+        "x": {
+          "indicator": "constant",
+          "period": "10"
+        },
+        "isInvalid": false,
+        "comparison": "<"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "97ebffd4c6e60912a02be3e0bcb31f58",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AAPL"
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "97ebffd4c6e60912a02be3e0bcb31f58",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "QQQ"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tickers": ["AAPL", "QQQ"],
+  "indicators": []
+}

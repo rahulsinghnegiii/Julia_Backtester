@@ -1,0 +1,51 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "31498fdc-c394-4abe-98c4-52273e8eb407",
+    "id": "31498fdc-c394-4abe-98c4-52273e8eb407",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "63ff8f8e806a433a815838e1b1056f71",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Exponential Moving Average of Price AAPL 20 \u003c Exponential Moving Average of Price SPY 9)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "20",
+          "source": "AAPL"
+        },
+        "y": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "9",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "0c2efd2a9c604d369fc7fcc91c7f5841",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": { "symbol": "SPY" }
+          }
+        ],
+        "false": [
+          {
+            "id": "ff1da44a5e0940e7bb06b5c0d0d12c41",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": { "symbol": "NVDA" }
+          }
+        ]
+      }
+    }
+  ]
+}

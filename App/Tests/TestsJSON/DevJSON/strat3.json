@@ -1,0 +1,473 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "85767c002acd07c2915f8ca04ff2bf78",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "0",
+  "sequence": [
+    {
+      "id": "34c3c3fc2482a9267a1d7fa059304126",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [AAPL] > [ 20d Cumulative Return of SPY]",
+      "properties": {
+        "y": {
+          "uses_synthetic_stock": false,
+          "indicator": "Cumulative Return",
+          "numerator": "",
+          "denominator": "",
+          "source": "SPY",
+          "period": "20"
+        },
+        "x": {
+          "uses_synthetic_stock": false,
+          "source": "AAPL",
+          "indicator": "current price"
+        },
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "f770166925d58ac2e104ba9d7e6c4578",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [2d Cumulative Return of TQQQ] < [SPY]",
+            "properties": {
+              "y": {
+                "uses_synthetic_stock": false,
+                "source": "SPY",
+                "indicator": "current price"
+              },
+              "x": {
+                "uses_synthetic_stock": false,
+                "source": "TQQQ",
+                "indicator": "Cumulative Return",
+                "period": "2"
+              },
+              "comparison": "<"
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "1435707cccd4dad2b9e03fd8ea9dac58",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy: [Cumulative Return - 3d]",
+                  "properties": {
+                    "sortby": {
+                      "function": "Cumulative Return",
+                      "window": "3"
+                    },
+                    "select": { "function": "Top", "howmany": "1" }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "611f9a49ca00729380e017bbe71b0c3c",
+                        "componentType": "task",
+                        "type": "stock",
+                        "name": "BUY TLSA",
+                        "properties": { "symbol": "TLSA" },
+                        "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                        "hash": "83bb4340325f69fab40a361c34938978"
+                      },
+                      {
+                        "id": "12a8b406543ba10bf49d2ca489951b13",
+                        "componentType": "task",
+                        "type": "stock",
+                        "name": "BUY QQQ",
+                        "properties": { "symbol": "QQQ" },
+                        "parentHash": "64d6a2fb5f8d31213defb622fc6b252b",
+                        "hash": "6191330a8d60df2e9b706cb3938676d2"
+                      },
+                      {
+                        "id": "e890fc5bb391677e2d09ef089f527cda",
+                        "componentType": "task",
+                        "name": "END OF SORT",
+                        "properties": {},
+                        "type": "icon",
+                        "hash": "dc0bcced81c1d7e7f9616633931e97d8",
+                        "parentHash": "ef626da601b6f7f0e150555471280039"
+                      }
+                    ]
+                  },
+                  "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/1435707cccd4dad2b9e03fd8ea9dac58",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "8a277358f59966a86541887bbd81e7cc",
+                  "hash": "28352108edba43e16ddf88da670762c9"
+                }
+              ],
+              "false": [
+                {
+                  "id": "b68879dab4e08ce571ffdb54fcfba8b1",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder1",
+                  "sequence": [
+                    {
+                      "id": "8ff471d8704eaea5ff96528e8a27355a",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "name": "Manual Allocation",
+                      "function": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50%)": [
+                          {
+                            "id": "d87b4685b7c5b9beed0904254fada3f7",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if: [20d Cumulative Return of TQQQ] < [NVDA]",
+                            "properties": {
+                              "y": {
+                                "uses_synthetic_stock": false,
+                                "source": "NVDA",
+                                "indicator": "current price"
+                              },
+                              "x": {
+                                "uses_synthetic_stock": false,
+                                "indicator": "Cumulative Return",
+                                "numerator": "",
+                                "denominator": "",
+                                "source": "TQQQ",
+                                "period": "20"
+                              },
+                              "comparison": "<"
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "4f46265475fd9de193d0c847741fce04",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "folder5",
+                                  "sequence": [
+                                    {
+                                      "id": "ca4e6af70de7cdb18c3e6d4699107bfe",
+                                      "componentType": "task",
+                                      "type": "stock",
+                                      "name": "BUY TSLA",
+                                      "properties": { "symbol": "TSLA" },
+                                      "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                      "hash": "3f5ca24e57f0fb031c34938e2bbebc8e"
+                                    }
+                                  ],
+                                  "properties": {
+                                    "isCloudFolder": false,
+                                    "folder_id": "",
+                                    "author_id": "",
+                                    "author_history": {}
+                                  },
+                                  "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1/8ff471d8704eaea5ff96528e8a27355a/d87b4685b7c5b9beed0904254fada3f7/4f46265475fd9de193d0c847741fce04",
+                                  "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                  "nodeChildrenHash": "d25275f2ea1ac50cd86bca98b067681b",
+                                  "hash": "ca8224095564a583c576d9819f31c429"
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "fe0d5df8ad67b33845b812afafae8870",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "folder6",
+                                  "sequence": [
+                                    {
+                                      "id": "8f8aae83dac7dd0bf9e015b20340e2dd",
+                                      "componentType": "task",
+                                      "type": "stock",
+                                      "name": "BUY AAPL",
+                                      "properties": { "symbol": "AAPL" },
+                                      "parentHash": "e014e17d34b08a7451b398cea0d2f963",
+                                      "hash": "11ea9fd9e5f5401b8721b4eb0db1986f"
+                                    }
+                                  ],
+                                  "properties": {
+                                    "isCloudFolder": false,
+                                    "folder_id": "",
+                                    "author_id": "",
+                                    "author_history": {}
+                                  },
+                                  "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1/8ff471d8704eaea5ff96528e8a27355a/d87b4685b7c5b9beed0904254fada3f7/fe0d5df8ad67b33845b812afafae8870",
+                                  "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                  "nodeChildrenHash": "86cd9795bb2673a8e1bbe86e60744041",
+                                  "hash": "05ddd58823bd5994ce9a6055ca47b94b"
+                                }
+                              ]
+                            },
+                            "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1/8ff471d8704eaea5ff96528e8a27355a/d87b4685b7c5b9beed0904254fada3f7",
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "nodeChildrenHash": "6c90eb0a69c91d51553ce619d2d03d69",
+                            "hash": "60d66437cfc6bb44ff5a3e5c4c8663f2"
+                          }
+                        ],
+                        "b-(50%)": [
+                          {
+                            "id": "7b41867ae19a5cfcdb4fec7f73b4c52c",
+                            "componentType": "switch",
+                            "type": "Sort",
+                            "name": "SortBy: [current price - 0d]",
+                            "properties": {
+                              "sortby": {
+                                "function": "current price",
+                                "window": "0"
+                              },
+                              "select": { "function": "Bottom", "howmany": "2" }
+                            },
+                            "branches": {
+                              "Bottom-2": [
+                                {
+                                  "id": "0fcb2508d8c864c169a976424829300e",
+                                  "componentType": "task",
+                                  "type": "stock",
+                                  "name": "BUY TSLA",
+                                  "properties": { "symbol": "TSLA" },
+                                  "parentHash": "32417b49db06021f7ffc28f384752ffd",
+                                  "hash": "401d963a7421d026278dd7509460d4ef"
+                                },
+                                {
+                                  "id": "2fdc479c2c757a925cdc27b1b9d628f7",
+                                  "componentType": "task",
+                                  "type": "stock",
+                                  "name": "BUY NVDA",
+                                  "properties": { "symbol": "NVDA" },
+                                  "parentHash": "1e78966a93ef04e1d200debd0a4f2091",
+                                  "hash": "08f03dcd439d67e4c21c77bc5a1d6f15"
+                                },
+                                {
+                                  "id": "56504ca1c0a3762d6a65a47e5c3bab62",
+                                  "componentType": "task",
+                                  "type": "stock",
+                                  "name": "BUY AAPL",
+                                  "properties": { "symbol": "AAPL" },
+                                  "parentHash": "45b9e7c245f29ed15a0fb36186b09e3c",
+                                  "hash": "34252a0961d59f46e531210d1b06d3ad"
+                                },
+                                {
+                                  "id": "5691078af54fb81d21aded88825dcbe5",
+                                  "componentType": "task",
+                                  "name": "END OF SORT",
+                                  "properties": {},
+                                  "type": "icon",
+                                  "hash": "a47c95abc8c97001ebb533f01a0ea264",
+                                  "parentHash": "173d32dd2f76ad03c325b7486caf446c"
+                                }
+                              ]
+                            },
+                            "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1/8ff471d8704eaea5ff96528e8a27355a/7b41867ae19a5cfcdb4fec7f73b4c52c",
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "nodeChildrenHash": "ac70aa755a5b42fc2ff8aa59159e07c1",
+                            "hash": "dfa93619539fb790d21279f495dd6591"
+                          }
+                        ]
+                      },
+                      "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1/8ff471d8704eaea5ff96528e8a27355a",
+                      "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                      "nodeChildrenHash": "c5a02d980106ca58f733ec9447cd31e8",
+                      "hash": "c8164bc05d7737aa56bead782f276e83"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/b68879dab4e08ce571ffdb54fcfba8b1",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "8f25c73f8f499fe3b75f3590003cc924",
+                  "hash": "61e8c42165e1c5209d5e0a24349e279b"
+                }
+              ]
+            },
+            "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "04e6e21be1e2599e2e8dd9a7605ac05f",
+            "hash": "c5a2804288ce47adc09ffb95efaf8fb6"
+          }
+        ],
+        "false": [
+          {
+            "id": "4df18e92bd444de5a6f532e32129ad6f",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [NVDA] >= [ 10d Cumulative Return of TSLA]",
+            "properties": {
+              "y": {
+                "uses_synthetic_stock": false,
+                "source": "TSLA",
+                "indicator": "Cumulative Return",
+                "period": "10"
+              },
+              "x": {
+                "uses_synthetic_stock": false,
+                "source": "NVDA",
+                "indicator": "current price"
+              },
+              "comparison": ">="
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "6705a84c8e10273fc38289799fb753f5",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "folder2",
+                  "sequence": [
+                    {
+                      "id": "8415cb41063d8026bd1bd980fea22a61",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY AAPL",
+                      "properties": { "symbol": "AAPL" },
+                      "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                      "hash": "e18a95eb7b4a11ff3c9203913e494f61"
+                    }
+                  ],
+                  "properties": {
+                    "isCloudFolder": false,
+                    "folder_id": "",
+                    "author_id": "",
+                    "author_history": {}
+                  },
+                  "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f/6705a84c8e10273fc38289799fb753f5",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "86cd9795bb2673a8e1bbe86e60744041",
+                  "hash": "cd81a4d61033ec51032cead40616a488"
+                }
+              ],
+              "false": [
+                {
+                  "id": "36ad4660f2f6141cb39ab5b47c933357",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if: [NVDA] > [ 50d Cumulative Return of BITC]",
+                  "properties": {
+                    "y": {
+                      "uses_synthetic_stock": false,
+                      "source": "BITC",
+                      "indicator": "Cumulative Return",
+                      "period": "50"
+                    },
+                    "x": {
+                      "uses_synthetic_stock": false,
+                      "source": "NVDA",
+                      "indicator": "current price"
+                    },
+                    "comparison": ">"
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "741711e71772c57109804d9671facb5d",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "folder3",
+                        "sequence": [
+                          {
+                            "id": "82b84875a5911b2a9ed0e7695a42d461",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY TSLA",
+                            "properties": { "symbol": "TSLA" },
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "hash": "038b134c574067bab709d4c44e312e2d"
+                          }
+                        ],
+                        "properties": {
+                          "isCloudFolder": false,
+                          "folder_id": "",
+                          "author_id": "",
+                          "author_history": {}
+                        },
+                        "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f/36ad4660f2f6141cb39ab5b47c933357/741711e71772c57109804d9671facb5d",
+                        "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                        "nodeChildrenHash": "d25275f2ea1ac50cd86bca98b067681b",
+                        "hash": "fcb95944146eaeb7393e4f3a44563144"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "bce524b57300a220348476bab3648cb9",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "folder4",
+                        "sequence": [
+                          {
+                            "id": "743d6438ba112b578b9b903789e89195",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY SPY",
+                            "properties": { "symbol": "SPY" },
+                            "parentHash": "c6930569175dc484c717269ec2c099f1",
+                            "hash": "003ff6d2e48cf34546a6b18ab837274f"
+                          }
+                        ],
+                        "properties": {
+                          "isCloudFolder": false,
+                          "folder_id": "",
+                          "author_id": "",
+                          "author_history": {}
+                        },
+                        "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f/36ad4660f2f6141cb39ab5b47c933357/bce524b57300a220348476bab3648cb9",
+                        "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                        "nodeChildrenHash": "e5c29bcc9d64cb8d86678092ee0798e7",
+                        "hash": "665aab41424da194d6c90016b6c9a8b7"
+                      }
+                    ]
+                  },
+                  "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f/36ad4660f2f6141cb39ab5b47c933357",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "68419ea898fc58c1c8a5b022d75138ea",
+                  "hash": "1bfbaeae2de917a51711c6db3be9dd24"
+                }
+              ]
+            },
+            "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "421fdb8dda515d2e4a66ea88e25068aa",
+            "hash": "904b27c5bdd56125d4abf26766351f32"
+          }
+        ]
+      },
+      "path": "34c3c3fc2482a9267a1d7fa059304126",
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "2db112881d1da2051c1aec7782025475",
+      "hash": "8deaf374135808bc054da59ea86ce2a7"
+    }
+  ],
+  "tickers": ["TLSA", "QQQ", "TSLA", "AAPL", "NVDA", "SPY"],
+  "indicators": [
+    { "source": "AAPL", "indicator": "current price" },
+    {
+      "indicator": "Cumulative Return",
+      "numerator": "",
+      "denominator": "",
+      "source": "SPY",
+      "period": "20"
+    },
+    { "source": "TQQQ", "indicator": "Cumulative Return", "period": "2" },
+    { "source": "SPY", "indicator": "current price" },
+    { "indicator": "Cumulative Return", "period": "3", "source": "TLSA" },
+    { "indicator": "Cumulative Return", "period": "3", "source": "QQQ" },
+    {
+      "indicator": "Cumulative Return",
+      "numerator": "",
+      "denominator": "",
+      "source": "TQQQ",
+      "period": "20"
+    },
+    { "source": "NVDA", "indicator": "current price" },
+    { "indicator": "current price", "period": "0", "source": "TSLA" },
+    { "indicator": "current price", "period": "0", "source": "NVDA" },
+    { "indicator": "current price", "period": "0", "source": "AAPL" },
+    { "source": "NVDA", "indicator": "current price" },
+    { "source": "TSLA", "indicator": "Cumulative Return", "period": "10" },
+    { "source": "NVDA", "indicator": "current price" },
+    { "source": "BITC", "indicator": "Cumulative Return", "period": "50" }
+  ],
+  "nodeChildrenHash": "030b5a5bd0bd1bf7e2e8b73ba070ec5d"
+}

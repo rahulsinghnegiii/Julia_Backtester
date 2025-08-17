@@ -1,0 +1,343 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "9055d126-b569-4a50-8b8f-e3561660589f",
+    "id": "9055d126-b569-4a50-8b8f-e3561660589f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "3630ba9f14dd45a98eed17a8a6186c11",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "What More Do You Need?",
+      "sequence": [
+        {
+          "id": "545c6b51529b49268987e547c6d57d71",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if: [10d R.S.I.    of QQQ] > [80.00%]",
+          "properties": {
+            "comparison": ">",
+            "x": {
+              "indicator": "Relative Strength Index",
+              "period": "10",
+              "source": "QQQ"
+            },
+            "y": { "indicator": "Fixed-Value", "period": "80.00" }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "7134a53acfff4015a34bd2d6266b8f6c",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY UVXY",
+                "properties": { "symbol": "UVXY" },
+                "hash": "3ca076ba36b532309eff1a985c43183f",
+                "parentHash": "3ac832641c33e45eb9fdf0fca345d87e"
+              }
+            ],
+            "false": [
+              {
+                "id": "c715e6d121764163bf7989bf1e98ce25",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if: [10d R.S.I.    of SPY] > [80.00%]",
+                "properties": {
+                  "comparison": ">",
+                  "x": {
+                    "indicator": "Relative Strength Index",
+                    "period": "10",
+                    "source": "SPY"
+                  },
+                  "y": { "indicator": "Fixed-Value", "period": "80.00" }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "c669fa50c4054e039c2ca080397136a4",
+                      "componentType": "task",
+                      "type": "stock",
+                      "name": "BUY UVXY",
+                      "properties": { "symbol": "UVXY" },
+                      "hash": "2206927d6b4933c22edd5ff6fe9ea573",
+                      "parentHash": "fd62ff2219469731518734127faddf89"
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "493730e261a1453abaf5ffcd86471c28",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if: [10d R.S.I.    of TQQQ] < [31.00%]",
+                      "properties": {
+                        "comparison": "<",
+                        "x": {
+                          "indicator": "Relative Strength Index",
+                          "period": "10",
+                          "source": "TQQQ"
+                        },
+                        "y": {
+                          "indicator": "Fixed-Value",
+                          "period": "31.00"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "78d747cae2ad44c8a4e38a59c9d09688",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY TECL",
+                            "properties": { "symbol": "TECL" },
+                            "hash": "3ea16dbf7fd910ac4aac6dd3a704bcf3",
+                            "parentHash": "50f62f0eb06e60a7c0e9e940f4c7b372"
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "f21b278809ff4d47bc4c05e3bb102d57",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if: [10d R.S.I. of IEF] > [ 20d R.S.I. of PSQ]",
+                            "properties": {
+                              "comparison": ">",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "IEF"
+                              },
+                              "y": {
+                                "indicator": "Relative Strength Index",
+                                "period": "20",
+                                "source": "PSQ"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "07c5df41a138490b9f6e8c335de18219",
+                                  "componentType": "task",
+                                  "type": "stock",
+                                  "name": "BUY BULZ",
+                                  "properties": { "symbol": "BULZ" },
+                                  "hash": "65da70be59f97ebf38a4cd2209d63b58",
+                                  "parentHash": "6e9c8f9f3cfc28ec7e999978f7695a98"
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "fd64f79833aa4535b6fe5ba05456a3c0",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if: [SPY] > [ 200d S.M.A. of SPY]",
+                                  "properties": {
+                                    "comparison": ">",
+                                    "x": {
+                                      "indicator": "current price",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "Simple Moving Average of Price",
+                                      "period": "200",
+                                      "source": "SPY"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "ec33d992bde14146853fbe4087d0f77e",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Manual Allocation",
+                                        "properties": {
+                                          "values": { "a": 50, "b": 50 }
+                                        },
+                                        "branches": {
+                                          "a-(50.00%)": [
+                                            {
+                                              "id": "a083b2e694dc4841a1bce857ad5f9a50",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY XLP",
+                                              "properties": {
+                                                "symbol": "XLP"
+                                              },
+                                              "hash": "41b830662cf49680fed564ecc287d329",
+                                              "parentHash": "79918cab0fe1e47e5bb5634300eba667"
+                                            }
+                                          ],
+                                          "b-(50.00%)": [
+                                            {
+                                              "id": "b35bce32466747c0aa9b0ee06ce6614d",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy: [R.S.I. - 20d]",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Top",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Top-1": [
+                                                  {
+                                                    "id": "3d3b90ac0bfe44c2ac1a7107d7058b40",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY SCO",
+                                                    "properties": {
+                                                      "symbol": "SCO"
+                                                    },
+                                                    "hash": "dfcad5252b4ce22e2a5cddec33291436",
+                                                    "parentHash": "fb94a03d352be82432e3f74e32cacd3c"
+                                                  },
+                                                  {
+                                                    "id": "a9416d3cd4cb43a3a7a7350cf0ff80ff",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY DBO",
+                                                    "properties": {
+                                                      "symbol": "DBO"
+                                                    },
+                                                    "hash": "b3f6745dd7705d4fab8935a0e51c2ddf",
+                                                    "parentHash": "e66a150851c0dc149432b7e2478fc177"
+                                                  },
+                                                  {
+                                                    "id": "6f626903ee1b46818697f0ee615f3036",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY XLP",
+                                                    "properties": {
+                                                      "symbol": "XLP"
+                                                    },
+                                                    "hash": "e7f0ac82fd709110607e104666bf59ec",
+                                                    "parentHash": "257dae8642b90ad2bcfb8c44db2e984c"
+                                                  },
+                                                  {
+                                                    "id": "9645fafb-6c24-4071-8dde-3ccf02dc3798",
+                                                    "componentType": "task",
+                                                    "type": "icon",
+                                                    "name": "END OF SORT",
+                                                    "hash": "e5664f9cc2f1dd7318957226bd86ca02",
+                                                    "parentHash": "fabcff2ebc30edc5a475e14146f1cb20"
+                                                  }
+                                                ]
+                                              },
+                                              "hash": "fea3b0a64e820de46f9f4795c544367d",
+                                              "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28/f21b278809ff4d47bc4c05e3bb102d57/fd64f79833aa4535b6fe5ba05456a3c0/ec33d992bde14146853fbe4087d0f77e/b35bce32466747c0aa9b0ee06ce6614d",
+                                              "parentHash": "79918cab0fe1e47e5bb5634300eba667",
+                                              "nodeChildrenHash": "1ec8518bde2cd94f97cbeeec221fedcf"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "9c079e22640a3ae631c88e5e5d052c30",
+                                        "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28/f21b278809ff4d47bc4c05e3bb102d57/fd64f79833aa4535b6fe5ba05456a3c0/ec33d992bde14146853fbe4087d0f77e",
+                                        "parentHash": "4b5627690feb2fe9de873e832a177e30",
+                                        "nodeChildrenHash": "d0461f5ca68679f17e95d066e4a96555"
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "7cca924b8e044e26baeff1d5d2d91f72",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Allocation",
+                                        "name": "Manual Allocation",
+                                        "properties": {
+                                          "values": { "a": 50, "b": 50 }
+                                        },
+                                        "branches": {
+                                          "a-(50.00%)": [
+                                            {
+                                              "id": "c85d2d4bc2d34c8f9186893a3e08a5ac",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SQQQ",
+                                              "properties": {
+                                                "symbol": "SQQQ"
+                                              },
+                                              "hash": "39eca9e4906e3283afe28b9c6cbfe423",
+                                              "parentHash": "79918cab0fe1e47e5bb5634300eba667"
+                                            }
+                                          ],
+                                          "b-(50.00%)": [
+                                            {
+                                              "id": "337b652f8f95452a8fe77205648ae71c",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY TECS",
+                                              "properties": {
+                                                "symbol": "TECS"
+                                              },
+                                              "hash": "89bf8476965e1bb5d5ff5b24145eaa8e",
+                                              "parentHash": "79918cab0fe1e47e5bb5634300eba667"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "d464eaff5e38028fc6a0aea8eb5e4f7a",
+                                        "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28/f21b278809ff4d47bc4c05e3bb102d57/fd64f79833aa4535b6fe5ba05456a3c0/7cca924b8e044e26baeff1d5d2d91f72",
+                                        "parentHash": "4b5627690feb2fe9de873e832a177e30",
+                                        "nodeChildrenHash": "8bb72cd7ed07c47143aded978059bf9a"
+                                      }
+                                    ]
+                                  },
+                                  "hash": "813d768421c4f11153cf2483f092510a",
+                                  "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28/f21b278809ff4d47bc4c05e3bb102d57/fd64f79833aa4535b6fe5ba05456a3c0",
+                                  "parentHash": "6e9c8f9f3cfc28ec7e999978f7695a98",
+                                  "nodeChildrenHash": "1b507c2b2e72903170e2bebc2715e209"
+                                }
+                              ]
+                            },
+                            "hash": "9f786d957a90d5e4db29e7dc77f04d97",
+                            "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28/f21b278809ff4d47bc4c05e3bb102d57",
+                            "parentHash": "50f62f0eb06e60a7c0e9e940f4c7b372",
+                            "nodeChildrenHash": "620c972c7d2eeb2591ee5d6ddcb39e70"
+                          }
+                        ]
+                      },
+                      "hash": "ea27767fd877f692211fab0109ac5ef7",
+                      "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25/493730e261a1453abaf5ffcd86471c28",
+                      "parentHash": "fd62ff2219469731518734127faddf89",
+                      "nodeChildrenHash": "334c18fb7291195709303a873acf8bb5"
+                    }
+                  ]
+                },
+                "hash": "ae7eda0375695052dc2392c7e83dc572",
+                "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71/c715e6d121764163bf7989bf1e98ce25",
+                "parentHash": "3ac832641c33e45eb9fdf0fca345d87e",
+                "nodeChildrenHash": "f3c04bafb24176df3a50c0753238a431"
+              }
+            ]
+          },
+          "hash": "84c2a722ad8c26fdb0f71bcd7208ed4d",
+          "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11/545c6b51529b49268987e547c6d57d71",
+          "parentHash": "5077121298882670ed92fca6bf8109b6",
+          "nodeChildrenHash": "29ba42ed8aaf28c443f2e3d3e994ef0c"
+        }
+      ],
+      "hash": "24662ba6120ad6f583812943d6836da6",
+      "path": "24b9b38f376741a5ac12da0c0ccb067e/3630ba9f14dd45a98eed17a8a6186c11",
+      "parentHash": "89caf6f955a09237ff412f96f82800aa",
+      "nodeChildrenHash": "6be0b986b705b78931a4db689a64bcb5"
+    }
+  ],
+  "parentHash": "0",
+  "tickers": ["SOXS"],
+  "indicators": [
+    {
+      "indicator": "Relative Strength Index",
+      "period": "5",
+      "source": "SOXS"
+    }
+  ],
+  "nodeChildrenHash": "f063409c9370e7ab710529b131d7a67e"
+}

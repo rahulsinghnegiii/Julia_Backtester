@@ -1,0 +1,66 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "01d81c963f5330be6852150b9dd021b6",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "9c8b3b9be4d582c59ddfb3cd7277ad38",
+      "componentType": "largeTask",
+      "type": "stock",
+      "name": "Buy Order FB",
+      "properties": {
+        "isInvalid": false,
+        "symbol": "FB"
+      }
+    },
+    {
+      "id": "62156f9b98e884178f2bc0ce2f3b65ca",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Cumulative Return  AAA 2  > current price XOM )",
+      "properties": {
+        "y": {
+          "indicator": "current price",
+          "source": "XOM"
+        },
+        "x": {
+          "indicator": "Cumulative Return",
+          "source": "AAA",
+          "period": "2"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "45d0c5da04abcfdfbf992b8a4f4b447e",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FLJ",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FLJ"
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "d14abef9273862ff1758fbf4d87466f7",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AGE",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AGE"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

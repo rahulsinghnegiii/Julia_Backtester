@@ -1,0 +1,121 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "55c0b602-b9b6-48d5-a504-7c0797a82a04",
+    "id": "55c0b602-b9b6-48d5-a504-7c0797a82a04",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "1cdc8428a0df4af7b5daf3b969047b21",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(current price TQQQ \u003e Relative Strength Index QQQ 14)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "current price",
+          "source": "TQQQ"
+        },
+        "y": {
+          "indicator": "Relative Strength Index",
+          "period": "14",
+          "source": "QQQ"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "37e8b9bb077444b7ab2d18c0839ea49c",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index NVDA  20 \u003c 200.00)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "20",
+                "source": "NVDA"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "200.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "b69b2930049b4b8c9fd6f7d58a60590b",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order NVDA",
+                  "properties": {
+                    "symbol": "NVDA"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "e2e92fbe0eec498a98dcb316abfdaceb",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SPY",
+                  "properties": {
+                    "symbol": "SPY"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "e8b43fcdc0e64c7cbc4d3a8b4780fc12",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Moving Average of Price TSLA 20 \u003e Cumulative Return TSLA 50)",
+            "properties": {
+              "comparison": "\u003e",
+              "x": {
+                "indicator": "Moving Average of Price",
+                "period": "20",
+                "source": "TSLA"
+              },
+              "y": {
+                "indicator": "Cumulative Return",
+                "period": "50",
+                "source": "TSLA"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "d8d84e4bddf9441d8e773d73cb59c374",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order AAPL",
+                  "properties": {
+                    "symbol": "AAPL"
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "34319d601981435abbd2b533c76025ec",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order TSLA",
+                  "properties": {
+                    "symbol": "TSLA"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

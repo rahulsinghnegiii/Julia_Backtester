@@ -1,0 +1,97 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "db1bdd717e8cbfe4eac6d129e8e7b115",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "bc89e87a09a718e9e88147199f1faa21",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Moving Average of Return",
+      "properties": {
+        "sortby": {
+          "function": "Moving Average of Return",
+          "window": "0"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "0"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "457e27e4449edc830b3762b39c9f8169",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          },
+          {
+            "id": "699534471063a2c102d1fb0b30238d0f",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1ffc3f3de9743e58ad92a5254b6c386e",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Price",
+      "properties": {
+        "sortby": {
+          "function": "Standard Deviation of Price",
+          "window": "-1"
+        },
+        "select": {
+          "function": "Top",
+          "howmany": "15"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "9b71a4ce635836a730b0f12344a31d4a",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "SPY"
+            }
+          },
+          {
+            "id": "eb9e6a55959334cb1fa624c83474d134",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SAM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "SAM"
+            }
+          },
+          {
+            "id": "ac77bec573bee88df1c854d56a00eee2",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    }
+  ]
+}

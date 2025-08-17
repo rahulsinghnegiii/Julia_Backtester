@@ -1,0 +1,51 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "e5b79526-f4e2-4cb6-bb95-bbd38792c836",
+    "id": "e5b79526-f4e2-4cb6-bb95-bbd38792c836",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "903c70c890b849869028d25e0d2e5796",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Standard Deviation of Return AAPL 20 \u003c Standard Deviation of Return SPY 2)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Standard Deviation of Return",
+          "period": "20",
+          "source": "AAPL"
+        },
+        "y": {
+          "indicator": "Standard Deviation of Return",
+          "period": "2",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "5aba67e4c81e428586cf1eac22852676",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": { "symbol": "NVDA" }
+          }
+        ],
+        "false": [
+          {
+            "id": "aeb1f4eb822d4214b560d638aae4e176",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TQQQ",
+            "properties": { "symbol": "TQQQ" }
+          }
+        ]
+      }
+    }
+  ]
+}

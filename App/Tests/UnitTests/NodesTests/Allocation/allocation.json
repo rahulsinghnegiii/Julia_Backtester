@@ -1,0 +1,60 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "53ef7d39-4b22-4f0a-86a3-849d8409f462",
+    "id": "53ef7d39-4b22-4f0a-86a3-849d8409f462",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "568c8aea4cb44a6897569f5a435fd150",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Inverse Volatility",
+      "name": "Inverse Volatility",
+      "properties": {
+        "period": "14",
+        "values": {
+          "a": 100
+        }
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "ff4a8241f2184b4797229e197082939c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "symbol": "NVDA"
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "2d0d546d08c5406d9c663b32b45f192f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": {
+              "symbol": "SPY"
+            }
+          }
+        ],
+        "c": [
+          {
+            "id": "f3d79a09aaac4cf3b6ff9a1350a7cd5a",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "symbol": "QQQ"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

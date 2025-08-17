@@ -1,0 +1,651 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "ea42c144-2f52-473e-9559-90e5b366bff9",
+    "id": "ea42c144-2f52-473e-9559-90e5b366bff9",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "da9895c37fbb4d99a663dd212dd28d7f",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index TQQQ  10 \u003c 27.00)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Relative Strength Index",
+          "period": "10",
+          "source": "TQQQ"
+        },
+        "y": { "indicator": "constant", "period": "27.00" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "9e3e3e6afc8c44b2a0499d088b69b382",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Long",
+            "sequence": [
+              {
+                "id": "96b7840760334b169dcedbb458186672",
+                "componentType": "switch",
+                "type": "allocation",
+                "function": "Allocation",
+                "name": "Allocation",
+                "properties": { "values": { "a": 50, "b": 50 } },
+                "branches": {
+                  "a-(50.00%)": [
+                    {
+                      "id": "a757d79c576b49458bb18c66869ed2db",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order UPRO",
+                      "properties": { "symbol": "UPRO" }
+                    }
+                  ],
+                  "b-(50.00%)": [
+                    {
+                      "id": "764c32fbcc454bfd9d57e408512a4dd8",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TQQQ",
+                      "properties": { "symbol": "TQQQ" }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "false": [
+          {
+            "id": "95763de048fe47ce98dbee3bb335e89f",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Relative Strength Index TECL  10 \u003c 29.00)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "TECL"
+              },
+              "y": { "indicator": "constant", "period": "29.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "666cbef981cd45dfb9e0b99549060528",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Long",
+                  "sequence": [
+                    {
+                      "id": "84df4237c3ed422987c0d952ef36c0ab",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Allocation",
+                      "name": "Allocation",
+                      "properties": { "values": { "a": 50, "b": 50 } },
+                      "branches": {
+                        "a-(50.00%)": [
+                          {
+                            "id": "4f8b03ebea6241519f2f1fd22b87588a",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order UPRO",
+                            "properties": { "symbol": "UPRO" }
+                          }
+                        ],
+                        "b-(50.00%)": [
+                          {
+                            "id": "19e7d475979649e0ae70656bf2d9c595",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order TQQQ",
+                            "properties": { "symbol": "TQQQ" }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "dcd1eb08873341de9ce12dc005efeb1f",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Relative Strength Index UPRO  10 \u003c 29.00)",
+                  "properties": {
+                    "comparison": "\u003c",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "UPRO"
+                    },
+                    "y": { "indicator": "constant", "period": "29.00" }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "28fbd50f9bb4440eb73c8afa55bf0520",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Long",
+                        "sequence": [
+                          {
+                            "id": "195f7e7b74e84eb0bfa6a3c30c9e3f70",
+                            "componentType": "switch",
+                            "type": "allocation",
+                            "function": "Allocation",
+                            "name": "Allocation",
+                            "properties": { "values": { "a": 50, "b": 50 } },
+                            "branches": {
+                              "a-(50.00%)": [
+                                {
+                                  "id": "ecae13390e334188a22af8d664700949",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order UPRO",
+                                  "properties": { "symbol": "UPRO" }
+                                }
+                              ],
+                              "b-(50.00%)": [
+                                {
+                                  "id": "6f9dcea3749c40a59d0c56b1a168c3ee",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TQQQ",
+                                  "properties": { "symbol": "TQQQ" }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "3f271b3f33c641ef88e1ace8190b7675",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if(Relative Strength Index TQQQ  10 \u003e 82.00)",
+                        "properties": {
+                          "comparison": "\u003e",
+                          "x": {
+                            "indicator": "Relative Strength Index",
+                            "period": "10",
+                            "source": "TQQQ"
+                          },
+                          "y": { "indicator": "constant", "period": "82.00" }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "f042810cf70d475cbec39e906e081855",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Short Rotator",
+                              "sequence": [
+                                {
+                                  "id": "e152906586554c3fbd508fec6a5021c1",
+                                  "componentType": "switch",
+                                  "type": "Sort",
+                                  "name": "SortBy Standard Deviation of Return-5",
+                                  "properties": {
+                                    "select": {
+                                      "function": "Top",
+                                      "howmany": "1"
+                                    },
+                                    "sortby": {
+                                      "function": "Standard Deviation of Return",
+                                      "window": "5"
+                                    }
+                                  },
+                                  "branches": {
+                                    "Top-1": [
+                                      {
+                                        "id": "966d53c81ac444acaaea39059cf2011b",
+                                        "componentType": "folder",
+                                        "type": "folder",
+                                        "name": "Tech",
+                                        "sequence": [
+                                          {
+                                            "id": "89eaa9e3e726482697cf3232aa33ccd8",
+                                            "componentType": "switch",
+                                            "type": "allocation",
+                                            "function": "Allocation",
+                                            "name": "Allocation",
+                                            "properties": {
+                                              "values": { "a": 50, "b": 50 }
+                                            },
+                                            "branches": {
+                                              "a-(50.00%)": [
+                                                {
+                                                  "id": "829491d1573b41a8a1c73afaff741de7",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order SPXU",
+                                                  "properties": {
+                                                    "symbol": "SPXU"
+                                                  }
+                                                }
+                                              ],
+                                              "b-(50.00%)": [
+                                                {
+                                                  "id": "0dda6de191f64aa0b1ef6b31d7025873",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order SQQQ",
+                                                  "properties": {
+                                                    "symbol": "SQQQ"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "9035cd74dc6b44839a72054ac6e328d8",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UVXY",
+                                        "properties": { "symbol": "UVXY" }
+                                      },
+                                      {
+                                        "id": "746471b1-35e7-4d3f-9a92-4a2446b2a14b",
+                                        "componentType": "icon",
+                                        "type": "icon",
+                                        "name": "Interrupting icon"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "bc13edebed6a48849fa5fdc030fd0456",
+                              "componentType": "switch",
+                              "type": "condition",
+                              "name": "if(Relative Strength Index TECL  10 \u003e 80.00)",
+                              "properties": {
+                                "comparison": "\u003e",
+                                "x": {
+                                  "indicator": "Relative Strength Index",
+                                  "period": "10",
+                                  "source": "TECL"
+                                },
+                                "y": {
+                                  "indicator": "constant",
+                                  "period": "80.00"
+                                }
+                              },
+                              "branches": {
+                                "true": [
+                                  {
+                                    "id": "9b04f987325148e4a2fd17f5f888a20c",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Short Rotator",
+                                    "sequence": [
+                                      {
+                                        "id": "f0629297dd814357b1d541224b3b84b8",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy Standard Deviation of Return-5",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Top",
+                                            "howmany": "1"
+                                          },
+                                          "sortby": {
+                                            "function": "Standard Deviation of Return",
+                                            "window": "5"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Top-1": [
+                                            {
+                                              "id": "d2a30d5b5bc24ac9865f6a14a0f98d63",
+                                              "componentType": "folder",
+                                              "type": "folder",
+                                              "name": "Tech",
+                                              "sequence": [
+                                                {
+                                                  "id": "f748382a954a427280bac0d866d382dc",
+                                                  "componentType": "switch",
+                                                  "type": "allocation",
+                                                  "function": "Allocation",
+                                                  "name": "Allocation",
+                                                  "properties": {
+                                                    "values": {
+                                                      "a": 50,
+                                                      "b": 50
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "a-(50.00%)": [
+                                                      {
+                                                        "id": "6341ca425acf47eb84e63af4018daef1",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order SPXU",
+                                                        "properties": {
+                                                          "symbol": "SPXU"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "b-(50.00%)": [
+                                                      {
+                                                        "id": "7e1acfb8a22d4cf48f5033201343bfb0",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order SQQQ",
+                                                        "properties": {
+                                                          "symbol": "SQQQ"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "5ad0e8aaee3944c6b3637fe6c06f2dff",
+                                              "componentType": "largeTask",
+                                              "type": "stock",
+                                              "name": "Buy Order UVXY",
+                                              "properties": {
+                                                "symbol": "UVXY"
+                                              }
+                                            },
+                                            {
+                                              "id": "7e3ad25c-650f-48ca-ab9a-38bfa7e11d7f",
+                                              "componentType": "icon",
+                                              "type": "icon",
+                                              "name": "Interrupting icon"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "a9f78eafffd24636afd075b604b7f441",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Relative Strength Index UPRO  10 \u003e 78.00)",
+                                    "properties": {
+                                      "comparison": "\u003e",
+                                      "x": {
+                                        "indicator": "Relative Strength Index",
+                                        "period": "10",
+                                        "source": "UPRO"
+                                      },
+                                      "y": {
+                                        "indicator": "constant",
+                                        "period": "78.00"
+                                      }
+                                    },
+                                    "branches": {
+                                      "true": [
+                                        {
+                                          "id": "aa9aaa1a5eb1430680d061260d0bdda4",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "Short Rotator",
+                                          "sequence": [
+                                            {
+                                              "id": "9a5cbc09852d4e6791314e7dc1dfd860",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Standard Deviation of Return-5",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Top",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Standard Deviation of Return",
+                                                  "window": "5"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Top-1": [
+                                                  {
+                                                    "id": "4d02896a296347ef91ba4c015076e021",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "Tech",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "83470c6583a342079467efaa7448d058",
+                                                        "componentType": "switch",
+                                                        "type": "allocation",
+                                                        "function": "Allocation",
+                                                        "name": "Allocation",
+                                                        "properties": {
+                                                          "values": {
+                                                            "a": 50,
+                                                            "b": 50
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "a-(50.00%)": [
+                                                            {
+                                                              "id": "b13ac6a8147d4d548de99131f79b6e88",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order SPXU",
+                                                              "properties": {
+                                                                "symbol": "SPXU"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "b-(50.00%)": [
+                                                            {
+                                                              "id": "cb079d93be5c4562b063061af0d94abc",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order SQQQ",
+                                                              "properties": {
+                                                                "symbol": "SQQQ"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "id": "6a666b2df11743c59afaa8f2f1f9f07e",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order UVXY",
+                                                    "properties": {
+                                                      "symbol": "UVXY"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "9bc3ed5f-77d4-4b1c-8578-652e7bd92e29",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "0e8cd7c7bec448e1bcf90089cb2d469b",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "Vixation - BGX",
+                                          "sequence": [
+                                            {
+                                              "id": "beee53f854f24cd0997372bd69fd6751",
+                                              "componentType": "switch",
+                                              "type": "allocation",
+                                              "function": "Inverse Volatility",
+                                              "name": "Inverse Volatility",
+                                              "properties": {
+                                                "period": "10",
+                                                "values": { "a": 100 }
+                                              },
+                                              "branches": {
+                                                "a": [
+                                                  {
+                                                    "id": "79e8917fac4e42719ae731767175ef9f",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order BGX",
+                                                    "properties": {
+                                                      "symbol": "BGX"
+                                                    }
+                                                  }
+                                                ],
+                                                "b": [
+                                                  {
+                                                    "id": "d25ee3edc3f143c4bf687030049ef936",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "Short",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "aa67a93640224372b1a4f08866f1ad0d",
+                                                        "componentType": "switch",
+                                                        "type": "allocation",
+                                                        "function": "Inverse Volatility",
+                                                        "name": "Inverse Volatility",
+                                                        "properties": {
+                                                          "period": "10",
+                                                          "values": {
+                                                            "a": 100
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "a": [
+                                                            {
+                                                              "id": "0989f7f2d3aa47e8b545a5a1f7d50381",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order SPXU",
+                                                              "properties": {
+                                                                "symbol": "SPXU"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "b": [
+                                                            {
+                                                              "id": "c5616de3c46c46cfb4502d389f59a3bb",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Voltator",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "eafdcc0bfa7d49b38c465e0d1a1d05a9",
+                                                                  "componentType": "switch",
+                                                                  "type": "Sort",
+                                                                  "name": "SortBy Standard Deviation of Return-5",
+                                                                  "properties": {
+                                                                    "select": {
+                                                                      "function": "Bottom",
+                                                                      "howmany": "3"
+                                                                    },
+                                                                    "sortby": {
+                                                                      "function": "Standard Deviation of Return",
+                                                                      "window": "5"
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "Bottom-3": [
+                                                                      {
+                                                                        "id": "097ee7ab98d14631ad8bf655b7bb61f6",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order SVXY",
+                                                                        "properties": {
+                                                                          "symbol": "SVXY"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "id": "58ce09f815fe454b97401cff7e37f26d",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order VIXM",
+                                                                        "properties": {
+                                                                          "symbol": "VIXM"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "id": "ef6667adeb5943b9ad05778af0abe9b9",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order BGX",
+                                                                        "properties": {
+                                                                          "symbol": "BGX"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "id": "489a0f99681b4c6b865ef03bdebf4cbb",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order BGX",
+                                                                        "properties": {
+                                                                          "symbol": "BGX"
+                                                                        }
+                                                                      },
+                                                                      {
+                                                                        "id": "7b7dffc7-deb1-46b9-9077-aefc9d05fabb",
+                                                                        "componentType": "icon",
+                                                                        "type": "icon",
+                                                                        "name": "Interrupting icon"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "38ea0510766bed3a63cb9f77aeece38d",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "3dc3b831bdd31cde3ead98e1789d2e1b",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Moving Average of Return",
+      "properties": {
+        "sortby": {
+          "function": "Moving Average of Return",
+          "window": "8"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "2"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "f3e3120cdf603832f2a5c475a44551db",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FEPI",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FEPI"
+            }
+          },
+          {
+            "id": "ea1bc82ef7aea33c16aec13df066742c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order XOM",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "XOM"
+            }
+          },
+          {
+            "id": "f7382eff23ea289540c6db427bf1b574",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4e7525133faefd5366f48152d3fbf4ee",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Max Drawdown",
+      "properties": {
+        "sortby": {
+          "function": "Max Drawdown",
+          "window": "5"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "1"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "c8995a0dcbd51b75f1da6c7aa252ac6a",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          },
+          {
+            "id": "c99d9f3b149715c9eb2a394b429bc1bb",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "119489e5a126e2ba4f35d46cb551be39",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Standard Deviation of Return  BRK.B 4  > Relative Strength Index COKE 5)",
+      "properties": {
+        "y": {
+          "indicator": "Relative Strength Index",
+          "source": "COKE",
+          "period": "5"
+        },
+        "x": {
+          "indicator": "Standard Deviation of Return",
+          "source": "BRK.B",
+          "period": "4"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "4f7e26e3c03c489368e9d4a44e9b7913",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Moving Average of Price",
+            "properties": {
+              "sortby": {
+                "function": "Moving Average of Price",
+                "window": "3"
+              },
+              "select": {
+                "function": "Bottom",
+                "howmany": "7"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "c9345a87286e7bf6a4dec3cbba8038cb",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order FEPI",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "FEPI"
+                  }
+                },
+                {
+                  "id": "44ae755f17dcb62af31c8109b656035c",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "b97e58db4621acde23ceb5d63b6e6015",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Moving Average of Return",
+            "properties": {
+              "sortby": {
+                "function": "Moving Average of Return",
+                "window": "7"
+              },
+              "select": {
+                "function": "Bottom",
+                "howmany": "9"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "2f6090fa51b2b796201530121624089d",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order BINC",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "BINC"
+                  }
+                },
+                {
+                  "id": "4fcf1dd4d74fe09af2e69fdf0fdff357",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

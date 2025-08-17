@@ -1,0 +1,118 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "bf7cc007-73dc-4699-91d7-36685295cb6c",
+    "id": "bf7cc007-73dc-4699-91d7-36685295cb6c",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "543da03d0ee14429965fb9be2511b7b2",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Monthly Rotator (aggressive)",
+      "sequence": [
+        {
+          "id": "7c94b1c7a9354f6f83faf1d316f92925",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Relative Strength Index-20",
+          "properties": {
+            "select": {
+              "function": "Bottom",
+              "howmany": "1"
+            },
+            "sortby": {
+              "function": "Relative Strength Index",
+              "window": "20"
+            }
+          },
+          "branches": {
+            "Bottom-1": [
+              {
+                "id": "1aa8e84658094fab9881bef46f5feca1",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order GDXJ",
+                "properties": {
+                  "symbol": "GDXJ"
+                }
+              },
+              {
+                "id": "bb8a4a16d21c46758712e40c1dc5e89f",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order TECL",
+                "properties": {
+                  "symbol": "TECL"
+                }
+              },
+              {
+                "id": "56629bd6b0d04dd6a55e647c03aa11f6",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order SOXL",
+                "properties": {
+                  "symbol": "SOXL"
+                }
+              },
+              {
+                "id": "a848b2ce633d46f884c6e52967b78507",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order UPRO",
+                "properties": {
+                  "symbol": "UPRO"
+                }
+              },
+              {
+                "id": "6c859101342a4832a177d8bd780b5348",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order TBX",
+                "properties": {
+                  "symbol": "TBX"
+                }
+              },
+              {
+                "id": "7325ca29d58c43feb5efe8a4935ac4ce",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order STIP",
+                "properties": {
+                  "symbol": "STIP"
+                }
+              },
+              {
+                "id": "5d89fa2bf7b54c8e961b3ded83331ef4",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order MIDU",
+                "properties": {
+                  "symbol": "MIDU"
+                }
+              },
+              {
+                "id": "03553d605dc54861b0730471879a7fd3",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order UJB",
+                "properties": {
+                  "symbol": "UJB"
+                }
+              },
+              {
+                "id": "f9218bce-9cf7-43e8-9fd8-c76edd09de56",
+                "componentType": "icon",
+                "type": "icon",
+                "name": "Interrupting icon"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

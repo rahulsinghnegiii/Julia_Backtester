@@ -1,0 +1,135 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "33f8e1f9-0102-4cb1-a2f7-5456e09a0aa4",
+    "id": "33f8e1f9-0102-4cb1-a2f7-5456e09a0aa4",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "325aa558-047c-4975-89bb-9e11e53a08ef",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Vixation - BGX",
+      "sequence": [
+        {
+          "id": "bbb7a54b4dce40b2a0e0512970f41832",
+          "componentType": "switch",
+          "type": "allocation",
+          "function": "Inverse Volatility",
+          "name": "Inverse Volatility",
+          "properties": { "period": "10", "values": { "a": 100 } },
+          "branches": {
+            "a": [
+              {
+                "id": "0d4730acd02740098c3b1f950934e362",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order BGX",
+                "properties": { "symbol": "BGX" }
+              }
+            ],
+            "b": [
+              {
+                "id": "bc4ca11d89ee4f64b1be026f0d66bfb7",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "Short",
+                "sequence": [
+                  {
+                    "id": "6003889147994d2d970fbe4da342b097",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "function": "Inverse Volatility",
+                    "name": "Inverse Volatility",
+                    "properties": {
+                      "period": "10",
+                      "values": { "a": 100 }
+                    },
+                    "branches": {
+                      "a": [
+                        {
+                          "id": "ef4287592e604ee79776e4d7755a3684",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order SPXU",
+                          "properties": { "symbol": "SPXU" }
+                        }
+                      ],
+                      "b": [
+                        {
+                          "id": "e279398198c8469bac98d556b69c974f",
+                          "componentType": "folder",
+                          "type": "folder",
+                          "name": "Voltator",
+                          "sequence": [
+                            {
+                              "id": "4f9b15ec140049cca8fc7c53e642aee3",
+                              "componentType": "switch",
+                              "type": "Sort",
+                              "name": "SortBy Standard Deviation of Return-5",
+                              "properties": {
+                                "select": {
+                                  "function": "Bottom",
+                                  "howmany": "3"
+                                },
+                                "sortby": {
+                                  "function": "Standard Deviation of Return",
+                                  "window": "5"
+                                }
+                              },
+                              "branches": {
+                                "Bottom-3": [
+                                  {
+                                    "id": "2b0255dcd7fc475eacb378102ae22694",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order SVXY",
+                                    "properties": { "symbol": "SVXY" }
+                                  },
+                                  {
+                                    "id": "373fcc6f2a094740af5f2384ee7da1cb",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order VIXM",
+                                    "properties": { "symbol": "VIXM" }
+                                  },
+                                  {
+                                    "id": "31b58674fbec4e81a2f37a523350a6c1",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order BGX",
+                                    "properties": { "symbol": "BGX" }
+                                  },
+                                  {
+                                    "id": "3fc2296fcd744f47a8b371ffbd5d3c44",
+                                    "componentType": "largeTask",
+                                    "type": "stock",
+                                    "name": "Buy Order BGX",
+                                    "properties": { "symbol": "BGX" }
+                                  },
+                                  {
+                                    "id": "56636224-d26e-42c5-89da-5c2ab6ccd157",
+                                    "componentType": "icon",
+                                    "type": "icon",
+                                    "name": "Interrupting icon"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

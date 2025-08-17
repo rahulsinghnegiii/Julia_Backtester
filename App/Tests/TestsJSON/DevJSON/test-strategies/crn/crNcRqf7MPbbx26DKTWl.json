@@ -1,0 +1,735 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "bf7cc007-73dc-4699-91d7-36685295cb6c",
+    "id": "bf7cc007-73dc-4699-91d7-36685295cb6c",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "975ec057453341f493b7cef5c5380591",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": {
+        "values": {
+          "a": 80,
+          "b": 20
+        }
+      },
+      "branches": {
+        "a-(80.00%)": [
+          {
+            "id": "ef831a39c8ca4815bc830d7973032075",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(Moving Average of Return SPY  10 \u003c -0.75)",
+            "properties": {
+              "comparison": "\u003c",
+              "x": {
+                "indicator": "Moving Average of Return",
+                "period": "10",
+                "source": "SPY"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "-0.75"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "bc72856ca6dc43f599ffeaaacb7c2a6d",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Panic Path: Risk Off",
+                  "sequence": [
+                    {
+                      "id": "68e216a7dc584c048ffe1b62ad5879ac",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy Relative Strength Index-20",
+                      "properties": {
+                        "select": {
+                          "function": "Top",
+                          "howmany": "4"
+                        },
+                        "sortby": {
+                          "function": "Relative Strength Index",
+                          "window": "20"
+                        }
+                      },
+                      "branches": {
+                        "Top-4": [
+                          {
+                            "id": "8be37309a31c4af595723fa0dd6a1209",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order TYD",
+                            "properties": {
+                              "symbol": "TYD"
+                            }
+                          },
+                          {
+                            "id": "73b579eee14644129e9f3c708277d0ed",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order TMF",
+                            "properties": {
+                              "symbol": "TMF"
+                            }
+                          },
+                          {
+                            "id": "6ee13df77a8747b5a6f85bb02e50a957",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SPXS",
+                            "properties": {
+                              "symbol": "SPXS"
+                            }
+                          },
+                          {
+                            "id": "5ba4f81d46514454bf2c3a70b1d8f2fc",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SQQQ",
+                            "properties": {
+                              "symbol": "SQQQ"
+                            }
+                          },
+                          {
+                            "id": "8dd3da07eb9142ca947903b28c6c60b2",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order SOXS",
+                            "properties": {
+                              "symbol": "SOXS"
+                            }
+                          },
+                          {
+                            "id": "0018ccd6984a499d9bab6a45e67fe903",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order BTAL",
+                            "properties": {
+                              "symbol": "BTAL"
+                            }
+                          },
+                          {
+                            "id": "f3b494252cb64d599c0423cf183c3f0f",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order FAZ",
+                            "properties": {
+                              "symbol": "FAZ"
+                            }
+                          },
+                          {
+                            "id": "bcb48e8d-474b-46e4-8dd9-e7ddcc680662",
+                            "componentType": "icon",
+                            "type": "icon",
+                            "name": "Interrupting icon"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "false": [
+                {
+                  "id": "77580515bcad490aa7576dfabc127680",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Commander BND Monthly (63d BND BSV)",
+                  "sequence": [
+                    {
+                      "id": "fc6a1ec6b6654a8b8ce35f501a6de444",
+                      "componentType": "switch",
+                      "type": "condition",
+                      "name": "if(Moving Average of Return BND 63 \u003e Moving Average of Return BSV 63)",
+                      "properties": {
+                        "comparison": "\u003e",
+                        "x": {
+                          "indicator": "Moving Average of Return",
+                          "period": "63",
+                          "source": "BND"
+                        },
+                        "y": {
+                          "indicator": "Moving Average of Return",
+                          "period": "63",
+                          "source": "BSV"
+                        }
+                      },
+                      "branches": {
+                        "true": [
+                          {
+                            "id": "0572e9c8b9b94a01a8a5d70f85c73bf0",
+                            "componentType": "folder",
+                            "type": "folder",
+                            "name": "Risk ON, Go Leveraged Long",
+                            "sequence": [
+                              {
+                                "id": "8421ef5fae854cf5b400ae92acf79340",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Relative Strength Index-60",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "4"
+                                  },
+                                  "sortby": {
+                                    "function": "Relative Strength Index",
+                                    "window": "60"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-4": [
+                                    {
+                                      "id": "830f6528059b41adabad1908ecda1a67",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SOXL",
+                                      "properties": {
+                                        "symbol": "SOXL"
+                                      }
+                                    },
+                                    {
+                                      "id": "07e183e5736a4815af79ee19525c7546",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TQQQ",
+                                      "properties": {
+                                        "symbol": "TQQQ"
+                                      }
+                                    },
+                                    {
+                                      "id": "b1628c1709b441a483d908d179a6ce60",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TECL",
+                                      "properties": {
+                                        "symbol": "TECL"
+                                      }
+                                    },
+                                    {
+                                      "id": "400e9200a0d24d61aae890b4702ac0cb",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order UPRO",
+                                      "properties": {
+                                        "symbol": "UPRO"
+                                      }
+                                    },
+                                    {
+                                      "id": "f5b7dbae9f48435aa6bf7b38199b92b6",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order FAS",
+                                      "properties": {
+                                        "symbol": "FAS"
+                                      }
+                                    },
+                                    {
+                                      "id": "b199f2952235404a85c37b411a54c4fc",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order LTPZ",
+                                      "properties": {
+                                        "symbol": "LTPZ"
+                                      }
+                                    },
+                                    {
+                                      "id": "2ae6c62e-3e84-4618-bd73-2d45449604a8",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "false": [
+                          {
+                            "id": "52f08c1435844f38b98eba3dfc81d67e",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Cumulative Return TLT 84 \u003c Moving Average of Return TLT 5)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Cumulative Return",
+                                "period": "84",
+                                "source": "TLT"
+                              },
+                              "y": {
+                                "indicator": "Moving Average of Return",
+                                "period": "5",
+                                "source": "TLT"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "13753d962b484a5c8e2a405e8789d880",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Risk Off, Rising Rates",
+                                  "sequence": [
+                                    {
+                                      "id": "8b6965973e804ebe81e57546a6e460f8",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Allocation",
+                                      "name": "Allocation",
+                                      "properties": {
+                                        "values": {
+                                          "a": 33.34,
+                                          "b": 33.33,
+                                          "c": 33.33
+                                        }
+                                      },
+                                      "branches": {
+                                        "a-(33.34%)": [
+                                          {
+                                            "id": "327b2fe9d94545c69fe3e31c41c9bb33",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy Relative Strength Index-30",
+                                            "properties": {
+                                              "select": {
+                                                "function": "Bottom",
+                                                "howmany": "1"
+                                              },
+                                              "sortby": {
+                                                "function": "Relative Strength Index",
+                                                "window": "30"
+                                              }
+                                            },
+                                            "branches": {
+                                              "Bottom-1": [
+                                                {
+                                                  "id": "7fdebe86437e4261a9cb2d73bb1d20cc",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMV",
+                                                  "properties": {
+                                                    "symbol": "TMV"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "619ca1e9268f48d7bd4e30aa389670a3",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TYO",
+                                                  "properties": {
+                                                    "symbol": "TYO"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "db5e2699-4796-47a7-b0cb-01098c3f618d",
+                                                  "componentType": "icon",
+                                                  "type": "icon",
+                                                  "name": "Interrupting icon"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "b-(33.33%)": [
+                                          {
+                                            "id": "5457a0cb67c84be5a5771a894d4212a3",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy Relative Strength Index-20",
+                                            "properties": {
+                                              "select": {
+                                                "function": "Bottom",
+                                                "howmany": "1"
+                                              },
+                                              "sortby": {
+                                                "function": "Relative Strength Index",
+                                                "window": "20"
+                                              }
+                                            },
+                                            "branches": {
+                                              "Bottom-1": [
+                                                {
+                                                  "id": "3a1b753f27334213b478f535112f095e",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order DIG",
+                                                  "properties": {
+                                                    "symbol": "DIG"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "8e5efb55baaf410196637609697fd280",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order ERX",
+                                                  "properties": {
+                                                    "symbol": "ERX"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "51082a3b1d53422d909ad44e73e0f411",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GUSH",
+                                                  "properties": {
+                                                    "symbol": "GUSH"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "7f3063c1afd84a74a561cf91be252c8f",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order USDU",
+                                                  "properties": {
+                                                    "symbol": "USDU"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "8b0729d7-b4e2-4efd-bb61-c15341c9a099",
+                                                  "componentType": "icon",
+                                                  "type": "icon",
+                                                  "name": "Interrupting icon"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "c-(33.33%)": [
+                                          {
+                                            "id": "719df4af41b04b14a3036744e3c29cb6",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy Relative Strength Index-20",
+                                            "properties": {
+                                              "select": {
+                                                "function": "Bottom",
+                                                "howmany": "1"
+                                              },
+                                              "sortby": {
+                                                "function": "Relative Strength Index",
+                                                "window": "20"
+                                              }
+                                            },
+                                            "branches": {
+                                              "Bottom-1": [
+                                                {
+                                                  "id": "aa93a776f9bf4834bd8ac5eb5d329c42",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TECS",
+                                                  "properties": {
+                                                    "symbol": "TECS"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "a3dbb1db227f494cbdb624c098b467b5",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order SPXS",
+                                                  "properties": {
+                                                    "symbol": "SPXS"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "4d458afaef654d3fbdf45cf9d72afdf7",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GDXJ",
+                                                  "properties": {
+                                                    "symbol": "GDXJ"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "ceb1af1c-2ead-479d-9665-e4156729331f",
+                                                  "componentType": "icon",
+                                                  "type": "icon",
+                                                  "name": "Interrupting icon"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "4c85bffa4da9476c86130f55a1792bae",
+                                  "componentType": "folder",
+                                  "type": "folder",
+                                  "name": "Risk Off, Falling Rates (Harry Browne Edition)",
+                                  "sequence": [
+                                    {
+                                      "id": "847b02597ced4f7a9b71028ea3db3969",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Allocation",
+                                      "name": "Allocation",
+                                      "properties": {
+                                        "values": {
+                                          "a": 50,
+                                          "b": 50
+                                        }
+                                      },
+                                      "branches": {
+                                        "a-(50.00%)": [
+                                          {
+                                            "id": "373e776dca8f4c5ebe0768f94a8abd9d",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy Relative Strength Index-20",
+                                            "properties": {
+                                              "select": {
+                                                "function": "Top",
+                                                "howmany": "1"
+                                              },
+                                              "sortby": {
+                                                "function": "Relative Strength Index",
+                                                "window": "20"
+                                              }
+                                            },
+                                            "branches": {
+                                              "Top-1": [
+                                                {
+                                                  "id": "ce109304af8c4700b7eee471fc56a982",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order UPRO",
+                                                  "properties": {
+                                                    "symbol": "UPRO"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "6a25c7aced9c47ffa285142ad6fdf1c0",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TECL",
+                                                  "properties": {
+                                                    "symbol": "TECL"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "bef7f3cc44144888a05dcc839e477054",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TQQQ",
+                                                  "properties": {
+                                                    "symbol": "TQQQ"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "a2b20ac810c94b518b1133c59bbdb428",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order TMF",
+                                                  "properties": {
+                                                    "symbol": "TMF"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "9a42501f-95de-4366-bf12-ce0f1127692a",
+                                                  "componentType": "icon",
+                                                  "type": "icon",
+                                                  "name": "Interrupting icon"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "b-(50.00%)": [
+                                          {
+                                            "id": "a025475c117d4c2587c6b4efa271f9d3",
+                                            "componentType": "switch",
+                                            "type": "Sort",
+                                            "name": "SortBy Relative Strength Index-20",
+                                            "properties": {
+                                              "select": {
+                                                "function": "Bottom",
+                                                "howmany": "1"
+                                              },
+                                              "sortby": {
+                                                "function": "Relative Strength Index",
+                                                "window": "20"
+                                              }
+                                            },
+                                            "branches": {
+                                              "Bottom-1": [
+                                                {
+                                                  "id": "ed16bc0e8e6347828bb31beed44a3aa4",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order GDXJ",
+                                                  "properties": {
+                                                    "symbol": "GDXJ"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "4bc0027703bb42f88dc861c21e823c8a",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order BIL",
+                                                  "properties": {
+                                                    "symbol": "BIL"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "578bc33be4544016979fa94a567087b4",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order SJB",
+                                                  "properties": {
+                                                    "symbol": "SJB"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "6611151f-1489-4a90-aec6-deca6d6625a7",
+                                                  "componentType": "icon",
+                                                  "type": "icon",
+                                                  "name": "Interrupting icon"
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "b-(20.00%)": [
+          {
+            "id": "543da03d0ee14429965fb9be2511b7b2",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Monthly Rotator (aggressive)",
+            "sequence": [
+              {
+                "id": "7c94b1c7a9354f6f83faf1d316f92925",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Relative Strength Index-20",
+                "properties": {
+                  "select": {
+                    "function": "Bottom",
+                    "howmany": "1"
+                  },
+                  "sortby": {
+                    "function": "Relative Strength Index",
+                    "window": "20"
+                  }
+                },
+                "branches": {
+                  "Bottom-1": [
+                    {
+                      "id": "1aa8e84658094fab9881bef46f5feca1",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order GDXJ",
+                      "properties": {
+                        "symbol": "GDXJ"
+                      }
+                    },
+                    {
+                      "id": "bb8a4a16d21c46758712e40c1dc5e89f",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TECL",
+                      "properties": {
+                        "symbol": "TECL"
+                      }
+                    },
+                    {
+                      "id": "56629bd6b0d04dd6a55e647c03aa11f6",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SOXL",
+                      "properties": {
+                        "symbol": "SOXL"
+                      }
+                    },
+                    {
+                      "id": "a848b2ce633d46f884c6e52967b78507",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order UPRO",
+                      "properties": {
+                        "symbol": "UPRO"
+                      }
+                    },
+                    {
+                      "id": "6c859101342a4832a177d8bd780b5348",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TBX",
+                      "properties": {
+                        "symbol": "TBX"
+                      }
+                    },
+                    {
+                      "id": "7325ca29d58c43feb5efe8a4935ac4ce",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order STIP",
+                      "properties": {
+                        "symbol": "STIP"
+                      }
+                    },
+                    {
+                      "id": "5d89fa2bf7b54c8e961b3ded83331ef4",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order MIDU",
+                      "properties": {
+                        "symbol": "MIDU"
+                      }
+                    },
+                    {
+                      "id": "03553d605dc54861b0730471879a7fd3",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order UJB",
+                      "properties": {
+                        "symbol": "UJB"
+                      }
+                    },
+                    {
+                      "id": "f9218bce-9cf7-43e8-9fd8-c76edd09de56",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

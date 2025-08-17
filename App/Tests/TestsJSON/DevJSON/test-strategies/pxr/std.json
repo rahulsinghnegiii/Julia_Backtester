@@ -1,0 +1,89 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "fb0969af-0272-4092-82d8-31f7b30d8bef",
+    "id": "fb0969af-0272-4092-82d8-31f7b30d8bef",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "e057b97978894550a1ecf6e9cc6644fb",
+    "componentType": "switch",
+      "type": "condition",
+      "name": "if(Standard Deviation of Return TLT  21 \u003e 1.00)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "Standard Deviation of Return",
+          "period": "21",
+          "source": "TLT"
+        },
+        "y": {
+          "indicator": "constant",
+          "period": "1.00"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "3ea1843caf67457182a2e6b4ba6e9f26",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Relative Strength Index-20",
+            "properties": {
+              "select": {
+                "function": "Bottom",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Relative Strength Index",
+                "window": "20"
+              }
+            },
+            "branches": {
+              "Bottom-1": [
+                {
+                  "id": "9a8d4c26c10341cab96f43ffd04b7e51",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SQQQ",
+                  "properties": {
+                    "symbol": "SQQQ"
+                  }
+                },
+                {
+                  "id": "fe474e27cc944d22928fc45a8d45353a",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order TMV",
+                  "properties": {
+                    "symbol": "TMV"
+                  }
+                },
+                {
+                  "id": "0817ad14-bfb6-4dc5-af0a-d8642f7b0f62",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "093ccef4cb2641adb58a7266bc4128d7",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order UUP",
+            "properties": {
+              "symbol": "UUP"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

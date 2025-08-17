@@ -1,0 +1,35 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "9439f92945a84a84e8d38c057c6aceb6",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "00d0ffde97d7123acfbcedfcb40236de",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Moving Average of Price  AAPL 5  > Exponential Moving Average of Price AAPL 5)",
+      "properties": {
+        "y": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "5",
+          "source": "AAPL"
+        },
+        "x": {
+          "indicator": "Moving Average of Price",
+          "source": "AAPL",
+          "period": "5"
+        },
+        "isInvalid": false,
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [],
+        "false": []
+      }
+    }
+  ]
+}

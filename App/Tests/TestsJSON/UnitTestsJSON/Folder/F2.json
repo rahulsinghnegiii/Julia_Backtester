@@ -1,0 +1,65 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "ee6ce635e9b5a32218a5ce37f899da2f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "a02b9347b716c66e95ba455fda7852b7",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "7019cebe9f92d5c99d2a6d99cebce9d9",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Exponential Moving Average of Price  BRK.B 3  > current price XOM )",
+          "properties": {
+            "y": {
+              "indicator": "current price",
+              "source": "XOM"
+            },
+            "x": {
+              "indicator": "Exponential Moving Average of Price",
+              "source": "BRK.B",
+              "period": "3"
+            },
+            "isInvalid": false,
+            "comparison": ">"
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "189120eee9d5c3378be9411d7b506164",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order BRK.B",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "BRK.B"
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "138435bc2c31351497497009a8c1185e",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order XOM",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "XOM"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

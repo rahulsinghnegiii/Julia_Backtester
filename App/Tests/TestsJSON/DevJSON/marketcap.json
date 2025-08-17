@@ -1,0 +1,50 @@
+{
+    "type": "root",
+    "properties": {
+        "id": "9cc78d7f39e0b0ab49a9afe2fcf2cac1",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "monthly"
+    },
+    "parentHash": "0",
+    "sequence": [
+        {
+            "id": "1b77f93cb8e2752d812d9f63ddf79c75",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocate by Market Cap",
+            "function": "Market Cap",
+            "properties": {},
+            "branches": {
+                "a": [
+                    {
+                        "id": "47a4d6fe1f3fe20abbc229d50afb2ed0",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "BUY QQQ",
+                        "properties": {
+                            "isInvalid": false,
+                            "symbol": "MSFT"
+                        },
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037"
+                    }
+                ],
+                "b": [
+                    {
+                        "id": "777e8676f745945e00e514aa9a574ea2",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "BUY EWQ",
+                        "properties": {
+                            "isInvalid": false,
+                            "symbol": "MSFt"
+                        },
+                        "parentHash": "d0e7bc5227f36c7d1c3baac9bc446081"
+                    }
+                ]
+            },
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "91ed7cbdafa787b5f70069447d9f153e"
+        }
+    ]
+}

@@ -1,0 +1,176 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "4e54146a-5838-4843-896b-391d2346760f",
+        "id": "4e54146a-5838-4843-896b-391d2346760f",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "2f3164c5c7754f78b5a64b9990e6a01e",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Inverse Volatility",
+            "name": "Allocate by 10d Inverse Volatility",
+            "properties": {
+                "period": "10",
+                "values": {
+                    "a": 100
+                }
+            },
+            "branches": {
+                "a": [
+                    {
+                        "id": "8eecacde4e024371b1748e23615fe315",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "BUY BGX",
+                        "properties": {
+                            "symbol": "BGX"
+                        },
+                        "hash": "6d9b97a2129cc2809a22a2c5de019050",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037"
+                    }
+                ],
+                "b": [
+                    {
+                        "id": "b233f5193a894b6f8a6b96ac4c17ec1e",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Short",
+                        "sequence": [
+                            {
+                                "id": "a8c00aa0a0d74488ad53bd5f9d4f70fa",
+                                "componentType": "switch",
+                                "type": "allocation",
+                                "function": "Inverse Volatility",
+                                "name": "Allocate by 10d Inverse Volatility",
+                                "properties": {
+                                    "period": "10",
+                                    "values": {
+                                        "a": 100
+                                    }
+                                },
+                                "branches": {
+                                    "a": [
+                                        {
+                                            "id": "c10135cd110249168d51c02ab02f79ae",
+                                            "componentType": "largeTask",
+                                            "type": "stock",
+                                            "name": "BUY SPXU",
+                                            "properties": {
+                                                "symbol": "SPXU"
+                                            },
+                                            "hash": "0ccf666fea72ab87273f3986078afee5",
+                                            "parentHash": "b9ec77159db6f61ca00737cc18d28a13"
+                                        }
+                                    ],
+                                    "b": [
+                                        {
+                                            "id": "f80e82acc4b144888420a3fbda334793",
+                                            "componentType": "folder",
+                                            "type": "folder",
+                                            "name": "Voltator",
+                                            "sequence": [
+                                                {
+                                                    "id": "fe9940a1dd154e10a185b78449a72b65",
+                                                    "componentType": "switch",
+                                                    "type": "Sort",
+                                                    "name": "SortBy: 5d Standard Deviation of Return",
+                                                    "properties": {
+                                                        "select": {
+                                                            "function": "Bottom",
+                                                            "howmany": "3"
+                                                        },
+                                                        "sortby": {
+                                                            "function": "Standard Deviation of Return",
+                                                            "window": "5"
+                                                        }
+                                                    },
+                                                    "branches": {
+                                                        "Bottom-3": [
+                                                            {
+                                                                "id": "9bc685ee4edc482591686f196013f1ad",
+                                                                "componentType": "largeTask",
+                                                                "type": "stock",
+                                                                "name": "BUY SVXY",
+                                                                "properties": {
+                                                                    "symbol": "SVXY"
+                                                                },
+                                                                "hash": "20cce6a69e032ba60b094d7b1b97c46e",
+                                                                "parentHash": "32417b49db06021f7ffc28f384752ffd"
+                                                            },
+                                                            {
+                                                                "id": "889edda0b2bd4b668b8fda7eb0f43df8",
+                                                                "componentType": "largeTask",
+                                                                "type": "stock",
+                                                                "name": "BUY VIXM",
+                                                                "properties": {
+                                                                    "symbol": "VIXM"
+                                                                },
+                                                                "hash": "b4204bf674d8d555db1fc5bfe314965f",
+                                                                "parentHash": "1e78966a93ef04e1d200debd0a4f2091"
+                                                            },
+                                                            {
+                                                                "id": "5af9ab6af31d4a3f8067d891639b13fb",
+                                                                "componentType": "largeTask",
+                                                                "type": "stock",
+                                                                "name": "BUY BGX",
+                                                                "properties": {
+                                                                    "symbol": "BGX"
+                                                                },
+                                                                "hash": "b818d70e3ca7ba954cc452bfac0305e4",
+                                                                "parentHash": "45b9e7c245f29ed15a0fb36186b09e3c"
+                                                            },
+                                                            {
+                                                                "id": "48c07475ea6d4d1fa103a1bdc65d7c0e",
+                                                                "componentType": "largeTask",
+                                                                "type": "stock",
+                                                                "name": "BUY BGX",
+                                                                "properties": {
+                                                                    "symbol": "BGX"
+                                                                },
+                                                                "hash": "b818d70e3ca7ba954cc452bfac0305e4",
+                                                                "parentHash": "173d32dd2f76ad03c325b7486caf446c"
+                                                            },
+                                                            {
+                                                                "id": "0f6ea293-2bc6-4757-919c-c01aeb10f4c6",
+                                                                "componentType": "icon",
+                                                                "type": "icon",
+                                                                "name": "Interrupting icon",
+                                                                "hash": "8ab2dbd1f547ca34436a9ddbcd5fc436",
+                                                                "parentHash": "16de8a2c0512e4035e1ca0d334cfff11"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "hash": "605ed8eac148f40c8587846745c2ab1a",
+                                                    "parentHash": "c6930569175dc484c717269ec2c099f1",
+                                                    "nodeChildrenHash": "bc9323abd1e9d1fffe6079e45cf82ec9"
+                                                }
+                                            ],
+                                            "hash": "1584568116ec5823e6eb955e026d80cf",
+                                            "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                                            "nodeChildrenHash": "bb8ce7bcdf5c2d5b3d0047797a35c9b3"
+                                        }
+                                    ]
+                                },
+                                "hash": "edb43cd2fe655ff2d0d136565731de37",
+                                "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                                "nodeChildrenHash": "943a9b5f79230aa684419837422f4b9c"
+                            }
+                        ],
+                        "hash": "f13ddfe69944f9cd0bec4cda312d6b7a",
+                        "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+                        "nodeChildrenHash": "776c22adf8de83bcaeffd34941f87b78"
+                    }
+                ]
+            },
+            "hash": "8ed53fb22066a9d82ee9d6c29e61ae7b",
+            "parentHash": "b4b147bc522828731f1a016bfa72c073",
+            "nodeChildrenHash": "f0a28a36235b518e4ef44812cd353ec5"
+        }
+    ],
+    "parentHash": "0"
+}

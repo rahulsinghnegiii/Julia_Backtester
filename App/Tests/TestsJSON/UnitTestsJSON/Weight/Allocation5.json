@@ -1,0 +1,170 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "e23cac907756a24e35518e1d957847b7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "257db010c13a9047a265c10efca5154f",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Allocation",
+      "properties": {
+        "values": {
+          "a": 25,
+          "b": 25,
+          "c": 25,
+          "d": 25
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "a-(25%)": [
+          {
+            "id": "4dd461fe674aa749aa618f6649952305",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ],
+        "b-(25%)": [
+          {
+            "id": "4f0f3e1a7d27602bd413c780bee25df6",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Max Drawdown",
+            "properties": {
+              "sortby": {
+                "function": "Max Drawdown",
+                "window": "5"
+              },
+              "select": {
+                "function": "Top",
+                "howmany": "2"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "2de06e52f6c3a0e6a4cd800436c62c9e",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order XOM",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "XOM"
+                  }
+                },
+                {
+                  "id": "e2a775c0e0d0125f5fbc9dfbfcda4a44",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ],
+        "c-(25%)": [
+          {
+            "id": "c1cc1adfb451f28bc595cdecb345b57b",
+            "componentType": "switch",
+            "type": "allocation",
+            "name": "Allocation",
+            "function": "Allocation",
+            "properties": {
+              "values": {
+                "a": 50,
+                "b": 50
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "a-(50%)": [
+                {
+                  "id": "9b094279c33414cce59b99a47d0d84fa",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(Max Drawdown  BRK.B 2  > current price FNGU )",
+                  "properties": {
+                    "y": {
+                      "indicator": "current price",
+                      "source": "FNGU"
+                    },
+                    "x": {
+                      "indicator": "Max Drawdown",
+                      "source": "BRK.B",
+                      "period": "2"
+                    },
+                    "isInvalid": false,
+                    "comparison": ">"
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "e7eccef1d6d0aed702008cd48b409088",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order BRK.B",
+                        "properties": {
+                          "isInvalid": false,
+                          "symbol": "BRK.B"
+                        }
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "e9838645bb2d4309a0f4be9fe852c058",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order FNGU",
+                        "properties": {
+                          "isInvalid": false,
+                          "symbol": "FNGU"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "b-(50%)": [
+                {
+                  "id": "766d3f5359890cbaa04646da77cbc0a7",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SPY",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "SPY"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "d-(25%)": [
+          {
+            "id": "6cb03c50192af112e6caece9cbccd889",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order FNGU",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "FNGU"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

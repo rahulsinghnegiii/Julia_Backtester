@@ -1,0 +1,63 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "id": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "c87fbd7da11b43178a056f85ebe2168a",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "IEF Macro Momentum",
+      "sequence": [
+        {
+          "id": "21b9cff8b17f4f0bb06295e38c090afa",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Moving Average of Price IEF 200 \u003e Moving Average of Price IEF 450)",
+          "properties": {
+            "comparison": "\u003e",
+            "x": {
+              "indicator": "Moving Average of Price",
+              "period": "200",
+              "source": "IEF"
+            },
+            "y": {
+              "indicator": "Moving Average of Price",
+              "period": "450",
+              "source": "IEF"
+            }
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "e2704d36211644dea5c484be2dafec9f",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order TYD",
+                "properties": {
+                  "symbol": "TYD"
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "4c56c0664754424a9fcdb6bc65c65e75",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order SHV",
+                "properties": {
+                  "symbol": "SHV"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

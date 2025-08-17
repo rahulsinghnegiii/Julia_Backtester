@@ -1,0 +1,158 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "6db9d510e1e596a39dd73ee76d9c27e5",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "b5a98d98fa0ce4cdce5b32e706f39fef",
+      "componentType": "largeTask",
+      "type": "stock",
+      "name": "Buy Order FEPI",
+      "properties": {
+        "isInvalid": false,
+        "symbol": "FEPI"
+      }
+    },
+    {
+      "id": "2f3567f8f9439dbccec1d950cbdcff7c",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "18a8e16e92115f876a969919dbb1219d",
+          "componentType": "switch",
+          "type": "Sort",
+          "name": "SortBy Exponential Moving Average of Price",
+          "properties": {
+            "sortby": {
+              "function": "Exponential Moving Average of Price",
+              "window": "2"
+            },
+            "select": {
+              "function": "Top",
+              "howmany": "1"
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "1": [
+              {
+                "id": "ea66266f21d30b95567622319162e965",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "folder2",
+                "sequence": [
+                  {
+                    "id": "5968d9dc5086c1817392e9b2e5484a7b",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "name": "Allocation",
+                    "function": "Inverse Volatility",
+                    "properties": {
+                      "isInvalid": false,
+                      "period": "3"
+                    },
+                    "branches": {
+                      "a": [
+                        {
+                          "id": "ada43d2642cce72dac930141e353e4c5",
+                          "componentType": "folder",
+                          "type": "folder",
+                          "name": "folder2",
+                          "sequence": [
+                            {
+                              "id": "62f77271e4874a6395b0e52504877452",
+                              "componentType": "largeTask",
+                              "type": "stock",
+                              "name": "Buy Order BRK.B",
+                              "properties": {
+                                "isInvalid": false,
+                                "symbol": "BRK.B"
+                              }
+                            }
+                          ],
+                          "properties": {}
+                        }
+                      ],
+                      "b": [
+                        {
+                          "id": "7ffa54ceeb5b40fe3fe7acd447e8a2f5",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order FNGU",
+                          "properties": {
+                            "isInvalid": false,
+                            "symbol": "FNGU"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "properties": {}
+              },
+              {
+                "id": "eea9bf7f1fa005d2cdfa360901ade1e0",
+                "componentType": "icon",
+                "name": "Interrupting icon",
+                "properties": {},
+                "type": "icon"
+              }
+            ]
+          }
+        },
+        {
+          "id": "7185d88c4075d8874ff7a9a8a01a9cfa",
+          "componentType": "switch",
+          "type": "condition",
+          "name": "if(Cumulative Return  XOM -1  > current price FEPI )",
+          "properties": {
+            "y": {
+              "indicator": "current price",
+              "source": "FEPI"
+            },
+            "x": {
+              "indicator": "Cumulative Return",
+              "source": "XOM",
+              "period": "-1"
+            },
+            "isInvalid": false,
+            "comparison": ">"
+          },
+          "branches": {
+            "true": [
+              {
+                "id": "f2710e41703461deb8a2429359aaa757",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order XOM",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "XOM"
+                }
+              }
+            ],
+            "false": [
+              {
+                "id": "c5e134b11174a981c824c6022fe93110",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order FEPI",
+                "properties": {
+                  "isInvalid": false,
+                  "symbol": "FEPI"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

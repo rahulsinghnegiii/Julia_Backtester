@@ -1,0 +1,1527 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "c938fce8-3b54-4596-a305-098e50003af3",
+    "id": "c938fce8-3b54-4596-a305-098e50003af3",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "ddd470a969274588a97e5cfa41257f3a",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Cumulative Return DBO  21 > 0.00)",
+      "properties": {
+        "comparison": ">",
+        "x": {
+          "indicator": "Cumulative Return",
+          "period": "21",
+          "source": "DBO"
+        },
+        "y": {
+          "indicator": "constant",
+          "period": "0.00"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "44efcf3540f24da490a36de6b124a39b",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Energy Momentum ",
+            "sequence": [
+              {
+                "id": "5b6b17525a8b4b0cbd8618b64fa30b02",
+                "componentType": "switch",
+                "type": "allocation",
+                "function": "Allocation",
+                "name": "Allocation",
+                "properties": {
+                  "values": {
+                    "a": 60,
+                    "b": 40
+                  }
+                },
+                "branches": {
+                  "a-(60.00%)": [
+                    {
+                      "id": "db895aa09952435b9b8f015ceacd4a6f",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "Energy or Bonds",
+                      "sequence": [
+                        {
+                          "id": "176c2139f22f4acb98b8571458c39a1e",
+                          "componentType": "switch",
+                          "type": "allocation",
+                          "function": "Allocation",
+                          "name": "Allocation",
+                          "properties": {
+                            "values": {
+                              "a": 14.29,
+                              "b": 14.29,
+                              "c": 14.29,
+                              "d": 14.29,
+                              "e": 14.28,
+                              "f": 14.28,
+                              "g": 14.28
+                            }
+                          },
+                          "branches": {
+                            "a-(14.29%)": [
+                              {
+                                "id": "59412546aa4c4b2a8ffde77976433294",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Cumulative Return-21",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Cumulative Return",
+                                    "window": "21"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "3cee861ed56342faab34885e8636261c",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order VDE",
+                                      "properties": {
+                                        "symbol": "VDE"
+                                      }
+                                    },
+                                    {
+                                      "id": "3ee22fac336e4990b4b2d6ae0e1789f1",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order QCLN",
+                                      "properties": {
+                                        "symbol": "QCLN"
+                                      }
+                                    },
+                                    {
+                                      "id": "1345dbef3b084419a56241a3c1410207",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BSV",
+                                      "properties": {
+                                        "symbol": "BSV"
+                                      }
+                                    },
+                                    {
+                                      "id": "2067b6ee-b68d-4bec-a9b5-600bd945be39",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "b-(14.29%)": [
+                              {
+                                "id": "320500dfdd944c3e8d4345ae7b21fffe",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy current price-0",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "current price",
+                                    "window": "0"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "8311356f7e344c229e6999be79d0b8d4",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order VDE",
+                                      "properties": {
+                                        "symbol": "VDE"
+                                      }
+                                    },
+                                    {
+                                      "id": "d05c6efee95d48c693b3a6f7135da8bb",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order QCLN",
+                                      "properties": {
+                                        "symbol": "QCLN"
+                                      }
+                                    },
+                                    {
+                                      "id": "4ba800e285254e1fb53836890631d1d8",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BSV",
+                                      "properties": {
+                                        "symbol": "BSV"
+                                      }
+                                    },
+                                    {
+                                      "id": "db74157e-87fa-4d33-847c-ae86ea496535",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "c-(14.29%)": [
+                              {
+                                "id": "07759107d0384466b771da40ec82bbf3",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Exponential Moving Average of Price-252",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Exponential Moving Average of Price",
+                                    "window": "252"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "35d75f21990146c086bfe225da1ea7f8",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order VDE",
+                                      "properties": {
+                                        "symbol": "VDE"
+                                      }
+                                    },
+                                    {
+                                      "id": "a718618bf9d6434c8bc078e8a54d07e5",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order QCLN",
+                                      "properties": {
+                                        "symbol": "QCLN"
+                                      }
+                                    },
+                                    {
+                                      "id": "c7156564a4da4b9aafa0ec98f09ee6ce",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BSV",
+                                      "properties": {
+                                        "symbol": "BSV"
+                                      }
+                                    },
+                                    {
+                                      "id": "b436698e8419443c86cf44ba4dce3345",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order XOM",
+                                      "properties": {
+                                        "symbol": "XOM"
+                                      }
+                                    },
+                                    {
+                                      "id": "b5e41709-7327-4408-9ab1-22a8a0c9b382",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "d-(14.29%)": [
+                              {
+                                "id": "0e209bc79f034343b81bac443d793be2",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Price-20",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Price",
+                                    "window": "20"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-1": [
+                                    {
+                                      "id": "bda4f22134ff41e88f2bd335acc1cc77",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order AAPL",
+                                      "properties": {
+                                        "symbol": "AAPL"
+                                      }
+                                    },
+                                    {
+                                      "id": "d7eec8759eb1445698f82be98305b133",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order NVDA",
+                                      "properties": {
+                                        "symbol": "NVDA"
+                                      }
+                                    },
+                                    {
+                                      "id": "d403d6cb-ca12-43c9-b173-e1219286f2d4",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "e-(14.28%)": [
+                              {
+                                "id": "175fcb99ca454f6c9aa7b7c69735bf97",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Moving Average of Return-20",
+                                "properties": {
+                                  "select": {
+                                    "function": "Top",
+                                    "howmany": "2"
+                                  },
+                                  "sortby": {
+                                    "function": "Moving Average of Return",
+                                    "window": "20"
+                                  }
+                                },
+                                "branches": {
+                                  "Top-2": [
+                                    {
+                                      "id": "8af80d7c67d849dd88ebdc25b47ccbf4",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TSLA",
+                                      "properties": {
+                                        "symbol": "TSLA"
+                                      }
+                                    },
+                                    {
+                                      "id": "1632e8e6439e47f2bbf53777f24a6f9f",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order MSFT",
+                                      "properties": {
+                                        "symbol": "MSFT"
+                                      }
+                                    },
+                                    {
+                                      "id": "52bda706716f4fed843bb5ba95fea817",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order NU",
+                                      "properties": {
+                                        "symbol": "NU"
+                                      }
+                                    },
+                                    {
+                                      "id": "2c9bb18f7c5a432c8425f6c7c7bd4f37",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order AMZN",
+                                      "properties": {
+                                        "symbol": "AMZN"
+                                      }
+                                    },
+                                    {
+                                      "id": "756580f8-b2dd-436f-bb14-49e5bd7e078c",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "f-(14.28%)": [
+                              {
+                                "id": "dbe4b8499e464ab3a13d4cb65b5d2edc",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Standard Deviation of Price-20",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "3"
+                                  },
+                                  "sortby": {
+                                    "function": "Standard Deviation of Price",
+                                    "window": "20"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-3": [
+                                    {
+                                      "id": "ad085d29501343da8c18fa1e57f31ff8",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order GOOGL",
+                                      "properties": {
+                                        "symbol": "GOOGL"
+                                      }
+                                    },
+                                    {
+                                      "id": "db9dbd0724e74785bad0daf0ef97eb64",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order DELL",
+                                      "properties": {
+                                        "symbol": "DELL"
+                                      }
+                                    },
+                                    {
+                                      "id": "4e1498e7803f429981b62b16d0f34998",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BRK-B",
+                                      "properties": {
+                                        "symbol": "BRK-B"
+                                      }
+                                    },
+                                    {
+                                      "id": "c1cfc9ed5b0b43fa876a39a422a53fc7",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SOXL",
+                                      "properties": {
+                                        "symbol": "SOXL"
+                                      }
+                                    },
+                                    {
+                                      "id": "763216a1-1cdd-4320-b8f6-7394163227f4",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "g-(14.28%)": [
+                              {
+                                "id": "2fec0b350c8542d2910459ff8ff102bb",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Standard Deviation of Return-20",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "2"
+                                  },
+                                  "sortby": {
+                                    "function": "Standard Deviation of Return",
+                                    "window": "20"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-2": [
+                                    {
+                                      "id": "2f0e229c0e3642bd8c41e02a7058afd8",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order META",
+                                      "properties": {
+                                        "symbol": "META"
+                                      }
+                                    },
+                                    {
+                                      "id": "5087671d86084fe7a1cea38f463c20cd",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order SMCI",
+                                      "properties": {
+                                        "symbol": "SMCI"
+                                      }
+                                    },
+                                    {
+                                      "id": "41fe49352f5b4b11aac02afd23b317c6",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order IWM",
+                                      "properties": {
+                                        "symbol": "IWM"
+                                      }
+                                    },
+                                    {
+                                      "id": "9ce669db-9712-4848-b8ee-670c5de9cd2c",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "b-(40.00%)": [
+                    {
+                      "id": "bbc22f715af54273b17cc4e47c9c2d81",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "Utilities or Bonds",
+                      "sequence": [
+                        {
+                          "id": "39f4d89ddb3c4059962b7a57ee77240f",
+                          "componentType": "switch",
+                          "type": "allocation",
+                          "function": "Allocation",
+                          "name": "Allocation",
+                          "properties": {
+                            "values": {
+                              "a": 50,
+                              "b": 50
+                            }
+                          },
+                          "branches": {
+                            "a-(50.00%)": [
+                              {
+                                "id": "47f9961b9da64b259daf1f2b0fbd807b",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order XLU",
+                                "properties": {
+                                  "symbol": "XLU"
+                                }
+                              }
+                            ],
+                            "b-(50.00%)": [
+                              {
+                                "id": "c4b0dbe25c2b44d08b942f9c8d95ab86",
+                                "componentType": "switch",
+                                "type": "Sort",
+                                "name": "SortBy Max Drawdown-20",
+                                "properties": {
+                                  "select": {
+                                    "function": "Bottom",
+                                    "howmany": "1"
+                                  },
+                                  "sortby": {
+                                    "function": "Max Drawdown",
+                                    "window": "20"
+                                  }
+                                },
+                                "branches": {
+                                  "Bottom-1": [
+                                    {
+                                      "id": "dc4f9a0db28d4cf985e58633775aee76",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order XLU",
+                                      "properties": {
+                                        "symbol": "XLU"
+                                      }
+                                    },
+                                    {
+                                      "id": "188a5ed7676f49ea9d40ae5d7a4375ad",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order VPU",
+                                      "properties": {
+                                        "symbol": "VPU"
+                                      }
+                                    },
+                                    {
+                                      "id": "2fc0ab8e255f45dbb4e167aef9c5d440",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order BSV",
+                                      "properties": {
+                                        "symbol": "BSV"
+                                      }
+                                    },
+                                    {
+                                      "id": "027c3b9b-7275-421f-b6ac-35e57bc98aa4",
+                                      "componentType": "icon",
+                                      "type": "icon",
+                                      "name": "Interrupting icon"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "false": [
+          {
+            "id": "b93d97e7c56a412dbc69777f65eb7d5d",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "V2 | Advanced Volatility Hedge | DJKeyhole | Modified from Garen Mod",
+            "sequence": [
+              {
+                "id": "0f9f27f582104ca6b047ecc752750857",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Max Drawdown UVXY  20 > -0.50)",
+                "properties": {
+                  "comparison": ">",
+                  "x": {
+                    "indicator": "Max Drawdown",
+                    "period": "20",
+                    "source": "UVXY"
+                  },
+                  "y": {
+                    "indicator": "constant",
+                    "period": "-0.50"
+                  }
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "e3610fa997854db785c53c21a1362ac4",
+                      "componentType": "switch",
+                      "type": "allocation",
+                      "function": "Inverse Volatility",
+                      "name": "Inverse Volatility",
+                      "properties": {
+                        "period": "5",
+                        "values": {
+                          "a": 100
+                        }
+                      },
+                      "branches": {
+                        "a": [
+                          {
+                            "id": "5ce26f7c155a491391c3db2c2aa42425",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order VIXM",
+                            "properties": {
+                              "symbol": "VIXM"
+                            }
+                          }
+                        ],
+                        "b": [
+                          {
+                            "id": "1ae296746be5486799e62f01f7dbfaf0",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order UUP",
+                            "properties": {
+                              "symbol": "UUP"
+                            }
+                          }
+                        ],
+                        "c": [
+                          {
+                            "id": "f5871c1d4312405c9e30da63a5e0b39d",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order UVXY",
+                            "properties": {
+                              "symbol": "UVXY"
+                            }
+                          }
+                        ],
+                        "d": [
+                          {
+                            "id": "25295e4a6a504f7facb8b60efdb2783a",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order XOM",
+                            "properties": {
+                              "symbol": "XOM"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "b3022b939ca94b8cbc9c4192599b0c35",
+                      "componentType": "folder",
+                      "type": "folder",
+                      "name": "Safer 20 Year Treasury Bonds with Leverage",
+                      "sequence": [
+                        {
+                          "id": "350f4ff88084405dafc6c4f491813c8b",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(current price TLT > Moving Average of Price TLT 200)",
+                          "properties": {
+                            "comparison": ">",
+                            "x": {
+                              "indicator": "current price",
+                              "source": "TLT"
+                            },
+                            "y": {
+                              "indicator": "Moving Average of Price",
+                              "period": "200",
+                              "source": "TLT"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "ee118d033cde4fb290b2704c5802a723",
+                                "componentType": "folder",
+                                "type": "folder",
+                                "name": "If long term TLT is trending up",
+                                "sequence": [
+                                  {
+                                    "id": "85c028dd3ae04b1db25fe2e983f9ef19",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if(Relative Strength Index TLT  14 < 50.00)",
+                                    "properties": {
+                                      "comparison": "<",
+                                      "x": {
+                                        "indicator": "Relative Strength Index",
+                                        "period": "14",
+                                        "source": "TLT"
+                                      },
+                                      "y": {
+                                        "indicator": "constant",
+                                        "period": "50.00"
+                                      }
+                                    },
+                                    "branches": {
+                                      "true": [
+                                        {
+                                          "id": "8c1cd2e65fdd4824b9231270e1556a1c",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "If medium term TLT is not overbought",
+                                          "sequence": [
+                                            {
+                                              "id": "51ca3e0318274f488b4492e6526bf81a",
+                                              "componentType": "switch",
+                                              "type": "condition",
+                                              "name": "if(Exponential Moving Average of Price TMF 5 > Exponential Moving Average of Price TLT 5)",
+                                              "properties": {
+                                                "comparison": ">",
+                                                "x": {
+                                                  "indicator": "Exponential Moving Average of Price",
+                                                  "period": "5",
+                                                  "source": "TMF"
+                                                },
+                                                "y": {
+                                                  "indicator": "Exponential Moving Average of Price",
+                                                  "period": "5",
+                                                  "source": "TLT"
+                                                }
+                                              },
+                                              "branches": {
+                                                "true": [
+                                                  {
+                                                    "id": "c7528f425ea345e6a1e60e11ea66931a",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "Buy 3x leveraged bull treasury bonds (TMF)",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "1883694819ab486ba4962c474cb62a63",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order TMF",
+                                                        "properties": {
+                                                          "symbol": "TMF"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "false": [
+                                                  {
+                                                    "id": "ef343932e3a84efa9bce4ac7d88d9a22",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "If short term TLT is trending down",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "ac2662f46d7d4c588fb1f1f34e2e3607",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index TLT  14 < 20.00)",
+                                                        "properties": {
+                                                          "comparison": "<",
+                                                          "x": {
+                                                            "indicator": "Relative Strength Index",
+                                                            "period": "14",
+                                                            "source": "TLT"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "20.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "6aa7a361b1c84c08b761c721145eff17",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Medium term TLT is underbought, buy 3x leveraged bull treasury bonds (TMF)",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "e875e8b7f9794fbe8a8b14cc6602b0f6",
+                                                                  "componentType": "largeTask",
+                                                                  "type": "stock",
+                                                                  "name": "Buy Order TMF",
+                                                                  "properties": {
+                                                                    "symbol": "TMF"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "f7d6f653b16c4f718768b487b9d6af21",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Leveraged Safety",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "54caf5c18ccd4ed89938ecb36cd6f924",
+                                                                  "componentType": "switch",
+                                                                  "type": "condition",
+                                                                  "name": "if(Moving Average of Return TLT  20 < 0.00)",
+                                                                  "properties": {
+                                                                    "comparison": "<",
+                                                                    "x": {
+                                                                      "indicator": "Moving Average of Return",
+                                                                      "period": "20",
+                                                                      "source": "TLT"
+                                                                    },
+                                                                    "y": {
+                                                                      "indicator": "constant",
+                                                                      "period": "0.00"
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "true": [
+                                                                      {
+                                                                        "id": "fa026ad7d29545d882ad7089e78e52fc",
+                                                                        "componentType": "folder",
+                                                                        "type": "folder",
+                                                                        "name": "Risk Off, Rising Rates",
+                                                                        "sequence": [
+                                                                          {
+                                                                            "id": "8a4331a37d4c4fb4bb7a8f204a826118",
+                                                                            "componentType": "switch",
+                                                                            "type": "allocation",
+                                                                            "function": "Allocation",
+                                                                            "name": "Allocation",
+                                                                            "properties": {
+                                                                              "values": {
+                                                                                "a": 50,
+                                                                                "b": 50
+                                                                              }
+                                                                            },
+                                                                            "branches": {
+                                                                              "a-(50.00%)": [
+                                                                                {
+                                                                                  "id": "63489984099a4b23b28b0f101bdc4585",
+                                                                                  "componentType": "largeTask",
+                                                                                  "type": "stock",
+                                                                                  "name": "Buy Order UUP",
+                                                                                  "properties": {
+                                                                                    "symbol": "UUP"
+                                                                                  }
+                                                                                }
+                                                                              ],
+                                                                              "b-(50.00%)": [
+                                                                                {
+                                                                                  "id": "20d1010e9fd442c4bf670ca1722d09cf",
+                                                                                  "componentType": "switch",
+                                                                                  "type": "Sort",
+                                                                                  "name": "SortBy Relative Strength Index-20",
+                                                                                  "properties": {
+                                                                                    "select": {
+                                                                                      "function": "Bottom",
+                                                                                      "howmany": "1"
+                                                                                    },
+                                                                                    "sortby": {
+                                                                                      "function": "Relative Strength Index",
+                                                                                      "window": "20"
+                                                                                    }
+                                                                                  },
+                                                                                  "branches": {
+                                                                                    "Bottom-1": [
+                                                                                      {
+                                                                                        "id": "cceccc701864410ba225d78992faff65",
+                                                                                        "componentType": "largeTask",
+                                                                                        "type": "stock",
+                                                                                        "name": "Buy Order PSQ",
+                                                                                        "properties": {
+                                                                                          "symbol": "PSQ"
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "id": "7d727a92e6de4868a84f1615f59f23b4",
+                                                                                        "componentType": "largeTask",
+                                                                                        "type": "stock",
+                                                                                        "name": "Buy Order SH",
+                                                                                        "properties": {
+                                                                                          "symbol": "SH"
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "id": "ccc93d0901544e81879d77757545fd17",
+                                                                                        "componentType": "largeTask",
+                                                                                        "type": "stock",
+                                                                                        "name": "Buy Order UUP",
+                                                                                        "properties": {
+                                                                                          "symbol": "UUP"
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "id": "3665628cd4fd411482881d89f5b2c439",
+                                                                                        "componentType": "largeTask",
+                                                                                        "type": "stock",
+                                                                                        "name": "Buy Order TMV",
+                                                                                        "properties": {
+                                                                                          "symbol": "TMV"
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "id": "9a08ddcc-412c-426f-b926-4c523fa3f6a3",
+                                                                                        "componentType": "icon",
+                                                                                        "type": "icon",
+                                                                                        "name": "Interrupting icon"
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ],
+                                                                    "false": [
+                                                                      {
+                                                                        "id": "53841806c14447ba8488ef5e909f42c4",
+                                                                        "componentType": "folder",
+                                                                        "type": "folder",
+                                                                        "name": "Risk Off, Falling Rates",
+                                                                        "sequence": [
+                                                                          {
+                                                                            "id": "45f6eb9a8c394bd9a7620d7c39bd5879",
+                                                                            "componentType": "switch",
+                                                                            "type": "allocation",
+                                                                            "function": "Allocation",
+                                                                            "name": "Allocation",
+                                                                            "properties": {
+                                                                              "values": {
+                                                                                "a": 25,
+                                                                                "b": 25,
+                                                                                "c": 25,
+                                                                                "d": 25
+                                                                              }
+                                                                            },
+                                                                            "branches": {
+                                                                              "a-(25.00%)": [
+                                                                                {
+                                                                                  "id": "6046393ea69247b3944c0add3e33c80d",
+                                                                                  "componentType": "largeTask",
+                                                                                  "type": "stock",
+                                                                                  "name": "Buy Order UGL",
+                                                                                  "properties": {
+                                                                                    "symbol": "UGL"
+                                                                                  }
+                                                                                }
+                                                                              ],
+                                                                              "b-(25.00%)": [
+                                                                                {
+                                                                                  "id": "cf514523a2c14d7badd80c2a084c057a",
+                                                                                  "componentType": "largeTask",
+                                                                                  "type": "stock",
+                                                                                  "name": "Buy Order TMF",
+                                                                                  "properties": {
+                                                                                    "symbol": "TMF"
+                                                                                  }
+                                                                                }
+                                                                              ],
+                                                                              "c-(25.00%)": [
+                                                                                {
+                                                                                  "id": "427d67f30524431ea2a049dcade8154f",
+                                                                                  "componentType": "largeTask",
+                                                                                  "type": "stock",
+                                                                                  "name": "Buy Order BTAL",
+                                                                                  "properties": {
+                                                                                    "symbol": "BTAL"
+                                                                                  }
+                                                                                }
+                                                                              ],
+                                                                              "d-(25.00%)": [
+                                                                                {
+                                                                                  "id": "30455afe940e4a7b93480619351ce0c8",
+                                                                                  "componentType": "largeTask",
+                                                                                  "type": "stock",
+                                                                                  "name": "Buy Order XLP",
+                                                                                  "properties": {
+                                                                                    "symbol": "XLP"
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "fa5bed837a4241d2ac36ec94f7fb2c91",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "Medium term TLT may be overbought",
+                                          "sequence": [
+                                            {
+                                              "id": "d357f67688f546c7ac4daf83245a13a5",
+                                              "componentType": "switch",
+                                              "type": "condition",
+                                              "name": "if(Standard Deviation of Price TLT  20 < 8000.00)",
+                                              "properties": {
+                                                "comparison": "<",
+                                                "x": {
+                                                  "indicator": "Standard Deviation of Price",
+                                                  "period": "20",
+                                                  "source": "TLT"
+                                                },
+                                                "y": {
+                                                  "indicator": "constant",
+                                                  "period": "8000.00"
+                                                }
+                                              },
+                                              "branches": {
+                                                "true": [
+                                                  {
+                                                    "id": "56bf5efcb6644f52933a99ce812e2637",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "Market Cap Test",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "edaac38a7d9440b8898e4271c49a7299",
+                                                        "componentType": "switch",
+                                                        "type": "allocation",
+                                                        "function": "Market Cap",
+                                                        "name": "Market Cap",
+                                                        "properties": {
+                                                          "values": {}
+                                                        },
+                                                        "branches": {
+                                                          "a": [
+                                                            {
+                                                              "id": "76a668259f484e21a7866618274d9a96",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order AAPL",
+                                                              "properties": {
+                                                                "symbol": "AAPL"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "b": [
+                                                            {
+                                                              "id": "f3aab97286e3457ebf66c00405914912",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order MSFT",
+                                                              "properties": {
+                                                                "symbol": "MSFT"
+                                                              }
+                                                            }
+                                                          ],
+                                                          "c": [
+                                                            {
+                                                              "id": "4fd28d1618ad4533ab526a1254fd4f75",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order TSLA",
+                                                              "properties": {
+                                                                "symbol": "TSLA"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ],
+                                                "false": [
+                                                  {
+                                                    "id": "fbf6937edee94841b6aa3f4464b577dc",
+                                                    "componentType": "folder",
+                                                    "type": "folder",
+                                                    "name": "Leveraged Safety",
+                                                    "sequence": [
+                                                      {
+                                                        "id": "99f45967053848f3b583e33a190761a3",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Standard Deviation of Return TLT  20 < 50.00)",
+                                                        "properties": {
+                                                          "comparison": "<",
+                                                          "x": {
+                                                            "indicator": "Standard Deviation of Return",
+                                                            "period": "20",
+                                                            "source": "TLT"
+                                                          },
+                                                          "y": {
+                                                            "indicator": "constant",
+                                                            "period": "50.00"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "true": [
+                                                            {
+                                                              "id": "12fac05a41e8426f99e70050540392ea",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Risk Off, Rising Rates",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "edfdc8d535fa483483faad3bfa4bec58",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Allocation",
+                                                                  "name": "Allocation",
+                                                                  "properties": {
+                                                                    "values": {
+                                                                      "a": 50,
+                                                                      "b": 50
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a-(50.00%)": [
+                                                                      {
+                                                                        "id": "41a1c2dd9a6644df973035d3e3d5269f",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order UUP",
+                                                                        "properties": {
+                                                                          "symbol": "UUP"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b-(50.00%)": [
+                                                                      {
+                                                                        "id": "718c2284e7324d75a176e0ee203792b5",
+                                                                        "componentType": "switch",
+                                                                        "type": "Sort",
+                                                                        "name": "SortBy Relative Strength Index-20",
+                                                                        "properties": {
+                                                                          "select": {
+                                                                            "function": "Bottom",
+                                                                            "howmany": "1"
+                                                                          },
+                                                                          "sortby": {
+                                                                            "function": "Relative Strength Index",
+                                                                            "window": "20"
+                                                                          }
+                                                                        },
+                                                                        "branches": {
+                                                                          "Bottom-1": [
+                                                                            {
+                                                                              "id": "8ab4b38583c644098456a5e8f573caee",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order PSQ",
+                                                                              "properties": {
+                                                                                "symbol": "PSQ"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "7a98470650e14274af97c5f14eaad1bd",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order SH",
+                                                                              "properties": {
+                                                                                "symbol": "SH"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "301b902724b14cbf9b99fbb080f09cb3",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order UUP",
+                                                                              "properties": {
+                                                                                "symbol": "UUP"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "705dc4b8ba2942208f6dad0003f8ae13",
+                                                                              "componentType": "largeTask",
+                                                                              "type": "stock",
+                                                                              "name": "Buy Order TMV",
+                                                                              "properties": {
+                                                                                "symbol": "TMV"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "13347ad0-d0c9-4917-9db8-f73184abb274",
+                                                                              "componentType": "icon",
+                                                                              "type": "icon",
+                                                                              "name": "Interrupting icon"
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ],
+                                                          "false": [
+                                                            {
+                                                              "id": "cb13d2736e1f467b8393e99e5e8bf339",
+                                                              "componentType": "folder",
+                                                              "type": "folder",
+                                                              "name": "Risk Off, Falling Rates",
+                                                              "sequence": [
+                                                                {
+                                                                  "id": "d41c478102364a339351744225b9103f",
+                                                                  "componentType": "switch",
+                                                                  "type": "allocation",
+                                                                  "function": "Allocation",
+                                                                  "name": "Allocation",
+                                                                  "properties": {
+                                                                    "values": {
+                                                                      "a": 25,
+                                                                      "b": 25,
+                                                                      "c": 25,
+                                                                      "d": 25
+                                                                    }
+                                                                  },
+                                                                  "branches": {
+                                                                    "a-(25.00%)": [
+                                                                      {
+                                                                        "id": "6681c30e4b31434ba59fc5b24e8435c0",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order UGL",
+                                                                        "properties": {
+                                                                          "symbol": "UGL"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "b-(25.00%)": [
+                                                                      {
+                                                                        "id": "dd810c6ce6c942e3b17ea33a2d9bc09f",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order TMF",
+                                                                        "properties": {
+                                                                          "symbol": "TMF"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "c-(25.00%)": [
+                                                                      {
+                                                                        "id": "026a1310074a488a9828d5a34dc9ccd5",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order BTAL",
+                                                                        "properties": {
+                                                                          "symbol": "BTAL"
+                                                                        }
+                                                                      }
+                                                                    ],
+                                                                    "d-(25.00%)": [
+                                                                      {
+                                                                        "id": "b9ccd5ef57db4caaa3d9b04f21c562a3",
+                                                                        "componentType": "largeTask",
+                                                                        "type": "stock",
+                                                                        "name": "Buy Order XLP",
+                                                                        "properties": {
+                                                                          "symbol": "XLP"
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "cfa6ad30d1604798829bd4621a01aa10",
+                                "componentType": "folder",
+                                "type": "folder",
+                                "name": "Safety: Long Term, 2 Least Volatile",
+                                "sequence": [
+                                  {
+                                    "id": "c1e073f4ca504af08cc21bb595094eaf",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Leveraged Safety",
+                                    "sequence": [
+                                      {
+                                        "id": "1ab07e1e92dd4b659ff2003bd4795fd1",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(Moving Average of Return TLT  20 < 0.00)",
+                                        "properties": {
+                                          "comparison": "<",
+                                          "x": {
+                                            "indicator": "Moving Average of Return",
+                                            "period": "20",
+                                            "source": "TLT"
+                                          },
+                                          "y": {
+                                            "indicator": "constant",
+                                            "period": "0.00"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "70657c1c84ec46178c5edf02d185fc86",
+                                              "componentType": "folder",
+                                              "type": "folder",
+                                              "name": "Risk Off, Rising Rates",
+                                              "sequence": [
+                                                {
+                                                  "id": "57450ee1d88a4cd39527c493f3a6a95b",
+                                                  "componentType": "switch",
+                                                  "type": "allocation",
+                                                  "function": "Allocation",
+                                                  "name": "Allocation",
+                                                  "properties": {
+                                                    "values": {
+                                                      "a": 50,
+                                                      "b": 50
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "a-(50.00%)": [
+                                                      {
+                                                        "id": "4512adc5dccc47908aa9500ad1a9ba7d",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order UUP",
+                                                        "properties": {
+                                                          "symbol": "UUP"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "b-(50.00%)": [
+                                                      {
+                                                        "id": "44969bc473e7498999753157043317a7",
+                                                        "componentType": "switch",
+                                                        "type": "Sort",
+                                                        "name": "SortBy Relative Strength Index-20",
+                                                        "properties": {
+                                                          "select": {
+                                                            "function": "Bottom",
+                                                            "howmany": "1"
+                                                          },
+                                                          "sortby": {
+                                                            "function": "Relative Strength Index",
+                                                            "window": "20"
+                                                          }
+                                                        },
+                                                        "branches": {
+                                                          "Bottom-1": [
+                                                            {
+                                                              "id": "2e9339ac906849238deb12ca6e01fd1f",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order PSQ",
+                                                              "properties": {
+                                                                "symbol": "PSQ"
+                                                              }
+                                                            },
+                                                            {
+                                                              "id": "e288f3d39d034e5ca302232a69489dfe",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order SH",
+                                                              "properties": {
+                                                                "symbol": "SH"
+                                                              }
+                                                            },
+                                                            {
+                                                              "id": "11fbfd52d2054e8e812939985e4c1f9e",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order UUP",
+                                                              "properties": {
+                                                                "symbol": "UUP"
+                                                              }
+                                                            },
+                                                            {
+                                                              "id": "060efe0d24a14e998abc96b973024a76",
+                                                              "componentType": "largeTask",
+                                                              "type": "stock",
+                                                              "name": "Buy Order TMV",
+                                                              "properties": {
+                                                                "symbol": "TMV"
+                                                              }
+                                                            },
+                                                            {
+                                                              "id": "940303a4-9d54-412f-baea-b69566c4c5b3",
+                                                              "componentType": "icon",
+                                                              "type": "icon",
+                                                              "name": "Interrupting icon"
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "6928c3482e114e619e7635c627b8620a",
+                                              "componentType": "folder",
+                                              "type": "folder",
+                                              "name": "Risk Off, Falling Rates",
+                                              "sequence": [
+                                                {
+                                                  "id": "69c4e6c64d7f4bc48de2335e9a49af9a",
+                                                  "componentType": "switch",
+                                                  "type": "allocation",
+                                                  "function": "Allocation",
+                                                  "name": "Allocation",
+                                                  "properties": {
+                                                    "values": {
+                                                      "a": 25,
+                                                      "b": 25,
+                                                      "c": 25,
+                                                      "d": 25
+                                                    }
+                                                  },
+                                                  "branches": {
+                                                    "a-(25.00%)": [
+                                                      {
+                                                        "id": "beb3c6d5c5464142a5882da90def629d",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order UGL",
+                                                        "properties": {
+                                                          "symbol": "UGL"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "b-(25.00%)": [
+                                                      {
+                                                        "id": "8620342ef8d442cf9bcb357a60ba8433",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order TMF",
+                                                        "properties": {
+                                                          "symbol": "TMF"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "c-(25.00%)": [
+                                                      {
+                                                        "id": "087fb816ea0741549c886a89e05fc34f",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order BTAL",
+                                                        "properties": {
+                                                          "symbol": "BTAL"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "d-(25.00%)": [
+                                                      {
+                                                        "id": "4e5438c02af649dcbb59f58914cdda27",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order XLP",
+                                                        "properties": {
+                                                          "symbol": "XLP"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

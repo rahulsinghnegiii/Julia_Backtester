@@ -1,0 +1,90 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "f5575cedaa4a16c0c192cda063fe0724",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "4d520d452fa7822e84c499dc2ba38c7c",
+      "componentType": "switch",
+      "type": "LockOnTrigger",
+      "name": "Switch",
+      "properties": {
+        "conditions": {
+          "a= if: [200d Max Drawdown    of 98132e0257a9d0baf36c3305ad64bc9c] > [0%]": {
+            "entry_condition": {
+              "name": "if: [200d Max Drawdown    of 98132e0257a9d0baf36c3305ad64bc9c] > [0%]",
+              "type": "condition",
+              "x": {
+                "indicator": "Max Drawdown",
+                "source": "98132e0257a9d0baf36c3305ad64bc9c",
+                "period": "200",
+                "uses_synthetic_stock": true
+              },
+              "y": {
+                "indicator": "Fixed-Value",
+                "uses_synthetic_stock": false,
+                "numerator": "",
+                "denominator": "",
+                "period": "0"
+              },
+              "comparison": ">"
+            }
+          }
+        }
+      },
+      "branches": {
+        "a= if: [200d Max Drawdown    of 98132e0257a9d0baf36c3305ad64bc9c] > [0%]": [
+          {
+            "id": "98132e0257a9d0baf36c3305ad64bc9c",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "folder1",
+            "sequence": [
+              {
+                "id": "754c448b8e0ad93bd766836c580a745d",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY SPY",
+                "properties": { "symbol": "SPY" },
+                "parentHash": "7066f2887d496c7a0797e79bc7305cdc",
+                "hash": "da951024973bb956727950edef3d6db7"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "4d520d452fa7822e84c499dc2ba38c7c/98132e0257a9d0baf36c3305ad64bc9c",
+            "parentHash": "a533604873cbe4f0523af58547683c45",
+            "nodeChildrenHash": "e5c29bcc9d64cb8d86678092ee0798e7",
+            "hash": "ecda2e28f2f0cfe2f0f80c6200e38cc7"
+          }
+        ],
+        "default": [
+          {
+            "id": "04edbc6b0336e4f2e3ad55b34283ad4e",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY AAPL",
+            "properties": { "symbol": "AAPL" },
+            "parentHash": "a533604873cbe4f0523af58547683c45",
+            "hash": "7579a749c30494ffd11d22e63953c268"
+          }
+        ]
+      },
+      "parentHash": "cfcd208495d565ef66e7dff9f98764da",
+      "nodeChildrenHash": "324c5514a0f5d6181e409fcdc648b85b",
+      "hash": "4ca847262cac5318d89d2079b67f2a44",
+      "path": "4d520d452fa7822e84c499dc2ba38c7c"
+    }
+  ],
+  "tickers": ["SPY", "AAPL"],
+  "indicators": [],
+  "nodeChildrenHash": "324673fbfc140dd7c90e6fe3e33f9292"
+}

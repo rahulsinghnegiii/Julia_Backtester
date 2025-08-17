@@ -1,0 +1,325 @@
+{
+    "type": "root",
+    "properties": {
+      "uuid": "2522f153-b8ab-4656-a128-43a269a6aace",
+      "id": "2522f153-b8ab-4656-a128-43a269a6aace",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "daily"
+    },
+    "sequence": [
+      {
+        "id": "1a1da4ef11e449bc88b89fafbb837dad",
+        "componentType": "switch",
+        "type": "allocation",
+        "function": "Allocation",
+        "name": "Allocation",
+        "properties": { "values": { "a": 70, "b": 30 } },
+        "branches": {
+          "a-(70.00%)": [
+            {
+              "id": "15ca5b2a9cbb4139a4024de53f82e766",
+              "componentType": "folder",
+              "type": "folder",
+              "name": "Holy Grail",
+              "sequence": [
+                {
+                  "id": "4b0e4482cae440cca74eec194a6533b8",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if(current price TQQQ \u003e Moving Average of Price TQQQ 200)",
+                  "properties": {
+                    "comparison": "\u003e",
+                    "x": { "indicator": "current price", "source": "TQQQ" },
+                    "y": {
+                      "indicator": "Moving Average of Price",
+                      "period": "200",
+                      "source": "TQQQ"
+                    }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "d4e563a779164215a050f90e44b4ef5a",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Bull Market",
+                        "sequence": [
+                          {
+                            "id": "63cbf804b5904d1491c78870ff146f0c",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Relative Strength Index TQQQ  10 \u003e 79.00)",
+                            "properties": {
+                              "comparison": "\u003e",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "TQQQ"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "79.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "962dd3924943440399ab555bfe680915",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order UVXY",
+                                  "properties": { "symbol": "UVXY" }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "9113100f9e7144f695bda514e07bb95a",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TQQQ",
+                                  "properties": { "symbol": "TQQQ" }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "5a49d3c1c868465da2b48aafd5bc76e6",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Dip Buy Strategy",
+                        "sequence": [
+                          {
+                            "id": "7722351465e9496ca610cf82eba3dc6e",
+                            "componentType": "switch",
+                            "type": "condition",
+                            "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+                            "properties": {
+                              "comparison": "\u003c",
+                              "x": {
+                                "indicator": "Relative Strength Index",
+                                "period": "10",
+                                "source": "TQQQ"
+                              },
+                              "y": {
+                                "indicator": "constant",
+                                "period": "31.00"
+                              }
+                            },
+                            "branches": {
+                              "true": [
+                                {
+                                  "id": "31cf997b70a44666a53f1ed512907e8e",
+                                  "componentType": "largeTask",
+                                  "type": "stock",
+                                  "name": "Buy Order TQQQ",
+                                  "properties": { "symbol": "TQQQ" }
+                                }
+                              ],
+                              "false": [
+                                {
+                                  "id": "9eb1944f9f51435b95f3afbad2e396ae",
+                                  "componentType": "switch",
+                                  "type": "condition",
+                                  "name": "if(Relative Strength Index SPY  10 \u003c 30.00)",
+                                  "properties": {
+                                    "comparison": "\u003c",
+                                    "x": {
+                                      "indicator": "Relative Strength Index",
+                                      "period": "10",
+                                      "source": "SPY"
+                                    },
+                                    "y": {
+                                      "indicator": "constant",
+                                      "period": "30.00"
+                                    }
+                                  },
+                                  "branches": {
+                                    "true": [
+                                      {
+                                        "id": "913b14cefb85472c8436064f68c3b80f",
+                                        "componentType": "largeTask",
+                                        "type": "stock",
+                                        "name": "Buy Order UPRO",
+                                        "properties": { "symbol": "UPRO" }
+                                      }
+                                    ],
+                                    "false": [
+                                      {
+                                        "id": "1fcaabeb77a74cb6bf4ea3af51896d37",
+                                        "componentType": "switch",
+                                        "type": "condition",
+                                        "name": "if(current price TQQQ \u003e Moving Average of Price TQQQ 20)",
+                                        "properties": {
+                                          "comparison": "\u003e",
+                                          "x": {
+                                            "indicator": "current price",
+                                            "source": "TQQQ"
+                                          },
+                                          "y": {
+                                            "indicator": "Moving Average of Price",
+                                            "period": "20",
+                                            "source": "TQQQ"
+                                          }
+                                        },
+                                        "branches": {
+                                          "true": [
+                                            {
+                                              "id": "02692166520b4619baa362c581d7e764",
+                                              "componentType": "switch",
+                                              "type": "condition",
+                                              "name": "if(Relative Strength Index SQQQ  10 \u003c 30.00)",
+                                              "properties": {
+                                                "comparison": "\u003c",
+                                                "x": {
+                                                  "indicator": "Relative Strength Index",
+                                                  "period": "10",
+                                                  "source": "SQQQ"
+                                                },
+                                                "y": {
+                                                  "indicator": "constant",
+                                                  "period": "30.00"
+                                                }
+                                              },
+                                              "branches": {
+                                                "true": [
+                                                  {
+                                                    "id": "11c0cb2a1ff8444b93d1840625352018",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  }
+                                                ],
+                                                "false": [
+                                                  {
+                                                    "id": "d3d0a7306c03470f862bf49e1ec445c9",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order TQQQ",
+                                                    "properties": {
+                                                      "symbol": "TQQQ"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "false": [
+                                            {
+                                              "id": "d20311269a694823bbfccf7a64e0487b",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy Relative Strength Index-10",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Top",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "10"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Top-1": [
+                                                  {
+                                                    "id": "92db95623310487aa47aa79c11898070",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order BSV",
+                                                    "properties": {
+                                                      "symbol": "BSV"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "93295f9577984deba21bfcce5acd460a",
+                                                    "componentType": "largeTask",
+                                                    "type": "stock",
+                                                    "name": "Buy Order SQQQ",
+                                                    "properties": {
+                                                      "symbol": "SQQQ"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "a060d6a1-da51-490a-9e7b-71146286b407",
+                                                    "componentType": "icon",
+                                                    "type": "icon",
+                                                    "name": "Interrupting icon"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "b-(30.00%)": [
+            {
+              "id": "b77e65d4d88f4ec1a643da7f8ead5274",
+              "componentType": "switch",
+              "type": "Sort",
+              "name": "SortBy Standard Deviation of Return-10",
+              "properties": {
+                "select": { "function": "Bottom", "howmany": "1" },
+                "sortby": {
+                  "function": "Standard Deviation of Return",
+                  "window": "10"
+                }
+              },
+              "branches": {
+                "Bottom-1": [
+                  {
+                    "id": "cf3028ecd3aa4bb195fca21393a45b6f",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order BGX",
+                    "properties": { "symbol": "BGX" }
+                  },
+                  {
+                    "id": "ac35d4fdd92e4be8b05d3b0065b3a32a",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order SPLV",
+                    "properties": { "symbol": "SPLV" }
+                  },
+                  {
+                    "id": "e45d8296f51c4f3dac4bba64e1029734",
+                    "componentType": "largeTask",
+                    "type": "stock",
+                    "name": "Buy Order BTAL",
+                    "properties": { "symbol": "BTAL" }
+                  },
+                  {
+                    "id": "3be68fab-a6c7-4f77-8f24-5eaf1142a434",
+                    "componentType": "icon",
+                    "type": "icon",
+                    "name": "Interrupting icon"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }

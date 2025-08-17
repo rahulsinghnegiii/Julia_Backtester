@@ -1,0 +1,110 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "id": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "7acb74bedd054adea74692a08f7e17f7",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Relative Strength Index-20",
+      "properties": {
+        "select": {
+          "function": "Bottom",
+          "howmany": "1"
+        },
+        "sortby": {
+          "function": "Relative Strength Index",
+          "window": "20"
+        }
+      },
+      "branches": {
+        "Bottom-1": [
+          {
+            "id": "da31451418c247e5a0830ec259f0f39b",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order GDXJ",
+            "properties": {
+              "symbol": "GDXJ"
+            }
+          },
+          {
+            "id": "d35f7740fc1944e193e66d3831a8b15a",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TECL",
+            "properties": {
+              "symbol": "TECL"
+            }
+          },
+          {
+            "id": "a582072411d749ac85ebe41bfb9d9baf",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SOXL",
+            "properties": {
+              "symbol": "SOXL"
+            }
+          },
+          {
+            "id": "8b088046cbb94b289503ca4a7b078b44",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order UPRO",
+            "properties": {
+              "symbol": "UPRO"
+            }
+          },
+          {
+            "id": "7f019afcdcca4c87a9f8e50e42add48c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TBX",
+            "properties": {
+              "symbol": "TBX"
+            }
+          },
+          {
+            "id": "a56702a74501414ea69afdf66edd317b",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order STIP",
+            "properties": {
+              "symbol": "STIP"
+            }
+          },
+          {
+            "id": "11cfbe4178f047a38af7ad2df61b5225",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order MIDU",
+            "properties": {
+              "symbol": "MIDU"
+            }
+          },
+          {
+            "id": "a23463207d664ee48fe35a8740cc4698",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order UJB",
+            "properties": {
+              "symbol": "UJB"
+            }
+          },
+          {
+            "id": "205806be-e8d0-4da6-838c-963f6d7f9d86",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

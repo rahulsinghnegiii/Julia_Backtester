@@ -1,0 +1,437 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "d5ceff12-8124-4802-b6a3-e5e892aa0d0d",
+    "id": "d5ceff12-8124-4802-b6a3-e5e892aa0d0d",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "a5dc8311-cc24-4b40-9142-db2c92f0b1aa",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "💉 Sedated LAB Rats 🐀",
+      "sequence": [
+        {
+          "id": "cffbb5bdb2d1409382f3f91e33b0427c",
+          "componentType": "switch",
+          "type": "allocation",
+          "function": "Allocation",
+          "name": "Allocation",
+          "properties": { "values": { "a": 50, "b": 50 } },
+          "branches": {
+            "a-(50.00%)": [
+              {
+                "id": "4efcaa4522174f9eafe6f9026f8298e4",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "LAB Rats 🐀",
+                "sequence": [
+                  {
+                    "id": "985067a771464d7a8d1654e0db8e4678",
+                    "componentType": "switch",
+                    "type": "condition",
+                    "name": "if(Relative Strength Index QQQ  10 \u003e 80.00)",
+                    "properties": {
+                      "comparison": "\u003e",
+                      "x": {
+                        "indicator": "Relative Strength Index",
+                        "period": "10",
+                        "source": "QQQ"
+                      },
+                      "y": { "indicator": "constant", "period": "80.00" }
+                    },
+                    "branches": {
+                      "true": [
+                        {
+                          "id": "743f9146b0d04d3eabed3ef8ac142fc1",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order UVXY",
+                          "properties": { "symbol": "UVXY" }
+                        }
+                      ],
+                      "false": [
+                        {
+                          "id": "d1166a83e72c4edfb6b98573fb1495a4",
+                          "componentType": "switch",
+                          "type": "condition",
+                          "name": "if(Relative Strength Index SPY  10 \u003e 80.00)",
+                          "properties": {
+                            "comparison": "\u003e",
+                            "x": {
+                              "indicator": "Relative Strength Index",
+                              "period": "10",
+                              "source": "SPY"
+                            },
+                            "y": {
+                              "indicator": "constant",
+                              "period": "80.00"
+                            }
+                          },
+                          "branches": {
+                            "true": [
+                              {
+                                "id": "9e82b77e250345daa8ed987f0accdfc7",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order UVXY",
+                                "properties": { "symbol": "UVXY" }
+                              }
+                            ],
+                            "false": [
+                              {
+                                "id": "b9429e42b608425886b27c02e33193b9",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(Relative Strength Index TQQQ  10 \u003c 31.00)",
+                                "properties": {
+                                  "comparison": "\u003c",
+                                  "x": {
+                                    "indicator": "Relative Strength Index",
+                                    "period": "10",
+                                    "source": "TQQQ"
+                                  },
+                                  "y": {
+                                    "indicator": "constant",
+                                    "period": "31.00"
+                                  }
+                                },
+                                "branches": {
+                                  "true": [
+                                    {
+                                      "id": "e8704a37c4064fc88f1ed9c481953767",
+                                      "componentType": "largeTask",
+                                      "type": "stock",
+                                      "name": "Buy Order TECL",
+                                      "properties": { "symbol": "TECL" }
+                                    }
+                                  ],
+                                  "false": [
+                                    {
+                                      "id": "db74ff3b9ce749a2b1ddab7fff36576e",
+                                      "componentType": "switch",
+                                      "type": "allocation",
+                                      "function": "Allocation",
+                                      "name": "Allocation",
+                                      "properties": {
+                                        "values": { "a": 50, "b": 50 }
+                                      },
+                                      "branches": {
+                                        "a-(50.00%)": [
+                                          {
+                                            "id": "5da62d7ab9bb4a95be10f7ceab5146c5",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index TLT 10 \u003e Relative Strength Index SPHB 20)",
+                                            "properties": {
+                                              "comparison": "\u003e",
+                                              "x": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "10",
+                                                "source": "TLT"
+                                              },
+                                              "y": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "20",
+                                                "source": "SPHB"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "ba00214090bb4a94a6815f9ddbc9044b",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order LABU",
+                                                  "properties": {
+                                                    "symbol": "LABU"
+                                                  }
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "7b25259b29e443339a0caea4c772c23e",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order LABD",
+                                                  "properties": {
+                                                    "symbol": "LABD"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        "b-(50.00%)": [
+                                          {
+                                            "id": "05c0ddeddefd4370be3436d863f3c551",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index IEF 10 \u003e Relative Strength Index IWM 16)",
+                                            "properties": {
+                                              "comparison": "\u003e",
+                                              "x": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "10",
+                                                "source": "IEF"
+                                              },
+                                              "y": {
+                                                "indicator": "Relative Strength Index",
+                                                "period": "16",
+                                                "source": "IWM"
+                                              }
+                                            },
+                                            "branches": {
+                                              "true": [
+                                                {
+                                                  "id": "b92a8be9553b478d865619ad8d230de1",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order LABU",
+                                                  "properties": {
+                                                    "symbol": "LABU"
+                                                  }
+                                                }
+                                              ],
+                                              "false": [
+                                                {
+                                                  "id": "351c7c689fd949fe98f9e0df2ebd3c07",
+                                                  "componentType": "largeTask",
+                                                  "type": "stock",
+                                                  "name": "Buy Order LABD",
+                                                  "properties": {
+                                                    "symbol": "LABD"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "b-(50.00%)": [
+              {
+                "id": "fa41b5c8e94643c8a70e7b7c1c580d13",
+                "componentType": "folder",
+                "type": "folder",
+                "name": "Tribromoethanol (intraperitoneal injection) 💉",
+                "sequence": [
+                  {
+                    "id": "175a9dfe95274aedaf3e0d9123cef209",
+                    "componentType": "switch",
+                    "type": "allocation",
+                    "function": "Allocation",
+                    "name": "Allocation",
+                    "properties": {
+                      "values": {
+                        "a": 16.67,
+                        "b": 16.67,
+                        "c": 16.67,
+                        "d": 16.67,
+                        "e": 16.66,
+                        "f": 16.66
+                      }
+                    },
+                    "branches": {
+                      "a-(16.67%)": [
+                        {
+                          "id": "a9cd3a82698b4c999cfb0eedb77edde8",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order KLAC",
+                          "properties": { "symbol": "KLAC" }
+                        }
+                      ],
+                      "b-(16.67%)": [
+                        {
+                          "id": "ab18d0bb1b3f4cba9bb3931438421142",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order LLY",
+                          "properties": { "symbol": "LLY" }
+                        }
+                      ],
+                      "c-(16.67%)": [
+                        {
+                          "id": "451a0b91e4944ebe9c6405583e6e467c",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order NVDA",
+                          "properties": { "symbol": "NVDA" }
+                        }
+                      ],
+                      "d-(16.67%)": [
+                        {
+                          "id": "d9381031779947d8ab12e79745737ff8",
+                          "componentType": "largeTask",
+                          "type": "stock",
+                          "name": "Buy Order SMCI",
+                          "properties": { "symbol": "SMCI" }
+                        }
+                      ],
+                      "e-(16.66%)": [
+                        {
+                          "id": "d63c3daca92e47d6838b749128d811e9",
+                          "componentType": "switch",
+                          "type": "Sort",
+                          "name": "SortBy Moving Average of Return-10",
+                          "properties": {
+                            "select": {
+                              "function": "Top",
+                              "howmany": "1"
+                            },
+                            "sortby": {
+                              "function": "Moving Average of Return",
+                              "window": "10"
+                            }
+                          },
+                          "branches": {
+                            "Top-1": [
+                              {
+                                "id": "f80352d1b7954756b3fab5a237f88d45",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order KLAC",
+                                "properties": { "symbol": "KLAC" }
+                              },
+                              {
+                                "id": "6906b20001194210abac424e89e3e19d",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SMCI",
+                                "properties": { "symbol": "SMCI" }
+                              },
+                              {
+                                "id": "281969429bad480ab3f69ac641dbed92",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order NVDA",
+                                "properties": { "symbol": "NVDA" }
+                              },
+                              {
+                                "id": "5bc07b52ce3748aaa88ddc0195f10b7b",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order LLY",
+                                "properties": { "symbol": "LLY" }
+                              },
+                              {
+                                "id": "5829a350a758400e8539146fd07d3cae",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order NVO",
+                                "properties": { "symbol": "NVO" }
+                              },
+                              {
+                                "id": "5852d185d1194b72890af9de4f69a421",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order AMD",
+                                "properties": { "symbol": "AMD" }
+                              },
+                              {
+                                "id": "05834819-a88b-41be-b872-5d1e458549e9",
+                                "componentType": "icon",
+                                "type": "icon",
+                                "name": "Interrupting icon"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "f-(16.66%)": [
+                        {
+                          "id": "5dddfaef363d43d9a78550b5e83c6585",
+                          "componentType": "switch",
+                          "type": "Sort",
+                          "name": "SortBy Moving Average of Return-21",
+                          "properties": {
+                            "select": {
+                              "function": "Top",
+                              "howmany": "1"
+                            },
+                            "sortby": {
+                              "function": "Moving Average of Return",
+                              "window": "21"
+                            }
+                          },
+                          "branches": {
+                            "Top-1": [
+                              {
+                                "id": "43991ede04e54231be25909b0344f142",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order KLAC",
+                                "properties": { "symbol": "KLAC" }
+                              },
+                              {
+                                "id": "17e8b83ed60d4bc898cb7fed2d6d52ed",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order SMCI",
+                                "properties": { "symbol": "SMCI" }
+                              },
+                              {
+                                "id": "c5073b5e29c44fb1a4b787b65fa7700e",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order NVDA",
+                                "properties": { "symbol": "NVDA" }
+                              },
+                              {
+                                "id": "a5d40200fe0640a48db95e9a0cf7686c",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order LLY",
+                                "properties": { "symbol": "LLY" }
+                              },
+                              {
+                                "id": "1512f6bae53945bc8e3eaf840f195341",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order NVO",
+                                "properties": { "symbol": "NVO" }
+                              },
+                              {
+                                "id": "2cc882b233774e60ba5a60a339c52c32",
+                                "componentType": "largeTask",
+                                "type": "stock",
+                                "name": "Buy Order AMD",
+                                "properties": { "symbol": "AMD" }
+                              },
+                              {
+                                "id": "a943849f-863a-47dd-8e64-63903f0775b2",
+                                "componentType": "icon",
+                                "type": "icon",
+                                "name": "Interrupting icon"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

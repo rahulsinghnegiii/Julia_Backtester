@@ -1,0 +1,61 @@
+{
+    "type": "root",
+    "properties": {
+      "uuid": "28c3b02e-d509-4ef0-845d-6a042619aa0f",
+      "id": "28c3b02e-d509-4ef0-845d-6a042619aa0f",
+      "step": "root",
+      "name": "root node",
+      "triggerPeriod": "daily"
+    },
+    "sequence": [
+      {
+        "id": "c2f1e750b6b8441cb3891b69d20c8aa7",
+        "componentType": "switch",
+        "type": "allocation",
+        "function": "Inverse Volatility",
+        "name": "Allocation",
+        "properties": {
+          "period": "3",
+          "values": {
+            "a": 100
+          }
+        },
+        "branches": {
+          "a": [
+            {
+              "id": "b18dc70815db4c2e8d5096ac6b9aaae1",
+              "componentType": "task",
+              "type": "stock",
+              "name": "Buy Order QQQ",
+              "properties": {
+                "symbol": "QQQ"
+              }
+            }
+          ],
+          "b": [
+            {
+              "id": "ac5600fca1e34eeb8e6168745a113df4",
+              "componentType": "task",
+              "type": "stock",
+              "name": "Buy Order SPY",
+              "properties": {
+                "symbol": "SPY"
+              }
+            }
+          ],
+          "c": [
+            {
+              "id": "dc5843a754fe4ff3889c8a83786d77f6",
+              "componentType": "task",
+              "type": "stock",
+              "name": "Buy Order SHY",
+              "properties": {
+                "symbol": "SHY"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

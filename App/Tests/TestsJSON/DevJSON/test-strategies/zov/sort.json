@@ -1,0 +1,155 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "1b2be86f-ff6b-453b-8c05-25d39e5c8d1b",
+    "id": "1b2be86f-ff6b-453b-8c05-25d39e5c8d1b",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "0f384e63f7cb4b1d8e8edec8ea86fbed",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": {
+        "values": {
+          "a": 50,
+          "b": 50
+        }
+      },
+      "branches": {
+        "a-(50.00%)": [
+          {
+            "id": "4f9663ca872d44f68ee28d53862010cd",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Max Drawdown-2",
+            "properties": {
+              "select": {
+                "function": "Top",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Max Drawdown",
+                "window": "2"
+              }
+            },
+            "branches": {
+              "Top-1": [
+                {
+                  "id": "1d818fc7cb5f47888e4ea7df628467fd",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order BIL",
+                  "properties": {
+                    "symbol": "BIL"
+                  }
+                },
+                {
+                  "id": "140dde0b079045e7ba599ca47f4bf6ce",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SOXS",
+                  "properties": {
+                    "symbol": "SOXS"
+                  }
+                },
+                {
+                  "id": "274e6f4e854942e2af014568f23c0e59",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order HIBS",
+                  "properties": {
+                    "symbol": "HIBS"
+                  }
+                },
+                {
+                  "id": "d19c6303013e47b6bae43b9107db8349",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order TECS",
+                  "properties": {
+                    "symbol": "TECS"
+                  }
+                },
+                {
+                  "id": "d1b3950d-5beb-4c40-9750-68037a422e81",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ],
+        "b-(50.00%)": [
+          {
+            "id": "ee01ba1713d64886bf7a2cc7b3e5d3f6",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Relative Strength Index-11",
+            "properties": {
+              "select": {
+                "function": "Top",
+                "howmany": "1"
+              },
+              "sortby": {
+                "function": "Relative Strength Index",
+                "window": "11"
+              }
+            },
+            "branches": {
+              "Top-1": [
+                {
+                  "id": "7d27380a18564c13b5f04308a85c1bac",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order TECS",
+                  "properties": {
+                    "symbol": "TECS"
+                  }
+                },
+                {
+                  "id": "0cfc2e059e674f89976ac014b95aa900",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SOXS",
+                  "properties": {
+                    "symbol": "SOXS"
+                  }
+                },
+                {
+                  "id": "f2080c99c52a48f4945a3164067b4296",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order HIBS",
+                  "properties": {
+                    "symbol": "HIBS"
+                  }
+                },
+                {
+                  "id": "6527c33bb89c4342b1569e3b720c38bb",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order EDV",
+                  "properties": {
+                    "symbol": "EDV"
+                  }
+                },
+                {
+                  "id": "e52b324e-81c1-4c5d-815d-c1ba2cc38b52",
+                  "componentType": "icon",
+                  "type": "icon",
+                  "name": "Interrupting icon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

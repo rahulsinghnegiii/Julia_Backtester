@@ -1,0 +1,129 @@
+{
+  "sequence": [
+    {
+      "id": "f30e44a943224d7090ef083a310c64f7",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Inverse Volatility",
+      "name": "Inverse Volatility",
+      "properties": {
+        "period": "5",
+        "values": {
+          "a": 50,
+          "b":50
+        }
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "c118f45ae4764ed6b3c8fc8d0a1f2234",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "symbol": "NVDA"
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "31b15096e21442769453fb21d30afe87",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if(current price NVDA   < 10000.00)",
+            "properties": {
+              "comparison": "<",
+              "x": {
+                "indicator": "current price",
+                "period": "",
+                "source": "NVDA"
+              },
+              "y": {
+                "indicator": "constant",
+                "period": "10000.00"
+              }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "29e75401920d42e1a97540aee0355e8e",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy Relative Strength Index-14",
+                  "properties": {
+                    "select": {
+                      "function": "Top",
+                      "howmany": "1"
+                    },
+                    "sortby": {
+                      "function": "Relative Strength Index",
+                      "window": "14"
+                    }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "5e3e138bdc1542f1a342fff12e30cd57",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order AAPL",
+                        "properties": {
+                          "symbol": "AAPL"
+                        }
+                      },
+                      {
+                        "id": "1841f5e0d9d141458338944b681c596d",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order MSFT",
+                        "properties": {
+                          "symbol": "MSFT"
+                        }
+                      },
+                      {
+                        "id": "89f49e38-9c88-444b-bc17-d132c61f2ed7",
+                        "componentType": "icon",
+                        "type": "icon",
+                        "name": "Interrupting icon"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "2c0de120f7ce4fad977c62c8bdf09302",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order NVDA",
+                  "properties": {
+                    "symbol": "NVDA"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "c": [
+          {
+            "id": "e9ca9d8fd4c04ebda02e3868de60e025",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Group",
+            "sequence": [
+              {
+                "id": "e30635c87dd1481ca92aba1f27619e20",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order SPY",
+                "properties": {
+                  "symbol": "SPY"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

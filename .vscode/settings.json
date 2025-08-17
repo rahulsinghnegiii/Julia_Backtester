@@ -1,0 +1,6 @@
+{
+    "julia.environmentPath": "${workspaceFolder}/App",
+    "[julia]": {
+        "editor.formatOnSave": true
+    }
+}

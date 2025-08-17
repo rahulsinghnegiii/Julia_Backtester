@@ -1,0 +1,153 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "b3983f3e-e207-4e10-a524-9bfb15e426f2",
+    "id": "b3983f3e-e207-4e10-a524-9bfb15e426f2",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "98a1011eba9c4e56a705c595997e8f74",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": { "values": { "a": 33.34, "b": 33.33, "c": 33.33 } },
+      "branches": {
+        "a-(33.34%)": [
+          {
+            "id": "cf9913fed349434e952850f5f0ca9e66",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "SHORT (Negative Beta -1 to -3)",
+            "sequence": [
+              {
+                "id": "b746e3245dc84c8889100a5a86913624",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Standard Deviation of Return-10",
+                "properties": {
+                  "select": { "function": "Top", "howmany": "1" },
+                  "sortby": {
+                    "function": "Standard Deviation of Return",
+                    "window": "10"
+                  }
+                },
+                "branches": {
+                  "Top-1": [
+                    {
+                      "id": "9059f68833f84bb78d9aae9fa39cd4e6",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TECS",
+                      "properties": { "symbol": "TECS" }
+                    },
+                    {
+                      "id": "8ce960faae694d0682f4db51d201d867",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SQQQ",
+                      "properties": { "symbol": "SQQQ" }
+                    },
+                    {
+                      "id": "ad34abe8e0dd4ee6a0dc258afa5628e1",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SOXS",
+                      "properties": { "symbol": "SOXS" }
+                    },
+                    {
+                      "id": "ac727099683748f586991241753fc449",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order VXX",
+                      "properties": { "symbol": "VXX" }
+                    },
+                    {
+                      "id": "0797ba6d-109e-4a43-bd37-6f25437d8501",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "b-(33.33%)": [
+          {
+            "id": "c5a4b95b59e642e5aafa7e7e1564b9c7",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Rotator",
+            "sequence": [
+              {
+                "id": "162f5ee0a09f4c9bbcfa613cd585be94",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Standard Deviation of Return-5",
+                "properties": {
+                  "select": { "function": "Bottom", "howmany": "1" },
+                  "sortby": {
+                    "function": "Standard Deviation of Return",
+                    "window": "5"
+                  }
+                },
+                "branches": {
+                  "Bottom-1": [
+                    {
+                      "id": "d6029510c0d74565b1f961d1dd6b0fbc",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TMV",
+                      "properties": { "symbol": "TMV" }
+                    },
+                    {
+                      "id": "1db43d7e6755400a9534e4dbb2d6ecfb",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TMF",
+                      "properties": { "symbol": "TMF" }
+                    },
+                    {
+                      "id": "f896f9f56a3d4a9e902bba5a3ff39b79",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SVOL",
+                      "properties": { "symbol": "SVOL" }
+                    },
+                    {
+                      "id": "ee718ac530e8488e8e314ca770cc4a33",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order VXX",
+                      "properties": { "symbol": "VXX" }
+                    },
+                    {
+                      "id": "5089734c-4899-44bc-9400-9c4166b63e98",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "c-(33.33%)": [
+          {
+            "id": "4908937ccf38468bb1703243cf722888",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SVOL",
+            "properties": { "symbol": "SVOL" }
+          }
+        ]
+      }
+    }
+  ]
+}

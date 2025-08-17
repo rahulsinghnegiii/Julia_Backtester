@@ -1,0 +1,192 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "576f03555e5a8124d80aba1bd150b87f",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "e8c7138aacf9621fa6f9000100f9b3fe",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "folder1",
+      "sequence": [
+        {
+          "id": "9133376c9f71c4c48aa8ebfc5955ba6c",
+          "componentType": "switch",
+          "type": "allocation",
+          "name": "Allocation",
+          "function": "Allocation",
+          "properties": {
+            "values": {
+              "a": 50,
+              "b": 25,
+              "c": 25
+            },
+            "isInvalid": false
+          },
+          "branches": {
+            "a-(50%)": [
+              {
+                "id": "13780f235fc6bdd942df17fda32744f8",
+                "componentType": "switch",
+                "type": "condition",
+                "name": "if(Cumulative Return  FEPI 5  > Moving Average of Return FNGU -3)",
+                "properties": {
+                  "y": {
+                    "indicator": "Moving Average of Return",
+                    "source": "FNGU",
+                    "period": "-3"
+                  },
+                  "x": {
+                    "indicator": "Cumulative Return",
+                    "source": "FEPI",
+                    "period": "5"
+                  },
+                  "isInvalid": false,
+                  "comparison": ">"
+                },
+                "branches": {
+                  "true": [
+                    {
+                      "id": "cacf156893103bb322a5ac48ee746036",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FEPI",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FEPI"
+                      }
+                    }
+                  ],
+                  "false": [
+                    {
+                      "id": "b815558acd7febb0b9441e4f2642b38c",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FNGU",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FNGU"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "b-(25%)": [
+              {
+                "id": "abfd2bdc8c09b68afc6d6392185545bc",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Max Drawdown",
+                "properties": {
+                  "sortby": {
+                    "function": "Max Drawdown",
+                    "window": "2"
+                  },
+                  "select": {
+                    "function": "Top",
+                    "howmany": "2"
+                  },
+                  "isInvalid": false
+                },
+                "branches": {
+                  "1": [
+                    {
+                      "id": "cd0f2ff060e0a70f2d45de76812d7c09",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order BRK.B",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "BRK.B"
+                      }
+                    },
+                    {
+                      "id": "669a4235c2d72caeff1e600c8e79bbe4",
+                      "componentType": "icon",
+                      "name": "Interrupting icon",
+                      "properties": {},
+                      "type": "icon"
+                    }
+                  ]
+                }
+              }
+            ],
+            "c-(25%)": [
+              {
+                "id": "5e5dc9cbc18c091ea2c23702b2865f78",
+                "componentType": "switch",
+                "type": "allocation",
+                "name": "Allocation",
+                "function": "Market Cap",
+                "properties": {
+                  "isInvalid": false,
+                  "period": "3"
+                },
+                "branches": {
+                  "a": [
+                    {
+                      "id": "5d6b61515cf1185ce20c76ecb83cb7f8",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FEPI",
+                      "properties": {
+                        "isInvalid": false,
+                        "symbol": "FEPI"
+                      }
+                    }
+                  ],
+                  "b": [
+                    {
+                      "id": "c8ace2bde820f0b6bcdf436bb2fb8b44",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy Standard Deviation of Price",
+                      "properties": {
+                        "sortby": {
+                          "function": "Standard Deviation of Price",
+                          "window": "0"
+                        },
+                        "select": {
+                          "function": "Bottom",
+                          "howmany": "0"
+                        },
+                        "isInvalid": false
+                      },
+                      "branches": {
+                        "1": [
+                          {
+                            "id": "d321a79d0ffdc5567b023ec03d561591",
+                            "componentType": "largeTask",
+                            "type": "stock",
+                            "name": "Buy Order XOM",
+                            "properties": {
+                              "isInvalid": false,
+                              "symbol": "XOM"
+                            }
+                          },
+                          {
+                            "id": "2b336c9ab048e803f2c72360fdfa4cd0",
+                            "componentType": "icon",
+                            "name": "Interrupting icon",
+                            "properties": {},
+                            "type": "icon"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {}
+    }
+  ]
+}

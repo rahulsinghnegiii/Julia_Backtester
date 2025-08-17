@@ -1,0 +1,87 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "da2d97689e30aa7fd8999645087c7844",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "bd8432927798bfab6ae1a14721109cf0",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Exponential Moving Average of Price",
+      "properties": {
+        "sortby": {
+          "function": "Exponential Moving Average of Price",
+          "window": "2"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "3"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "97ebffd4c6e60912a02be3e0bcb31f58",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAA",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AAA"
+            }
+          },
+          {
+            "id": "06f767ab9a3e99d4ad017b2ae202e080",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6ac13d49b22e3dd4a9c76ad2b7b77c38",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Max Drawdown",
+      "properties": {
+        "sortby": {
+          "function": "Max Drawdown",
+          "window": "1"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "3"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "dc8f9703f1d579e379bc249cb478a1b1",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "AAPL"
+            }
+          },
+          {
+            "id": "35ab5033e701b6f92ed8d86c4f1564d3",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    }
+  ]
+}

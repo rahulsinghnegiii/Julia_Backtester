@@ -1,0 +1,146 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "id": "61175bad-b925-4513-a670-b90b8fd1c7d7",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "844b0ee53e644c208a313d357e7d3e58",
+      "componentType": "folder",
+      "type": "folder",
+      "name": "Broad Energy",
+      "sequence": [
+        {
+          "id": "a0588cdcdc534140bb7f08205bf5715f",
+          "componentType": "switch",
+          "type": "allocation",
+          "function": "Allocation",
+          "name": "Allocation",
+          "properties": {
+            "values": {
+              "a": 75,
+              "b": 25
+            }
+          },
+          "branches": {
+            "a-(75.00%)": [
+              {
+                "id": "7acb74bedd054adea74692a08f7e17f7",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Relative Strength Index-63",
+                "properties": {
+                  "select": {
+                    "function": "Top",
+                    "howmany": "4"
+                  },
+                  "sortby": {
+                    "function": "Relative Strength Index",
+                    "window": "63"
+                  }
+                },
+                "branches": {
+                  "Top-4": [
+                    {
+                      "id": "da31451418c247e5a0830ec259f0f39b",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order IXC",
+                      "properties": {
+                        "symbol": "IXC"
+                      }
+                    },
+                    {
+                      "id": "d35f7740fc1944e193e66d3831a8b15a",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FENY",
+                      "properties": {
+                        "symbol": "FENY"
+                      }
+                    },
+                    {
+                      "id": "a582072411d749ac85ebe41bfb9d9baf",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order IYE",
+                      "properties": {
+                        "symbol": "IYE"
+                      }
+                    },
+                    {
+                      "id": "8b088046cbb94b289503ca4a7b078b44",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order QCLN",
+                      "properties": {
+                        "symbol": "QCLN"
+                      }
+                    },
+                    {
+                      "id": "7f019afcdcca4c87a9f8e50e42add48c",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TAN",
+                      "properties": {
+                        "symbol": "TAN"
+                      }
+                    },
+                    {
+                      "id": "a56702a74501414ea69afdf66edd317b",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FXN",
+                      "properties": {
+                        "symbol": "FXN"
+                      }
+                    },
+                    {
+                      "id": "11cfbe4178f047a38af7ad2df61b5225",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order FAN",
+                      "properties": {
+                        "symbol": "FAN"
+                      }
+                    },
+                    {
+                      "id": "a23463207d664ee48fe35a8740cc4698",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order URA",
+                      "properties": {
+                        "symbol": "URA"
+                      }
+                    },
+                    {
+                      "id": "205806be-e8d0-4da6-838c-963f6d7f9d86",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ],
+            "b-(25.00%)": [
+              {
+                "id": "fbf746963842424a8ca157bb148a4bc7",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "Buy Order ERY",
+                "properties": {
+                  "symbol": "ERY"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

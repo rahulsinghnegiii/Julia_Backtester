@@ -1,0 +1,51 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "0fcdfbae-a762-4b23-90a4-f5e4f4292e00",
+    "id": "0fcdfbae-a762-4b23-90a4-f5e4f4292e00",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "e604226f5499468ab9bb30e3e4326e70",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Relative Strength Index AAPL 14 \u003c Relative Strength Index SPY 20)",
+      "properties": {
+        "comparison": "\u003c",
+        "x": {
+          "indicator": "Relative Strength Index",
+          "period": "14",
+          "source": "AAPL"
+        },
+        "y": {
+          "indicator": "Relative Strength Index",
+          "period": "20",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "a0f1b840065d440c9dd7e182f894a2c5",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TSLA",
+            "properties": { "symbol": "TSLA" }
+          }
+        ],
+        "false": [
+          {
+            "id": "92d7a57d7add46f0b94402319f3f3129",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TQQQ",
+            "properties": { "symbol": "TQQQ" }
+          }
+        ]
+      }
+    }
+  ]
+}

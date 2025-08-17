@@ -1,0 +1,123 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "591933c7-14bc-4400-817d-992e66892d79",
+    "id": "591933c7-14bc-4400-817d-992e66892d79",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "553fe33d34994095b25a3adebda63ba7",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if(Cumulative Return TQQQ  1 \u003e 5.50)",
+      "properties": {
+        "comparison": "\u003e",
+        "x": {
+          "indicator": "Cumulative Return",
+          "period": "1",
+          "source": "TQQQ"
+        },
+        "y": { "indicator": "constant", "period": "5.50" }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "ce86dc844a38496f9858ba90eda11e25",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Short Rotator",
+            "sequence": [
+              {
+                "id": "de9c8825301944b296ba15c2cd7a9cc0",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Standard Deviation of Return-5",
+                "properties": {
+                  "select": { "function": "Top", "howmany": "1" },
+                  "sortby": {
+                    "function": "Standard Deviation of Return",
+                    "window": "5"
+                  }
+                },
+                "branches": {
+                  "Top-1": [
+                    {
+                      "id": "619c514667f74742a509bdbdc967f59f",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order UVXY",
+                      "properties": { "symbol": "UVXY" }
+                    },
+                    {
+                      "id": "9bc3765601524cb49b7120968d296134",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SQQQ",
+                      "properties": { "symbol": "SQQQ" }
+                    },
+                    {
+                      "id": "fc899bda-50c2-4c77-a4b7-45d7588ebfcd",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "false": [
+          {
+            "id": "c55e0afcce0546b499dbcea84fc6db3b",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "Long Rotator",
+            "sequence": [
+              {
+                "id": "d1ad70d544e0445e9cf4a2aca9822a40",
+                "componentType": "switch",
+                "type": "Sort",
+                "name": "SortBy Standard Deviation of Return-5",
+                "properties": {
+                  "select": { "function": "Bottom", "howmany": "1" },
+                  "sortby": {
+                    "function": "Standard Deviation of Return",
+                    "window": "5"
+                  }
+                },
+                "branches": {
+                  "Bottom-1": [
+                    {
+                      "id": "f7721c7478124caf8f157bd256d90556",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order SVXY",
+                      "properties": { "symbol": "SVXY" }
+                    },
+                    {
+                      "id": "40d5e6d8eb9946caa0a5b625f870f22f",
+                      "componentType": "largeTask",
+                      "type": "stock",
+                      "name": "Buy Order TQQQ",
+                      "properties": { "symbol": "TQQQ" }
+                    },
+                    {
+                      "id": "420f4319-3955-43ca-ab75-8fb12ea82aa3",
+                      "componentType": "icon",
+                      "type": "icon",
+                      "name": "Interrupting icon"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

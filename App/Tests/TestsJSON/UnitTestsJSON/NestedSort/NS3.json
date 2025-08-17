@@ -1,0 +1,142 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "808ef8a821c79179db70183a2ea1e5ea",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "b13eaaac277f9f6ea2b4c8fab06bb23b",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocation",
+      "function": "Market Cap",
+      "properties": {
+        "isInvalid": false,
+        "period": "3"
+      },
+      "branches": {
+        "a": [
+          {
+            "id": "6ac2a5ff518c58d4fa825765cd54594b",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Moving Average of Price",
+            "properties": {
+              "sortby": {
+                "function": "Moving Average of Price",
+                "window": "5"
+              },
+              "select": {
+                "function": "Bottom",
+                "howmany": "2"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "e259c2b24cd69b8330ddfa899e2f3304",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order SPY",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "SPY"
+                  }
+                },
+                {
+                  "id": "6cfdf653aeffbbf55f94b44293dfad61",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ],
+        "b": [
+          {
+            "id": "a8d587122a014528156ad2e53951363d",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Standard Deviation of Return",
+            "properties": {
+              "sortby": {
+                "function": "Standard Deviation of Return",
+                "window": "7"
+              },
+              "select": {
+                "function": "Top",
+                "howmany": "1"
+              },
+              "isInvalid": false
+            },
+            "branches": {
+              "1": [
+                {
+                  "id": "c2e8a70ac988a718fe5cb920e5a0d7b0",
+                  "componentType": "largeTask",
+                  "type": "stock",
+                  "name": "Buy Order AAPL",
+                  "properties": {
+                    "isInvalid": false,
+                    "symbol": "AAPL"
+                  }
+                },
+                {
+                  "id": "ed5ce3cd6000c4a97a5dec6986190d94",
+                  "componentType": "icon",
+                  "name": "Interrupting icon",
+                  "properties": {},
+                  "type": "icon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "57191fc0cb2ba8e8ee6da8eaf73a3656",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Cumulative Return",
+      "properties": {
+        "sortby": {
+          "function": "Cumulative Return",
+          "window": "9"
+        },
+        "select": {
+          "function": "Bottom",
+          "howmany": "8"
+        },
+        "isInvalid": false
+      },
+      "branches": {
+        "1": [
+          {
+            "id": "a4a690deff5a46ea2adfbcbca8bcce3c",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order KO",
+            "properties": {
+              "isInvalid": false,
+              "symbol": "KO"
+            }
+          },
+          {
+            "id": "e8fa3a92930c89d1b6c20d7a1b7024e5",
+            "componentType": "icon",
+            "name": "Interrupting icon",
+            "properties": {},
+            "type": "icon"
+          }
+        ]
+      }
+    }
+  ]
+}

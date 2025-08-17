@@ -1,0 +1,563 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "8d3305c3-023a-44da-af0b-c082b467cb5e",
+        "id": "8d3305c3-023a-44da-af0b-c082b467cb5e",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "daily"
+    },
+    "sequence": [
+        {
+            "id": "eff931d1437c427fa1cea5088d53d5e3",
+            "componentType": "switch",
+            "type": "allocation",
+            "function": "Inverse Volatility",
+            "name": "Inverse Volatility",
+            "properties": {
+                "period": "20",
+                "values": {
+                    "a": 100
+                }
+            },
+            "branches": {
+                "a": [
+                    {
+                        "id": "b6b7857e1b4b47778ab7c0c780d68512",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Bitcoin Strategy - GBTC | Anansi | 2015-06-01",
+                        "sequence": [
+                            {
+                                "id": "50832b0640334ae49310e753a5d98b69",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(current price SPY \u003e Moving Average of Price SPY 200)",
+                                "properties": {
+                                    "comparison": "\u003e",
+                                    "x": {
+                                        "indicator": "current price",
+                                        "source": "SPY"
+                                    },
+                                    "y": {
+                                        "indicator": "Moving Average of Price",
+                                        "period": "200",
+                                        "source": "SPY"
+                                    }
+                                },
+                                "branches": {
+                                    "true": [
+                                        {
+                                            "id": "fb58e2a4de5d46ffa36f1e74c20ba638",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Standard Deviation of Return GBTC  3 \u003e 9.00)",
+                                            "properties": {
+                                                "comparison": "\u003e",
+                                                "x": {
+                                                    "indicator": "Standard Deviation of Return",
+                                                    "period": "3",
+                                                    "source": "GBTC"
+                                                },
+                                                "y": {
+                                                    "indicator": "constant",
+                                                    "period": "9.00"
+                                                }
+                                            },
+                                            "branches": {
+                                                "true": [
+                                                    {
+                                                        "id": "6f51ffdada624fabb031a83ef295ebda",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order BIL",
+                                                        "properties": {
+                                                            "symbol": "BIL"
+                                                        }
+                                                    }
+                                                ],
+                                                "false": [
+                                                    {
+                                                        "id": "ac14c00caa8c4ac2a63199f6b397f77f",
+                                                        "componentType": "folder",
+                                                        "type": "folder",
+                                                        "name": "200d IEF vs 200d TLT RSI",
+                                                        "sequence": [
+                                                            {
+                                                                "id": "a632461fb2b44c61af156808068cbb0b",
+                                                                "componentType": "switch",
+                                                                "type": "condition",
+                                                                "name": "if(Relative Strength Index IEF 200 \u003e Relative Strength Index TLT 200)",
+                                                                "properties": {
+                                                                    "comparison": "\u003e",
+                                                                    "x": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "200",
+                                                                        "source": "IEF"
+                                                                    },
+                                                                    "y": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "200",
+                                                                        "source": "TLT"
+                                                                    }
+                                                                },
+                                                                "branches": {
+                                                                    "true": [
+                                                                        {
+                                                                            "id": "d3210fc5615142dd9a47b1d2092120e2",
+                                                                            "componentType": "largeTask",
+                                                                            "type": "stock",
+                                                                            "name": "Buy Order GBTC",
+                                                                            "properties": {
+                                                                                "symbol": "GBTC"
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "false": [
+                                                                        {
+                                                                            "id": "fd82b7e6991d43ad9b750f0545b02bea",
+                                                                            "componentType": "largeTask",
+                                                                            "type": "stock",
+                                                                            "name": "Buy Order BIL",
+                                                                            "properties": {
+                                                                                "symbol": "BIL"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "false": [
+                                        {
+                                            "id": "d74cd4cfa2ec410ba8a4058f7897aa3d",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index GBTC  14 \u003e 75.00)",
+                                            "properties": {
+                                                "comparison": "\u003e",
+                                                "x": {
+                                                    "indicator": "Relative Strength Index",
+                                                    "period": "14",
+                                                    "source": "GBTC"
+                                                },
+                                                "y": {
+                                                    "indicator": "constant",
+                                                    "period": "75.00"
+                                                }
+                                            },
+                                            "branches": {
+                                                "true": [
+                                                    {
+                                                        "id": "1916bf10a9a3428a8f28b67630974864",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order BIL",
+                                                        "properties": {
+                                                            "symbol": "BIL"
+                                                        }
+                                                    }
+                                                ],
+                                                "false": [
+                                                    {
+                                                        "id": "be7fcaa743af4d2a9eab25e9d4c6a085",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index GBTC  14 \u003c 25.00)",
+                                                        "properties": {
+                                                            "comparison": "\u003c",
+                                                            "x": {
+                                                                "indicator": "Relative Strength Index",
+                                                                "period": "14",
+                                                                "source": "GBTC"
+                                                            },
+                                                            "y": {
+                                                                "indicator": "constant",
+                                                                "period": "25.00"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "true": [
+                                                                {
+                                                                    "id": "26b27ba5562844298070260240e3092c",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GBTC",
+                                                                    "properties": {
+                                                                        "symbol": "GBTC"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "false": [
+                                                                {
+                                                                    "id": "85324f06258a4623bf24a9d642d463a6",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(current price GBTC \u003e Moving Average of Price GBTC 20)",
+                                                                    "properties": {
+                                                                        "comparison": "\u003e",
+                                                                        "x": {
+                                                                            "indicator": "current price",
+                                                                            "source": "GBTC"
+                                                                        },
+                                                                        "y": {
+                                                                            "indicator": "Moving Average of Price",
+                                                                            "period": "20",
+                                                                            "source": "GBTC"
+                                                                        }
+                                                                    },
+                                                                    "branches": {
+                                                                        "true": [
+                                                                            {
+                                                                                "id": "c8e32c1dfaae4c59b096c99408698e85",
+                                                                                "componentType": "folder",
+                                                                                "type": "folder",
+                                                                                "name": "200d IEF vs 200d TLT RSI",
+                                                                                "sequence": [
+                                                                                    {
+                                                                                        "id": "f66a12d6495c43dc93c560e02354abce",
+                                                                                        "componentType": "switch",
+                                                                                        "type": "condition",
+                                                                                        "name": "if(Relative Strength Index IEF 200 \u003e Relative Strength Index TLT 200)",
+                                                                                        "properties": {
+                                                                                            "comparison": "\u003e",
+                                                                                            "x": {
+                                                                                                "indicator": "Relative Strength Index",
+                                                                                                "period": "200",
+                                                                                                "source": "IEF"
+                                                                                            },
+                                                                                            "y": {
+                                                                                                "indicator": "Relative Strength Index",
+                                                                                                "period": "200",
+                                                                                                "source": "TLT"
+                                                                                            }
+                                                                                        },
+                                                                                        "branches": {
+                                                                                            "true": [
+                                                                                                {
+                                                                                                    "id": "5b6f906f10f0477e9e129072190b202d",
+                                                                                                    "componentType": "largeTask",
+                                                                                                    "type": "stock",
+                                                                                                    "name": "Buy Order GBTC",
+                                                                                                    "properties": {
+                                                                                                        "symbol": "GBTC"
+                                                                                                    }
+                                                                                                }
+                                                                                            ],
+                                                                                            "false": [
+                                                                                                {
+                                                                                                    "id": "d687fc62633948929275a78aed8a5594",
+                                                                                                    "componentType": "largeTask",
+                                                                                                    "type": "stock",
+                                                                                                    "name": "Buy Order BIL",
+                                                                                                    "properties": {
+                                                                                                        "symbol": "BIL"
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        "false": [
+                                                                            {
+                                                                                "id": "94302c23ba5a464e9563ee8c63366cf1",
+                                                                                "componentType": "largeTask",
+                                                                                "type": "stock",
+                                                                                "name": "Buy Order BIL",
+                                                                                "properties": {
+                                                                                    "symbol": "BIL"
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "b": [
+                    {
+                        "id": "bdcfb7635964426f894244b3afe4ddb5",
+                        "componentType": "folder",
+                        "type": "folder",
+                        "name": "Bitcoin Strategy - GBTC | Anansi | 2015-06-01",
+                        "sequence": [
+                            {
+                                "id": "d3c8554c14c54953ba6ea2ec4f3fecab",
+                                "componentType": "switch",
+                                "type": "condition",
+                                "name": "if(current price SPY \u003e Moving Average of Price SPY 200)",
+                                "properties": {
+                                    "comparison": "\u003e",
+                                    "x": {
+                                        "indicator": "current price",
+                                        "source": "SPY"
+                                    },
+                                    "y": {
+                                        "indicator": "Moving Average of Price",
+                                        "period": "200",
+                                        "source": "SPY"
+                                    }
+                                },
+                                "branches": {
+                                    "true": [
+                                        {
+                                            "id": "8aa16c0dea91403d868e6c99189fdb0b",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Standard Deviation of Return GBTC  3 \u003e 9.00)",
+                                            "properties": {
+                                                "comparison": "\u003e",
+                                                "x": {
+                                                    "indicator": "Standard Deviation of Return",
+                                                    "period": "3",
+                                                    "source": "GBTC"
+                                                },
+                                                "y": {
+                                                    "indicator": "constant",
+                                                    "period": "9.00"
+                                                }
+                                            },
+                                            "branches": {
+                                                "true": [
+                                                    {
+                                                        "id": "cbee465c587d472e8ee62c84b38456b1",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order BIL",
+                                                        "properties": {
+                                                            "symbol": "BIL"
+                                                        }
+                                                    }
+                                                ],
+                                                "false": [
+                                                    {
+                                                        "id": "c5c046c6d6ed41a7b16e5087781cfecb",
+                                                        "componentType": "folder",
+                                                        "type": "folder",
+                                                        "name": "200d IEF vs 200d TLT RSI",
+                                                        "sequence": [
+                                                            {
+                                                                "id": "df208ad00aa8497aac44f0de4427243c",
+                                                                "componentType": "switch",
+                                                                "type": "condition",
+                                                                "name": "if(Relative Strength Index IEF 200 \u003e Relative Strength Index TLT 200)",
+                                                                "properties": {
+                                                                    "comparison": "\u003e",
+                                                                    "x": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "200",
+                                                                        "source": "IEF"
+                                                                    },
+                                                                    "y": {
+                                                                        "indicator": "Relative Strength Index",
+                                                                        "period": "200",
+                                                                        "source": "TLT"
+                                                                    }
+                                                                },
+                                                                "branches": {
+                                                                    "true": [
+                                                                        {
+                                                                            "id": "2b69455154274a5d9c408ac77130c57d",
+                                                                            "componentType": "largeTask",
+                                                                            "type": "stock",
+                                                                            "name": "Buy Order GBTC",
+                                                                            "properties": {
+                                                                                "symbol": "GBTC"
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "false": [
+                                                                        {
+                                                                            "id": "366b09df2b604c7b936095194d717e1f",
+                                                                            "componentType": "largeTask",
+                                                                            "type": "stock",
+                                                                            "name": "Buy Order BIL",
+                                                                            "properties": {
+                                                                                "symbol": "BIL"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "false": [
+                                        {
+                                            "id": "125b706e699641658c8d25f6268f4581",
+                                            "componentType": "switch",
+                                            "type": "condition",
+                                            "name": "if(Relative Strength Index GBTC  14 \u003e 75.00)",
+                                            "properties": {
+                                                "comparison": "\u003e",
+                                                "x": {
+                                                    "indicator": "Relative Strength Index",
+                                                    "period": "14",
+                                                    "source": "GBTC"
+                                                },
+                                                "y": {
+                                                    "indicator": "constant",
+                                                    "period": "75.00"
+                                                }
+                                            },
+                                            "branches": {
+                                                "true": [
+                                                    {
+                                                        "id": "3c6a19280d5a464c8748923520b45a81",
+                                                        "componentType": "largeTask",
+                                                        "type": "stock",
+                                                        "name": "Buy Order BIL",
+                                                        "properties": {
+                                                            "symbol": "BIL"
+                                                        }
+                                                    }
+                                                ],
+                                                "false": [
+                                                    {
+                                                        "id": "932303ea6a2946ed87d6a271e6e334bd",
+                                                        "componentType": "switch",
+                                                        "type": "condition",
+                                                        "name": "if(Relative Strength Index GBTC  14 \u003c 25.00)",
+                                                        "properties": {
+                                                            "comparison": "\u003c",
+                                                            "x": {
+                                                                "indicator": "Relative Strength Index",
+                                                                "period": "14",
+                                                                "source": "GBTC"
+                                                            },
+                                                            "y": {
+                                                                "indicator": "constant",
+                                                                "period": "25.00"
+                                                            }
+                                                        },
+                                                        "branches": {
+                                                            "true": [
+                                                                {
+                                                                    "id": "b9e8c6e2e94f4f20a3f44ced358dfaf2",
+                                                                    "componentType": "largeTask",
+                                                                    "type": "stock",
+                                                                    "name": "Buy Order GBTC",
+                                                                    "properties": {
+                                                                        "symbol": "GBTC"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "false": [
+                                                                {
+                                                                    "id": "342e499cecb945df80784569d05e325c",
+                                                                    "componentType": "switch",
+                                                                    "type": "condition",
+                                                                    "name": "if(current price GBTC \u003e Moving Average of Price GBTC 20)",
+                                                                    "properties": {
+                                                                        "comparison": "\u003e",
+                                                                        "x": {
+                                                                            "indicator": "current price",
+                                                                            "source": "GBTC"
+                                                                        },
+                                                                        "y": {
+                                                                            "indicator": "Moving Average of Price",
+                                                                            "period": "20",
+                                                                            "source": "GBTC"
+                                                                        }
+                                                                    },
+                                                                    "branches": {
+                                                                        "true": [
+                                                                            {
+                                                                                "id": "440ff24b478848d9ab8cc4350790dea3",
+                                                                                "componentType": "folder",
+                                                                                "type": "folder",
+                                                                                "name": "200d IEF vs 200d TLT RSI",
+                                                                                "sequence": [
+                                                                                    {
+                                                                                        "id": "4e6ad6e0989449648e1e91b5abda4629",
+                                                                                        "componentType": "switch",
+                                                                                        "type": "condition",
+                                                                                        "name": "if(Relative Strength Index IEF 200 \u003e Relative Strength Index TLT 200)",
+                                                                                        "properties": {
+                                                                                            "comparison": "\u003e",
+                                                                                            "x": {
+                                                                                                "indicator": "Relative Strength Index",
+                                                                                                "period": "200",
+                                                                                                "source": "IEF"
+                                                                                            },
+                                                                                            "y": {
+                                                                                                "indicator": "Relative Strength Index",
+                                                                                                "period": "200",
+                                                                                                "source": "TLT"
+                                                                                            }
+                                                                                        },
+                                                                                        "branches": {
+                                                                                            "true": [
+                                                                                                {
+                                                                                                    "id": "ee5140e8ccf647959aa914f95cb0fff0",
+                                                                                                    "componentType": "largeTask",
+                                                                                                    "type": "stock",
+                                                                                                    "name": "Buy Order GBTC",
+                                                                                                    "properties": {
+                                                                                                        "symbol": "GBTC"
+                                                                                                    }
+                                                                                                }
+                                                                                            ],
+                                                                                            "false": [
+                                                                                                {
+                                                                                                    "id": "a5f0d8de5a9d4c02a2dbded7410a0b57",
+                                                                                                    "componentType": "largeTask",
+                                                                                                    "type": "stock",
+                                                                                                    "name": "Buy Order BIL",
+                                                                                                    "properties": {
+                                                                                                        "symbol": "BIL"
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        "false": [
+                                                                            {
+                                                                                "id": "b6921a0cfed5483cb92e42dd4480d366",
+                                                                                "componentType": "largeTask",
+                                                                                "type": "stock",
+                                                                                "name": "Buy Order BIL",
+                                                                                "properties": {
+                                                                                    "symbol": "BIL"
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,1207 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "d2320987-b678-4348-b1c5-69223cda9f90",
+    "id": "d2320987-b678-4348-b1c5-69223cda9f90",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "b4d9ea57682fac4a1dd281f619453df9",
+      "componentType": "task",
+      "type": "comment",
+      "name": "random comment",
+      "properties": { "comment": "random comment" },
+      "hash": "22605b2d79799bda21d523a02cef1607",
+      "parentHash": "5ef078c51205d98c11a33f6ac5835037"
+    },
+    {
+      "id": "7771c73c419e4131b5227b099d63ec6f",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [SPY] > [ 200d E.M.A. of SPY]",
+      "properties": {
+        "comparison": ">",
+        "x": { "indicator": "current price", "source": "SPY" },
+        "y": {
+          "indicator": "Exponential Moving Average of Price",
+          "period": "200",
+          "source": "SPY"
+        }
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "b4d9ea57685fac4a1dd281f619453df9",
+            "componentType": "task",
+            "type": "comment",
+            "name": "bull market - trending up",
+            "properties": { "comment": "bull market - trending up" },
+            "hash": "22605b0d79799bda21d523a02cef1607",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037"
+          },
+          {
+            "id": "3b5bce4de56a4b8fb94d8ebd50536da2",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [10d R.S.I.    of TQQQ] > [79.00%]",
+            "properties": {
+              "comparison": ">",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "TQQQ"
+              },
+              "y": { "indicator": "Fixed-Value", "period": "79.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "b31454dcaba2c23084e10c96ab412a36",
+                  "componentType": "task",
+                  "type": "comment",
+                  "name": "overbought - buy vix as a hedge",
+                  "properties": {
+                    "comment": "overbought - buy vix as a hedge"
+                  },
+                  "hash": "37c2f11ec7211ac223db5eeea3ae7dda",
+                  "parentHash": "b530c7608ab7f0fbdf4d2a93490855e5"
+                },
+                {
+                  "id": "2bba2aea322e4701a0411cbfad42d81b",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY UVXY",
+                  "properties": { "symbol": "UVXY" },
+                  "hash": "32159d1824c3ca9950b38c09427e2ae6",
+                  "parentHash": "c2d86d597dd00f4a0b0910c919c75277"
+                }
+              ],
+              "false": [
+                {
+                  "id": "b5866dde1db748aaa820e7c92f41a474",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if: [10d R.S.I.    of SPXL] > [79.00%]",
+                  "properties": {
+                    "comparison": ">",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "SPXL"
+                    },
+                    "y": { "indicator": "Fixed-Value", "period": "79.00" }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "dcd74bb8d24724ff9d86c5affd3aed7e",
+                        "componentType": "task",
+                        "type": "comment",
+                        "name": "overbought - buy vix as a hedge",
+                        "properties": {
+                          "comment": "overbought - buy vix as a hedge"
+                        },
+                        "hash": "039fe3d3572c57cb3290f44312eb520a",
+                        "parentHash": "34c440aee631e4410728d2d2d4cb1890"
+                      },
+                      {
+                        "id": "d1616c4106d7401aad9a63eb6595d12e",
+                        "componentType": "task",
+                        "type": "stock",
+                        "name": "BUY UVXY",
+                        "properties": { "symbol": "UVXY" },
+                        "hash": "9a9980960ca348370222e4cf4fce414e",
+                        "parentHash": "fb298519e35bdf3acbf36a669205b83c"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "d0d79ba92f2ee240da8ea57341e18cb6",
+                        "componentType": "task",
+                        "type": "comment",
+                        "name": "still in bull run - can keep going up",
+                        "properties": {
+                          "comment": "still in bull run - can keep going up"
+                        },
+                        "hash": "6ac0d6dcf0c07c61c5ed6dc9e8041cdc",
+                        "parentHash": "34c440aee631e4410728d2d2d4cb1890"
+                      },
+                      {
+                        "id": "7e98cc6bb8eb40a6b068445dad8f5cfa",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if: [5d Cumulative Return    of QQQ] < [-6.00%]",
+                        "properties": {
+                          "comparison": "<",
+                          "x": {
+                            "indicator": "Cumulative Return",
+                            "period": "5",
+                            "source": "QQQ"
+                          },
+                          "y": { "indicator": "Fixed-Value", "period": "-6.00" }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "9b6cb17f94acbd3af168a7dd6a1f291f",
+                              "componentType": "task",
+                              "type": "comment",
+                              "name": "in a dip",
+                              "properties": { "comment": "in a dip" },
+                              "hash": "5a3ce479cc58d66949a19a62f9eda305",
+                              "parentHash": "c5020a9ef096ec43939508861da83590"
+                            },
+                            {
+                              "id": "098f9eca2afa470a8c2042b3661a5874",
+                              "componentType": "switch",
+                              "type": "condition",
+                              "name": "if: [1d Cumulative Return    of TQQQ] > [5.00%]",
+                              "properties": {
+                                "comparison": ">",
+                                "x": {
+                                  "indicator": "Cumulative Return",
+                                  "period": "1",
+                                  "source": "TQQQ"
+                                },
+                                "y": {
+                                  "indicator": "Fixed-Value",
+                                  "period": "5.00"
+                                }
+                              },
+                              "branches": {
+                                "true": [
+                                  {
+                                    "id": "0bbe46d3f1f8230ecf67cc18adf5b3ad",
+                                    "componentType": "task",
+                                    "type": "comment",
+                                    "name": "dip is recovering fast",
+                                    "properties": {
+                                      "comment": "dip is recovering fast"
+                                    },
+                                    "hash": "323cbac6469469f8305828cc573d12e1",
+                                    "parentHash": "87baec81bf50e734da1f189f3ceba7ea"
+                                  },
+                                  {
+                                    "id": "7c8e503d9f3743169a5089ac162fedf7",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                    "sequence": [
+                                      {
+                                        "id": "b23b5471f7c64732ab8e80df38245f8e",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Inverse Volatility",
+                                        "name": "Allocate by 30d Inverse Volatility",
+                                        "properties": {
+                                          "period": "30",
+                                          "values": { "a": 100 }
+                                        },
+                                        "branches": {
+                                          "a": [
+                                            {
+                                              "id": "abeb095eb626416080d178d2959ae718",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY UUP",
+                                              "properties": { "symbol": "UUP" },
+                                              "hash": "d166db19b44213cd13dcdaa4377935a9",
+                                              "parentHash": "19b2d7cac234330c4f97b7487da54002"
+                                            }
+                                          ],
+                                          "b": [
+                                            {
+                                              "id": "917195ecf7d240c4afc57ffb83a95700",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY GLD",
+                                              "properties": { "symbol": "GLD" },
+                                              "hash": "88fc9ffb6f12a7155a231368e18c6c5b",
+                                              "parentHash": "19b2d7cac234330c4f97b7487da54002"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "84fafae2b74929c8dcbe2b2ba9911b84",
+                                        "parentHash": "1c90c97c1f1922692d4c154ff4970d13",
+                                        "nodeChildrenHash": "1b577af88d82c7832c3cd78998ff7fa1",
+                                        "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/7c8e503d9f3743169a5089ac162fedf7/b23b5471f7c64732ab8e80df38245f8e"
+                                      }
+                                    ],
+                                    "hash": "b267496870401da83deeeba94ae1020b",
+                                    "parentHash": "dd602446577e9f6b1997cf9aa908c2e0",
+                                    "nodeChildrenHash": "02b72d313e2702efd6d1db47b66a8829",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/7c8e503d9f3743169a5089ac162fedf7"
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "cecb9bb34f1046ddbb52597a93dcd472",
+                                    "componentType": "switch",
+                                    "type": "condition",
+                                    "name": "if: [10d R.S.I.    of TQQQ] > [31.00%]",
+                                    "properties": {
+                                      "comparison": ">",
+                                      "x": {
+                                        "indicator": "Relative Strength Index",
+                                        "period": "10",
+                                        "source": "TQQQ"
+                                      },
+                                      "y": {
+                                        "indicator": "Fixed-Value",
+                                        "period": "31.00"
+                                      }
+                                    },
+                                    "branches": {
+                                      "true": [
+                                        {
+                                          "id": "fc82ab72e32c1adfc63e120c1843bc3f",
+                                          "componentType": "task",
+                                          "type": "comment",
+                                          "name": "recovering",
+                                          "properties": {
+                                            "comment": "recovering"
+                                          },
+                                          "hash": "4ae3f8be45ba0a8c838178692b07a8db",
+                                          "parentHash": "10136457799b62b0950be8ba7c56046d"
+                                        },
+                                        {
+                                          "id": "0ad8a50922ca49a9a9a4a2b850c35cc2",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                          "sequence": [
+                                            {
+                                              "id": "4a5d712490e3479fbeba7b689dbe0a49",
+                                              "componentType": "switch",
+                                              "type": "allocation",
+                                              "function": "Inverse Volatility",
+                                              "name": "Allocate by 30d Inverse Volatility",
+                                              "properties": {
+                                                "period": "30",
+                                                "values": { "a": 100 }
+                                              },
+                                              "branches": {
+                                                "a": [
+                                                  {
+                                                    "id": "2317cdd2796b4209a890d9bc6c09504d",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY UUP",
+                                                    "properties": {
+                                                      "symbol": "UUP"
+                                                    },
+                                                    "hash": "b37377f10fff7bba36b97d9656725f05",
+                                                    "parentHash": "c15f8c93b9a02ecc8b97b74a9bc3a39d"
+                                                  }
+                                                ],
+                                                "b": [
+                                                  {
+                                                    "id": "d32e266f3f5048a28b6f6a36cd83062a",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY GLD",
+                                                    "properties": {
+                                                      "symbol": "GLD"
+                                                    },
+                                                    "hash": "5cfbd95f057335764ee1be63c419ddaa",
+                                                    "parentHash": "c15f8c93b9a02ecc8b97b74a9bc3a39d"
+                                                  }
+                                                ]
+                                              },
+                                              "hash": "e1bf8eb7821e8eb0fe84d49d34f8b75b",
+                                              "parentHash": "714899dd60bcb0fcfe217522712ca755",
+                                              "nodeChildrenHash": "1b577af88d82c7832c3cd78998ff7fa1",
+                                              "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/cecb9bb34f1046ddbb52597a93dcd472/0ad8a50922ca49a9a9a4a2b850c35cc2/4a5d712490e3479fbeba7b689dbe0a49"
+                                            }
+                                          ],
+                                          "hash": "cafb6e3dbeab352c4479210fd7bd5219",
+                                          "parentHash": "d8434a83be419ce11c11a1f1b9d7f4f4",
+                                          "nodeChildrenHash": "02b72d313e2702efd6d1db47b66a8829",
+                                          "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/cecb9bb34f1046ddbb52597a93dcd472/0ad8a50922ca49a9a9a4a2b850c35cc2"
+                                        }
+                                      ],
+                                      "false": [
+                                        {
+                                          "id": "8802d66366105f9dfca8174b32aa2900",
+                                          "componentType": "task",
+                                          "type": "comment",
+                                          "name": "still in dip",
+                                          "properties": {
+                                            "comment": "still in dip"
+                                          },
+                                          "hash": "d25b108c44afca923807a7752f93db28",
+                                          "parentHash": "10136457799b62b0950be8ba7c56046d"
+                                        },
+                                        {
+                                          "id": "879581dcf2964577916f130bef20300c",
+                                          "componentType": "folder",
+                                          "type": "folder",
+                                          "name": "Fund Surf",
+                                          "sequence": [
+                                            {
+                                              "id": "67db14f1ebfe4e85b34c9e30d9613c52",
+                                              "componentType": "switch",
+                                              "type": "Sort",
+                                              "name": "SortBy: [R.S.I. - 20d]",
+                                              "properties": {
+                                                "select": {
+                                                  "function": "Bottom",
+                                                  "howmany": "1"
+                                                },
+                                                "sortby": {
+                                                  "function": "Relative Strength Index",
+                                                  "window": "20"
+                                                }
+                                              },
+                                              "branches": {
+                                                "Bottom-1": [
+                                                  {
+                                                    "id": "4b5e52fc2d4543c995aa98ec8be4b4ef",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY SHY",
+                                                    "properties": {
+                                                      "symbol": "SHY"
+                                                    },
+                                                    "hash": "6f17b18e93a4f146e293593aa20eb331",
+                                                    "parentHash": "c15f8c93b9a02ecc8b97b74a9bc3a39d"
+                                                  },
+                                                  {
+                                                    "id": "4993b20b485145a39a7dee47e79a6d54",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY TQQQ",
+                                                    "properties": {
+                                                      "symbol": "TQQQ"
+                                                    },
+                                                    "hash": "e0ba165c875324e5c9cb960e7069de47",
+                                                    "parentHash": "383a73158e3d8f06e1cde1dd3f7460be"
+                                                  },
+                                                  {
+                                                    "id": "836d282b98fa4930992acc7b6261c6ee",
+                                                    "componentType": "task",
+                                                    "type": "stock",
+                                                    "name": "BUY SPXL",
+                                                    "properties": {
+                                                      "symbol": "SPXL"
+                                                    },
+                                                    "hash": "889eb066df379de22e68a346bcf94f07",
+                                                    "parentHash": "3bf1d22e40d9ced8a6e96305f2f95f0d"
+                                                  },
+                                                  {
+                                                    "id": "079cc47d-d0e7-4abe-9761-e17be1086fc0",
+                                                    "componentType": "task",
+                                                    "type": "icon",
+                                                    "name": "END OF SORT",
+                                                    "hash": "34b9e773b184b6820bd21135a7148505",
+                                                    "parentHash": "60684f227ab626b0d689ad3b2fd12bac"
+                                                  }
+                                                ]
+                                              },
+                                              "hash": "15409492a7c87a6e468571b32bf9c70a",
+                                              "parentHash": "714899dd60bcb0fcfe217522712ca755",
+                                              "nodeChildrenHash": "13175c8472c4c1de83a992cb70f95008",
+                                              "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/cecb9bb34f1046ddbb52597a93dcd472/879581dcf2964577916f130bef20300c/67db14f1ebfe4e85b34c9e30d9613c52"
+                                            }
+                                          ],
+                                          "hash": "cafb6e3dbeab352c4479210fd7bd5219",
+                                          "parentHash": "d8434a83be419ce11c11a1f1b9d7f4f4",
+                                          "nodeChildrenHash": "231a1f3abc0e252f821361f43ed9fa3e",
+                                          "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/cecb9bb34f1046ddbb52597a93dcd472/879581dcf2964577916f130bef20300c"
+                                        }
+                                      ]
+                                    },
+                                    "hash": "f4bff1cf8fa6d5fa2b8d781f5f417c48",
+                                    "parentHash": "87baec81bf50e734da1f189f3ceba7ea",
+                                    "nodeChildrenHash": "2137146e74056a599027b6297c07958f",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874/cecb9bb34f1046ddbb52597a93dcd472"
+                                  }
+                                ]
+                              },
+                              "hash": "54398d4e3e33afd091c0dc0436958d74",
+                              "parentHash": "1cd95dc06743733a8cee6197199d7f66",
+                              "nodeChildrenHash": "357d7889a2e143906666c11af928a708",
+                              "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/098f9eca2afa470a8c2042b3661a5874"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "85a7349878c34fc9a1ab3db862d80dd3",
+                              "componentType": "switch",
+                              "type": "condition",
+                              "name": "if: [10d R.S.I.    of QQQ] < [31.00%]",
+                              "properties": {
+                                "comparison": "<",
+                                "x": {
+                                  "indicator": "Relative Strength Index",
+                                  "period": "10",
+                                  "source": "QQQ"
+                                },
+                                "y": {
+                                  "indicator": "Fixed-Value",
+                                  "period": "31.00"
+                                }
+                              },
+                              "branches": {
+                                "true": [
+                                  {
+                                    "id": "b77368f1ae4c6274f15cd7ab0c43ed35",
+                                    "componentType": "task",
+                                    "type": "comment",
+                                    "name": "in a dip",
+                                    "properties": { "comment": "in a dip" },
+                                    "hash": "40e7d33a06235ead92189ee19dcbe844",
+                                    "parentHash": "bf476a55c5e590f27d7f0b4627850a0f"
+                                  },
+                                  {
+                                    "id": "f6af65d8bc524f7e8bc29adcb7425efe",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Fund Surf",
+                                    "sequence": [
+                                      {
+                                        "id": "4da64ff8203040e2b802324b6974dbdf",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy: [R.S.I. - 20d]",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Bottom",
+                                            "howmany": "1"
+                                          },
+                                          "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "20"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Bottom-1": [
+                                            {
+                                              "id": "40ef9e81fd084255b672cef4d70a2c91",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SHY",
+                                              "properties": { "symbol": "SHY" },
+                                              "hash": "90960f924b75c9e0eba688b4d9cf7363",
+                                              "parentHash": "8f2af046c4a3de42516e2dd8869613b5"
+                                            },
+                                            {
+                                              "id": "ff60105de3124bcaab748f3dca585dec",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY TQQQ",
+                                              "properties": {
+                                                "symbol": "TQQQ"
+                                              },
+                                              "hash": "db64fa5d821324a2e43940d6ba4fb16f",
+                                              "parentHash": "da456bc34c935ecb2f925886c1dacadb"
+                                            },
+                                            {
+                                              "id": "2d4a87ad196848f8a42617c8189eaf11",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SPXL",
+                                              "properties": {
+                                                "symbol": "SPXL"
+                                              },
+                                              "hash": "94e4809d8b1c0e7e0b50bfddac71b386",
+                                              "parentHash": "e5422df3eea9ddfd11297c3f1878725d"
+                                            },
+                                            {
+                                              "id": "a2685e37-af0e-4ed1-8d67-2ee0ab9d506c",
+                                              "componentType": "task",
+                                              "type": "icon",
+                                              "name": "END OF SORT",
+                                              "hash": "4e9768fc3627b8623ed764c78de13f51",
+                                              "parentHash": "d0c1378ba60aaa51d3a65d5f1a4cc48c"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "971f2c564a512b996dd4d79eee5fbd63",
+                                        "parentHash": "f9c00b34a86ac0fd6fcd8105ea3a4622",
+                                        "nodeChildrenHash": "13175c8472c4c1de83a992cb70f95008",
+                                        "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/85a7349878c34fc9a1ab3db862d80dd3/f6af65d8bc524f7e8bc29adcb7425efe/4da64ff8203040e2b802324b6974dbdf"
+                                      }
+                                    ],
+                                    "hash": "860fa87eb6fc97b61d0e4be4f3401814",
+                                    "parentHash": "27d7357811bae4ac94b7a267c7f9d035",
+                                    "nodeChildrenHash": "231a1f3abc0e252f821361f43ed9fa3e",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/85a7349878c34fc9a1ab3db862d80dd3/f6af65d8bc524f7e8bc29adcb7425efe"
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "23f194139992402a9c32f9fdd5a8b5d8",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Fund Surf (Non-Levered)",
+                                    "sequence": [
+                                      {
+                                        "id": "18e6741c0d484f8fb3c3fb9c6f95545c",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy: [R.S.I. - 20d]",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Bottom",
+                                            "howmany": "1"
+                                          },
+                                          "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "20"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Bottom-1": [
+                                            {
+                                              "id": "1a81a993f1fc4f37929a0d408369b7a9",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY QQQ",
+                                              "properties": { "symbol": "QQQ" },
+                                              "hash": "d0f448222e3553a5bd38ec33d264072b",
+                                              "parentHash": "b9c7cac40f18a33d94d0d0d27d78b440"
+                                            },
+                                            {
+                                              "id": "4b3456c2022c4d0696b53c030d529241",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SPY",
+                                              "properties": { "symbol": "SPY" },
+                                              "hash": "a1ac5939850129700e494a560da2c371",
+                                              "parentHash": "156cdec74d58d325edc8940055d575e5"
+                                            },
+                                            {
+                                              "id": "a7864aca-0c17-4b09-8b26-53646b4a3966",
+                                              "componentType": "task",
+                                              "type": "icon",
+                                              "name": "END OF SORT",
+                                              "hash": "0b8237260ad5cebe72c09eeaf44fd0a7",
+                                              "parentHash": "da10f0f9b188d096ea38c78361600c10"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "a7bbc218b65cb7d0f6c1efffc600197c",
+                                        "parentHash": "17166825de001004731b60a1ea9ad96e",
+                                        "nodeChildrenHash": "0b6d6b901220e6169aa76dbfb4ccc09f",
+                                        "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/85a7349878c34fc9a1ab3db862d80dd3/23f194139992402a9c32f9fdd5a8b5d8/18e6741c0d484f8fb3c3fb9c6f95545c"
+                                      }
+                                    ],
+                                    "hash": "860fa87eb6fc97b61d0e4be4f3401814",
+                                    "parentHash": "bf476a55c5e590f27d7f0b4627850a0f",
+                                    "nodeChildrenHash": "b310bb4e75ed0a9ef8e0c1f1a4d67d33",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/85a7349878c34fc9a1ab3db862d80dd3/23f194139992402a9c32f9fdd5a8b5d8"
+                                  }
+                                ]
+                              },
+                              "hash": "3d94f68f2f9b9449b79b0a8a32d29406",
+                              "parentHash": "c5020a9ef096ec43939508861da83590",
+                              "nodeChildrenHash": "0d53878c0b9b6165ba9bd3e834bc7721",
+                              "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa/85a7349878c34fc9a1ab3db862d80dd3"
+                            }
+                          ]
+                        },
+                        "hash": "7646a3c67e33ec10bd2a5ae5b81f1881",
+                        "parentHash": "fb298519e35bdf3acbf36a669205b83c",
+                        "nodeChildrenHash": "25e3b7d87bbb5c76c25e7d7a36aa72c1",
+                        "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474/7e98cc6bb8eb40a6b068445dad8f5cfa"
+                      }
+                    ]
+                  },
+                  "hash": "f089856c337e66229db9e55c5a7d3c1f",
+                  "parentHash": "b530c7608ab7f0fbdf4d2a93490855e5",
+                  "nodeChildrenHash": "68fe5ad88deaa91a50745bf073eadfa7",
+                  "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2/b5866dde1db748aaa820e7c92f41a474"
+                }
+              ]
+            },
+            "hash": "75b260e729a82ac7b5aa42c51c77f74d",
+            "parentHash": "d0e7bc5227f36c7d1c3baac9bc446081",
+            "nodeChildrenHash": "9b6524f5c23a05c58b8287e6419b9b34",
+            "path": "7771c73c419e4131b5227b099d63ec6f/3b5bce4de56a4b8fb94d8ebd50536da2"
+          }
+        ],
+        "false": [
+          {
+            "id": "24eb81e016ab4199b71024a16843f3d0",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [10d R.S.I.    of TQQQ] < [31.00%]",
+            "properties": {
+              "comparison": "<",
+              "x": {
+                "indicator": "Relative Strength Index",
+                "period": "10",
+                "source": "TQQQ"
+              },
+              "y": { "indicator": "Fixed-Value", "period": "31.00" }
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "00c7fc5be9de10cb2b5346516bf3e020",
+                  "componentType": "task",
+                  "type": "comment",
+                  "name": "surf the bear market",
+                  "properties": { "comment": "surf the bear market" },
+                  "hash": "4f099136252bb2092beea3d5da24cf94",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                },
+                {
+                  "id": "12467c239cf84617a6daf8f5ab5fb74d",
+                  "componentType": "folder",
+                  "type": "folder",
+                  "name": "Fund Surf",
+                  "sequence": [
+                    {
+                      "id": "c16cbd98e920402691e50894aa31d891",
+                      "componentType": "switch",
+                      "type": "Sort",
+                      "name": "SortBy: [R.S.I. - 20d]",
+                      "properties": {
+                        "select": { "function": "Bottom", "howmany": "1" },
+                        "sortby": {
+                          "function": "Relative Strength Index",
+                          "window": "20"
+                        }
+                      },
+                      "branches": {
+                        "Bottom-1": [
+                          {
+                            "id": "ed049530ddf443cb9533032d632c4847",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY SHY",
+                            "properties": { "symbol": "SHY" },
+                            "hash": "6589800dff53ac26f497f972138429b5",
+                            "parentHash": "fb83663f96d4ec9e52ad4233c7268ed6"
+                          },
+                          {
+                            "id": "8efe8ff8bdbe4e43b65565791f8ef787",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY TQQQ",
+                            "properties": { "symbol": "TQQQ" },
+                            "hash": "753999b03340d8f5e5d1a4b58488e577",
+                            "parentHash": "866eec48b10fc7a04da1892f8cd48bf4"
+                          },
+                          {
+                            "id": "6ffe131606e64e24aaa3dd8fb283f494",
+                            "componentType": "task",
+                            "type": "stock",
+                            "name": "BUY SPXL",
+                            "properties": { "symbol": "SPXL" },
+                            "hash": "24646ea5ca0e864c34a97cbbf79af510",
+                            "parentHash": "0047e6466499cd251ab79ff4c799f91d"
+                          },
+                          {
+                            "id": "9d62be88-f271-48e3-9bab-3a3e47fd4a6f",
+                            "componentType": "task",
+                            "type": "icon",
+                            "name": "END OF SORT",
+                            "hash": "3d0b4c145baa399e8675972b6d524439",
+                            "parentHash": "a4737059d1a5ac2b39ed568918e021c5"
+                          }
+                        ]
+                      },
+                      "hash": "b3ea9eb8c21d5bec38eb96451aea08c6",
+                      "parentHash": "5f61f36bf4ea0e329ebc2d8e10af3cbd",
+                      "nodeChildrenHash": "13175c8472c4c1de83a992cb70f95008",
+                      "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/12467c239cf84617a6daf8f5ab5fb74d/c16cbd98e920402691e50894aa31d891"
+                    }
+                  ],
+                  "hash": "00b9949bbe0681daa949bce63aa0b718",
+                  "parentHash": "3f15874ada37410722a344b21d1e3708",
+                  "nodeChildrenHash": "231a1f3abc0e252f821361f43ed9fa3e",
+                  "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/12467c239cf84617a6daf8f5ab5fb74d"
+                }
+              ],
+              "false": [
+                {
+                  "id": "69156fbbbbc848834b60e56dae7d167c",
+                  "componentType": "task",
+                  "type": "comment",
+                  "name": "recovering in a bear market?",
+                  "properties": { "comment": "recovering in a bear market?" },
+                  "hash": "981b5ce2c7ee2837595fa5ae67b64762",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+                },
+                {
+                  "id": "eb671bf57be441f98514d00cc6ebcd84",
+                  "componentType": "switch",
+                  "type": "condition",
+                  "name": "if: [10d R.S.I.    of UVXY] > [74.00%]",
+                  "properties": {
+                    "comparison": ">",
+                    "x": {
+                      "indicator": "Relative Strength Index",
+                      "period": "10",
+                      "source": "UVXY"
+                    },
+                    "y": { "indicator": "Fixed-Value", "period": "74.00" }
+                  },
+                  "branches": {
+                    "true": [
+                      {
+                        "id": "195812b2b08c47de8559aa746ae5021e",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if: [10d R.S.I.    of UVXY] > [84.00%]",
+                        "properties": {
+                          "comparison": ">",
+                          "x": {
+                            "indicator": "Relative Strength Index",
+                            "period": "10",
+                            "source": "UVXY"
+                          },
+                          "y": { "indicator": "Fixed-Value", "period": "84.00" }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "f8b67ecaffc365183171e93eb451df3d",
+                              "componentType": "task",
+                              "type": "comment",
+                              "name": "super high volatility",
+                              "properties": {
+                                "comment": "super high volatility"
+                              },
+                              "hash": "a5eaaac7b85b7e3e017436a0f2321a7b",
+                              "parentHash": "fb83663f96d4ec9e52ad4233c7268ed6"
+                            },
+                            {
+                              "id": "081454006d4f481084604c73499cc279",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                              "sequence": [
+                                {
+                                  "id": "1b6fb669ed1b4a1e9ee9c114fb887578",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Inverse Volatility",
+                                  "name": "Allocate by 30d Inverse Volatility",
+                                  "properties": {
+                                    "period": "30",
+                                    "values": { "a": 100 }
+                                  },
+                                  "branches": {
+                                    "a": [
+                                      {
+                                        "id": "3fd0b96eb71e4eb58097b19dc03edbc4",
+                                        "componentType": "task",
+                                        "type": "stock",
+                                        "name": "BUY UUP",
+                                        "properties": { "symbol": "UUP" },
+                                        "hash": "3d89592aab31b0feb3aa3160c08cb8e7",
+                                        "parentHash": "9b65262da98036619225d762ea26a6ec"
+                                      }
+                                    ],
+                                    "b": [
+                                      {
+                                        "id": "0aead1171b8e4929884b37e5b198a250",
+                                        "componentType": "task",
+                                        "type": "stock",
+                                        "name": "BUY GLD",
+                                        "properties": { "symbol": "GLD" },
+                                        "hash": "6d7e896dc9853bf6823e63224c99c8b6",
+                                        "parentHash": "9b65262da98036619225d762ea26a6ec"
+                                      }
+                                    ]
+                                  },
+                                  "hash": "dd1b6d7775d13838eff4504b3adf8023",
+                                  "parentHash": "c869159c725796536b691a2a151448c4",
+                                  "nodeChildrenHash": "1b577af88d82c7832c3cd78998ff7fa1",
+                                  "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/195812b2b08c47de8559aa746ae5021e/081454006d4f481084604c73499cc279/1b6fb669ed1b4a1e9ee9c114fb887578"
+                                }
+                              ],
+                              "hash": "3f6c05a0a32c55e72f176e2daad31398",
+                              "parentHash": "866eec48b10fc7a04da1892f8cd48bf4",
+                              "nodeChildrenHash": "02b72d313e2702efd6d1db47b66a8829",
+                              "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/195812b2b08c47de8559aa746ae5021e/081454006d4f481084604c73499cc279"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "2facce86f58f41519a79af78174582cb",
+                              "componentType": "task",
+                              "type": "stock",
+                              "name": "BUY UVXY",
+                              "properties": { "symbol": "UVXY" },
+                              "hash": "f1db1d900aa17a9153d5e04538c4ff28",
+                              "parentHash": "fb83663f96d4ec9e52ad4233c7268ed6"
+                            }
+                          ]
+                        },
+                        "hash": "ea342e6105fb64fbcad7bf913eb24647",
+                        "parentHash": "5f61f36bf4ea0e329ebc2d8e10af3cbd",
+                        "nodeChildrenHash": "83627ba63fbd37b77cb62166d5115e67",
+                        "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/195812b2b08c47de8559aa746ae5021e"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "id": "22721b05e49e4b8481576fa729361fcd",
+                        "componentType": "switch",
+                        "type": "condition",
+                        "name": "if: [TQQQ] > [ 20d S.M.A. of TQQQ]",
+                        "properties": {
+                          "comparison": ">",
+                          "x": {
+                            "indicator": "current price",
+                            "source": "TQQQ"
+                          },
+                          "y": {
+                            "indicator": "Simple Moving Average of Price",
+                            "period": "20",
+                            "source": "TQQQ"
+                          }
+                        },
+                        "branches": {
+                          "true": [
+                            {
+                              "id": "ce0e3b5be14c4d7be4c727b74d780f70",
+                              "componentType": "task",
+                              "type": "comment",
+                              "name": "tech is recovering",
+                              "properties": { "comment": "tech is recovering" },
+                              "hash": "a81cb0cbc62d1ddb8ace0d41c418c0f4",
+                              "parentHash": "fb83663f96d4ec9e52ad4233c7268ed6"
+                            },
+                            {
+                              "id": "e7da2b1a6c624c98a47f26f7b3d082e6",
+                              "componentType": "switch",
+                              "type": "condition",
+                              "name": "if: [10d R.S.I.    of SQQQ] < [31.00%]",
+                              "properties": {
+                                "comparison": "<",
+                                "x": {
+                                  "indicator": "Relative Strength Index",
+                                  "period": "10",
+                                  "source": "SQQQ"
+                                },
+                                "y": {
+                                  "indicator": "Fixed-Value",
+                                  "period": "31.00"
+                                }
+                              },
+                              "branches": {
+                                "true": [
+                                  {
+                                    "id": "6c200522c8ac45608baeac203b14c1a3",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                                    "sequence": [
+                                      {
+                                        "id": "52fc36042f174e05a9dccb9c74b095e5",
+                                        "componentType": "switch",
+                                        "type": "allocation",
+                                        "function": "Inverse Volatility",
+                                        "name": "Allocate by 30d Inverse Volatility",
+                                        "properties": {
+                                          "period": "30",
+                                          "values": { "a": 100 }
+                                        },
+                                        "branches": {
+                                          "a": [
+                                            {
+                                              "id": "8b93bb5aec434265a9a3d2a260a50250",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY UUP",
+                                              "properties": { "symbol": "UUP" },
+                                              "hash": "d4aca11bf2e8f0339484fcf3eda87eb7",
+                                              "parentHash": "cd95358311b9dfca3e798715154acbb5"
+                                            }
+                                          ],
+                                          "b": [
+                                            {
+                                              "id": "ffcf0030589d44d79e7065b96f33cb64",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY GLD",
+                                              "properties": { "symbol": "GLD" },
+                                              "hash": "546e3675579409acc8765ee3175735f2",
+                                              "parentHash": "cd95358311b9dfca3e798715154acbb5"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "1d9fe45be9163a98f343c4091c948acc",
+                                        "parentHash": "9b65262da98036619225d762ea26a6ec",
+                                        "nodeChildrenHash": "1b577af88d82c7832c3cd78998ff7fa1",
+                                        "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/e7da2b1a6c624c98a47f26f7b3d082e6/6c200522c8ac45608baeac203b14c1a3/52fc36042f174e05a9dccb9c74b095e5"
+                                      }
+                                    ],
+                                    "hash": "afffa593e4f1e41fc05ba9bd8a2ffbc1",
+                                    "parentHash": "c869159c725796536b691a2a151448c4",
+                                    "nodeChildrenHash": "02b72d313e2702efd6d1db47b66a8829",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/e7da2b1a6c624c98a47f26f7b3d082e6/6c200522c8ac45608baeac203b14c1a3"
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "id": "e81dacec49114f0bbe48096eb5c3d67d",
+                                    "componentType": "folder",
+                                    "type": "folder",
+                                    "name": "Fund Surf",
+                                    "sequence": [
+                                      {
+                                        "id": "04ca925f1c4b4096a100c077013b5c7a",
+                                        "componentType": "switch",
+                                        "type": "Sort",
+                                        "name": "SortBy: [R.S.I. - 20d]",
+                                        "properties": {
+                                          "select": {
+                                            "function": "Bottom",
+                                            "howmany": "1"
+                                          },
+                                          "sortby": {
+                                            "function": "Relative Strength Index",
+                                            "window": "20"
+                                          }
+                                        },
+                                        "branches": {
+                                          "Bottom-1": [
+                                            {
+                                              "id": "a8a93622075c43ff874494d5a179c9c9",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SHY",
+                                              "properties": { "symbol": "SHY" },
+                                              "hash": "54a3b9567927ca4080ee2e71a9633aac",
+                                              "parentHash": "cd95358311b9dfca3e798715154acbb5"
+                                            },
+                                            {
+                                              "id": "31243a75fea248e28404584c84f0ec60",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY TQQQ",
+                                              "properties": {
+                                                "symbol": "TQQQ"
+                                              },
+                                              "hash": "e0a82dd143f84f66b2d821ba3fc847a8",
+                                              "parentHash": "6ef5c3dc47b2a7c9694431dca4bfbf0a"
+                                            },
+                                            {
+                                              "id": "10c3eee1deb44753bba13f9bdf4af8e2",
+                                              "componentType": "task",
+                                              "type": "stock",
+                                              "name": "BUY SPXL",
+                                              "properties": {
+                                                "symbol": "SPXL"
+                                              },
+                                              "hash": "d4b91284694d86d3e38e8c76ad86e230",
+                                              "parentHash": "cf2e1e41a70cd5e3c4cc69511a6e2ced"
+                                            },
+                                            {
+                                              "id": "54fa028f-f6a8-4862-90a0-840ca7e19870",
+                                              "componentType": "task",
+                                              "type": "icon",
+                                              "name": "END OF SORT",
+                                              "hash": "219925ba1345e93437c0ee1ae1826ead",
+                                              "parentHash": "475221c7d708b6aed244be76d8908c61"
+                                            }
+                                          ]
+                                        },
+                                        "hash": "a0e5945c02454b4746ca72d2114d0cbb",
+                                        "parentHash": "9b65262da98036619225d762ea26a6ec",
+                                        "nodeChildrenHash": "13175c8472c4c1de83a992cb70f95008",
+                                        "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/e7da2b1a6c624c98a47f26f7b3d082e6/e81dacec49114f0bbe48096eb5c3d67d/04ca925f1c4b4096a100c077013b5c7a"
+                                      }
+                                    ],
+                                    "hash": "afffa593e4f1e41fc05ba9bd8a2ffbc1",
+                                    "parentHash": "c869159c725796536b691a2a151448c4",
+                                    "nodeChildrenHash": "231a1f3abc0e252f821361f43ed9fa3e",
+                                    "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/e7da2b1a6c624c98a47f26f7b3d082e6/e81dacec49114f0bbe48096eb5c3d67d"
+                                  }
+                                ]
+                              },
+                              "hash": "383637543d2aca4b77d1f9abe5959866",
+                              "parentHash": "866eec48b10fc7a04da1892f8cd48bf4",
+                              "nodeChildrenHash": "059e5b7ba65e46bf5f4a337d3d259e71",
+                              "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/e7da2b1a6c624c98a47f26f7b3d082e6"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "id": "99e21db1b9e54e6db93b35dda17133d5",
+                              "componentType": "folder",
+                              "type": "folder",
+                              "name": "Layer 4: Standard Volatility Hedge (UUP/GLD)",
+                              "sequence": [
+                                {
+                                  "id": "7338a6a910194f90b84c10d69b385e4d",
+                                  "componentType": "switch",
+                                  "type": "allocation",
+                                  "function": "Inverse Volatility",
+                                  "name": "Allocate by 30d Inverse Volatility",
+                                  "properties": {
+                                    "period": "30",
+                                    "values": { "a": 100 }
+                                  },
+                                  "branches": {
+                                    "a": [
+                                      {
+                                        "id": "d7292b41f02a42c89a896cc977b7de98",
+                                        "componentType": "task",
+                                        "type": "stock",
+                                        "name": "BUY UUP",
+                                        "properties": { "symbol": "UUP" },
+                                        "hash": "b8b06b889384eb35586f5f116eb5d641",
+                                        "parentHash": "d65e0fa714dae54be8942434ab6dbe95"
+                                      }
+                                    ],
+                                    "b": [
+                                      {
+                                        "id": "fa773e4be1dc42c597830e51e2a61f0b",
+                                        "componentType": "task",
+                                        "type": "stock",
+                                        "name": "BUY GLD",
+                                        "properties": { "symbol": "GLD" },
+                                        "hash": "981c7107e977377ce9a69c073195d465",
+                                        "parentHash": "d65e0fa714dae54be8942434ab6dbe95"
+                                      }
+                                    ]
+                                  },
+                                  "hash": "83e42478be30203e2009056368c40579",
+                                  "parentHash": "41ec10b33668b22dba153bb7a3c0c532",
+                                  "nodeChildrenHash": "1b577af88d82c7832c3cd78998ff7fa1",
+                                  "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/99e21db1b9e54e6db93b35dda17133d5/7338a6a910194f90b84c10d69b385e4d"
+                                }
+                              ],
+                              "hash": "3f6c05a0a32c55e72f176e2daad31398",
+                              "parentHash": "fb83663f96d4ec9e52ad4233c7268ed6",
+                              "nodeChildrenHash": "02b72d313e2702efd6d1db47b66a8829",
+                              "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd/99e21db1b9e54e6db93b35dda17133d5"
+                            }
+                          ]
+                        },
+                        "hash": "01b566e6aa8f743f4eb0701e6c5669f4",
+                        "parentHash": "5f61f36bf4ea0e329ebc2d8e10af3cbd",
+                        "nodeChildrenHash": "59bf58f377773c82a3e0c1499f6e4ba7",
+                        "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84/22721b05e49e4b8481576fa729361fcd"
+                      }
+                    ]
+                  },
+                  "hash": "1e1558bb8db10833aac04144d1e284f3",
+                  "parentHash": "3f15874ada37410722a344b21d1e3708",
+                  "nodeChildrenHash": "f37ca2050f70e8c446a790dbf93a3c15",
+                  "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0/eb671bf57be441f98514d00cc6ebcd84"
+                }
+              ]
+            },
+            "hash": "db9a12a29e1284e45a65a5a110cfb964",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "11fce052374e0030d20cf4918277d33c",
+            "path": "7771c73c419e4131b5227b099d63ec6f/24eb81e016ab4199b71024a16843f3d0"
+          }
+        ]
+      },
+      "hash": "bedc966566dc9489db7c60cd0cdf19b0",
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "4e920e8f091375f9408b53409c597ec1",
+      "path": "7771c73c419e4131b5227b099d63ec6f"
+    }
+  ],
+  "parentHash": "0",
+  "tickers": ["UVXY", "UUP", "GLD", "SHY", "TQQQ", "SPXL", "QQQ", "SPY"],
+  "indicators": [
+    { "indicator": "current price", "source": "SPY" },
+    {
+      "indicator": "Exponential Moving Average of Price",
+      "period": "200",
+      "source": "SPY"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "TQQQ"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "SPXL"
+    },
+    { "indicator": "Cumulative Return", "period": "5", "source": "QQQ" },
+    { "indicator": "Cumulative Return", "period": "1", "source": "TQQQ" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "TQQQ"
+    },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SHY" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "TQQQ"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "SPXL"
+    },
+    { "indicator": "Relative Strength Index", "period": "10", "source": "QQQ" },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SHY" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "TQQQ"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "SPXL"
+    },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "QQQ" },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SPY" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "TQQQ"
+    },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SHY" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "TQQQ"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "SPXL"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "UVXY"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "UVXY"
+    },
+    { "indicator": "current price", "source": "TQQQ" },
+    {
+      "indicator": "Simple Moving Average of Price",
+      "period": "20",
+      "source": "TQQQ"
+    },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "10",
+      "source": "SQQQ"
+    },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SHY" },
+    {
+      "indicator": "Relative Strength Index",
+      "period": "20",
+      "source": "TQQQ"
+    },
+    { "indicator": "Relative Strength Index", "period": "20", "source": "SPXL" }
+  ],
+  "nodeChildrenHash": "ab022fcf6a7e7a4bed58bb2d254e7073"
+}

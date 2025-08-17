@@ -1,0 +1,145 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "f5575cedaa4a16c0c192cda063fe0724",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "sequence": [
+    {
+      "id": "6ecdf9c8573df6870b3ed796551123af",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy: [Relative Strength Index - 14d]",
+      "properties": {
+        "sortby": { "function": "Relative Strength Index", "window": "14" },
+        "select": { "function": "Top", "howmany": "1" }
+      },
+      "branches": {
+        "Top-1": [
+          {
+            "id": "5dbef4b85fc1f1a6663f8cd48e077436",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY SPY",
+            "properties": { "symbol": "SPY" },
+            "parentHash": "7066f2887d496c7a0797e79bc7305cdc",
+            "hash": "da951024973bb956727950edef3d6db7"
+          },
+          {
+            "id": "5917e00683bbf6cfc06ea7b236a6dc61",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "QQQ",
+            "sequence": [
+              {
+                "id": "f751487d390a9deef242c98296d2a17c",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY QQQ",
+                "properties": { "symbol": "QQQ" },
+                "parentHash": "49a7c1ae3ccb49e7e4609b7bacd3e858",
+                "hash": "a25ae0c116b20729d32c170f7f89ec3a"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "02eacab60b6ea6dddff673d15d9885b5/6ecdf9c8573df6870b3ed796551123af/5917e00683bbf6cfc06ea7b236a6dc61",
+            "parentHash": "8d40c6121aac0bf40017d6d0a3f16720",
+            "nodeChildrenHash": "e3342ccad6f5a7f53fe42261828e2974",
+            "hash": "90c553b28275624572de85fe324f0e97"
+          },
+          {
+            "id": "7cc94666564981adbe66e53ced6b9123",
+            "componentType": "task",
+            "name": "END OF SORT",
+            "properties": {},
+            "type": "icon",
+            "hash": "972ba0b24f299bb100c85e4df7d86bcd",
+            "parentHash": "f282038e89d4f5a207f6f19775c574a0"
+          }
+        ]
+      },
+      "path": "02eacab60b6ea6dddff673d15d9885b5/6ecdf9c8573df6870b3ed796551123af",
+      "parentHash": "a533604873cbe4f0523af58547683c45",
+      "nodeChildrenHash": "ec567460e50b9431a6ca80bf1ce35c8e",
+      "hash": "fa0bce97a41f27d0b351d05878c7d42f"
+    },
+    {
+      "id": "6ecdf9c8573df6870b3ed796551123af",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy: [Exponential Moving Average of Price - 14d]",
+      "properties": {
+        "sortby": {
+          "function": "Exponential Moving Average of Price",
+          "window": "14"
+        },
+        "select": { "function": "Top", "howmany": "1" }
+      },
+      "branches": {
+        "Top-1": [
+          {
+            "id": "5dbef4b85fc1f1a6663f8cd48e077436",
+            "componentType": "task",
+            "type": "stock",
+            "name": "BUY SPY",
+            "properties": { "symbol": "SPY" },
+            "parentHash": "7066f2887d496c7a0797e79bc7305cdc",
+            "hash": "da951024973bb956727950edef3d6db7"
+          },
+          {
+            "id": "5917e00683bbf6cfc06ea7b236a6dc61",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "QQQ",
+            "sequence": [
+              {
+                "id": "f751487d390a9deef242c98296d2a17c",
+                "componentType": "task",
+                "type": "stock",
+                "name": "BUY QQQ",
+                "properties": { "symbol": "QQQ" },
+                "parentHash": "49a7c1ae3ccb49e7e4609b7bacd3e858",
+                "hash": "a25ae0c116b20729d32c170f7f89ec3a"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "path": "02eacab60b6ea6dddff673d15d9885b5/6ecdf9c8573df6870b3ed796551123af/5917e00683bbf6cfc06ea7b236a6dc61",
+            "parentHash": "8d40c6121aac0bf40017d6d0a3f16720",
+            "nodeChildrenHash": "e3342ccad6f5a7f53fe42261828e2974",
+            "hash": "90c553b28275624572de85fe324f0e97"
+          },
+          {
+            "id": "7cc94666564981adbe66e53ced6b9123",
+            "componentType": "task",
+            "name": "END OF SORT",
+            "properties": {},
+            "type": "icon",
+            "hash": "972ba0b24f299bb100c85e4df7d86bcd",
+            "parentHash": "f282038e89d4f5a207f6f19775c574a0"
+          }
+        ]
+      },
+      "path": "02eacab60b6ea6dddff673d15d9885b5/6ecdf9c8573df6870b3ed796551123af",
+      "parentHash": "a533604873cbe4f0523af58547683c45",
+      "nodeChildrenHash": "ec567420e50b9431a6ca80bf1ce35c8e",
+      "hash": "fa0bce97a41f27d0b351d05878c7d42f"
+    }
+  ],
+  "tickers": ["SPY", "QQQ"],
+  "indicators": [
+    { "indicator": "Cumulative Return", "period": "2", "source": "SPY" }
+  ],
+  "nodeChildrenHash": "0d718677b6a02536ccde3009771a385f"
+}

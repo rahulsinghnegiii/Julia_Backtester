@@ -1,0 +1,190 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "85767c002acd07c2915f8ca04ff2bf78",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "0",
+  "sequence": [
+    {
+      "id": "34c3c3fc2482a9267a1d7fa059304126",
+      "componentType": "switch",
+      "type": "condition",
+      "name": "if: [AAPL] > [$100]",
+      "properties": {
+        "y": {
+          "uses_synthetic_stock": false,
+          "indicator": "Fixed-Value",
+          "numerator": "",
+          "denominator": "",
+          "source": "",
+          "period": "100"
+        },
+        "x": {
+          "uses_synthetic_stock": false,
+          "source": "AAPL",
+          "indicator": "current price"
+        },
+        "comparison": ">"
+      },
+      "branches": {
+        "true": [
+          {
+            "id": "f770166925d58ac2e104ba9d7e6c4578",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [2d Cumulative Return of TQQQ] < [SPY]",
+            "properties": {
+              "y": {
+                "uses_synthetic_stock": false,
+                "source": "SPY",
+                "indicator": "current price"
+              },
+              "x": {
+                "uses_synthetic_stock": false,
+                "source": "TQQQ",
+                "indicator": "Cumulative Return",
+                "period": "2"
+              },
+              "comparison": "<"
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "1435707cccd4dad2b9e03fd8ea9dac58",
+                  "componentType": "switch",
+                  "type": "Sort",
+                  "name": "SortBy: [Cumulative Return - 3d]",
+                  "properties": {
+                    "sortby": {
+                      "function": "Cumulative Return",
+                      "window": "3"
+                    },
+                    "select": { "function": "Top", "howmany": "1" }
+                  },
+                  "branches": {
+                    "Top-1": [
+                      {
+                        "id": "611f9a49ca00729380e017bbe71b0c3c",
+                        "componentType": "task",
+                        "type": "stock",
+                        "name": "BUY TLSA",
+                        "properties": { "symbol": "TLSA" },
+                        "parentHash": "b9ec77159db6f61ca00737cc18d28a13",
+                        "hash": "83bb4340325f69fab40a361c34938978"
+                      },
+                      {
+                        "id": "12a8b406543ba10bf49d2ca489951b13",
+                        "componentType": "task",
+                        "type": "stock",
+                        "name": "BUY QQQ",
+                        "properties": { "symbol": "QQQ" },
+                        "parentHash": "64d6a2fb5f8d31213defb622fc6b252b",
+                        "hash": "6191330a8d60df2e9b706cb3938676d2"
+                      },
+                      {
+                        "id": "e890fc5bb391677e2d09ef089f527cda",
+                        "componentType": "task",
+                        "name": "END OF SORT",
+                        "properties": {},
+                        "type": "icon",
+                        "hash": "dc0bcced81c1d7e7f9616633931e97d8",
+                        "parentHash": "ef626da601b6f7f0e150555471280039"
+                      }
+                    ]
+                  },
+                  "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578/1435707cccd4dad2b9e03fd8ea9dac58",
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "nodeChildrenHash": "8a277358f59966a86541887bbd81e7cc",
+                  "hash": "28352108edba43e16ddf88da670762c9"
+                }
+              ],
+              "false": [
+                {
+                  "id": "b2da24c908627c89080210a75fc4b726",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY TSLA",
+                  "properties": { "symbol": "TSLA" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "53288669a15ee071e7a060a45272d2ad"
+                }
+              ]
+            },
+            "path": "34c3c3fc2482a9267a1d7fa059304126/f770166925d58ac2e104ba9d7e6c4578",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "4f47b1ec23dc8df72de9667968146468",
+            "hash": "c5a2804288ce47adc09ffb95efaf8fb6"
+          }
+        ],
+        "false": [
+          {
+            "id": "4df18e92bd444de5a6f532e32129ad6f",
+            "componentType": "switch",
+            "type": "condition",
+            "name": "if: [NVDA] >= [ 10d Cumulative Return of TSLA]",
+            "properties": {
+              "y": {
+                "uses_synthetic_stock": false,
+                "source": "TSLA",
+                "indicator": "Cumulative Return",
+                "period": "10"
+              },
+              "x": {
+                "uses_synthetic_stock": false,
+                "source": "NVDA",
+                "indicator": "current price"
+              },
+              "comparison": ">="
+            },
+            "branches": {
+              "true": [
+                {
+                  "id": "80d1157ef8b7b9266c198cb149e59c9f",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY AAPL",
+                  "properties": { "symbol": "AAPL" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "aca8de50113c83514479eadd7de0bc4f"
+                }
+              ],
+              "false": [
+                {
+                  "id": "80daa458c109c5e6bfb63141b984588a",
+                  "componentType": "task",
+                  "type": "stock",
+                  "name": "BUY SPY",
+                  "properties": { "symbol": "SPY" },
+                  "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def",
+                  "hash": "7846b442a4989f34de2827df1a159d86"
+                }
+              ]
+            },
+            "path": "34c3c3fc2482a9267a1d7fa059304126/4df18e92bd444de5a6f532e32129ad6f",
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "d4b73d019a4886d718ce7cd96e5209af",
+            "hash": "904b27c5bdd56125d4abf26766351f32"
+          }
+        ]
+      },
+      "path": "34c3c3fc2482a9267a1d7fa059304126",
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "e3749e2ae083129e9925b2bd5e6e1e4c",
+      "hash": "60ca7c7c15596c240ab6b46b1d7cbee7"
+    }
+  ],
+  "tickers": ["TLSA", "QQQ", "TSLA", "AAPL", "SPY"],
+  "indicators": [
+    { "source": "AAPL", "indicator": "current price" },
+    { "source": "TQQQ", "indicator": "Cumulative Return", "period": "2" },
+    { "source": "SPY", "indicator": "current price" },
+    { "indicator": "Cumulative Return", "period": "3", "source": "TLSA" },
+    { "indicator": "Cumulative Return", "period": "3", "source": "QQQ" },
+    { "source": "NVDA", "indicator": "current price" },
+    { "source": "TSLA", "indicator": "Cumulative Return", "period": "10" }
+  ],
+  "nodeChildrenHash": "b3f50c5c035c365a1215bcd1b173f7f3"
+}

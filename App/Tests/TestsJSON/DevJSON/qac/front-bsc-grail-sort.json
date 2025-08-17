@@ -1,0 +1,56 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "17d87f0b-9b14-4520-b8fb-354b18f6ee07",
+    "id": "17d87f0b-9b14-4520-b8fb-354b18f6ee07",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "daily"
+  },
+  "sequence": [
+    {
+      "id": "c3f2b85eabb54000a64517e796cad526",
+      "componentType": "switch",
+      "type": "Sort",
+      "name": "SortBy Standard Deviation of Return-10",
+      "properties": {
+        "select": { "function": "Bottom", "howmany": "1" },
+        "sortby": {
+          "function": "Standard Deviation of Return",
+          "window": "10"
+        }
+      },
+      "branches": {
+        "Bottom-1": [
+          {
+            "id": "2f83b550d9b64e0cbebb2a94f4e0837b",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order BGX",
+            "properties": { "symbol": "BGX" }
+          },
+          {
+            "id": "c8f9fb6b79e8493fab67e556bab00690",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPLV",
+            "properties": { "symbol": "SPLV" }
+          },
+          {
+            "id": "74cf8869445141a9a728c04df95bcf69",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order BTAL",
+            "properties": { "symbol": "BTAL" }
+          },
+          {
+            "id": "ee57e118-1d09-43cc-b407-6d558d7da9ea",
+            "componentType": "icon",
+            "type": "icon",
+            "name": "Interrupting icon"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "type": "root",
+  "properties": {
+    "uuid": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "id": "e1c6f90c-cdca-44a4-8852-20f7a3be8531",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "threshold"
+  },
+  "sequence": [
+    {
+      "id": "bed4125df2214f7f95ab558cbeaf130d",
+      "componentType": "switch",
+      "type": "allocation",
+      "function": "Allocation",
+      "name": "Allocation",
+      "properties": {
+        "values": {
+          "a": 35,
+          "b": 10,
+          "c": 5,
+          "d": 5,
+          "e": 5,
+          "f": 5,
+          "g": 15,
+          "h": 5,
+          "i": 15
+        }
+      },
+      "branches": {
+        "a-(35.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AAPL",
+            "properties": {
+              "symbol": "AAPL"
+            }
+          }
+        ],
+        "b-(10.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order AMD",
+            "properties": {
+              "symbol": "AMD"
+            }
+          }
+        ],
+        "c-(5.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order QQQ",
+            "properties": {
+              "symbol": "QQQ"
+            }
+          }
+        ],
+        "d-(5.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order SPY",
+            "properties": {
+              "symbol": "SPY"
+            }
+          }
+        ],
+        "e-(5.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order NVDA",
+            "properties": {
+              "symbol": "NVDA"
+            }
+          }
+        ],
+        "f-(5.00%)": [
+          {
+            "id": "f8eaaa454bd74c888c92918a0ceb349f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order UDOW",
+            "properties": {
+              "symbol": "UDOW"
+            }
+          }
+        ],
+        "g-(15.00%)": [
+          {
+            "id": "847028ca23a84e85b895db0b25cc65c3",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order TQQQ",
+            "properties": {
+              "symbol": "TQQQ"
+            }
+          }
+        ],
+        "h-(5.00%)": [
+          {
+            "id": "8ab377d1bdd740419bf0896b6547064f",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order URTY",
+            "properties": {
+              "symbol": "URTY"
+            }
+          }
+        ],
+        "i-(15.00%)": [
+          {
+            "id": "8feda921f7064e2a826c0e3817259cae",
+            "componentType": "largeTask",
+            "type": "stock",
+            "name": "Buy Order UPRO",
+            "properties": {
+              "symbol": "UPRO"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

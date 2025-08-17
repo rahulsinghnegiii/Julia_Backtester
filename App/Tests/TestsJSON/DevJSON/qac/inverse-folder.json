@@ -1,0 +1,104 @@
+{
+  "type": "root",
+  "properties": {
+    "id": "600105825a8474843cb8512fe4c829bc",
+    "step": "root",
+    "name": "root node",
+    "triggerPeriod": "monthly"
+  },
+  "parentHash": "0",
+  "sequence": [
+    {
+      "id": "dd44e4fe3541c3ea1dab675a3208d763",
+      "componentType": "switch",
+      "type": "allocation",
+      "name": "Allocate by 10d Inverse Volatility",
+      "function": "Inverse Volatility",
+      "properties": { "period": "10", "isInvalid": false },
+      "branches": {
+        "a": [
+          {
+            "id": "49710f71d72d339719d1f33be26585dc",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "AAPL",
+            "sequence": [
+              {
+                "id": "d1c739db89b084667a5768802bc0092c",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "BUY AAPL",
+                "properties": { "isInvalid": false, "symbol": "AAPL" },
+                "parentHash": "ef58bc0f50b6c6a9232f8219fa7e7def"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "parentHash": "6ef078c51205d98c11a33f6ac5835037",
+            "nodeChildrenHash": "d41d8cd98f00b204e9800998ecf8427e"
+          }
+        ],
+        "b": [
+          {
+            "id": "bf3c1ae4e48c2902cc7e0861a88efb12",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "QQQ",
+            "sequence": [
+              {
+                "id": "fe5d5bc597f8df51949d3c3c7c1dc597",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "BUY QQQ",
+                "properties": { "symbol": "QQQ" },
+                "parentHash": "b530c7608ab7f0fbdf4d2a93490855e5"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "parentHash": "d0e7bc5227f36c7d1c3baac9bc446081",
+            "nodeChildrenHash": "4756f1dc200b6a5ec5166513fd3ebdb8"
+          }
+        ],
+        "c": [
+          {
+            "id": "4a0acb5a32b8a055bdfd74d49de49f75",
+            "componentType": "folder",
+            "type": "folder",
+            "name": "SPY",
+            "sequence": [
+              {
+                "id": "676fd13cc8dff7386a349c43cd8e4c69",
+                "componentType": "largeTask",
+                "type": "stock",
+                "name": "BUY SPY",
+                "properties": { "symbol": "SPY" },
+                "parentHash": "2698982e209f0af65ee1e015ab08b67b"
+              }
+            ],
+            "properties": {
+              "isCloudFolder": false,
+              "folder_id": "",
+              "author_id": "",
+              "author_history": {}
+            },
+            "parentHash": "7872af14f3d2c874366276b434d2ebc2",
+            "nodeChildrenHash": "3bf14c621ba49737a246f1497ece5d51"
+          }
+        ]
+      },
+      "parentHash": "b4b147bc522828731f1a016bfa72c073",
+      "nodeChildrenHash": "e46c08822ce3e5b5924f2088b9afb13a"
+    }
+  ],
+  "tickers": ["QQQ", "SPY"],
+  "indicators": []
+}

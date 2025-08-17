@@ -1,0 +1,83 @@
+{
+    "type": "root",
+    "properties": {
+        "uuid": "f5737e3b-90b9-445d-ba68-745113e917d8",
+        "id": "f5737e3b-90b9-445d-ba68-745113e917d8",
+        "step": "root",
+        "name": "root node",
+        "triggerPeriod": "threshold"
+    },
+    "sequence": [
+        {
+            "id": "8dea5e3db28b4566b692c3f46e2ca256",
+            "componentType": "switch",
+            "type": "Sort",
+            "name": "SortBy Standard Deviation of Return-5",
+            "properties": {
+                "select": {
+                    "function": "Top",
+                    "howmany": "3"
+                },
+                "sortby": {
+                    "function": "Standard Deviation of Return",
+                    "window": "5"
+                }
+            },
+            "branches": {
+                "Top-3": [
+                    {
+                        "id": "adab2001601d47e198c4e61f424b748c",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order BTAL",
+                        "properties": {
+                            "symbol": "BTAL"
+                        }
+                    },
+                    {
+                        "id": "d2711dd8a1534354a060f2b3ce867ccd",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order SHV",
+                        "properties": {
+                            "symbol": "SHV"
+                        }
+                    },
+                    {
+                        "id": "0cb6cb3bdd3e49b7b5c7444ade209b7a",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order BND",
+                        "properties": {
+                            "symbol": "BND"
+                        }
+                    },
+                    {
+                        "id": "787fdf8b984c442da4598066bf1c0b33",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order QQQ",
+                        "properties": {
+                            "symbol": "QQQ"
+                        }
+                    },
+                    {
+                        "id": "51175304f6e143bebf580e43c3a645d1",
+                        "componentType": "largeTask",
+                        "type": "stock",
+                        "name": "Buy Order GLD",
+                        "properties": {
+                            "symbol": "GLD"
+                        }
+                    },
+                    {
+                        "id": "474dca15-dc60-41c8-8e0f-ee0ae54eb2de",
+                        "componentType": "icon",
+                        "type": "icon",
+                        "name": "Interrupting icon"
+                    }
+                ]
+            }
+        }
+    ]
+}
