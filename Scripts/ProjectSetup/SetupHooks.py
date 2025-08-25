@@ -176,10 +176,10 @@ echo "### Smoke Tests" >> "$test_output_file"
 {create_test_snippet("Return Ticker Dates", "./App/Tests/SmokeTests/ReturnTickerDatesTest.jl")}
 {create_test_snippet("Strategy with Everything", "./App/Tests/SmokeTests/TimeComparisonTest.jl")}
 
-# Append section to the commit message and output file
 echo "----- Unit Tests -----" >> "$commit_msg_file"
 echo "### Unit Tests" >> "$test_output_file"
 
+{create_test_snippet("SmallStrategy", "./App/Tests/UnitTests/SmallStrategyTest.jl")}
 {create_test_snippet("BacktestService", "./App/Tests/UnitTests/BacktestServiceTests.jl")}
 {create_test_snippet("Backtest", "./App/Tests/UnitTests/BacktestTests.jl")}
 {create_test_snippet("FlowMap", "./App/Tests/UnitTests/FlowMapTests.jl")}

@@ -1,0 +1,369 @@
+Datasets Overview
+
+    stock_profile
+        Source: https://finance.yahoo.com/quote/{$symbol}/profile/
+        Description: Contains company details such as address, industry, and employee count.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        address 	VARCHAR 	Company address
+        city 	VARCHAR 	City
+        country 	VARCHAR 	Country
+        phone 	VARCHAR 	Phone number
+        zip 	VARCHAR 	Zip code
+        industry 	VARCHAR 	Industry type
+        sector 	VARCHAR 	Business sector
+        long_business_summary 	VARCHAR 	Business summary
+        full_time_employees 	INTEGER 	Number of full-time staff
+        report_date 	VARCHAR 	Data reporting date
+
+    stock_officers
+        Source: https://finance.yahoo.com/quote/{$symbol}/profile/
+        Description: Lists company executives, including their pay and title.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        name 	VARCHAR 	Executive's name
+        title 	VARCHAR 	Executive's job title
+        age 	INTEGER 	Executive's age
+        born 	INTEGER 	Year of birth
+        pay 	INTEGER 	Wage (USD)
+        exercised 	INTEGER 	Stock options exercised
+        unexercised 	INTEGER 	Unexercised stock options
+
+    stock_summary
+        Source: https://finance.yahoo.com/quote/${symbol}/key-statistics/
+        Description: Provides financial metrics such as market cap, P/E ratios, and EPS.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        market_cap 	DECIMAL(38,2) 	Market capitalization (USD)
+        enterprise_value 	DECIMAL(38,2) 	Enterprise value (USD)
+        shares_outstanding 	DECIMAL(38,2) 	Number of outstanding shares
+        beta 	DECIMAL(38,2) 	Beta value
+        trailing_pe 	DECIMAL(38,2) 	Trailing price-to-earnings
+        forward_pe 	DECIMAL(38,2) 	Forward price-to-earnings
+        tailing_eps 	DECIMAL(38,2) 	Trailing EPS
+        forward_eps 	DECIMAL(38,2) 	Forward EPS
+        enterprise_to_ebitda 	DECIMAL(38,2) 	EV/EBITDA
+        enterprise_to_revenue 	DECIMAL(38,2) 	EV/Revenue
+        peg_ratio 	DECIMAL(38,2) 	PEG ratio
+        currency 	VARCHAR 	Currency (e.g., USD)
+
+    stock_tailing_eps
+        Source: https://ycharts.com/companies/${symbol}/eps_ttm
+        Description: Provides financial metrics such as Trailing earnings per share (TTM EPS).
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        tailing_eps 	DECIMAL(38,2) 	Trailing EPS
+        update_time 	VARCHAR 	Last update time
+
+    stock_earning_calendar
+        Source: https://www.nasdaq.com/market-activity/earnings
+        Description: Contains information about companies' earnings reports, including their ticker symbols, reporting dates, names, and fiscal quarter end dates.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        name 	VARCHAR 	Company Simple Name
+        fiscal_quarter_ending 	VARCHAR 	Fiscal quarter end date
+
+    stock_revenue_estimates
+        Source: https://finance.yahoo.com/quote/${symbol}/analysis/#Revenue Estimate
+        Description: Contains revenue estimates for publicly traded companies, including analyst consensus estimates, high/low estimates, growth projections, and historical comparisons. The data is sourced from Yahoo Finance and provides insights into market expectations for company revenue performance.
+        Columns:
+        Column Name 	Data Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol of the company
+        report_date 	VARCHAR 	Date when the revenue estimate was reported (format may vary)
+        estimate_revenue_growth 	DECIMAL(38,2) 	Percentage growth expected in revenue compared to previous period
+        number_of_analysts 	INTEGER 	Count of analysts contributing to the estimates
+        estimate_avg_revenue 	DECIMAL(38,2) 	Mean revenue estimate from all analysts (in original currency)
+        estimate_high_revenue 	DECIMAL(38,2) 	Highest revenue estimate among analysts
+        estimate_low_revenue 	DECIMAL(38,2) 	Lowest revenue estimate among analysts
+        year_ago_estimate_avg_revenue 	DECIMAL(38,2) 	Average revenue estimate from the same period in the previous year (for comparison)
+        period_type 	VARCHAR 	Time period the estimate covers (e.g., "quarterly", "annual")
+        currency 	VARCHAR 	Currency in which the revenue amounts are denominated (e.g., "USD")
+
+    stock_earning_estimates
+        Source: https://finance.yahoo.com/quote/${symbol}/analysis/#Earnings Estimate
+        Description: Contains analyst estimates for Earnings Per Share (EPS) of publicly traded companies, including consensus estimates, high/low ranges, growth projections, and historical estimate comparisons. The data tracks how EPS expectations evolve over time (7/30/60/90 days ago comparisons).
+        Columns:
+        Column Name 	Data Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol (e.g. "AAPL")
+        report_date 	VARCHAR 	Date when the EPS estimate was published
+        estimate_eps_growth 	DECIMAL(38,2) 	Expected EPS growth percentage (e.g. 0.15 = 15%)
+        number_of_analysts 	INTEGER 	Number of analysts contributing to estimates
+        estimate_avg_eps 	DECIMAL(38,2) 	Current consensus EPS estimate
+        estimate_high_eps 	DECIMAL(38,2) 	Most optimistic analyst EPS estimate
+        estimate_low_eps 	DECIMAL(38,2) 	Most conservative analyst EPS estimate
+        seven_days_ago_estimate_avg_eps 	DECIMAL(38,2) 	Consensus estimate from 7 days ago
+        thirty_days_ago_estimate_avg_eps 	DECIMAL(38,2) 	Consensus estimate from 30 days ago
+        sixty_days_ago_estimate_avg_eps 	DECIMAL(38,2) 	Consensus estimate from 60 days ago
+        ninety_days_ago_estimate_avg_eps 	DECIMAL(38,2) 	Consensus estimate from 90 days ago
+        year_ago_estimate_avg_eps 	DECIMAL(38,2) 	Consensus estimate from same period last year
+        period_type 	VARCHAR 	"quarterly" or "annual" EPS estimate
+        currency 	VARCHAR 	Currency of EPS values (e.g. "USD")
+
+    stock_historical_eps
+        Source: https://finance.yahoo.com/quote/${symbol}/analysis/#Earnings History
+        Description: Contains details of companies' earnings performance, including their ticker symbols, actual and estimated EPS, surprise percentages, and corresponding fiscal quarters.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        eps_actual 	VARCHAR 	Actual earnings per share (EPS)
+        eps_estimate 	VARCHAR 	Estimated earnings per share (EPS)
+        surprise_percent 	VARCHAR 	Percentage difference from estimate
+        quarter_name 	VARCHAR 	Fiscal quarter name (e.g., 3Q2023)
+        quarter_date 	VARCHAR 	Fiscal quarter end date
+
+    stock_statement
+        Source: https://finance.yahoo.com/quote/${symbol}/financials/
+        Description: Contains financial statement details of companies, including ticker symbols, reporting dates, specific financial items, their values, and related statement types and periods.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        item_name 	VARCHAR 	Name of the financial statement item
+        item_value 	DECIMAL(38,2) 	Value of the financial statement item
+        finance_type 	VARCHAR 	Type of financial statement (e.g., balance_sheet, income_statement, cash_flow)
+        period_type 	VARCHAR 	Reporting period type (e. g., annual, quarterly)
+
+    stock_prices
+
+    Source: https://finance.yahoo.com/quote/${symbol}/chart
+    Description: Contains historical stock market data, including ticker symbols, reporting dates, and key trading metrics such as open, close, high, low prices, and trading volume.
+    Columns:
+    Column Name 	Column Type 	Description
+    symbol 	VARCHAR 	Stock ticker symbol
+    report_date 	VARCHAR 	Trading date
+    open 	DECIMAL(38,2) 	Opening price of the stock
+    close 	DECIMAL(38,2) 	Closing price of the stock
+    high 	DECIMAL(38,2) 	Highest price
+    low 	DECIMAL(38,2) 	Lowest price
+    volume 	BIGINT 	Number of shares traded
+
+    stock_dividend_events
+
+    Source: https://finance.yahoo.com/quote/${symbol}/chart
+    Description: Contains dividend data, including stock tickers, reporting dates, and dividend values.
+    Columns:
+    Column Name 	Column Type 	Description
+    symbol 	VARCHAR 	Stock ticker symbol
+    report_date 	VARCHAR 	Reporting date
+    amount 	DECIMAL(38,2) 	Financial amount (e.g., dividend, interest)
+
+    stock_split_events
+        Source: https://finance.yahoo.com/quote/${symbol}/chart
+        Description: Contains data about stock splits, including the stock ticker, reporting date, and the split factor.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        split_factor 	VARCHAR 	The factor by which shares are split
+
+    exchange_rate
+        Source: https://finance.yahoo.com/quote/${symbol}/chart
+        Description: Contains currency exchange data for a report date, including opening, closing, highest, and lowest prices.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        open 	DECIMAL(38,2) 	Opening price
+        close 	DECIMAL(38,2) 	Closing price
+        high 	DECIMAL(38,2) 	Highest price during the day
+        low 	DECIMAL(38,2) 	Lowest price during the day
+
+    daily_treasury_yield
+        Source: https://home.treasury.gov/
+        Description: Contains data related to daily treasury yield values for different time periods (monthly and yearly).
+        Columns:
+        Column Name 	Column Type 	Description
+        report_date 	VARCHAR 	Reporting date
+        bc1_month 	DECIMAL(38,2) 	Treasury yield for 1 month
+        bc2_month 	DECIMAL(38,2) 	Treasury yield for 2 months
+        bc3_month 	DECIMAL(38,2) 	Treasury yield for 3 months
+        bc6_month 	DECIMAL(38,2) 	Treasury yield for 6 months
+        bc1_year 	DECIMAL(38,2) 	Treasury yield for 1 year
+        bc2_year 	DECIMAL(38,2) 	Treasury yield for 2 years
+        bc3_year 	DECIMAL(38,2) 	Treasury yield for 3 years
+        bc5_year 	DECIMAL(38,2) 	Treasury yield for 5 years
+        bc7_year 	DECIMAL(38,2) 	Treasury yield for 7 years
+        bc10_year 	DECIMAL(38,2) 	Treasury yield for 10 years
+        bc30_year 	DECIMAL(38,2) 	Treasury yield for 30 years
+
+    stock_earning_call_transcripts
+        Source: Public available APIs
+        Description: Contains verbatim transcripts of quarterly earnings calls for publicly traded companies, including speaker information and content segmentation.
+        Columns:
+        Column Name 	Data Type 	Description
+        symbol 	VARCHAR 	The stock ticker symbol of the company
+        fiscal_year 	INTEGER 	The fiscal year of the earnings call
+        fiscal_quarter 	INTEGER 	The fiscal quarter (1-4) of the earnings call
+        report_date 	VARCHAR 	The date when the earnings call was reported (format may vary)
+        transcripts 	STRUCT<paragraph_number: INTEGER, speaker: VARCHAR, content: VARCHAR>[] 	Array of structured transcript segments: paragraph_number: Sequential numbering of transcript paragraphs, speaker: Name and/or title of the speaker,content: The actual spoken content/text
+        transcripts_id 	INTEGER 	Unique identifier for the transcript record
+
+    stock_news
+        Source: https://news.yahoo.com/
+        Description: Stores information about financial research reports or news articles, including metadata and content details
+        Columns:
+        Column Name 	Data Type 	Description
+        uuid 	VARCHAR 	Unique identifier for the report/article (nullable)
+        related_symbols 	VARCHAR[] 	Array of stock symbols or financial instruments related to the content
+        title 	VARCHAR 	Title of the report/article (nullable)
+        publisher 	VARCHAR 	Organization or entity that published the report (nullable)
+        report_date 	VARCHAR 	Date when the report was published (stored as string, nullable)
+        type 	VARCHAR 	Classification or category of the report/article (nullable)
+        link 	VARCHAR 	URL or reference link to the original content (nullable)
+        news 	STRUCT<paragraph_number: INTEGER, highlight: VARCHAR, paragraph: VARCHAR>[] 	Array of structured paragraphs containing content with numbering, highlights, and text (nullable)
+
+    stock_revenue_breakdown
+        Source:
+            https://stockanalysis.com/stocks/${symbol}/metrics/revenue-by-segment/
+            https://stockanalysis.com/stocks/${symbol}/metrics/revenue-by-product-group/
+            https://stockanalysis.com/stocks/${symbol}/metrics/revenue-by-geography/
+        Description: Stores information about revenue by segment and revenue by geography
+        Columns:
+        Column Name 	Data Type 	Description
+        symbol 	VARCHAR 	The stock symbol or company identifier
+        breakdown_type 	VARCHAR 	Type of financial breakdown (e.g., segment, geography, product)
+        report_date 	VARCHAR 	Date when the financial report was issued (format may vary)
+        item_name 	VARCHAR 	Name of the specific financial line item being reported
+        item_value 	DECIMAL(38,2) 	Numerical value of the financial item, with 2 decimal places precision
+
+    stock_shares_outstanding
+        Source: https://ycharts.com/companies/${symbol}/shares_outstanding
+        Description: Provides Shares Outstanding.
+        Columns:
+        Column Name 	Column Type 	Description
+        symbol 	VARCHAR 	Stock ticker symbol
+        report_date 	VARCHAR 	Reporting date
+        shares_outstanding 	Long 	Shares Outstanding
+
+Querying Datasets
+
+Use the following SQL queries in DuckDB to retrieve data for a specific stock (e.g., TSLA):
+
+    stock_profile
+
+    SELECT * FROM 
+        'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_profile.parquet' 
+    WHERE symbol='TSLA';
+
+stock_officers
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_officers.parquet' 
+WHERE symbol='TSLA';
+
+stock_summary
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_summary.parquet' 
+WHERE symbol='TSLA';
+
+stock_tailing_eps
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_tailing_eps.parquet' 
+WHERE symbol='TSLA';
+
+stock_earning_calendar
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_earning_calendar.parquet' 
+WHERE symbol='TSLA';
+
+stock_revenue_estimates
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_revenue_estimates.parquet' 
+WHERE symbol='TSLA';
+
+stock_earning_estimates
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_earning_estimates.parquet' 
+WHERE symbol='TSLA';
+
+stock_historical_eps
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_historical_eps.parquet' 
+WHERE symbol='TSLA';
+
+stock_statement
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_statement.parquet' 
+WHERE symbol='TSLA' and finance_type='income_statement'
+
+    stock_prices
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_prices.parquet' 
+WHERE symbol='TSLA'
+
+    stock_dividend_events
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_dividend_events.parquet' 
+WHERE symbol='TSLA'
+
+    stock_split_events
+
+    SELECT * FROM 
+        'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_split_events.parquet' 
+    WHERE symbol='TSLA'
+
+exchange_rate
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/exchange_rate.parquet' 
+WHERE symbol='EUR=X'
+
+daily_treasury_yield
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/daily_treasury_yield.parquet' 
+
+stock_earning_call_transcripts
+
+SELECT symbol,
+    fiscal_year,
+    fiscal_quarter,
+    report_date,
+    unnest(transcripts).paragraph_number,
+    unnest(transcripts).speaker,
+    unnest(transcripts).content 
+FROM 'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_earning_call_transcripts.parquet' 
+WHERE symbol='TSLA' AND fiscal_year=2024 AND fiscal_quarter=4;
+
+stock_news
+
+SELECT related_symbols, 
+    uuid, 
+    title, 
+    publisher, 
+    report_date, 
+    type, 
+    link, 
+    unnest(news).paragraph_number, 
+    unnest(news).highlight, 
+    unnest(news).paragraph 
+FROM 'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_news.parquet' 
+WHERE uuid='00094540-141e-3893-a5ca-beb26abc150f';
+
+stock_revenue_breakdown
+
+SELECT *
+FROM 'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_revenue_breakdown.parquet' 
+WHERE symbol='TSLA';
+
+    stock_shares_outstanding
+
+SELECT * FROM 
+    'https://huggingface.co/datasets/bwzheng2010/yahoo-finance-data/resolve/main/data/stock_shares_outstanding.parquet' 
+WHERE symbol='TSLA';

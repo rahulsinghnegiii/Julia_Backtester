@@ -186,3 +186,63 @@ cython_debug/
 !App/Tests/E2E/ExpectedFiles/SubtreeCache/*.mmap
 
 .qodo
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+docs/build/
+docs/site/
+
+# Manifest
+Manifest.toml
+
+# Cache and temporary files
+App/Cache/
+App/SubtreeCache/
+App/IndicatorData/
+*.tmp
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.so
+*.dll
+*.dylib
+
+# C++ build files
+cpp_backtester/build/
+cpp_backtester/external/
+*.o
+*.obj
+*.exe
+
+# Test artifacts
+TestReports/temp/
+*.test
+
+# Data files (if large)
+*.parquet
+ParquetData/
+
+# Temporary directories
+temp/
+tmp/
