@@ -8,6 +8,16 @@ This script performs a quick validation to ensure the SmallStrategy implementati
 is working correctly before running the full test suite.
 """
 
+# Try to load JSON, install if not available
+try
+    using JSON
+catch e
+    println("Installing JSON package...")
+    using Pkg
+    Pkg.add("JSON")
+    using JSON
+end
+
 println("SmallStrategy Quick Validation")
 println("=" ^ 40)
 
@@ -21,13 +31,13 @@ required_files = [
     "DemoSmallStrategy.jl"
 ]
 
-all_files_exist = true
+global all_files_exist = true
 for file in required_files
     if isfile(file)
         println("  ✓ $file")
     else
         println("  ✗ $file - NOT FOUND")
-        all_files_exist = false
+        global all_files_exist = false
     end
 end
 
