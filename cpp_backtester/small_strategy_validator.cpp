@@ -4,8 +4,11 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cmath>
+#include <fstream>
+#include <iomanip>
 
-// Minimal implementation to validate SmallStrategy logic without full dependencies
+// Enhanced SmallStrategy validator that outputs in Julia-compatible format
+// Outputs: {"profile_history": [{"stockList": [{"ticker": "QQQ", "weightTomorrow": 1.0}]}]}
 
 namespace atlas_test {
 
@@ -84,7 +87,7 @@ public:
         return rsi_values;
     }
     
-    static float get_current_price(const std::string& ticker, const std::vector<float>& prices) {
+    static float get_current_price(const std::string& /* ticker */, const std::vector<float>& prices) {
         // Return the last available price
         return prices.empty() ? 0.0f : prices.back();
     }
@@ -116,14 +119,90 @@ private:
     }
 };
 
+// Output formatter for Julia compatibility
+class JuliaOutputFormatter {
+public:
+    static void save_to_json(const std::vector<DayData>& portfolio_history, const std::string& filename) {
+        std::ofstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Error: Could not open file " << filename << std::endl;
+            return;
+        }
+        
+        file << "{\n";
+        file << "  \"profile_history\": [\n";
+        
+        for (size_t i = 0; i < portfolio_history.size(); ++i) {
+            file << "    { \"stockList\": [";
+            
+            if (portfolio_history[i].empty()) {
+                file << "] }";
+            } else {
+                for (size_t j = 0; j < portfolio_history[i].stock_list.size(); ++j) {
+                    if (j > 0) file << ", ";
+                    const auto& stock = portfolio_history[i].stock_list[j];
+                    file << "{\"ticker\": \"" << stock.ticker << "\", \"weightTomorrow\": " 
+                         << std::fixed << std::setprecision(1) << stock.weight_tomorrow << "}";
+                }
+                file << "] }";
+            }
+            
+            if (i < portfolio_history.size() - 1) {
+                file << ",";
+            }
+            file << "\n";
+        }
+        
+        file << "  ]\n";
+        file << "}\n";
+        
+        file.close();
+        std::cout << "✅ Julia-compatible output saved to: " << filename << std::endl;
+    }
+    
+    static void print_sample_output(const std::vector<DayData>& portfolio_history) {
+        std::cout << "\n=== Julia-Compatible Output Sample (first 10 days) ===" << std::endl;
+        std::cout << "{\n";
+        std::cout << "  \"profile_history\": [\n";
+        
+        for (int i = 0; i < std::min(10, static_cast<int>(portfolio_history.size())); ++i) {
+            std::cout << "    { \"stockList\": [";
+            
+            if (portfolio_history[i].empty()) {
+                std::cout << "] }";
+            } else {
+                for (size_t j = 0; j < portfolio_history[i].stock_list.size(); ++j) {
+                    if (j > 0) std::cout << ", ";
+                    const auto& stock = portfolio_history[i].stock_list[j];
+                    std::cout << "{\"ticker\": \"" << stock.ticker << "\", \"weightTomorrow\": " 
+                             << std::fixed << std::setprecision(1) << stock.weight_tomorrow << "}";
+                }
+                std::cout << "] }";
+            }
+            
+            if (i < std::min(9, static_cast<int>(portfolio_history.size() - 1))) {
+                std::cout << ",";
+            }
+            std::cout << "\n";
+        }
+        
+        if (portfolio_history.size() > 10) {
+            std::cout << "    ... (" << (portfolio_history.size() - 10) << " more days)\n";
+        }
+        
+        std::cout << "  ]\n";
+        std::cout << "}\n";
+    }
+};
+
 // SmallStrategy Logic Validator
 class SmallStrategyValidator {
 public:
     static bool validate_strategy_logic() {
         std::cout << "=== SmallStrategy Logic Validation ===" << std::endl;
         
-        // Generate test data
-        int test_days = 250; // Test with 250 days
+        // Generate test data - use 1260 days to match SmallStrategy.json period
+        int test_days = 1260;
         auto spy_prices = MockDataProvider::get_price_data("SPY", test_days);
         auto qqq_prices = MockDataProvider::get_price_data("QQQ", test_days);
         auto psq_prices = MockDataProvider::get_price_data("PSQ", test_days);
@@ -211,7 +290,13 @@ public:
             std::cout << "✅ PASS: Sort node executed and selected stocks" << std::endl;
         }
         
-        // Show sample results
+        // Show sample results in Julia format
+        JuliaOutputFormatter::print_sample_output(portfolio_history);
+        
+        // Save complete output in Julia format
+        JuliaOutputFormatter::save_to_json(portfolio_history, "SmallStrategy_Cpp_Output.json");
+        
+        // Show sample results for debugging
         std::cout << "\n=== Sample Portfolio (first 10 days) ===" << std::endl;
         for (int i = 0; i < std::min(10, static_cast<int>(portfolio_history.size())); ++i) {
             std::cout << "Day " << (i + 1) << ": ";
@@ -233,8 +318,8 @@ private:
         int day,
         const std::vector<float>& spy_prices,
         const std::vector<float>& qqq_prices,
-        const std::vector<float>& psq_prices,
-        const std::vector<float>& shy_prices,
+        const std::vector<float>& /* psq_prices */,
+        const std::vector<float>& /* shy_prices */,
         const std::vector<float>& spy_sma_200,
         const std::vector<float>& qqq_sma_20,
         const std::vector<float>& psq_rsi_10,
@@ -287,8 +372,8 @@ private:
     }
     
     static int count_valid_values(const std::vector<float>& values) {
-        return std::count_if(values.begin(), values.end(), 
-                           [](float v) { return !std::isnan(v); });
+        return static_cast<int>(std::count_if(values.begin(), values.end(), 
+                           [](float v) { return !std::isnan(v); }));
     }
 };
 
@@ -296,6 +381,8 @@ private:
 
 int main() {
     std::cout << "Atlas C++ Backend - SmallStrategy Logic Validation" << std::endl;
+    std::cout << "=================================================" << std::endl;
+    std::cout << "Output Format: Julia-Compatible JSON" << std::endl;
     std::cout << "=================================================" << std::endl;
     
     bool validation_passed = atlas_test::SmallStrategyValidator::validate_strategy_logic();
@@ -305,6 +392,7 @@ int main() {
         std::cout << "✅ SmallStrategy logic validation PASSED" << std::endl;
         std::cout << "   Core algorithms functioning correctly" << std::endl;
         std::cout << "   Strategy decision tree executing as expected" << std::endl;
+        std::cout << "   Julia-compatible output generated" << std::endl;
         return 0;
     } else {
         std::cout << "❌ SmallStrategy logic validation FAILED" << std::endl;

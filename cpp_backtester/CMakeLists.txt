@@ -21,9 +21,19 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# Find required packages
-find_package(nlohmann_json REQUIRED)
+# Find or fetch required packages
 find_package(Threads REQUIRED)
+
+# Fetch nlohmann_json if not found
+find_package(nlohmann_json QUIET)
+if(NOT nlohmann_json_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+        nlohmann_json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+    )
+    FetchContent_MakeAvailable(nlohmann_json)
+endif()
 
 # Add subdirectories
 add_subdirectory(src)
@@ -39,6 +49,33 @@ target_link_libraries(atlas_backtester
     atlas_core
     nlohmann_json::nlohmann_json
     Threads::Threads
+)
+
+# Enhanced SmallStrategy validator
+add_executable(enhanced_small_strategy_validator
+    enhanced_small_strategy_validator.cpp
+)
+
+target_link_libraries(enhanced_small_strategy_validator
+    PRIVATE
+    atlas_core
+    nlohmann_json::nlohmann_json
+    Threads::Threads
+)
+
+target_include_directories(enhanced_small_strategy_validator
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# SmallStrategy validator with JSON output
+add_executable(small_strategy_validator
+    small_strategy_validator.cpp
+)
+
+target_include_directories(small_strategy_validator
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Installation

@@ -1,0 +1,36 @@
+Atlas C++ Backend - SmallStrategy Logic Validation
+=================================================
+=== SmallStrategy Logic Validation ===
+Generated 250 days of test data
+SPY SMA-200 calculated: 51 valid values
+QQQ SMA-20 calculated: 231 valid values
+PSQ RSI-10 calculated: 240 valid values
+SHY RSI-10 calculated: 240 valid values
+
+=== Strategy Execution Results ===
+Total days executed: 50
+SPY condition true (QQQ selected): 8
+QQQ condition true (Sort executed): 23
+  - PSQ selected: 12
+  - SHY selected: 11
+Else branch (QQQ selected): 19
+✅ PASS: Portfolio history generated
+✅ PASS: Strategy logic counts consistent
+✅ PASS: Sort node executed and selected stocks
+
+=== Sample Portfolio (first 10 days) ===
+Day 1: QQQ(1) 
+Day 2: QQQ(1) 
+Day 3: QQQ(1) 
+Day 4: QQQ(1) 
+Day 5: QQQ(1) 
+Day 6: PSQ(1) 
+Day 7: QQQ(1) 
+Day 8: QQQ(1) 
+Day 9: QQQ(1) 
+Day 10: QQQ(1) 
+
+=== Final Validation Result ===
+✅ SmallStrategy logic validation PASSED
+   Core algorithms functioning correctly
+   Strategy decision tree executing as expected

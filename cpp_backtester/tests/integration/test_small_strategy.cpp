@@ -24,6 +24,39 @@ protected:
         }
         return content;
     }
+    
+    void validate_strategy_logic_patterns(const std::vector<DayData>& portfolio_history) {
+        // Validate SmallStrategy logic patterns
+        std::unordered_map<std::string, int> ticker_counts;
+        
+        for (const auto& day : portfolio_history) {
+            if (!day.empty()) {
+                for (const auto& stock : day.stock_list()) {
+                    ticker_counts[stock.ticker()]++;
+                }
+            }
+        }
+        
+        std::cout << "Ticker distribution:" << std::endl;
+        for (const auto& [ticker, count] : ticker_counts) {
+            float percentage = (portfolio_history.size() > 0) ? 
+                (static_cast<float>(count) / portfolio_history.size() * 100.0f) : 0.0f;
+            std::cout << "  " << ticker << ": " << count << " days (" 
+                     << std::fixed << std::setprecision(1) << percentage << "%)" << std::endl;
+        }
+        
+        // Validate expected SmallStrategy behavior
+        bool has_qqq = ticker_counts.count("QQQ") > 0;
+        bool has_psq_or_shy = ticker_counts.count("PSQ") > 0 || ticker_counts.count("SHY") > 0;
+        
+        EXPECT_TRUE(has_qqq) << "QQQ should appear in portfolio (main asset)";
+        
+        if (has_psq_or_shy) {
+            std::cout << "Sort node executed: PSQ/SHY selection detected" << std::endl;
+        } else {
+            std::cout << "Sort node not executed: Only QQQ positions" << std::endl;
+        }
+    }
 };
 
 TEST_F(SmallStrategyTest, LoadAndParseSmallStrategy) {

@@ -16,15 +16,7 @@ add_library(atlas_core STATIC
     
     # Engine components
     engine/backtesting_engine.cpp
-    engine/post_order_dfs.cpp
     engine/strategy_parser.cpp
-    
-    # Utilities
-    utils/validation.cpp
-    utils/error_handling.cpp
-    utils/cache_manager.cpp
-    utils/technical_analysis.cpp
-    utils/data_provider.cpp
     
     # Cache system
     cache/global_cache.cpp
