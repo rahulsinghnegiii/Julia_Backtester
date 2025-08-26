@@ -2,5 +2,6 @@
     "julia.environmentPath": "${workspaceFolder}/App",
     "[julia]": {
         "editor.formatOnSave": true
-    }
+    },
+    "cmake.sourceDirectory": "G:/Freelancing PROJECTS DEV/WORK/Discord/KEIL/old_julia_backtester/cpp_backtester"
 }
